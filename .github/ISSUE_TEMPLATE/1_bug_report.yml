@@ -1,11 +1,11 @@
-name: 🐛 Report a bug
+name: Report a bug
 description: Any errors.
 labels: ["needs triage", "bug"]
 body:
   - type: markdown
     attributes:
       value: >
-        Before you go any further. Is this really a **🐛 bug**?
+        Before you go any further. Is this really a **bug**?
 
         If it's a question about how al-folio works, have a look at our [documentation](https://github.com/alshedivat/al-folio/blob/master/README.md),
         [frequently asked questions](https://github.com/alshedivat/al-folio/blob/master/FAQ.md),
@@ -28,7 +28,7 @@ body:
   - type: input
     attributes:
       label: Bug description
-      description: A description of the 🐛 bug.
+      description: A description of the bug.
       placeholder: A clear and concise description of what the bug is.
     validations:
       required: true
@@ -36,7 +36,7 @@ body:
   - type: textarea
     attributes:
       label: How to reproduce the bug
-      description: Provide steps to reproduce the 🐛 bug.
+      description: Provide steps to reproduce the bug.
       placeholder: |
         Include steps to reproduce, the expected behaviour, and the actual behaviour.
 
