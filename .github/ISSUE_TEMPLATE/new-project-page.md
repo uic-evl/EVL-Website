@@ -1,5 +1,5 @@
 ---
-name: New project
+name: New project page
 about: Describe a new project page here.
 title: ''
 labels: ''
