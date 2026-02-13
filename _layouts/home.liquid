@@ -15,6 +15,8 @@ layout: default
     width: 100%;
     display: block;
     height: auto;
+    object-fit: cover;
+    max-height: 500px;
   }
   .hero-overlay {
     position: absolute;
@@ -30,11 +32,27 @@ layout: default
     margin: 0;
     color: white;
   }
+  .hero-figcaption {
+      /* Style the caption text */
+      background-color: #333;
+      color: white;
+      font-style: normal;
+      padding: 5px;
+      text-align: left;
+      font-size: 85%; /* Make the font size smaller than the main text */
+  }
+
 </style>
 
-<header class="hero">
+<header>
   <h1 class="hero-title">{{ page.subtitle }}</h1>
-  <img id="hero-image" src="" alt="Hero Image" />
+  <div class="hero">
+	  <figure>
+	    <img id="hero-image" src="" alt="Hero Image" />
+	    <figcaption id="hero-caption" class="hero-figcaption"></figcaption>
+	  </figure>
+  </div>
+
   <!-- <div class="hero-overlay"> -->
     <!-- Use page.subtitle so the title overlay text is what you want -->
     <!-- <h1 class="hero-title">{{ page.subtitle }}</h1> -->
@@ -100,35 +118,66 @@ layout: default
 <script>
 document.addEventListener("DOMContentLoaded", function() {
   var heroImages = [
-    '/assets/img/homepage/_LJL0236-1400.webp',
     '/assets/img/homepage/_LJL0368-Edit-1400.webp',
-    '/assets/img/homepage/_LJL1465-1400.webp',
     '/assets/img/homepage/_LJL2368-Edit-1400.webp',
-    '/assets/img/homepage/_LJL4310-1400.webp',
-    '/assets/img/homepage/_LJL7635-3-1400.webp',
-    '/assets/img/homepage/evl00-1400.webp',
-    '/assets/img/homepage/evl01-1400.webp',
-    '/assets/img/homepage/wall-1400.webp',
-    '/assets/img/homepage/IMG_1407-1400.webp',
+    '/assets/img/homepage/arcade3-1400.webp',
     '/assets/img/homepage/fmiranda_continuum-1400.webp',
     '/assets/img/homepage/gmarai_nihrelease-1400.webp',
-    '/assets/img/homepage/sensei-panama-imageofresearch-1400.webp',
+    '/assets/img/homepage/IMG_5216-1400.webp',
     '/assets/img/homepage/tsoupikovadaria-magazine-240805-1400.webp',
+    '/assets/img/homepage/visit3-1400.webp',
+    '/assets/img/homepage/wall-1400.webp',
+    "/images/sc25_art.png-srcw.jpg",
+    "/images/lmarai-3.jpg-srcw.jpg",
+    "/images/scobeli_komar.png-srcw.jpg",
+    "/images/cfloricel_dissertation.jpeg-srcw.jpg",
+    "/images/lanpapka.png-srcw.jpg",
+    "/images/preuss1.jpg-srcw.jpg",
+    "/images/fulfillment.png-srcw.jpg",
+    "/images/siggraph2925_cc_ycgh.png-srcw.jpg",
+    "/images/s2025poster.png-srcw.jpg",
+    "/images/sage3_ahm.png-srcw.jpg",
+    "/images/arcade_cdrlcopening.png-srcw.jpg",
+  ];
+
+  var heroCaptions = [
+    "Touch wall with SAGE2 in the Continuum space",
+    "Molecular visualization in the CAVE2 hybrid reality environment",
+    "CS Students using SAGE3 in the Arcade Space",
+    "Prof. Miranda showing Urban Analytics on the Continuum wall",
+    "Prof. Marai with co-investigators in CAVE2",
+    "CS+DES class in Continuum space with Prof. Tsoupikova",
+    "Prof. Tsoupikova showing her work in the lobby of 150 North Riverside Plaza",
+    "Group visiting the new Arcade space in the CDRLC building",
+    "SAGE2 visualization on the Touch Wall in the Continuum space",
+    "The Art of HPC Exhibition at Supercomputing25",
+    "Prof. Marai Delivers Keynote at the Visual Analytics in Healthcare",
+    "EVL Graduate Students on their paper acceptance to IEEE TVCG",
+    "Carla Floricel's PhD Defense",
+    "Researchers Michael Papka and Zhiling Lan Receive New NSF CISE Award",
+    "VR: The Hidden Costs of Logistics and the Disappearing Wild",
+    "VR: a field guide to the logistical city",
+    "VR: A Therapeutic VR Journey for Anxiety Management",
+    "CS+DES Students Present at ACM SIGGRAPH 2025",
+    "SAGE3 Annual All Hands Meeting",
+    "Arcade Premieres at the CDRLC Opening",
   ];
 
   var heroImageElement = document.getElementById("hero-image");
+  var heroCaptionElement = document.getElementById("hero-caption");
 
   function updateHeroImage() {
     if (!heroImageElement) return;
     var randomIndex = Math.floor(Math.random() * heroImages.length);
     heroImageElement.src = heroImages[randomIndex];
+    // Optionally, update caption if needed
+    heroCaptionElement.textContent = heroCaptions[randomIndex];
   }
 
   // Initial image load
   updateHeroImage();
 
-  // Change image every 5 minutes (300,000 ms)
-  setInterval(updateHeroImage, 5*60*1000);
-
+  // Change image every 2 minutes
+  setInterval(updateHeroImage, 2*60*1000);
 });
 </script>
