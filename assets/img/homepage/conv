@@ -1,0 +1,15 @@
+#!/bin/bash
+
+for img in *.jpg; do
+  echo "Processing $img"
+  aspect=$(magick identify -format "%[fx:w/h]" "$img")
+  echo "   Aspect ratio: $aspect"
+  result=$(echo "$aspect > 1.83" | bc -l)
+  if [ "$result" -eq 1 ]; then
+    echo "   Too wide — pad vertically"
+    magick "$img" -gravity center -background black -extent "%w x%[fx:w/1.83]" "converted/$img"
+  else
+    echo "   Too tall — pad horizontally"
+    magick "$img" -gravity center -background black -extent "%[fx:h*1.83]x%h" "converted/$img"
+  fi
+done
