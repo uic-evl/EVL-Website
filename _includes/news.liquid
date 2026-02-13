@@ -115,12 +115,20 @@
                   <td>
 
                   {% if item.image %}
-                   {% assign full_url = "/images/" | append: item.image %}
+
+			{% assign first_char = item.image | slice: 0, 1 %}
+			{% if first_char == '/' %}
+			   {% assign full_url = item.image %}
+			{% else %}
+			   {% assign full_url = "/images/" | append: item.image %}
+			{% endif %}
+
                      <div style="width: 300px; height:200px;overflow: hidden;">
                       <a class="news-title" href="{{ item.url | relative_url }}">
                         <img src="{{ full_url }}" alt="{{ item.title }}" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;"/>
                       </a>
                     </div>
+
                   {% else %}
                      <div style="width: 300px; height:200px;overflow: hidden;">
                       <a class="news-title" href="{{ item.url | relative_url }}">
