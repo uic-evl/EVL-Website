@@ -1,3 +1,5 @@
+@use "variables" as *;
+
 /*******************************************************************************
  * Base & Typography
  ******************************************************************************/
@@ -296,10 +298,15 @@ ul.task-list input[type="checkbox"] {
   .navbar-nav .nav-item.active > .nav-link {
     background-color: inherit;
     font-weight: bolder;
-    color: var(--global-theme-color);
+    color: var(--global-theme-color) !important;
     &:hover {
-      color: var(--global-hover-color);
+      color: var(--global-hover-color) !important;
     }
+  }
+
+  .navbar-nav .show > .nav-link,
+  .navbar-nav .nav-link.show {
+    color: var(--global-theme-color) !important;
   }
 
   .navbar-brand.social {
@@ -664,6 +671,7 @@ footer.sticky-bottom {
 }
 
 /* Projects */
+
 .projects {
   a {
     text-decoration: none;
@@ -719,9 +727,17 @@ footer.sticky-bottom {
     }
   }
 
-  h2.bibliography {
+/*  h2.bibliography {
     color: var(--global-divider-color);
     border-top: 1px solid var(--global-divider-color);
+    padding-top: 1rem;
+    margin-top: 2rem;
+    text-align: right;
+  }*/
+  h2.bibliography {
+    color: #D50032;  /* red text */
+    border-top: 1px solid var(--global-divider-color);  /* keep divider
+  line original color */
     padding-top: 1rem;
     margin-top: 2rem;
     text-align: right;
@@ -1154,6 +1170,42 @@ swiper-container {
   border-color: var(--global-theme-color) !important;
 }
 
+.filter-button {
+  background: var(--global-theme-color);
+  color: var(--global-bg-color);
+  width: min-content;
+  max-width: 200px;
+  white-space: nowrap;
+  align-items: center;
+  flex-direction: row;
+  border-radius: 4px;
+  text-align: center;
+  font-style: normal;
+  font-weight: 500;
+  border: none;
+}
+
+.filter-link {
+  color: var(--global-theme-color);
+  width: min-content;
+  max-width: 200px;
+  white-space: nowrap;
+  align-items: center;
+  flex-direction: row;
+  border-radius: 4px;
+  text-align: left;
+  font-style: normal;
+  border: none;
+  font-weight: 300;
+}
+
+.filter-link:hover {
+  font-weight: 500;
+}
+.news_selected {
+  font-weight: 500;
+}
+
 .newsletter-form-button {
   background: var(--global-theme-color);
   color: var(--global-bg-color);
@@ -1275,71 +1327,6 @@ swiper-container {
 }
 
 /*******************************************************************************
- * Letter Navigation & Profile Grid
- ******************************************************************************/
-/* Sticky letter navigation bar */
-.letter-index {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 100px;
-  width: 100%;
-  background-color: white;
-  padding: 10px 0;
-  z-index: 1000;
-  text-align: center;
-  margin-bottom: 20px;
-  border-bottom: 1px solid #ccc;
-  white-space: nowrap;
-}
-
-.letter-index a {
-  margin: 0 0.5%;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-.letter-index a:hover {
-  text-decoration: underline;
-}
-
-/* Letter sections for navigation */
-.letter-section {
-  width: 100%;
-  margin-top: 40px;
-}
-
-.letter-section h2 {
-  text-align: left;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 5px;
-  margin-bottom: 10px;
-}
-
-/* Profile grid layout (responsive three-column layout) */
-.profile-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.profile-column {
-  flex: 1 1 calc(33.333% - 20px);
-  box-sizing: border-box;
-}
-
-@media (max-width: 768px) {
-  .profile-column {
-    flex: 1 1 calc(50% - 20px);
-  }
-}
-
-@media (max-width: 480px) {
-  .profile-column {
-    flex: 1 1 100%;
-  }
-}
-
-/*******************************************************************************
  * Figure Cover Styling
  ******************************************************************************/
 figure.cover {
@@ -1422,7 +1409,7 @@ figure.cover {
   // Red section headers
   h2 {
     color: #D50032;
-    margin-top: 30px;
+    margin-top: 0px;
   }
 
   // Page description
@@ -1462,20 +1449,31 @@ figure.cover {
     }
   }
 
-  // Letter navigation matching the page background
-  .letter-index {
-    background-color: inherit;
-    padding: 10px;
-    text-align: center;
-
-    a {
-      margin: 0 5px;
-      text-decoration: none;
-    }
+  h2.people-category {
+      color: #D50032;
+      border-top: 1px solid var(--global-divider-color);
+      padding-top: 1rem;
+      margin-top: 2rem;
+      text-align: right;
   }
+}
 
-  // Profile column spacing
-  .profile-column {
-    margin-bottom: 20px;
-  }
+.people-status-anchor-target {
+  scroll-margin-top: 65px;
+}
+
+.people-anchor-target {
+  scroll-margin-top: 150px;
+}
+
+h2.year-divider {
+  color: var(--global-theme-color);
+  border-top: 1px solid var(--global-divider-color);
+  padding-top: 1rem;
+  margin-top: 2rem;
+  text-align: right;
+}
+
+.zoom:hover {
+  transform: scale(1.05);
 }
