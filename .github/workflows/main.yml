@@ -1,0 +1,111 @@
+name: Paper Issue → Blog Post
+
+on:
+  issues:
+    types: [opened, edited, labeled]
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  paper-to-post:
+    if: contains(github.event.issue.labels.*.name, 'paper')
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Generate markdown from issue
+        id: generate
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issue = context.payload.issue;
+            const body = issue.body;
+
+            function extract(field) {
+              const regex = new RegExp(`### ${field}\\s*\\n([\\s\\S]*?)(\\n###|$)`, 'i');
+              const match = body.match(regex);
+              return match ? match[1].trim() : "";
+            }
+
+            // Extract fields from your paper template
+            const title = extract("Paper Title") || issue.title.replace(/^\[Paper\]\s*/, "");
+            const date = extract("Publication Date") || new Date().toISOString().split("T")[0];
+            const authors = extract("Authors");
+            const venue = extract("Venue / Conference / Journal");
+            const location = extract("Location (optional)") || extract("Location");
+            const link = extract("External Link");
+            const pdf = extract("Local PDF");
+            const image = extract("Image");
+            const caption = extract("Image Caption");
+            const abstract = extract("Abstract / Summary");
+            const keywords = extract("Index Terms / Keywords");
+
+            // Create slug for filename
+            const slug = title
+              .toLowerCase()
+              .replace(/[^a-z0-9]+/g, "-")
+              .replace(/^-|-$/g, "");
+
+            const filename = `_posts/${date}-${slug}.md`;
+
+            // Build markdown content
+            let content = `---\n`;
+            content += `layout: post\n`;
+            content += `title: '${title.replace(/'/g, "''")}'\n`;
+            content += `date: ${date}\n`;
+            content += `tags: paper\n`;
+            content += `categories: papers\n`;
+            content += `tabs: true\n`;
+            if (image) content += `image: ${image}\n`;
+            content += `---\n\n`;
+
+            content += `## ${title}\n\n`;
+
+            if (authors) content += `**${authors}**\n\n`;
+            if (venue) content += `- Venue: ${venue}\n`;
+            if (location) content += `- Location: ${location}\n`;
+            if (link) content += `- Link: [${link}](${link})\n`;
+            if (pdf) content += `- PDF: [Download](${pdf})\n`;
+
+            if (image) {
+              content += `\n[![image](/images/${image}){:style="max-width: 100%"}](/images/${image})\n`;
+            }
+
+            if (caption) content += `- Caption: ${caption}\n`;
+
+            if (abstract) content += `\n${abstract}\n`;
+
+            if (keywords) {
+              content += `\n<br><br>\nIndex Terms - ${keywords}\n`;
+            }
+
+            core.setOutput("filename", filename);
+            core.setOutput("content", content);
+
+      - name: Write post file
+        run: |
+          mkdir -p _posts
+          echo "${{ steps.generate.outputs.content }}" > "${{ steps.generate.outputs.filename }}"
+
+      - name: Commit post
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add _posts/
+          git commit -m "Add paper post from issue #${{ github.event.issue.number }}" || echo "No changes to commit"
+          git push
+
+      - name: Comment on issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const filename = `${{ steps.generate.outputs.filename }}`;
+            github.rest.issues.createComment({
+              ...context.repo,
+              issue_number: context.issue.number,
+              body: `📄 Paper post created: \`${filename}\``
+            });
