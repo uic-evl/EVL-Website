@@ -1,0 +1,89 @@
+name: Publication / Paper Announcement
+description: Submit a new paper to be published on the blog
+title: "[Paper] <Short Paper Title>"
+labels: ["paper"]
+body:
+  - type: input
+    id: title
+    attributes:
+      label: Paper Title
+      description: Full title of the paper
+      placeholder: "Volume Encoding Gaussians: ..."
+    validations:
+      required: true
+
+  - type: input
+    id: date
+    attributes:
+      label: Publication Date
+      description: Date of publication or announcement (YYYY-MM-DD)
+      placeholder: "2026-04-20"
+    validations:
+      required: true
+
+  - type: input
+    id: authors
+    attributes:
+      label: Authors
+      description: List all authors
+      placeholder: "Last, F., Last, F., ..."
+    validations:
+      required: true
+
+  - type: input
+    id: venue
+    attributes:
+      label: Venue / Conference / Journal
+      description: Where the paper appears
+      placeholder: "IEEE TVCG, SIGGRAPH, arXiv, etc."
+
+  - type: input
+    id: location
+    attributes:
+      label: Location (optional)
+      description: Conference location if applicable
+      placeholder: "Sydney, Australia"
+
+  - type: input
+    id: link
+    attributes:
+      label: External Link
+      description: Link to paper page (arXiv, publisher, etc.)
+      placeholder: "https://..."
+
+  - type: input
+    id: pdf
+    attributes:
+      label: Local PDF
+      description: Path to hosted PDF (if available)
+      placeholder: "/documents/paper.pdf"
+
+  - type: input
+    id: image
+    attributes:
+      label: Image
+      description: Main figure image filename
+      placeholder: "paper_figure.png"
+
+  - type: input
+    id: caption
+    attributes:
+      label: Image Caption
+      description: Caption describing the figure
+      placeholder: "Description of the figure..."
+
+  - type: textarea
+    id: abstract
+    attributes:
+      label: Abstract / Summary
+      description: Full abstract or summary text
+      placeholder: "Paste abstract here..."
+    validations:
+      required: true
+
+  - type: input
+    id: keywords
+    attributes:
+      label: Index Terms / Keywords
+      description: Optional keywords
+      placeholder: "Volume Rendering, ..."
