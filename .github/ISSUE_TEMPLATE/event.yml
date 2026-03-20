@@ -1,13 +1,4 @@
----
-name: Event
-about: Add an event to the site
-title: ''
-labels: event
-assignees: ''
-
----
-
-name: 📅 Event Announcement
+name: Event Announcement
 description: Submit an event to be published on the blog
 title: "[Event] <Short Event Title>"
 labels: ["event"]
