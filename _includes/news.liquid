@@ -85,6 +85,16 @@
 
     <!-- Main content -->
     <div class="col-md-10">
+      <!-- Search Box -->
+      <div class="row mb-3">
+        <div class="col-12">
+          <div style="position: relative; max-width: 350px;">
+            <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--global-text-color-light);"></i>
+            <input type="text" id="news-search" class="search bibsearch-form-input" placeholder="Search news..." style="padding-left: 36px; width: 100%; max-width: 100%;">
+          </div>
+        </div>
+      </div>
+
       {% assign grouped_by_year = news | group_by_exp:"item", "item.date | date: '%Y'" %}
       <div class="table-responsive">
         <table class="table table-sm table-borderless">
@@ -92,12 +102,12 @@
           {% for year_group in grouped_by_year %}
              {% assign post_year = year_group.name | plus: 0 %}
             <!-- Year divider row -->
-            <tr>
+            <tr class="year-row" data-year="{{ year_group.name }}">
               <td colspan="4" style="padding-top: 0;"><h2 class="year-divider">{{ year_group.name }}</h2></td>
             </tr>
 
             {% for item in year_group.items %}
-                <tr class="news-item" data-tags="{{ item.tags | join: ' ' }}" style="padding-bottom: 4px;">
+                <tr class="news-item" data-title="{{ item.title }}" data-authors="{{ item.authors | join: ',' }}" data-year="{{ year_group.name }}" data-tags="{{ item.tags | join: ' ' }}" style="padding-bottom: 4px;">
                   <td style="font-weight: bold;">{{ item.date | date: "%m/%d/%y" }}</td>
                   <td>
                   {% assign tt = item.tags %}
@@ -163,28 +173,75 @@
 
 
 <script>
-  const buttons = document.querySelectorAll('.filter-link');
-  const newsItems = document.querySelectorAll('.news-item');
+  document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('news-search');
+    const buttons = document.querySelectorAll('.filter-link');
+    const newsItems = document.querySelectorAll('.news-item');
+    const yearRows = document.querySelectorAll('.year-row');
 
-  buttons.forEach(button => {
-    button.addEventListener('click', () => {
-      const tag = button.getAttribute('data-tag');
+    function updateFilters() {
+      const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
+      const activeBtn = document.querySelector('.filter-link.news_selected');
+      const activeTag = activeBtn ? activeBtn.getAttribute('data-tag') : 'all';
 
-      // Update active button style
-      buttons.forEach((btn) => {
-        btn.classList.remove('news_selected');
-      });
-      button.classList.add('news_selected');
+      // Track which years have visible items
+      const visibleYears = new Set();
 
-      // Filter news
       newsItems.forEach(item => {
         const itemTags = item.getAttribute('data-tags').split(' ');
-        if (tag === 'all' || itemTags.includes(tag)) {
+        const authorsTags = item.dataset.authors;
+        // const itemText = item.textContent.toLowerCase();
+        const itemTitle = item.textContent.toLowerCase();
+        const itemYear = item.getAttribute('data-year');
+
+        const matchesTag = (activeTag === 'all' || itemTags.includes(activeTag));
+        const matchesQuery = (
+          query === ''
+          || itemTitle.includes(query)
+          || (itemYear && itemYear.includes(query))
+          || (authorsTags && authorsTags.toLowerCase().includes(query.toLowerCase()))
+        );
+
+        if (matchesTag && matchesQuery) {
           item.style.display = '';
+          if (itemYear) {
+            visibleYears.add(itemYear);
+          }
         } else {
           item.style.display = 'none';
         }
       });
+
+      // Show/hide year dividers
+      yearRows.forEach(row => {
+        const rowYear = row.getAttribute('data-year');
+        if (visibleYears.has(rowYear)) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    }
+
+    // Set up category button listeners
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        buttons.forEach(btn => btn.classList.remove('news_selected'));
+        button.classList.add('news_selected');
+        updateFilters();
+      });
     });
+
+    // Set up search input listener
+    if (searchInput) {
+      searchInput.addEventListener('keydown', (event) => {
+          if (event.key === "Enter") {
+             updateFilters();
+          }
+      });
+    }
+
+    // Initial run
+    updateFilters();
   });
 </script>
