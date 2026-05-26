@@ -107,7 +107,7 @@
             </tr>
 
             {% for item in year_group.items %}
-                <tr class="news-item" data-title="{{ item.title }}" data-authors="{{ item.authors | join: ',' }}" data-year="{{ year_group.name }}" data-tags="{{ item.tags | join: ' ' }}" style="padding-bottom: 4px;">
+		    <tr class="news-item" data-title="{{ item.title }}" data-categories="{{ item.categories | join: ','}}" data-authors="{{ item.authors | join: ',' }}" data-year="{{ year_group.name }}" data-tags="{{ item.tags | join: ' ' }}" style="padding-bottom: 4px;">
                   <td style="font-weight: bold;">{{ item.date | date: "%m/%d/%y" }}</td>
                   <td>
                   {% assign tt = item.tags %}
@@ -190,14 +190,17 @@
       newsItems.forEach(item => {
         const itemTags = item.getAttribute('data-tags').split(' ');
         const authorsTags = item.dataset.authors;
+        const categoriesTags = item.dataset.categories;
+	const cats = categoriesTags.split(',').map(s => s.trim());
         // const itemText = item.textContent.toLowerCase();
-        const itemTitle = item.textContent.toLowerCase();
+        const itemTitle = item.dataset.title.toLowerCase();
         const itemYear = item.getAttribute('data-year');
 
         const matchesTag = (activeTag === 'all' || itemTags.includes(activeTag));
         const matchesQuery = (
           query === ''
-          || itemTitle.includes(query)
+          || cats.some(item => item.toLowerCase() === query.toLowerCase())
+          || itemTitle.includes(query.toLowerCase())
           || (itemYear && itemYear.includes(query))
           || (authorsTags && authorsTags.toLowerCase().includes(query.toLowerCase()))
         );
