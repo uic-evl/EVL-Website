@@ -1,0 +1,23 @@
+name: Tailscale connectivity test
+
+on:
+  push:
+    branches:
+      - deployment
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Connect to tailnet
+        uses: tailscale/github-action@v4
+        with:
+          authkey: ${{ secrets.TS_AUTHKEY }}
+          version: latest
+
+      - name: Check connectivity
+        run: |
+          tailscale status
+          tailscale ping -c 3 www-new
+
