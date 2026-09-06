@@ -21,4 +21,4 @@ jobs:
       - name: Check connectivity
         run: |
           tailscale status
-          tailscale ping -c 3 www-new
+          tailscale ping --until-direct=false -c 3 www-new
