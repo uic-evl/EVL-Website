@@ -32,5 +32,5 @@ jobs:
 
       - name: Create dated file on server
         run: |
-          ssh -o StrictHostKeyChecking=accept-new -i ~/.ssh/id_ed25519 root@www-new \
+          ssh -o StrictHostKeyChecking=accept-new -i ~/.ssh/id_ed25519 evlroot@www-new \
             'echo "Created by GitHub Actions on $(date -u +%Y-%m-%dT%H:%M:%SZ)" > ~/ci-test.txt && cat ~/ci-test.txt'
