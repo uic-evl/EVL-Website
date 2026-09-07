@@ -1,0 +1,11 @@
+#!/bin/sh
+
+git checkout deployment
+git pull origin deployment
+
+bundle exec jekyll build --future
+
+# copy built site to www
+sudo cp -r _site/* /var/www/html/
+
+
