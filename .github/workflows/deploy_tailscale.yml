@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  test:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Connect to tailnet
@@ -33,4 +33,4 @@ jobs:
       - name: Deploy the content
         run: |
           ssh -o StrictHostKeyChecking=accept-new -i ~/.ssh/id_ed25519 evlroot@www-new \
-            'echo "Created by GitHub Actions on $(date -u +%Y-%m-%dT%H:%M:%SZ)" > ~/ci-test.txt && cat ~/ci-test.txt && ./DEPLOY'
+            'echo "Created by GitHub Actions on $(date -u +%Y-%m-%dT%H:%M:%SZ)" > ~/ci-deployment.txt && cat ~/ci-deployment.txt && ./DEPLOY'
