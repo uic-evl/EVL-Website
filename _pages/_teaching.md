@@ -7,23 +7,6 @@ nav: true
 nav_order: 6
 ---
 
-## Fall'26
-
-- **CS 415** *Computer Vision I* – Wei Tang  
-- **CS 422** *User Interface Design and Programming* – Andruid Kerne  
-- **CS 423** *Natural User Interactions* – Nikita Soni  
-- **CS 424** *Visualization and Visual Analytics* – Fabio Miranda  
-- **CS 425** *Computer Graphics I* – Khairi Reda  
-- **CS 428** *Virtual, Augmented and Mixed Reality* – Saeed Boorboor  
-- **CS 480** *Database Systems* – Siddharth Kumar  
-- **CS 494** *Edge Computing Systems* – Michael Papka  
-- **CS 522** *Human-Computer Interaction* – Debaleena Chattopadhyay  
-- **CS 531** *Social Robotics and Human-Robot Interaction* – Joseph Michaelis  
-- **CS 555** *Foundations and Frontiers of Large-Scale Computer Systems* – Zhiling Lan  
-- **CS 594** *Advanced Accelerator Program* – Siddharth Kumar  
-- **DES 350** *Digital Media Design IV: Advanced Topics* – Daria Tsoupikova  
-- **DES 420** *Professional Practice Project I* – Daria Tsoupikova  
-
 ## Spring'26
 
 - **CS 377** *Ethical Issues in Computing* – Andruid Kerne  
@@ -68,5 +51,5 @@ nav_order: 6
 
 ## Catalogs
 
-- [2026-2027 Undergraduate Catalog](https://catalog.uic.edu/ucat/course-descriptions/cs/)
-- [2026-2027 Graduate & Professional Catalog](https://catalog.uic.edu/gcat/course-descriptions/cs/)
+- [2025-2026 Undergraduate Catalog](https://catalog.uic.edu/ucat/course-descriptions/cs/)
+- [2025-2026 Graduate & Professional Catalog](https://catalog.uic.edu/gcat/course-descriptions/cs/)
