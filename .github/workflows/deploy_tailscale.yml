@@ -1,4 +1,4 @@
-name: Tailscale connectivity test
+name: Deploy via Tailscale
 
 on:
   push:
