@@ -1449,6 +1449,28 @@ figure.cover {
     }
   }
 
+  // Name line: optional small headshot on the left, name text to its right
+  .profile-name {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .profile-thumb-wrap {
+    order: -1;
+    flex-shrink: 0;
+    line-height: 0;
+  }
+
+  .profile-thumb {
+    display: block;
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 1px solid var(--global-divider-color);
+  }
+
   h2.people-category {
       color: #D50032;
       border-top: 1px solid var(--global-divider-color);
