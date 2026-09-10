@@ -87,7 +87,22 @@ layout: page
                       {% endif %}
 
                       <div class="col-4 px-0 py-2">
-                        <strong>{{ profile.name }}{% if profile.alumni %} ({{ profile.alumni }}){% endif %}</strong><br>
+                        <div class="profile-name">
+                          <strong>{{ profile.name }}{% if profile.alumni %} ({{ profile.alumni }}){% endif %}</strong>
+                          {% if profile.image and status == "faculty" or profile.image and status == "affiliate" %}
+                            {% comment %} Faculty and affiliate headshots: the CSV "image" field names a file in assets/img/faculty/ {% endcomment %}
+                            {% assign fac_path = "/assets/img/faculty/" | append: profile.image %}
+                            {% assign fac_file = site.static_files | where: "path", fac_path | first %}
+                            {% if fac_file %}
+                              {% assign fac_base = fac_path | split: "." | pop | join: "." | replace: " ", "%20" %}
+                              {% assign fac_src = fac_path | replace: " ", "%20" %}
+                              <picture class="profile-thumb-wrap">
+                                <source srcset="{{ fac_base | append: '-480.webp' | relative_url }}" type="image/webp">
+                                <img class="profile-thumb" src="{{ fac_src | relative_url }}" alt="{{ profile.name }}" loading="lazy">
+                              </picture>
+                            {% endif %}
+                          {% endif %}
+                        </div>
                         {% if profile.dirTitle %}{{ profile.dirTitle }}<br>{% endif %}
                         {{ profile.department }}<br>
                         <div class="social-icons" style="margin-left: 1px !important;">
