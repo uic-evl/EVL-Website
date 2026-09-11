@@ -1,3 +1,11 @@
+// Copy an entry's BibTeX to the clipboard (Copy button in _layouts/bib.liquid)
+function copyBibtex(entryId) {
+  const bibtexContent = document.getElementById(`bibtex-content-${entryId}`).textContent;
+  navigator.clipboard.writeText(bibtexContent).catch(function (error) {
+    console.error("Failed to copy BibTeX entry:", error);
+  });
+}
+
 $(document).ready(function () {
   // add toggle functionality to abstract, award and bibtex buttons
   $("a.abstract").click(function () {

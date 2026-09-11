@@ -240,11 +240,8 @@
     {% endif %}
     {% if entry.bibtex_show %}
       <div class="bibtex hidden">
-        <pre id="bibtex-content-{{ entry.key }}" style="margin-bottom: 0; background-color: ##EDEDED;">
-{% highlight bibtex %}
-{{ entry.bibtex | hideCustomBibtex }}
-{% endhighlight %}
-        </pre>
+        {% comment %} Plain text on purpose: syntax highlighting turned each block into ~40 spans, 35k elements page-wide {% endcomment %}
+        <pre id="bibtex-content-{{ entry.key }}" style="margin-bottom: 0;">{{ entry.bibtex | hideCustomBibtex | strip | escape }}</pre>
         <button class="copy-btn btn btn-sm btn-outline-red z-depth-0" style="margin-top: 4px;" onclick="copyBibtex('{{ entry.key }}')">Copy</button>
       </div>
     {% endif %}
@@ -257,39 +254,3 @@
     {% endif %}
   </div>
 </div>
-
-<script>
-function copyBibtex(entryId) {
-  const bibtexContent = document.getElementById(`bibtex-content-${entryId}`).textContent;
-  navigator.clipboard.writeText(bibtexContent).catch(function(error) {
-      console.error("Failed to copy BibTeX entry:", error);
-  });
-}
-</script>
-
-<style>
-/* Custom red outline button style */
-.btn-outline-red {
-  border-color: #D32F2F !important;
-  color: #D32F2F !important;
-}
-
-/* Ensure white background for BibTeX block */
-.bibtex pre {
-  background-color: #EDEDED !important;
-}
-
-/* Inline badges styling – badges now display on the same line as buttons
-   and use a transparent background to match the page */
-.inline-badge {
-  display: inline-block;
-  background-color: transparent !important;
-  vertical-align: middle;
-  margin-left: 5px;
-}
-
-/* Optional: Adjust syntax highlighting within the BibTeX block */
-.bibtex .highlight .k { color: #D32F2F !important; }
-.bibtex .highlight .s { color: #000000 !important; }
-.bibtex .highlight .n { color: #000000 !important; }
-</style>

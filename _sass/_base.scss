@@ -709,6 +709,25 @@ footer.sticky-bottom {
 }
 
 /* Publications */
+// Buttons and blocks of a bibliography entry (formerly emitted inline by _layouts/bib.liquid for every entry)
+.btn-outline-red {
+  border-color: #D32F2F !important;
+  color: #D32F2F !important;
+}
+
+.bibtex pre {
+  background-color: #EDEDED !important;
+  color: var(--global-text-color); // plain text now; the old syntax-highlight spans forced most of it black
+}
+
+// Badges display on the same line as the buttons, on a transparent background
+.inline-badge {
+  display: inline-block;
+  background-color: transparent !important;
+  vertical-align: middle;
+  margin-left: 5px;
+}
+
 .publications {
   margin-top: 2rem;
 
