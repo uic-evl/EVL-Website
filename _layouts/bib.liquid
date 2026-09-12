@@ -98,9 +98,6 @@
           {%- if entry.award_name %}{{ entry.award_name }}{% else %}Awarded{% endif -%}
         </a>
       {% endif %}
-      {% if entry.abstract %}
-        <a class="abstract btn btn-sm btn-outline-red z-depth-0" role="button">Abstract</a>
-      {% endif %}
       {% if entry.doi %}
         <a href="https://doi.org/{{ entry.doi }}" class="btn btn-sm btn-outline-red z-depth-0" role="button">DOI</a>
       {% endif %}
@@ -231,11 +228,6 @@
     {% if entry.award %}
       <div class="award hidden d-print-inline">
         <p>{{ entry.award | markdownify }}</p>
-      </div>
-    {% endif %}
-    {% if entry.abstract %}
-      <div class="abstract hidden">
-        <p>{{ entry.abstract }}</p>
       </div>
     {% endif %}
     {% if entry.bibtex_show %}

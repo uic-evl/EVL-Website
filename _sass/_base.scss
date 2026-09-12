@@ -718,6 +718,10 @@ footer.sticky-bottom {
 .bibtex pre {
   background-color: #EDEDED !important;
   color: var(--global-text-color); // plain text now; the old syntax-highlight spans forced most of it black
+  // Wrap long lines. Unwrapped, each of the ~800 collapsed blocks was laid out
+  // thousands of pixels wide behind its clip, which crashed Safari on phones.
+  white-space: pre-wrap;
+  word-break: break-all;
 }
 
 // Badges display on the same line as the buttons, on a transparent background
