@@ -1,0 +1,153 @@
+- to: https://sage3.sagecommons.org/
+  from:
+    - /sage3/
+    - /sage/
+
+- to: https://www.hummingbirdvr.com
+  from:
+    - /hummingbird/
+    - /hummingbirdvr/
+
+- to: https://events.cels.anl.gov/event/529/
+  from:
+    - /NAIRR-Software-Workshop/
+
+- to: https://legacy.evl.uic.edu/accessgrid/
+  from:
+    - /accessgrid/
+
+- to: https://legacy.evl.uic.edu/aej/
+  from:
+    - /aej/
+
+- to: https://legacy.evl.uic.edu/andruid/
+  from:
+    - /andruid/
+
+- to: https://legacy.evl.uic.edu/brenda/
+  from:
+    - /brenda/
+
+- to: https://legacy.evl.uic.edu/creativecoding/
+  from:
+    - /creativecoding/
+
+- to: https://legacy.evl.uic.edu/cs342/
+  from:
+    - /cs342/
+
+- to: https://legacy.evl.uic.edu/cs422/
+  from:
+    - /cs422/
+
+- to: https://legacy.evl.uic.edu/cs426/
+  from:
+    - /cs426/
+
+- to: https://legacy.evl.uic.edu/cs526/
+  from:
+    - /cs526/
+
+- to: https://legacy.evl.uic.edu/cs527/
+  from:
+    - /cs527/
+
+- to: https://legacy.evl.uic.edu/cs594/
+  from:
+    - /cs594/
+
+- to: https://legacy.evl.uic.edu/dana/
+  from:
+    - /dana/
+
+- to: https://legacy.evl.uic.edu/dan/
+  from:
+    - /dan/
+
+- to: https://legacy.evl.uic.edu/datsoupi/
+  from:
+    - /datsoupi/
+
+- to: https://legacy.evl.uic.edu/docc/
+  from:
+    - /docc/
+
+- to: https://legacy.evl.uic.edu/dolinsky/
+  from:
+    - /dolinsky/
+
+- to: https://legacy.evl.uic.edu/drew/
+  from:
+    - /drew/
+
+- to: https://legacy.evl.uic.edu/endurance/
+  from:
+    - /endurance/
+
+- to: https://legacy.evl.uic.edu/environmental-justice/
+  from:
+    - /environmental-justice/
+
+- to: https://legacy.evl.uic.edu/franz/
+  from:
+    - /franz/
+
+- to: https://legacy.evl.uic.edu/insley/
+  from:
+    - /insley/
+
+- to: https://www.evl.uic.edu/events/2851
+  from:
+    - /intel-coe/
+
+- to: https://legacy.evl.uic.edu/mad/
+  from:
+    - /mad/
+
+- to: https://legacy.evl.uic.edu/maxine/
+  from:
+    - /maxine/
+
+- to: https://legacy.evl.uic.edu/moher/
+  from:
+    - /moher/
+
+- to: https://legacy.evl.uic.edu/NSF/
+  from:
+    - /NSF/
+
+- to: https://legacy.evl.uic.edu/papka/
+  from:
+    - /papka/
+
+- to: https://legacy.evl.uic.edu/scharver/
+  from:
+    - /scharver/
+
+- to: https://legacy.evl.uic.edu/spiff/
+  from:
+    - /spiff/
+
+- to: https://legacy.evl.uic.edu/srizvi/
+  from:
+    - /srizvi/
+
+- to: https://legacy.evl.uic.edu/tom/
+  from:
+    - /tom/
+
+- to: https://legacy.evl.uic.edu/virtualunism/
+  from:
+    - /virtualunism/
+
+- to: https://legacy.evl.uic.edu/vis-chicago/
+  from:
+    - /vis-chicago/
+
+- to: https://legacy.evl.uic.edu/marai/
+  from:
+    - /marai/
+
+- to: https://legacy.evl.uic.edu/hearts_and_minds/
+  from:
+    - /hearts_and_minds/
