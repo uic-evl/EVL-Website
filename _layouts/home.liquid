@@ -41,6 +41,9 @@ layout: default
       text-align: left;
       font-size: 85%; /* Make the font size smaller than the main text */
   }
+    .hero-figcaption a {
+      color: inherit;
+    }
 
 </style>
 
@@ -48,8 +51,10 @@ layout: default
   <h1 class="hero-title">{{ page.subtitle }}</h1>
   <div class="hero">
 	  <figure>
-	    <img id="hero-image" src="" alt="Hero Image" />
-	    <figcaption id="hero-caption" class="hero-figcaption"></figcaption>
+      <a id="hero-image-link" href="">
+        <img id="hero-image" src="" alt="Hero Image" />
+      </a>
+      <figcaption class="hero-figcaption"><a id="hero-caption" href=""></a></figcaption>
 	  </figure>
   </div>
 
@@ -117,73 +122,152 @@ layout: default
 <!-- JavaScript to randomly select the hero image on each page load -->
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-  var heroImages = [
-    '/assets/img/homepage/_LJL0368-Edit-1400.webp',
-    '/assets/img/homepage/_LJL2368-Edit-1400.webp',
-    '/assets/img/homepage/arcade3-1400.webp',
-    '/assets/img/homepage/fmiranda_continuum-1400.webp',
-    '/assets/img/homepage/gmarai_nihrelease-1400.webp',
-    '/assets/img/homepage/IMG_5216-1400.webp',
-    '/assets/img/homepage/tsoupikovadaria-magazine-240805-1400.webp',
-    '/assets/img/homepage/visit3-1400.webp',
-    '/assets/img/homepage/wall-1400.webp',
-    "/images/sc25_art.png-srcw.jpg",
-    "/images/lmarai-3.jpg-srcw.jpg",
-    "/images/scobeli_komar.png-srcw.jpg",
-    "/images/cfloricel_dissertation.jpeg-srcw.jpg",
-    "/images/lanpapka.png-srcw.jpg",
-    "/images/preuss1.jpg-srcw.jpg",
-    "/images/fulfillment.png-srcw.jpg",
-    "/images/siggraph2925_cc_ycgh.png-srcw.jpg",
-    "/images/s2025poster.png-srcw.jpg",
-    "/images/sage3_ahm.png-srcw.jpg",
-    "/images/arcade_cdrlcopening.png-srcw.jpg",
-    "/images/komar_prelim.png-srcw.jpg",
-    '/assets/img/homepage/renambot-2024-1400.webp',
-    '/images/dtsoupikova_caa2026.png-srcw.jpg',
-    '/images/awentzel_dissertation-2.png-srcw.jpg',
-    '/assets/img/homepage/coe-winners.jpg',
-    '/assets/img/homepage/dtsoupikova_immerse2026.jpg'
-  ];
 
-  var heroCaptions = [
-    "Touch wall with SAGE2 in the Continuum space",
-    "Molecular visualization in the CAVE2 hybrid reality environment",
-    "CS Students using SAGE3 in the Arcade Space",
-    "Prof. Miranda showing Urban Analytics on the Continuum wall",
-    "Prof. Marai with co-investigators in CAVE2",
-    "CS+DES class in Continuum space with Prof. Tsoupikova",
-    "Prof. Tsoupikova showing her work in the lobby of 150 North Riverside Plaza",
-    "Group visiting the new Arcade space in the CDRLC building",
-    "SAGE2 visualization on the Touch Wall in the Continuum space",
-    "The Art of HPC Exhibition at Supercomputing25",
-    "Prof. Marai Delivers Keynote at the Visual Analytics in Healthcare",
-    "EVL Graduate Students on their paper acceptance to IEEE TVCG",
-    "Carla Floricel's PhD Defense",
-    "Researchers Michael Papka and Zhiling Lan Receive New NSF CISE Award",
-    "VR: The Hidden Costs of Logistics and the Disappearing Wild",
-    "VR: a field guide to the logistical city",
-    "VR: A Therapeutic VR Journey for Anxiety Management",
-    "CS+DES Students Present at ACM SIGGRAPH 2025",
-    "SAGE3 Annual All Hands Meeting",
-    "Arcade Premieres at the CDRLC Opening",
-    "Kazi Shahrukh Omar's PhD Prelim Presentation",
-    "Luc Renambot Collaborates with Argonne National Laboratory Researchers on Newly Awarded “Scientific Data Management and Visualization to Advance AI for Science“",
-    "Design Professor Daria Tsoupikova Presents at CAA 114",
-    "Dr. Andrew Wentzel Receives the UIC 2025 Outstanding Dissertation Award",
-    "EVL Students Among 2026 COE Award Winners",
-    "Professor Daria Tsoupikova Presents at IMMERSE 2026"
+  var heroItems = [
+    {
+      image: '/assets/img/homepage/_LJL0368-Edit-1400.webp',
+      caption: "Molecular visualization in the CAVE2 hybrid reality environment",
+      link: "https://legacy.evl.uic.edu/research/2016"
+    },
+    {
+      image: '/assets/img/homepage/arcade3-1400.webp',
+      caption: "CS Students using SAGE3 in the Arcade Space",
+      link: "https://www.evl.uic.edu/projects/docc/"
+    },
+    {
+      image: '/assets/img/homepage/fmiranda_continuum-1400.webp',
+      caption: "Prof. Miranda showing Urban Analytics on the Continuum wall",
+      link: "https://www.evl.uic.edu/projects/urban-miranda/"
+    },
+    {
+      image: '/assets/img/homepage/gmarai_nihrelease-1400.webp',
+      caption: "Prof. Marai with co-investigators in CAVE2",
+      link: "https://www.evl.uic.edu/projects/cancer-marai/"
+    },
+    {
+      image: '/assets/img/homepage/IMG_5216-1400.webp',
+      caption: "CS+DES class in Continuum space with Prof. Tsoupikova",
+      link: "https://cs.uic.edu/undergraduate/majors/cs-design-alt/"
+    },
+    {
+      image: '/assets/img/homepage/tsoupikovadaria-magazine-240805-1400.webp',
+      caption: "Prof. Tsoupikova showing her work in the lobby of 150 North Riverside Plaza",
+      link: "https://www.evl.uic.edu/news/2024/2024-11-01-2879/"
+    },
+    {
+      image: '/assets/img/homepage/visit3-1400.we-1400.webp',
+      caption: "Touch wall with SAGE2 in the Continuum space",
+      link: "https://www.evl.uic.edu/projects/sage3-renambot/"
+    },
+    {
+      image: '/assets/img/homepage/_LJL2368-Editbp',
+      caption: "Group visiting the new Arcade space in the CDRLC building",
+      link: "https://www.evl.uic.edu/news/2025/2025-07-16-2941/"
+    },
+    {
+      image: '/assets/img/homepage/wall-1400.webp',
+      caption: "SAGE2 visualization on the Touch Wall in the Continuum space",
+      link: "https://www.evl.uic.edu/projects/sage3-renambot"
+    },
+    {
+      image: "/images/sc25_art.png-srcw.jpg",
+      caption: "The Art of HPC Exhibition at Supercomputing25",
+      link: "https://www.evl.uic.edu/news/2025/2025-11-16-2994/"
+    },
+    {
+      image: "/images/lmarai-3.jpg-srcw.jpg",
+      caption: "Prof. Marai Delivers Keynote at the Visual Analytics in Healthcare",
+      link: "https://www.evl.uic.edu/news/2025/2025-11-02-2983/"
+    },
+    {
+      image: "/images/scobeli_komar.png-srcw.jpg",
+      caption: "EVL Graduate Students on their paper acceptance to IEEE TVCG",
+      link: "https://www.evl.uic.edu/news/2025/2025-11-01-2982/"
+    },
+    {
+      image: "/images/cfloricel_dissertation.jpeg-srcw.jpg",
+      caption: "Carla Floricel's PhD Defense",
+      link: "https://www.evl.uic.edu/news/2025/2025-10-21-2980/"
+    },
+    {
+      image: "/images/lanpapka.png-srcw.jpg",
+      caption: "Researchers Michael Papka and Zhiling Lan Receive New NSF CISE Award",
+      link: "https://www.evl.uic.edu/news/2025/2025-10-01-2935/"
+    },
+    {
+      image: "/images/preuss1.jpg-srcw.jpg",
+      caption: "VR: The Hidden Costs of Logistics and the Disappearing Wild",
+      link: "https://www.evl.uic.edu/news/2025/2025-09-15-2945/"
+    },
+    {
+      image: "/images/fulfillment.png-srcw.jpg",
+      caption: "VR: a field guide to the logistical city",
+      link: "https://www.evl.uic.edu/news/2025/2025-09-15-2939/"
+    },
+    {
+      image: "/images/siggraph2925_cc_ycgh.png-srcw.jpg",
+      caption: "VR: A Therapeutic VR Journey for Anxiety Management",
+      link: "https://www.evl.uic.edu/news/2025/2025-01-16-2946/"
+    },
+    {
+      image: "/images/s2025poster.png-srcw.jpg",
+      caption: "CS+DES Students Present at ACM SIGGRAPH 2025",
+      link: "https://www.evl.uic.edu/news/2025/2025-08-10-2947/"
+    },
+    {
+      image: "/images/sage3_ahm.png-srcw.jpg",
+      caption: "SAGE3 Annual All Hands Meeting",
+      link: "https://www.evl.uic.edu/projects/sage3-renambot/"
+    },
+    {
+      image: "/images/arcade_cdrlcopening.png-srcw.jpg",
+      caption: "Arcade Premieres at the CDRLC Opening",
+      link: "https://www.evl.uic.edu/news/2025/2025-07-16-2941/"
+    },
+    {
+      image: "/images/komar_prelim.png-srcw.jpg",
+      caption: "Kazi Shahrukh Omar's PhD Prelim Presentation",
+      link: "https://www.evl.uic.edu/news/2026/2026-02-10-3000/"
+    },
+    {
+      image: '/assets/img/homepage/renambot-2024-1400.webp',
+      caption: "Luc Renambot Collaborates with Argonne National Laboratory Researchers on Newly Awarded “Scientific Data Management and Visualization to Advance AI for Science“",
+      link: "https://www.evl.uic.edu/news/2025/2025-11-21-3001/"
+    },
+    {
+      image: '/images/dtsoupikova_caa2026.png-srcw.jpg',
+      caption: "Design Professor Daria Tsoupikova Presents at CAA 114",
+      link: "https://www.evl.uic.edu/news/2026/2026-02-20-3004/"
+    },
+    {
+      image: '/images/awentzel_dissertation-2.png-srcw.jpg',
+      caption: "Dr. Andrew Wentzel Receives the UIC 2025 Outstanding Dissertation Award",
+      link: "https://www.evl.uic.edu/news/2026/2026-03-31-3009/"
+    },
+    {
+      image: '/assets/img/homepage/coe-winners.jpg',
+      caption: "EVL Students Among 2026 COE Award Winners",
+      link: "https://www.evl.uic.edu/news/2026/2026-05-04-3017/"
+    },
+    {
+      image: '/assets/img/homepage/dtsoupikova_immerse2026.jpg',
+      caption: "Professor Daria Tsoupikova Presents at IMMERSE 2026",
+      link: "https://www.evl.uic.edu/news/2026/2026-04-28-3018/"
+    }
   ];
-
+  
   var heroImageElement = document.getElementById("hero-image");
+  var heroImageLinkElement = document.getElementById("hero-image-link");
   var heroCaptionElement = document.getElementById("hero-caption");
 
   function updateHeroImage() {
     if (!heroImageElement) return;
-    var randomIndex = Math.floor(Math.random() * heroImages.length);
-    heroImageElement.src = heroImages[randomIndex];
-    // Optionally, update caption if needed
-    heroCaptionElement.textContent = heroCaptions[randomIndex];
+    var randomIndex = Math.floor(Math.random() * heroItems.length);
+    var heroItem = heroItems[randomIndex];
+    heroImageElement.src = heroItem.image;
+    heroImageLinkElement.href = heroItem.link;
+    heroCaptionElement.textContent = heroItem.caption;
+    heroCaptionElement.href = heroItem.link;
   }
 
   // Initial image load
