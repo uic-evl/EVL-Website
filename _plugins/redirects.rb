@@ -1,44 +1,70 @@
-# _plugins/redirects.rb
 
-require "fileutils"
-require "json"
+# frozen_string_literal: true
 
-Jekyll::Hooks.register :site, :post_write do |site|
-  redirects = site.data["redirects"] || []
+module LocalRedirects
 
-  redirects.each do |redirect|
-    to = redirect["to"]
-    next unless to
+  class RedirectPage < Jekyll::Page
+    include Jekyll::Filters::URLFilters
 
-    Array(redirect["from"]).each do |from|
-      next unless from
+    DEFAULT_DATA = {
+      "sitemap" => false,
+      "layout"  => "redirect"
+    }.freeze
 
-      path = from.sub(%r{^/}, "")
-      path = "#{path}index.html" if from.end_with?("/")
+    def self.from_paths(site, from, to)
+      page = new(site, site.source, "", "redirect.html")
+      page.set_paths(from, to)
+      page
+    end
 
-      output = File.join(site.dest, path)
+    def read_yaml(_base, _name, _opts = {})
+      self.content = self.output = ""
+      self.data ||= DEFAULT_DATA.dup
+    end
 
-      FileUtils.mkdir_p(File.dirname(output))
 
-      File.write(output, <<~HTML)
-        <!DOCTYPE html>
-        <html>
-        <head>
-          <meta charset="utf-8">
-          <meta http-equiv="refresh" content="0; url=#{to}">
-          <link rel="canonical" href="#{to}">
-          <script>
-            window.location.replace(#{to.to_json});
-          </script>
-          <title>Redirecting...</title>
-        </head>
-        <body>
-          <p>Redirecting to <a href="#{to}">#{to}</a>...</p>
-        </body>
-        </html>
-      HTML
+    def set_paths(from, to)
+      self.data ||= DEFAULT_DATA.dup
+    
+      from = "/#{from}" unless from.start_with?("/")
+    
+      data.merge!(
+        "permalink" => from,
+        "redirect" => {
+          "from" => from,
+          "to"   => to.to_s
+        }
+      )
+    end
 
-      puts "Redirect: #{from} -> #{to}"
+    def redirect_from
+      data["redirect"]["from"] if data["redirect"]
+    end
+
+    def redirect_to
+      data["redirect"]["to"] if data["redirect"]
     end
   end
+
+
+  class Generator < Jekyll::Generator
+    safe true
+
+    def generate(site)
+      redirects = site.data["redirects"] || []
+
+      redirects.each do |entry|
+        to = entry["to"]
+
+        Array(entry["from"]).each do |from|
+          page = RedirectPage.from_paths(site, from, to)
+          site.pages << page
+
+          Jekyll.logger.info "Redirect:", "#{from} -> #{to}"
+        end
+      end
+    end
+  end
+
 end
+

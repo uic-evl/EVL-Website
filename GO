@@ -3,6 +3,7 @@
 git checkout deployment
 git pull origin deployment
 
+#bundle install
 bundle exec jekyll build --future
 
 # copy built site to www
