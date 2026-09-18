@@ -1,4 +1,4 @@
-{% comment %} One news card. Expects include.item (and optionally include.year for the /news/ filters). {% endcomment %}
+{% comment %} One news card. Expects include.item. Optional front matter on the post: image_position (CSS object-position, e.g. "top" or "center 30%") to control how the 3:2 thumbnail is cropped. {% endcomment %}
 {% assign item = include.item %}
 {% assign item_year = item.date | date: "%Y" %}
 {% assign tag = item.tags | first %}
@@ -24,7 +24,7 @@
 >
   <a class="news-card card evl-card h-100" href="{{ item.url | relative_url }}">
     <div class="{{ img_class }}">
-      <img src="{{ img_url }}" alt="" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='{{ 'assets/img/new-logo-small-480.webp' | relative_url }}';this.parentElement.classList.add('is-placeholder');" />
+      <img src="{{ img_url }}" alt="" loading="lazy" decoding="async"{% if item.image_position %} style="object-position: {{ item.image_position }};"{% endif %} onerror="this.onerror=null;this.src='{{ 'assets/img/new-logo-small-480.webp' | relative_url }}';this.parentElement.classList.add('is-placeholder');" />
     </div>
     <div class="card-body">
       <div class="news-card-meta">

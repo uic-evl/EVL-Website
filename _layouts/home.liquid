@@ -43,6 +43,7 @@ layout: default
     },
     {
       image: '/assets/img/homepage/tsoupikovadaria-magazine-240805-1400.webp',
+      position: "top",
       caption: "Prof. Tsoupikova showing her work in the lobby of 150 North Riverside Plaza",
       link: "https://www.evl.uic.edu/news/2024/2024-11-01-2879/"
     },
@@ -128,6 +129,7 @@ layout: default
     },
     {
       image: '/images/dtsoupikova_caa2026.png-srcw.jpg',
+      position: "top",
       caption: "Design Professor Daria Tsoupikova Presents at CAA 114",
       link: "https://www.evl.uic.edu/news/2026/2026-02-20-3004/"
     },
@@ -159,6 +161,8 @@ layout: default
 
   function apply(item) {
     img.src = item.image;
+    // Optional per-photo crop anchor (CSS object-position), e.g. "top" or "center 30%".
+    img.style.objectPosition = item.position || "";
     link.href = item.link;
     caption.textContent = item.caption;
   }
