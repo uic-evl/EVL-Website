@@ -12,7 +12,9 @@ EVL remains committed to its mission of advancing scientific discovery through t
 
 ## Current Funding
 
-{% assign grants = site.data.grants %}
+{% comment %} Hide grants whose EndDate has passed (as of build time); they stay in _data/grants.csv for the record. {% endcomment %}
+{% assign today = site.time | date: "%Y-%m-%d" %}
+{% assign grants = site.data.grants | where_exp: "g", "g.EndDate == nil or g.EndDate == '' or g.EndDate >= today" %}
 {% assign funders = grants | map: "Funder" | uniq %}
 {% for funder in funders %}
 <p><strong>{{ funder }}</strong></p>
