@@ -144,7 +144,7 @@
   from:
     - /vis-chicago/
 
-- to: https://legacy.evl.uic.edu/marai/
+- to: https://legacy.evl.uic.edu/marai/home/index.html
   from:
     - /marai/
 
