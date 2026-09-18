@@ -1,6 +1,6 @@
 ---
 layout: page
-title: location
+title: Location
 permalink: /about/location/
 description: How to find and visit the Electronic Visualization Laboratory
 nav: false

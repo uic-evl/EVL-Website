@@ -1,0 +1,54 @@
+{% comment %} One news card. Expects include.item (and optionally include.year for the /news/ filters). {% endcomment %}
+{% assign item = include.item %}
+{% assign item_year = item.date | date: "%Y" %}
+{% assign tag = item.tags | first %}
+{% if item.image %}
+  {% assign first_char = item.image | slice: 0, 1 %}
+  {% if first_char == '/' %}
+    {% assign img_url = item.image %}
+  {% else %}
+    {% assign img_url = "/images/" | append: item.image %}
+  {% endif %}
+  {% assign img_class = "news-card-img" %}
+{% else %}
+  {% assign img_url = 'assets/img/new-logo-small-480.webp' | relative_url %}
+  {% assign img_class = "news-card-img is-placeholder" %}
+{% endif %}
+<div
+  class="col news-item"
+  data-title="{{ item.title | escape }}"
+  data-categories="{{ item.categories | join: ',' }}"
+  data-authors="{{ item.authors | join: ',' }}"
+  data-year="{{ item_year }}"
+  data-tags="{{ item.tags | join: ' ' }}"
+>
+  <a class="news-card card evl-card h-100" href="{{ item.url | relative_url }}">
+    <div class="{{ img_class }}">
+      <img src="{{ img_url }}" alt="" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='{{ 'assets/img/new-logo-small-480.webp' | relative_url }}';this.parentElement.classList.add('is-placeholder');" />
+    </div>
+    <div class="card-body">
+      <div class="news-card-meta">
+        {% if tag == "event" %}
+          <i class="fa fa-calendar-days" aria-hidden="true"></i>
+        {% elsif tag == "paper" %}
+          <i class="fa fa-file-pdf" aria-hidden="true"></i>
+        {% elsif tag == "research" %}
+          <i class="fa fa-lightbulb" aria-hidden="true"></i>
+        {% elsif tag == "art" %}
+          <i class="fa fa-palette" aria-hidden="true"></i>
+        {% else %}
+          <i class="fa fa-file" aria-hidden="true"></i>
+        {% endif %}
+        {% if tag %}<span class="news-card-tag">{{ tag }}</span>{% endif %}
+        <time datetime="{{ item.date | date: '%Y-%m-%d' }}">{{ item.date | date: "%b %-d, %Y" }}</time>
+      </div>
+      <h3 class="news-card-title">
+        {% if item.inline %}
+          {{ item.content | remove: '<p>' | remove: '</p>' | emojify }}
+        {% else %}
+          {{ item.title }}
+        {% endif %}
+      </h3>
+    </div>
+  </a>
+</div>

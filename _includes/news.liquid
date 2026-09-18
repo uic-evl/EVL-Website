@@ -1,177 +1,69 @@
+{% comment %}
+  News as a responsive card grid.
+  - With include.limit (home page): the N most recent items in one grid.
+  - Without a limit (/news/): grouped by year with tag filters and a search box.
+  Each card is rendered by the news_card.liquid include so both views match.
+{% endcomment %}
+
 
 <div class="news">
   {% if site.news != blank %}
     {% assign news = site.news | reverse %}
-    
-    {% comment %}
-      If a numeric limit is provided, slice the news items.
-    {% endcomment %}
+
     {% if include.limit and include.limit != true %}
       {% assign news = news | slice: 0, include.limit %}
-      <div class="table-responsive">
-        <table class="table table-sm table-borderless">
-          {% for item in news %}
-              <tr>
-                <td style="font-weight: bold;">{{ item.date | date: "%m/%d/%y" }}</td>
-                <td>
-                  {% assign tt = item.tags %}
-                  {% if tt[0] == "event" %}
-                    <i class="fa fa-calendar-days" style="margin-right: 4px" title="{{tt[0]}}"></i>
-                  {% elsif tt[0] == "paper" %}
-                    <i class="fa fa-file-pdf" style="margin-right: 4px" title="{{tt[0]}}"></i>
-                  {% elsif tt[0] == "research" %}
-                    <i class="fa fa-lightbulb" style="margin-right: 4px" title="{{tt[0]}}"></i>
-                  {% else %}
-                    <i class="fa fa-file" style="margin-right: 4px" title="{{tt[0]}}"></i>
-                  {% endif %}
-                  </td>
-
-                  <td>
-                  {% if item.image %}
-                   {% assign full_url = "/images/" | append: item.image %}
-                     <div style="width: 250px; height:187px;overflow: hidden;">
-                      <a class="news-title zoom" href="{{ item.url | relative_url }}">
-                        <img src="{{ full_url }}" alt="{{ item.title }}" style="width: 100%; height: 100%; object-fit: cover;"
-                        class="img-fluid img-thumbnail rounded z-depth-1"/>
-                      </a>
-                    </div>
-                  {% else %}
-                     <div style="width: 250px; height:187px;overflow: hidden;">
-                      <a class="news-title zoom" href="{{ item.url | relative_url }}">
-                       <img src="{{ 'assets/img/new-logo-small-480.webp' | relative_url }}" alt="{{ item.title }}" style="width: 100%; height: 100%; object-fit: cover;"
-                       class="img-fluid img-thumbnail rounded z-depth-1"/>
-                       </a>
-                    </div>
-                  {% endif %}
-                  </td>
-
-                <td>
-                  {% if item.inline %}
-                    {{ item.content | remove: '<p>' | remove: '</p>' | emojify }}
-                  {% else %}
-                    <a class="news-title" href="{{ item.url | relative_url }}">
-                     {% if tt[0] == "paper" %}
-                      New paper: {{ item.title }}
-                      {% else %}
-                      {{ item.title }}
-                      {% endif %}
-                    </a>
-                  {% endif %}
-                </td>
-              </tr>
-          {% endfor %}
-        </table>
+      <div class="news-grid row row-cols-1 row-cols-sm-2 row-cols-md-3">
+        {% for item in news %}
+          {% include news_card.liquid item=item %}
+        {% endfor %}
       </div>
     {% else %}
-      {% comment %}
-        No numeric limit passed, so group by year for the news page.
-      {% endcomment %}
-
-    <div class="row">
-
-      <!-- Sticky left menu -->
-      <div class="col-md-2 d-none d-md-block">
-        <div class="sticky-top" style="top: 100px;">
-          <ul class="list-unstyled">
-            <li><a data-tag="all" class="filter-link news_selected" style="color: var(--global-theme-color);">all</a></li>
-            <li><a data-tag="event" class="filter-link" style="color: var(--global-theme-color);">events</a></li>
-            <li><a data-tag="paper" class="filter-link" style="color: var(--global-theme-color);">papers</a></li>
-            <li><a data-tag="research" class="filter-link" style="color: var(--global-theme-color);">research</a></li>
-            <li><a data-tag="art" class="filter-link" style="color: var(--global-theme-color);">art</a></li>
-          </ul>
-        </div>
-      </div>
-
-
-    <!-- Main content -->
-    <div class="col-md-10">
-      <!-- Search Box -->
-      <div class="row mb-3">
-        <div class="col-12">
-          <div style="position: relative; max-width: 350px;">
-            <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--global-text-color-light);"></i>
-            <input type="text" id="news-search" class="search bibsearch-form-input" placeholder="Search news..." style="padding-left: 36px; width: 100%; max-width: 100%;">
+      <div class="row">
+        <!-- Sticky left menu -->
+        <div class="col-md-2 d-none d-md-block">
+          <div class="sticky-top" style="top: 100px;">
+            <ul class="list-unstyled">
+              <li><a data-tag="all" class="filter-link news_selected">All</a></li>
+              <li><a data-tag="event" class="filter-link">Events</a></li>
+              <li><a data-tag="paper" class="filter-link">Papers</a></li>
+              <li><a data-tag="research" class="filter-link">Research</a></li>
+              <li><a data-tag="art" class="filter-link">Art</a></li>
+            </ul>
           </div>
         </div>
-      </div>
 
-      {% assign grouped_by_year = news | group_by_exp:"item", "item.date | date: '%Y'" %}
-      <div class="table-responsive">
-        <table class="table table-sm table-borderless">
-        <tbody>
+        <!-- Main content -->
+        <div class="col-md-10">
+          <!-- Search Box -->
+          <div class="row mb-4">
+            <div class="col-12">
+              <div style="position: relative; max-width: 350px;">
+                <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--global-text-color-light);"></i>
+                <input type="text" id="news-search" class="search" placeholder="Search news..." style="width: 100%;">
+              </div>
+            </div>
+          </div>
+
+          {% assign grouped_by_year = news | group_by_exp: "item", "item.date | date: '%Y'" %}
           {% for year_group in grouped_by_year %}
-             {% assign post_year = year_group.name | plus: 0 %}
-            <!-- Year divider row -->
-            <tr class="year-row" data-year="{{ year_group.name }}">
-              <td colspan="4" style="padding-top: 0;"><h2 class="year-divider">{{ year_group.name }}</h2></td>
-            </tr>
-
-            {% for item in year_group.items %}
-		    <tr class="news-item" data-title="{{ item.title }}" data-categories="{{ item.categories | join: ','}}" data-authors="{{ item.authors | join: ',' }}" data-year="{{ year_group.name }}" data-tags="{{ item.tags | join: ' ' }}" style="padding-bottom: 4px;">
-                  <td style="font-weight: bold;">{{ item.date | date: "%m/%d/%y" }}</td>
-                  <td>
-                  {% assign tt = item.tags %}
-                  {% if tt[0] == "event" %}
-                    <i class="fa fa-calendar-days" style="margin-right: 4px" title="{{tt[0]}}"></i>
-                  {% elsif tt[0] == "paper" %}
-                    <i class="fa fa-file-pdf" style="margin-right: 4px" title="{{tt[0]}}"></i>
-                  {% elsif tt[0] == "research" %}
-                    <i class="fa fa-lightbulb" style="margin-right: 4px" title="{{tt[0]}}"></i>
-                  {% else %}
-                    <i class="fa fa-file" style="margin-right: 4px" title="{{tt[0]}}"></i>
-                  {% endif %}
-                  </td>
-
-                  <td>
-
-                  {% if item.image %}
-
-			{% assign first_char = item.image | slice: 0, 1 %}
-			{% if first_char == '/' %}
-			   {% assign full_url = item.image %}
-			{% else %}
-			   {% assign full_url = "/images/" | append: item.image %}
-			{% endif %}
-
-                     <div style="width: 300px; height:200px;overflow: hidden;">
-                      <a class="news-title" href="{{ item.url | relative_url }}">
-                        <img src="{{ full_url }}" alt="{{ item.title }}" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;"/>
-                      </a>
-                    </div>
-
-                  {% else %}
-                     <div style="width: 300px; height:200px;overflow: hidden;">
-                      <a class="news-title" href="{{ item.url | relative_url }}">
-                        <img src="{{ 'assets/img/new-logo-small-480.webp' | relative_url }}" alt="{{ item.title }}" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;" />
-                      </a>
-                    </div>
-                  {% endif %}
-
-                  </td>
-
-                  <td>
-                    {% if item.inline %}
-                      {{ item.content | remove: '<p>' | remove: '</p>' | emojify }}
-                    {% else %}
-                      <a class="news-title" href="{{ item.url | relative_url }}">{{ item.title }}</a>
-                    {% endif %}
-                  </td>
-                </tr>
-            {% endfor %}
+            <section class="news-year year-row" data-year="{{ year_group.name }}">
+              <h2 class="year-divider">{{ year_group.name }}</h2>
+              <div class="news-grid row row-cols-1 row-cols-sm-2 row-cols-lg-3">
+                {% for item in year_group.items %}
+                  {% include news_card.liquid item=item %}
+                {% endfor %}
+              </div>
+            </section>
           {% endfor %}
-          </tbody>
-        </table>
+        </div>
       </div>
-    </div>
-
     {% endif %}
-    </div>
   {% else %}
     <p>No news so far...</p>
   {% endif %}
 </div>
 
-
+{% unless include.limit and include.limit != true %}
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById('news-search');
@@ -183,50 +75,37 @@
       const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
       const activeBtn = document.querySelector('.filter-link.news_selected');
       const activeTag = activeBtn ? activeBtn.getAttribute('data-tag') : 'all';
-
-      // Track which years have visible items
       const visibleYears = new Set();
 
       newsItems.forEach(item => {
-        const itemTags = item.getAttribute('data-tags').split(' ');
-        const authorsTags = item.dataset.authors;
-        const categoriesTags = item.dataset.categories;
-	const cats = categoriesTags.split(',').map(s => s.trim());
-        // const itemText = item.textContent.toLowerCase();
-        const itemTitle = item.dataset.title.toLowerCase();
-        const itemYear = item.getAttribute('data-year');
+        const itemTags = (item.dataset.tags || '').split(' ');
+        const authors = (item.dataset.authors || '').toLowerCase();
+        const cats = (item.dataset.categories || '').split(',').map(s => s.trim().toLowerCase());
+        const itemTitle = (item.dataset.title || '').toLowerCase();
+        const itemYear = item.dataset.year;
 
         const matchesTag = (activeTag === 'all' || itemTags.includes(activeTag));
         const matchesQuery = (
           query === ''
-          || cats.some(item => item.toLowerCase() === query.toLowerCase())
-          || itemTitle.includes(query.toLowerCase())
+          || cats.includes(query)
+          || itemTitle.includes(query)
           || (itemYear && itemYear.includes(query))
-          || (authorsTags && authorsTags.toLowerCase().includes(query.toLowerCase()))
+          || authors.includes(query)
         );
 
         if (matchesTag && matchesQuery) {
           item.style.display = '';
-          if (itemYear) {
-            visibleYears.add(itemYear);
-          }
+          if (itemYear) visibleYears.add(itemYear);
         } else {
           item.style.display = 'none';
         }
       });
 
-      // Show/hide year dividers
       yearRows.forEach(row => {
-        const rowYear = row.getAttribute('data-year');
-        if (visibleYears.has(rowYear)) {
-          row.style.display = '';
-        } else {
-          row.style.display = 'none';
-        }
+        row.style.display = visibleYears.has(row.dataset.year) ? '' : 'none';
       });
     }
 
-    // Set up category button listeners
     buttons.forEach(button => {
       button.addEventListener('click', () => {
         buttons.forEach(btn => btn.classList.remove('news_selected'));
@@ -235,16 +114,18 @@
       });
     });
 
-    // Set up search input listener
     if (searchInput) {
+      let timer = null;
+      searchInput.addEventListener('input', () => {
+        clearTimeout(timer);
+        timer = setTimeout(updateFilters, 150);
+      });
       searchInput.addEventListener('keydown', (event) => {
-          if (event.key === "Enter") {
-             updateFilters();
-          }
+        if (event.key === 'Enter') updateFilters();
       });
     }
 
-    // Initial run
     updateFilters();
   });
 </script>
+{% endunless %}

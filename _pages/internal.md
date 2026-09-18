@@ -1,7 +1,7 @@
 ---
 layout: page
 permalink: /internal/
-title: internal
+title: Internal
 description: For EVLers only
 nav: false
 ---

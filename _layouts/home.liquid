@@ -2,127 +2,19 @@
 layout: default
 ---
 
-<!-- Custom Hero Section -->
-<style>
-  /* These CSS rules only apply to the hero section */
-  .hero {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    margin-bottom: 20px; /* adjust spacing as needed */
-  }
-  .hero img {
-    width: 100%;
-    display: block;
-    height: auto;
-    object-fit: cover;
-    max-height: 500px;
-  }
-  .hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.4); /* semi-transparent overlay */
-    text-align: left;
-  }
-  /* Let your base fonts be defined in your main CSS but force white color here */
-  .hero-overlay h1 {
-    margin: 0;
-    color: white;
-  }
-  .hero-figcaption {
-      /* Style the caption text */
-      background-color: #333;
-      color: white;
-      font-style: normal;
-      padding: 5px;
-      text-align: left;
-      font-size: 85%; /* Make the font size smaller than the main text */
-  }
-    .hero-figcaption a {
-      color: inherit;
-    }
-
-</style>
-
-<header>
-  <h1 class="hero-title">{{ page.subtitle }}</h1>
-  <div class="hero">
-	  <figure>
-      <a id="hero-image-link" href="">
-        <img id="hero-image" src="" alt="Hero Image" />
-      </a>
-      <figcaption class="hero-figcaption"><a id="hero-caption" href=""></a></figcaption>
-	  </figure>
-  </div>
-
-  <!-- <div class="hero-overlay"> -->
-    <!-- Use page.subtitle so the title overlay text is what you want -->
-    <!-- <h1 class="hero-title">{{ page.subtitle }}</h1> -->
-  <!-- </div> -->
+<!-- Hero: a random photo on each load, cross-fading through the list -->
+<header class="evl-hero" id="evl-hero">
+  <a id="hero-image-link" class="evl-hero-link" href="/">
+    <img id="hero-image" src="" alt="{{ page.subtitle }}" fetchpriority="high" decoding="async" />
+    <div class="evl-hero-overlay">
+      <h1 class="evl-hero-title">{{ page.subtitle }}</h1>
+      <p class="evl-hero-caption"><span id="hero-caption"></span></p>
+    </div>
+  </a>
 </header>
 
-<!-- Begin Original Content -->
-<div class="post">
-
-  <article>
-    {% if page.profile %}
-      <div class="profile float-{% if page.profile.align == 'left' %}left{% else %}right{% endif %}">
-        {% if page.profile.image %}
-          {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
-          {% if page.profile.image_circular %}
-            {% assign profile_image_class = 'img-fluid z-depth-1 rounded-circle' %}
-          {% else %}
-            {% assign profile_image_class = 'img-fluid z-depth-1 rounded' %}
-          {% endif %}
-          {% capture sizes %}(min-width: {{ site.max_width }}) {{ site.max_width | minus: 30 | times: 0.3 }}px, (min-width: 576px) 30vw, 95vw{% endcapture %}
-          {% include figure.liquid loading="eager" path=profile_image_path class=profile_image_class sizes=sizes alt=page.profile.image cache_bust=true %}
-        {% endif %}
-        {% if page.profile.more_info %}
-          <div class="more-info">{{ page.profile.more_info }}</div>
-        {% endif %}
-      </div>
-    {% endif %}
-
-    <div class="clearfix">{{ content }}</div>
-
-    <!-- News Section -->
-    {% if page.announcements and page.announcements.enabled %}
-      <h2>
-        <a href="{{ '/news/' | relative_url }}" style="color: inherit">news</a>
-      </h2>
-      {% include news.liquid limit=page.announcements.limit %}
-    {% endif %}
-
-    <!-- Selected Publications -->
-    {% if page.selected_papers %}
-      <h2>
-        <a href="{{ '/publications/' | relative_url }}" style="color: inherit">recent publications</a>
-      </h2>
-      {% include selected_papers.liquid %}
-    {% endif %}
-
-    <!-- Social Section -->
-    {% if page.social %}
-      <div class="social">
-        <div class="contact-icons">{% include social.liquid %}</div>
-        <div class="contact-note">{{ site.contact_note }}</div>
-      </div>
-    {% endif %}
-
-    {% if site.newsletter and site.newsletter.enabled and site.footer_fixed %}
-      {% include newsletter.liquid center=true %}
-    {% endif %}
-  </article>
-</div>
-<!-- End Original Content -->
-
-<!-- JavaScript to randomly select the hero image on each page load -->
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-
+(function () {
   var heroItems = [
     {
       image: '/assets/img/homepage/_LJL0368-Edit-1400.webp',
@@ -255,25 +147,107 @@ document.addEventListener("DOMContentLoaded", function() {
       link: "https://www.evl.uic.edu/news/2026/2026-04-28-3018/"
     }
   ];
-  
-  var heroImageElement = document.getElementById("hero-image");
-  var heroImageLinkElement = document.getElementById("hero-image-link");
-  var heroCaptionElement = document.getElementById("hero-caption");
 
-  function updateHeroImage() {
-    if (!heroImageElement) return;
-    var randomIndex = Math.floor(Math.random() * heroItems.length);
-    var heroItem = heroItems[randomIndex];
-    heroImageElement.src = heroItem.image;
-    heroImageLinkElement.href = heroItem.link;
-    heroCaptionElement.textContent = heroItem.caption;
-    heroCaptionElement.href = heroItem.link;
+  var img = document.getElementById("hero-image");
+  var link = document.getElementById("hero-image-link");
+  var caption = document.getElementById("hero-caption");
+  if (!img || !heroItems.length) return;
+
+  var ROTATE_MS = 9000;
+  var FADE_MS = 700;
+  var index = Math.floor(Math.random() * heroItems.length);
+
+  function apply(item) {
+    img.src = item.image;
+    link.href = item.link;
+    caption.textContent = item.caption;
   }
 
-  // Initial image load
-  updateHeroImage();
+  // First image: set synchronously so it is in the initial paint.
+  apply(heroItems[index]);
 
-  // Change image every 2 minutes
-  setInterval(updateHeroImage, 2*60*1000);
-});
+  // If the current image fails to load (e.g. a missing upload), move on to the next one.
+  var errors = 0;
+  img.addEventListener("error", function () {
+    if (++errors >= heroItems.length) return;
+    index = (index + 1) % heroItems.length;
+    apply(heroItems[index]);
+  });
+
+  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduceMotion || heroItems.length < 2) return;
+
+  function next() {
+    if (document.hidden) return; // don't burn bandwidth in a background tab
+    var nextIndex = (index + 1) % heroItems.length;
+    var nextItem = heroItems[nextIndex];
+    var preload = new Image();
+    preload.onload = function () {
+      img.classList.add("is-fading");
+      setTimeout(function () {
+        index = nextIndex;
+        apply(nextItem);
+        img.classList.remove("is-fading");
+      }, FADE_MS);
+    };
+    preload.onerror = function () {
+      index = nextIndex; // skip a broken image without fading
+    };
+    preload.src = nextItem.image;
+  }
+
+  setInterval(next, ROTATE_MS);
+})();
 </script>
+
+<div class="post">
+  <article>
+    <div class="evl-intro clearfix">{{ content }}</div>
+
+    {% if page.highlights and page.highlights.size > 0 %}
+      <div class="evl-highlights">
+        <div class="row row-cols-2 row-cols-md-4">
+          {% for h in page.highlights %}
+            <div class="col">
+              <a class="evl-highlight card evl-card h-100" href="{% if h.link contains '://' %}{{ h.link }}{% else %}{{ h.link | relative_url }}{% endif %}">
+                <span class="evl-highlight-label">{{ h.label }}</span>
+                <span class="evl-highlight-title">{{ h.title }}</span>
+                <p class="evl-highlight-text">{{ h.text }}</p>
+              </a>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+
+    <!-- News -->
+    {% if page.announcements and page.announcements.enabled %}
+      <div class="evl-section-heading">
+        <h2><a href="{{ '/news/' | relative_url }}">News</a></h2>
+        <a class="evl-view-all" href="{{ '/news/' | relative_url }}">All news &rarr;</a>
+      </div>
+      {% include news.liquid limit=page.announcements.limit %}
+    {% endif %}
+
+    <!-- Recent publications -->
+    {% if page.selected_papers %}
+      <div class="evl-section-heading">
+        <h2><a href="{{ '/publications/' | relative_url }}">Recent Publications</a></h2>
+        <a class="evl-view-all" href="{{ '/publications/' | relative_url }}">All publications &rarr;</a>
+      </div>
+      {% include selected_papers.liquid %}
+    {% endif %}
+
+    <!-- Social -->
+    {% if page.social %}
+      <div class="social">
+        <div class="contact-icons">{% include social.liquid %}</div>
+        <div class="contact-note">{{ site.contact_note }}</div>
+      </div>
+    {% endif %}
+
+    {% if site.newsletter and site.newsletter.enabled %}
+      {% include newsletter.liquid center=true %}
+    {% endif %}
+  </article>
+</div>
