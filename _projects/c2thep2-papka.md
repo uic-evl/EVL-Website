@@ -5,6 +5,7 @@ description: An education-focused program to train physics and computer science 
 img: assets/img/c2p2.jpg
 importance: 1
 category: research
+status: active
 tags: [c2-p2]
 ---
 

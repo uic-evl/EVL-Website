@@ -5,6 +5,7 @@ description: Interactive Exploration of HACC Cosmology Data using WebXR
 img: assets/img/cosmology/hacc00.png
 importance: 1
 category: research
+status: past
 tags: [data-sharing]
 ---
 

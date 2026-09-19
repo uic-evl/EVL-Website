@@ -2,9 +2,10 @@
 layout: page
 title: NAIRR Software Workshop
 description: A workshop to define a comprehensive AI software stack supporting scientific AI development and promoting ethical and accessible AI research.
-img: assets/img/new-logo-withtext.png
+img: assets/img/nairr_software_panel_2024.jpg
 importance: 1
 category: research
+status: past
 tags: [nairr-software-workshop]
 ---
 

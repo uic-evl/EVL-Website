@@ -5,6 +5,7 @@ description: Space To Think
 img: assets/img/sage3-evl-cropped.jpg
 importance: 1
 category: research
+status: past
 tags: [sage3, collaboration, visualization, AI, open-source]
 bibliography: sage3.bib
 related_publications: true
