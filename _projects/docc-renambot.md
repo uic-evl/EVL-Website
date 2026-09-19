@@ -18,13 +18,17 @@ tags: [mri]
     The Arcade at UIC
 </div>
 
+## News
+
+To follow the activities and news of Arcade, check our dedicated web site: <a href="https://arcade.evl.uic.edu/web/" target="_blank" rel="noopener">https://arcade.evl.uic.edu/web/</a>
+
 ## Grant
 
 - Research Infrastructure: <b>MRI: Track 2 Acquisition of Data Observation and Computation Collaboratory (DOCC)</b>
 - PI: Luc Renambot. Co-PIs: Michael Papka, Fabio Miranda, Georgeta-Elisabeta Marai, Nikita Soni – Andrew Johnson (Emeritus)
 - NSF Award #2320261 CNS Division Of Computer and Network Systems
 - Start Date: October 1, 2023
-- End Date: September 30, 2026
+- End Date: September 30, 2026 - Extended to September, 2027
 - Award Amount: $1.5M
 
 ## Overview
@@ -35,11 +39,11 @@ Societal challenges can only be addressed by research teams, with each contribut
 
 To encourage adoption and ensure Broader Impact, DOCC has a visual front end, enabling users to easily access familiar collaboration tools, scientific notebooks, AI workflows, and popular visualization software. Alternatively, users can add new AI models or create them from scratch. And because DOCC is connected to the UIC research network, data and/or computer codes can be ported to remote computer and cloud resources located on campus, regionally, nationally, or internationally. DOCC personnel can assist new users make their applications more robust, dynamic and configurable. DOCC can transform scientific research, data exploration and discovery, recruit and retain new faculty, make cyberinfrastructure more accessible to students, and help educate the next-generation workforce. UIC is a Minority Serving Institution, a Hispanic Serving Institution and an Asian American and Native American Pacific Islander Serving Institution.
 
-DOCC and its associated data will remain active for at least three years after the completion of this project, as demand dictates. Software will be stored and archived via EVL storage servers, as well as code repositories.
+DOCC and its associated data will remain active for at least three years after the completion of this project, as demand dictates. Software is stored and archived via EVL storage servers, as well as code repositories.
 
 ## Location
 
-DOCC is to be housed in UIC's new Computer Design Research and Learning Center (CDRLC). Final Acceptance/Occupancy is expected for Summer'25.
+DOCC is housed in UIC's new Computer Design Research and Learning Center (CDRLC). The building  opened in Summer'25.
 
 
 <div class="row mt-3">
