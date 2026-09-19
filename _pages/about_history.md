@@ -1,6 +1,6 @@
 ---
 layout: page
-title: history
+title: History
 permalink: /about/history/
 description: The history of the Electronic Visualization Laboratory
 nav: false

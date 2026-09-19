@@ -1,6 +1,6 @@
 ---
 layout: page
-title: news
+title: News
 permalink: /news/
 description: Activities and news from the Electronic Visualization Laboratory
 nav: true
