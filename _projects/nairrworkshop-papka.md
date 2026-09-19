@@ -2,9 +2,10 @@
 layout: page
 title: NAIRR Software Workshop
 description: A workshop to define a comprehensive AI software stack supporting scientific AI development and promoting ethical and accessible AI research.
-img: assets/img/new-logo-withtext.png
+img: assets/img/nairr_software_panel_2024.jpg
 importance: 1
 category: research
+status: past
 tags: [nairr-software-workshop]
 ---
 
@@ -37,4 +38,5 @@ The workshop focused on:
 - Dhabaleswar (DK) Panda (Ohio State University)
 - Michael Papka (University of Illinois Chicago / Argonne National Laboratory)
 
-The <a href="https://events.cels.anl.gov/event/529/attachments/584/2351/NSF-DOE-NAIRR_SoftwareReport-Final.pdf">final workshop report</a> defines the national AI research resource software ecosystem.
+The <a href="https://events.cels.anl.gov/event/529/attachments/584/2351/NSF-DOE-NAIRR_SoftwareReport-Final.pdf">initial workshop report</a> defines the national AI research resource software ecosystem.
+An updated <a href="https://events.cels.anl.gov/event/529/attachments/584/2351/NSF-DOE-NAIRR_SoftwareReport-Final2.pdf">final workshop report</a> with new appendix.

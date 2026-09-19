@@ -5,6 +5,7 @@ description: An Open Artificial Intelligence Testbed for Edge Computing and Inte
 img: assets/img/sage-grande/sage-testbed.jpg
 importance: 1
 category: research
+status: active
 tags: [sage-grande]
 ---
 

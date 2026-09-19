@@ -5,6 +5,7 @@ description: Interactive Exploration of HACC Cosmology Data using WebXR
 img: assets/img/cosmology/hacc00.png
 importance: 1
 category: research
+status: past
 tags: [data-sharing]
 ---
 
@@ -45,16 +46,14 @@ The viewer is being developed for integration into the [OpenCosmo Data and Analy
 ---
 
 #### Research Team
-
-**Current Members**  
-- [Idunnuoluwa Adeniji](https://www.linkedin.com/in/idunnuoluwa) — *PhD Research Assistant*  
+ 
+- [Idunnuoluwa Adeniji](https://www.linkedin.com/in/idunnuoluwa) — 
+- [Revathi Dhotre](https://www.linkedin.com/in/revathi-dhotre)
 - [Joseph Insley](https://www.alcf.anl.gov/about/people/joseph-insley) (Argonne)  
 - [Michael E. Papka](https://www.linkedin.com/in/michaelpapka) — (UIC/Argonne)  
-
-**Alumni**  
-- [Revathi Dhotre](https://www.linkedin.com/in/revathi-dhotre)
 - [Brian Ta](https://www.linkedin.com/in/ba-ta)
----
+
+--
 
 #### Funding
-This work is supported by the [U.S. Department of Energy](https://www.energy.gov/), [Office of Science](https://science.osti.gov/), [High Energy Physics (HEP) program](https://science.osti.gov/hep), via sub-award from [Argonne National Laboratory](https://www.anl.gov/).
+This work was supported by the [U.S. Department of Energy](https://www.energy.gov/), [Office of Science](https://science.osti.gov/), [High Energy Physics (HEP) program](https://science.osti.gov/hep), via sub-award from [Argonne National Laboratory](https://www.anl.gov/).

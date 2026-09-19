@@ -6,6 +6,7 @@ permalink: /projects/docc/
 date: 2025-05-10
 img: assets/img/arcade/arcade-225.jpg
 category: research
+status: active
 tags: [mri]
 ---
 

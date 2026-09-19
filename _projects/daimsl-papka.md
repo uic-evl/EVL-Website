@@ -5,6 +5,7 @@ description: Digital Twins and AI-enabled and Immersive Environments for Automat
 img: assets/img/daimsl/daimsl00.png
 importance: 1
 category: research
+status: active
 tags: [daimsl]
 ---
 
