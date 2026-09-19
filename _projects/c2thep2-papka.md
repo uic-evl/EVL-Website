@@ -36,15 +36,19 @@ Northern Illinois University (NIU) and the University of Illinois Chicago (UIC),
 
 #### Current Members
 - [Jahred Adelman](https://www.niu.edu/jadelman/index.shtml) — (NIU Physics Faculty)  
-- [Amy J. Byrnes](https://www.linkedin.com/in/amy-j-byrnes-77a294140/) — C² the P² Fellow  
 - [Rick Cavanaugh](https://phys.uic.edu/profiles/cavanaugh-richard/) — (UIC Physics Faculty)
+- Jennifer Coburn — C² the P² Fellow  
 - [Maisy Dunlavy](https://www.linkedin.com/in/maisydunlavy/) - C² the P² Fellow
-- [Sreten Kljaic](https://www.c2thep2.org/people/sreten-kljaic/) — C² the P² Fellow  
-- [Wesley Kwiecinski](https://www.c2thep2.org/people/wesley-kwiecinski/) — C² the P² Fellow  
 - [Zhiling Lan](https://cs.uic.edu/profiles/lan-zhiling/) — (UIC Computer Science Faculty)
 - [Kim Meagher](https://www.linkedin.com/in/kim-meagher-687428382/) - C² the P² Fellow   
 - [Akshar Patel](https://www.linkedin.com/in/akshar-patel-bbb6a8241/) - C² the P² Fellow 
 - [Michael E. Papka](https://www.linkedin.com/in/michaelpapka) — (UIC/Argonne)   — (UIC Computer Science Faculty)  
+
+Previous Members
+- [Amy J. Byrnes](https://www.linkedin.com/in/amy-j-byrnes-77a294140/) — C² the P² Fellow  
+- [Wesley Kwiecinski](https://www.c2thep2.org/people/wesley-kwiecinski/) — C² the P² Fellow  
+- [Sreten Kljaic](https://www.c2thep2.org/people/sreten-kljaic/) — C² the P² Fellow  
+
 
 #### Funding
 This work is supported by the [U.S. Department of Energy](https://www.energy.gov/), [Office of Science](https://science.osti.gov/), [High Energy Physics (HEP) program](https://science.osti.gov/hep), via sub-award from [Northern Illinois University](https://www.niu.edu).
