@@ -2,7 +2,7 @@
 layout: page
 title: NAIRR Pilot
 description: A National-Scale Testbed Supporting Artificial Intelligence Research Spanning the Computing Continuum
-img: sage_summer_ai_weather_sensor_2026.png
+img: images/sage_summer_ai_weather_sensor_2026.png
 importance: 1
 category: research
 status: active
