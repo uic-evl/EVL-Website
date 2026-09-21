@@ -2,7 +2,7 @@
 layout: page
 title: Tele-robotics to Tele-autonomous Robotics for Isotope Production
 description: Tele-robotics to Tele-autonomous Robotics for Isotope Production
-img: halbrynteson_ms_2026.jpg
+img: images/halbrynteson_ms_2026.jpg
 importance: 1
 category: research
 status: past
