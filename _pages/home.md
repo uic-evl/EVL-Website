@@ -7,7 +7,7 @@ selected_papers: true
 announcements:
   enabled: true
   scrollable: true
-  limit: 6
+  limit: 9
 social: true
 highlights:
   - label: "1973"
