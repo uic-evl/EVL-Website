@@ -2,7 +2,7 @@
 layout: page
 title: IDEAS
 description: Scientific Data Management and Visualization to Advance AI for Science
-img: pioneer-logo.jpg
+img: pioneer-logo.jpg-srcw.jpg
 importance: 1
 category: research
 status: active
