@@ -10,7 +10,7 @@ last_name: Laboratory
 email: evl-web@uic.edu
 description: Electronic Visualization Laboratory
 footer_text: >
- For more information on the please email <a href="mailto:sevl-web@uic.edu">evl-web@uic.edu</a>.
+ For more information about EVL, please email <a href="mailto:evl-web@uic.edu">evl-web@uic.edu</a>.
 keywords: visualization, human computer interaction, high performance computing # add your own keywords or leave empty
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 icon: favicon.ico
@@ -18,7 +18,7 @@ icon: favicon.ico
 github:
   organization: uic-evl
 
-url: https://www-new.evl.uic.edu # the base hostname & protocol for your site
+url: https://www.evl.uic.edu # the base hostname & protocol for your site
 baseurl: # the subpath of your site, e.g. /blog/. Leave blank for root
 last_updated: false
 impressum_path: # set to path to include impressum link in the footer, use the same path as permalink in a page, helps to conform with EU GDPR
@@ -49,7 +49,7 @@ repo_trophies:
 # -----------------------------------------------------------------------------
 
 navbar_fixed: true
-footer_fixed: true
+footer_fixed: false
 search_enabled: false
 socials_in_search: true
 bib_search: true
@@ -66,7 +66,7 @@ max_width: 1000px #930px
 # see https://schema.org/docs/faq.html for more information
 serve_og_meta: true # Include Open Graph meta tags in the HTML head
 serve_schema_org: false # Include Schema.org in the HTML head
-og_image: /assets/img/new-logo.png
+og_image: /assets/img/homepage/_LJL2368-Edit-1400.webp
 
 # -----------------------------------------------------------------------------
 # Social integration
@@ -436,11 +436,11 @@ enable_bing_verification: false # enables bing site verification
 enable_masonry: true # enables automatic project cards arrangement
 enable_math: false # enables math typesetting (uses MathJax)
 enable_tooltips: false # enables automatic tooltip links generated for each section titles on pages and posts
-enable_darkmode: false # enables switching between light/dark modes
+enable_darkmode: true # enables switching between light/dark modes
 enable_navbar_social: false # enables displaying social links in the navbar on the about page
 enable_project_categories: true # enables categorization of projects into multiple categories
 enable_medium_zoom: true # enables image zoom feature (as on medium.com)
-enable_progressbar: true # enables a horizontal progress bar linked to the vertical scroll position
+enable_progressbar: false # enables a horizontal progress bar linked to the vertical scroll position
 enable_video_embedding: false # enables video embedding for bibtex entries. If false, the button opens the video link in a new window.
 
 # -----------------------------------------------------------------------------
@@ -492,7 +492,7 @@ third_party_libraries:
     version: "5.5.0"
   google_fonts:
     url:
-      fonts: "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&display=swap"
+      fonts: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
   highlightjs:
     integrity:
       css:

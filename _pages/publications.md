@@ -1,7 +1,7 @@
 ---
 layout: page
 permalink: /publications/
-title: publications
+title: Publications
 description: from members of the Electronic Visualization Laboratory ...
 nav: true
 nav_order: 3

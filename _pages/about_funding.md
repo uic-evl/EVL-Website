@@ -1,6 +1,6 @@
 ---
 layout: page
-title: funding
+title: Funding
 permalink: /about/funding/
 description: Funding and support for the Electronic Visualization Laboratory
 nav: false

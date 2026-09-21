@@ -1,12 +1,12 @@
 ---
 layout: page
-title: more
+title: More
 nav: true
 nav_order: 8
 dropdown: true
 children:
-  - title: repositories
+  - title: Repositories
     permalink: /repositories/
-  - title: internal
+  - title: Internal
     permalink: /internal/
 ---

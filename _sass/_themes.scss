@@ -7,12 +7,12 @@
  --------------------------------------------------------------------------*/
  :root {
    /* Backgrounds & Code Blocks */
-   --global-bg-color: #EDEDED;         /* light grey background */
-   --global-code-bg-color: #D0D0D0;      /* slightly darker grey for code blocks */
+   --global-bg-color: #F7F7F8;         /* near-white page background */
+   --global-code-bg-color: #ECECEF;      /* light grey for code blocks */
  
    /* Text Colors */
-   --global-text-color: #000000;         /* main text: pure black */
-   --global-text-color-light: #333333;   /* secondary text: dark grey */
+   --global-text-color: #1B1B1F;         /* main text: near black */
+   --global-text-color-light: #5C5C66;   /* secondary text: medium grey */
  
    /* Primary & Interactive Colors */
    --global-theme-color: #D50032;        /* UICred as primary accent */
@@ -21,29 +21,29 @@
    --global-hover-text-color: #000000;   /* pure black on hover */
  
    /* Footer & Card Elements */
-   --global-footer-bg-color: #A0A0A0;    /* medium grey footer background */
-   --global-footer-text-color: #000000;  /* pure black footer text */
+   --global-footer-bg-color: #FFFFFF;    /* white footer background */
+   --global-footer-text-color: #5C5C66;  /* muted footer text */
    --global-footer-link-color: #D50032;   /* UICred for footer links */
    --global-distill-app-color: #333333;
-   --global-divider-color: rgba(0, 0, 0, 0.1);
-   --global-card-bg-color: #EDEDED;
+   --global-divider-color: rgba(0, 0, 0, 0.08);
+   --global-card-bg-color: #FFFFFF;
  
    /* Back-to-Top Button */
    --global-back-to-top-bg-color: rgba(213, 0, 50, 0.8);
    --global-back-to-top-text-color: #000000;
  
    /* Newsletter Section */
-   --global-newsletter-bg-color: #EDEDED;
+   --global-newsletter-bg-color: #F7F7F8;
    --global-newsletter-text-color: #000000;
  
    /* Alert Blocks – using UICred accents */
    --global-tip-block: #D50032;
-   --global-tip-block-bg: #D0D0D0;
+   --global-tip-block-bg: #ECECEF;
    --global-tip-block-text: #000000;
    --global-tip-block-title: #D50032;
  
    --global-warning-block: #D50032;
-   --global-warning-block-bg: #D0D0D0;
+   --global-warning-block-bg: #ECECEF;
    --global-warning-block-text: #000000;
    --global-warning-block-title: #D50032;
  
@@ -89,26 +89,26 @@
  --------------------------------------------------------------------------*/
  html[data-theme="dark"] {
    /* Backgrounds & Code Blocks */
-   --global-bg-color: #222222;         /* very dark grey background */
+   --global-bg-color: #18181B;         /* very dark grey background */
    --global-code-bg-color: #2A2A2A;      /* dark code block background */
  
    /* Text Colors */
-   --global-text-color: #CCCCCC;         /* soft light grey for main text */
+   --global-text-color: #E4E4E7;         /* soft light grey for main text */
    --global-text-color-light: #999999;   /* lighter grey for secondary text */
  
    /* Primary & Interactive Colors */
-   --global-theme-color: #D50032;        /* UICred remains primary */
-   --global-link-color: #D50032;         /* UICred for links throughout */
-   --global-hover-color: #D50032;
+   --global-theme-color: #FF3B5C;        /* brighter UIC red for dark mode */
+   --global-link-color: #FF3B5C;         /* brighter red for contrast on dark */
+   --global-hover-color: #FF3B5C;
    --global-hover-text-color: #CCCCCC;
  
    /* Footer & Card Elements */
-   --global-footer-bg-color: #111111;    /* nearly black footer */
+   --global-footer-bg-color: #18181B;    /* same as page */
    --global-footer-text-color: #CCCCCC;
    --global-footer-link-color: #D50032;
    --global-distill-app-color: #AAAAAA;
    --global-divider-color: rgba(255, 255, 255, 0.1);
-   --global-card-bg-color: #222222;
+   --global-card-bg-color: #232327;
  
    /* Back-to-Top Button */
    --global-back-to-top-bg-color: rgba(213, 0, 50, 0.8);
