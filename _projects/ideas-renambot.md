@@ -2,7 +2,7 @@
 layout: page
 title: IDEAS
 description: Scientific Data Management and Visualization to Advance AI for Science
-img: pioneer-logo.jpg-srcw.jpg
+img: images/pioneer-logo.jpg
 importance: 1
 category: research
 status: active
@@ -11,7 +11,8 @@ tags: [ideas]
 
 <div class="row justify-content-sm-center">
   <div class="col-sm-7 mt-3 mt-md-0">
-    {% include figure.liquid path="/images/pioneer-logo.jpg" title="PIONEER: Program for Intelligent Optimization for Next-generation Experiments, Explorations, and Research" class="img-fluid" %}
+    {% include figure.liquid path="/images/pioneer-logo.jpg" title="PIONEER: Program for Intelligent Optimization for Next-generation Experiments, Explorations, and Research"
+    class="img-fluid rounded z-depth-1" %}
   </div>
 </div>
 
@@ -54,7 +55,7 @@ UIC contributes to the design and development of an **AI assistant for data expl
 
 - **Luc Renambot** — UIC PI (EVL, Research Associate Professor, Computer Science)
 - **Saeed Boorboor** — Faculty collaborator and advisor (EVL, Assistant Professor, Computer Science)
-- Riccardo Bonfanti — Graduate student, advised by Saeed Boorboor
+- **Riccardo Bonfanti** — Graduate student, advised by Saeed Boorboor
 
 ---
 
