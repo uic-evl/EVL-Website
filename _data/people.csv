@@ -1,7 +1,7 @@
 name,authors,department,institution,dirFirstName,dirLastName,dirTitle,alumni,status,email,image,url,linkedin,order,advisor
 John Bell,,Department of Computer Science,University of Illinois Chicago,John,Bell,Senior Lecturer,,affiliate,jbell@uic.edu,John Bell.jpg,http://www.cs.uic.edu/~jbell,,9999,
 Debaleena Chattopadhyay,,Department of Computer Science,University of Illinois Chicago,Debaleena,Chattopadhyay,Assistant Professor,,affiliate,debchatt@uic.edu,Debaleena Chattopadhyay.jpg,http://debaleena.com,,9999,
-Steve Jones,,Department of Communication,University of Illinois Chicago,Steve,Jones,Professor,,affiliate,sjones@uic.edu,Steve Jones.jpg,http://stevejones.me,,9999,
+Steve Jones,,Department of Communication,University of Illinois Chicago,Steve,Jones,Professor,,affiliate,sjones@uic.edu,Steve Jones.jpg,https://comm.uic.edu/profiles/steve-jones/,,9999,
 Hyungil Kim,,Department of Mechanical and Industrial Engineering,University of Illinois Chicago,Hyungil,Kim,Assistant Professor,,affiliate,hyungil@uic.edu,Hyungil Kim.jpg,https://sites.google.com/view/human-centered-engineering,,9999,
 Victor Mateevitsi,,Argonne National Laboratory,Argonne National Laboratory,Victor,Mateevitsi,Adjunct Assistant Professor,PhD 18,affiliate,mvictoras@gmail.com,Victor Mateevitsi.jpg,https://www.anl.gov/profile/victor-a-mateevitsi,,9999,
 Peter C. Nelson,,Department of Computer Science,University of Illinois Chicago,Peter C.,Nelson,Professor,,affiliate,nelson@uic.edu,Peter C. Nelson.jpg,,,9999,
