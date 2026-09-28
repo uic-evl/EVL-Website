@@ -1,3 +1,34 @@
+
+- to: /news/2018/2018-10-01-2401/
+  from:
+    - /research/2401/
+
+- to: /news/2020/2020-10-01-2522/
+  from:
+    - /research/2522/
+
+- to: /news/2002/2002-01-02-2053/
+  from:
+    - /research/2053/
+
+- to: /news/2016/2016-10-01-2316/
+  from:
+    - /research/2316/
+
+- to: /news/2009/2009-05-01-2016/
+  from:
+    - /research/2016/
+
+- to: /news/2014/2014-10-01-2229/
+  from:
+    - /research/2229/
+
+- to: /news/2013/2013-01-07-2329/
+  from:
+    - /research/2329/
+
+
+
 - to: https://sage3.sagecommons.org/
   from:
     - /sage3/
