@@ -1,8 +1,8 @@
 ---
 layout: page
-permalink: /internal/
-title: Internal
-description: For EVLers only
+permalink: /internal/resources/
+title: Resources
+description: EVL computing and networking resources
 nav: false
 ---
 
