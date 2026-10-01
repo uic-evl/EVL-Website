@@ -73,7 +73,8 @@ sudo /opt/evl-monitor/_monitor/agent/install.sh <id>
 
 - detects GPUs (NVIDIA runtime) and SSSD accounts;
 - builds the image on the server;
-- starts two containers, `evl-monitor-agent` and `evl-monitor-docker-proxy`;
+- starts two containers, `evl-monitor-agent` and `evl-monitor-docker-proxy`, with
+  `restart: always`, and enables the Docker service at boot, so both come back after a reboot;
 - checks every file the agent serves.
 
 If the host runs `ufw`, allow the web server:

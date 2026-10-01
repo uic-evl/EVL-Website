@@ -47,6 +47,8 @@ jobs:
           docker inspect evl-monitor-agent --format '{{.Config.User}} {{.HostConfig.ReadonlyRootfs}} {{.HostConfig.CapDrop}} {{.HostConfig.PidMode}} {{.HostConfig.NetworkMode}}' | tee /tmp/agent
           grep -q '^10001:10001 true \[ALL\] host host$' /tmp/agent
           docker inspect evl-monitor-docker-proxy --format '{{.HostConfig.NetworkMode}}' | grep -qx none
+          docker inspect evl-monitor-agent evl-monitor-docker-proxy --format '{{.HostConfig.RestartPolicy.Name}}' | sort -u | grep -qx always
+          systemctl is-enabled docker
           ! docker exec evl-monitor-agent test -e /var/run/docker.sock
       - name: Services list this runner's containers
         run: |

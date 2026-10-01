@@ -24,6 +24,15 @@ docker compose version >/dev/null 2>&1 || die "docker compose v2 is not installe
 
 cd "$(dirname "$0")"
 
+# the containers come back after a reboot only if Docker itself starts at boot
+if command -v systemctl >/dev/null 2>&1 && [ -d /run/systemd/system ]; then
+  for unit in docker.service containerd.service; do
+    if systemctl list-unit-files "$unit" >/dev/null 2>&1 && ! systemctl is-enabled --quiet "$unit" 2>/dev/null; then
+      systemctl enable "$unit" >/dev/null 2>&1 && echo "Enabled $unit at boot."
+    fi
+  done
+fi
+
 # a port already taken by something other than this agent?
 if ! docker ps --format '{{.Names}}' | grep -qx evl-monitor-agent; then
   if command -v ss >/dev/null && ss -ltnH "sport = :$PORT" | grep -q .; then
@@ -77,4 +86,5 @@ if command -v ufw >/dev/null && ufw status 2>/dev/null | grep -q "Status: active
     echo "      sudo ufw allow from $WEB_SERVER_IP to any port $PORT proto tcp"
   fi
 fi
-echo "Done. From the web server: curl -s http://$FQDN:$PORT/healthz"
+echo "Done. The agent starts again with Docker after a reboot."
+echo "From the web server: curl -s http://$FQDN:$PORT/healthz"

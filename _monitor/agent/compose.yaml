@@ -9,7 +9,8 @@ x-image: &image
   image: evl-monitor-agent:${MONITOR_TAG:-local}
 
 x-hardening: &hardening
-  restart: unless-stopped
+  # back up whenever Docker starts, including after a reboot; `docker compose down` stops for good
+  restart: always
   user: "10001:10001"
   read_only: true
   cap_drop: [ALL]
