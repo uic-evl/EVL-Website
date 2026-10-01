@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>EVL Status</title>
+  <link rel="stylesheet" href="status.css">
+</head>
+<body>
+  <header>
+    <h1>EVL Status</h1>
+    <p class="sub">Status of EVL systems and services. <a href="/internal/">Back to Internal</a></p>
+  </header>
+
+  <main>
+    <table id="services">
+      <thead>
+        <tr><th>Service</th><th>Status</th><th>Note</th></tr>
+      </thead>
+      <tbody>
+        <tr><td colspan="3" class="loading">Loading…</td></tr>
+      </tbody>
+    </table>
+    <p class="updated">Last updated: <span id="updated">—</span></p>
+  </main>
+
+  <script src="status.js"></script>
+</body>
+</html>

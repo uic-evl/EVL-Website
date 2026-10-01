@@ -1,0 +1,10 @@
+{
+  "updated": "2026-10-01",
+  "services": [
+    { "name": "CAVE2 Cluster", "status": "ok", "note": "" },
+    { "name": "COMPaaS DLV GPU Cluster", "status": "ok", "note": "" },
+    { "name": "SAGE3 (sage3.evl.uic.edu)", "status": "ok", "note": "" },
+    { "name": "Arcade display wall", "status": "ok", "note": "" },
+    { "name": "100 Gbps research network", "status": "ok", "note": "" }
+  ]
+}
