@@ -1,0 +1,77 @@
+name: Monitor agent
+
+on:
+  pull_request:
+    paths:
+      - "_monitor/**"
+      - "_data/monitor.yml"
+      - ".github/workflows/monitor-*.yml"
+  push:
+    branches:
+      - deployment
+    paths:
+      - "_monitor/**"
+      - "_data/monitor.yml"
+      - ".github/workflows/monitor-*.yml"
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: _monitor/agent
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install
+        run: pip install -e ".[test]"
+      - name: Lint
+        run: ruff check .
+      - name: Unit tests
+        run: pytest -q
+
+  install:
+    # the real install.sh on a real Linux host: pid and network namespaces, /hostfs,
+    # the docker socket proxy and every published file (no GPU on GitHub runners)
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install the agent
+        run: sudo _monitor/agent/install.sh ci
+      - name: Containers are hardened
+        run: |
+          docker inspect evl-monitor-agent --format '{{.Config.User}} {{.HostConfig.ReadonlyRootfs}} {{.HostConfig.CapDrop}} {{.HostConfig.PidMode}} {{.HostConfig.NetworkMode}}' | tee /tmp/agent
+          grep -q '^10001:10001 true \[ALL\] host host$' /tmp/agent
+          docker inspect evl-monitor-docker-proxy --format '{{.HostConfig.NetworkMode}}' | grep -qx none
+          ! docker exec evl-monitor-agent test -e /var/run/docker.sock
+      - name: Services list this runner's containers
+        run: |
+          curl -fsS http://127.0.0.1:9877/services.json | python3 -c '
+          import json, sys
+          d = json.load(sys.stdin)
+          names = {c["name"] for c in d["containers"]}
+          assert d["containers_status"] == "ok", d["containers_status"]
+          assert {"evl-monitor-agent", "evl-monitor-docker-proxy"} <= names, names
+          print(sorted(names))'
+      - name: History survives a restart and a reinstall
+        run: |
+          points() { curl -fsS http://127.0.0.1:9877/history/1h.json | python3 -c 'import json,sys; print(sum(v is not None for v in json.load(sys.stdin)["host"]["cpu_pct"]["mean"]))'; }
+          healthy() { for i in $(seq 1 30); do curl -fsS http://127.0.0.1:9877/healthz >/dev/null 2>&1 && return 0; python3 -c 'import time; time.sleep(2)'; done; return 1; }
+          python3 -c 'import time; time.sleep(30)'
+          before=$(points)
+          docker restart evl-monitor-agent
+          healthy
+          after_restart=$(points)
+          sudo _monitor/agent/install.sh ci
+          after_install=$(points)
+          echo "points: before $before, after restart $after_restart, after reinstall $after_install"
+          test "$before" -gt 0
+          test "$after_restart" -ge "$before"
+          test "$after_install" -ge "$before"
+      - name: Agent logs
+        if: always()
+        run: docker logs evl-monitor-agent 2>&1 | tail -50

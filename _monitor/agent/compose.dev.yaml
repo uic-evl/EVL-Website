@@ -1,0 +1,25 @@
+# Fake data for page development, on any machine (Docker Desktop included):
+#   docker compose -f compose.dev.yaml up --build
+# then open http://localhost:4000/monitor/?data=http://localhost:9877 with local Jekyll.
+name: evl-monitor-dev
+
+services:
+  agent:
+    build: .
+    image: evl-monitor-agent:dev
+    ports:
+      - "127.0.0.1:9877:9877"
+    environment:
+      MONITOR_ID: dev
+      MONITOR_FAKE: "1"
+      MONITOR_FAKE_BACKFILL: "1"
+      MONITOR_MOUNTS: "root:/,data:/data"
+      MONITOR_CORS_ORIGINS: "http://localhost:4000,http://127.0.0.1:4000,http://localhost:8080"
+    read_only: true
+    tmpfs:
+      - /tmp:size=16m
+    volumes:
+      - devdata:/data
+
+volumes:
+  devdata: {}

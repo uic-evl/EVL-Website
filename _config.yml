@@ -242,6 +242,7 @@ exclude:
   - readme_preview/
   - vendor
   - _projects/**/*.demo
+  - _monitor/
 keep_files:
   - CNAME
   - .nojekyll

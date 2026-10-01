@@ -1,0 +1,13 @@
+# Hosts with NVIDIA GPUs and the NVIDIA container toolkit.
+# "utility" injects only libnvidia-ml and the device nodes: monitoring, no compute.
+services:
+  agent:
+    environment:
+      MONITOR_GPU: "on"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [utility]

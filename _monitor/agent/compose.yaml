@@ -1,0 +1,73 @@
+# EVL monitor agent. install.sh writes .env next to this file and picks the overrides:
+#   sudo ./install.sh <id>
+# which runs, on a GPU host with SSSD accounts:
+#   docker compose -f compose.yaml -f compose.gpu.yaml -f compose.sssd.yaml up -d --build --wait
+name: evl-monitor
+
+x-image: &image
+  build: .
+  image: evl-monitor-agent:${MONITOR_TAG:-local}
+
+x-hardening: &hardening
+  restart: unless-stopped
+  user: "10001:10001"
+  read_only: true
+  cap_drop: [ALL]
+  security_opt: ["no-new-privileges:true"]
+  logging:
+    driver: json-file
+    options: {max-size: "5m", max-file: "2"}
+
+services:
+  agent:
+    <<: [*image, *hardening]
+    container_name: evl-monitor-agent
+    # host PIDs: NVML lists GPU processes only in the caller's PID namespace.
+    # host network: the services on this machine publish their ports on the host's
+    # loopback (behind its nginx), and the agent asks them for their model lists;
+    # it also serves port 9877 on the host directly, so the host firewall applies.
+    pid: host
+    network_mode: host
+    environment:
+      MONITOR_ID: ${MONITOR_ID:?set MONITOR_ID}
+      MONITOR_FQDN: ${MONITOR_FQDN:-}
+      MONITOR_BIND: ${MONITOR_BIND_IP:-0.0.0.0}
+      MONITOR_PORT: ${MONITOR_PORT:-9877}
+      MONITOR_MOUNTS: ${MONITOR_MOUNTS:-auto}
+      MONITOR_PROCS: ${MONITOR_PROCS:-full}
+      MONITOR_GPU: "off"
+    volumes:
+      - /:/hostfs:ro
+      - data:/data
+      - run:/run/evl-monitor:ro
+    tmpfs:
+      - /tmp:size=16m
+    mem_limit: 256m
+    cpus: 0.5
+    pids_limit: 64
+    stop_grace_period: 10s
+
+  docker-proxy:
+    <<: [*image, *hardening]
+    container_name: evl-monitor-docker-proxy
+    command: ["evl_monitor.dockerproxy"]
+    network_mode: none
+    group_add: ["${DOCKER_GID:?set DOCKER_GID}"]
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - run:/run/evl-monitor
+    healthcheck:
+      test: ["CMD", "python", "-m", "evl_monitor.dockerproxy", "--check"]
+      interval: 60s
+      timeout: 5s
+    mem_limit: 64m
+    pids_limit: 16
+
+volumes:
+  data: {}
+  run:
+    driver: local
+    driver_opts:
+      type: tmpfs
+      device: tmpfs
+      o: "size=1m,uid=10001,gid=10001,mode=0700"
