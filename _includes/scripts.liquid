@@ -327,3 +327,8 @@
 {% if page.url == '/people/' %}
   <script src="{{ '/assets/js/profiles.js' | relative_url | bust_file_cache }}"></script>
 {% endif %}
+
+{% if page.monitor %}
+  <!-- Server monitor (after Chart.js, which page.chart.chartjs loads) -->
+  <script defer src="{{ '/assets/js/monitor.js' | relative_url | bust_file_cache }}"></script>
+{% endif %}

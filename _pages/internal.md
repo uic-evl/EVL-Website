@@ -17,6 +17,7 @@ nav: false
 
 ## Resources
 
+- [Server monitor](/internal/monitor/): live load, GPUs, models and services on EVL's servers
 - Networking: 100Gbps UIC research networking to StarLight Exchange
 - CAVE2 Cluster: VR system, 72 screens
 - GPU Cluster: COMPaaS DLV, 27 nodes, 68 AI GPUs
