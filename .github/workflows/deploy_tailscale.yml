@@ -6,6 +6,11 @@ on:
       - deployment
   workflow_dispatch:
 
+# One deploy at a time: a deploy started while another runs waits for it.
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
 jobs:
   deploy:
     runs-on: ubuntu-latest

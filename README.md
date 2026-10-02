@@ -96,6 +96,35 @@ git pull origin deployment
 
 Refer to [al-folio documentation](https://github.com/alshedivat/al-folio) for advanced customization.
 
+## Impact page
+
+The [Impact](https://www.evl.uic.edu/impact/) page (`_pages/impact.md`) counts, per calendar year:
+
+| Row | Comes from |
+|---|---|
+| Publications | the bibliography the Publications page renders, entries with an EVL faculty or emeritus author (`_data/people.csv`) |
+| Citations | OpenAlex, for the same entries |
+| PhD graduates | the `alumni` column of `_data/people.csv` ("PhD 25") |
+| Funded projects, new funding | `_data/grants.csv`, including grants that have ended |
+| Open repositories, GitHub stars | the organizations in `_data/repositories.yml` |
+| Package downloads | the packages in `_data/impact.yml`, from PyPI and npm |
+
+`_plugins/impact.rb` counts every row at each build, so a new paper, grant, graduate or repository shows up on the next deploy. Citations, repositories, stars and downloads come from `_data/impact_metrics.json`, which the "Impact numbers" workflow (`.github/workflows/impact.yml`) collects with `_impact/collect.mjs` and commits. It runs every Monday and whenever the bibliography, the repository list or `_data/impact.yml` changes.
+
+To count a new package, add it under its repository in `_data/impact.yml`.
+
+Secrets the workflow reads:
+
+- `IMPACT_STARS_TOKEN`: a classic personal access token with `public_repo` scope from someone who can push to the listed repositories. GitHub lists when each star was given only to such a token; for other repositories, stars count from the first collection on.
+- `OPENALEX_KEY` (optional): an OpenAlex API key, which raises how many titles each run can look up.
+
+To collect the numbers locally (they are not committed from a local run):
+
+```bash
+npm ci
+GITHUB_TOKEN=<token> node _impact/collect.mjs
+```
+
 ## Contributing
 
 We welcome contributions! Please open an issue or submit a pull request with suggested changes or improvements.
