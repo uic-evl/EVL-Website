@@ -86,5 +86,13 @@ print(' '.join(h['id'] + '=' + h['status'] for h in d['hosts']))
   sleep 3
 done
 echo "Hosts: ${out:-no answer}"
+
+# the hub reaches this machine's own agent from a Docker network address
+if command -v ufw >/dev/null 2>&1 && ufw status 2>/dev/null | grep -q "Status: active"; then
+  if ! ufw status | grep -E "(^| )9877" | grep -q "172.16.0.0/12"; then
+    echo "note: ufw is active. If this machine's own agent shows offline, let the hub reach it with:"
+    echo "      sudo ufw allow from 172.16.0.0/12 to any port 9877 proto tcp"
+  fi
+fi
 echo "Done. The hub starts again with Docker after a reboot."
 echo "Check from your browser: https://$FQDN:$PORT/overview.json"

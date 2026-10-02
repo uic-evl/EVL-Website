@@ -160,12 +160,12 @@ def test_backoff_and_recovery(tmp_path):
     hub.poll_once()
     assert hub.states["a"].failures == 2
     assert {h["id"]: h["status"] for h in overview(hub)["hosts"]}["a"] == "offline"
-    for wait in (30, 60, 120, 300, 300):
+    for wait in (30, 60, 60, 60, 60):
         mono.t += wait + 1
         hub.poll_once()
     assert len(agents.calls["a"]) == n + 6  # one attempt per backoff step, never a burst
     agents.down.clear()
-    mono.t += 301
+    mono.t += 61
     hub.poll_once()
     assert hub.states["a"].failures == 0
     assert {h["id"]: h["status"] for h in overview(hub)["hosts"]}["a"] == "live"

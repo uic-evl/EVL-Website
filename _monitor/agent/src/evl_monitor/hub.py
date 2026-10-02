@@ -11,7 +11,7 @@ one place, however many people have the page open:
 - on demand (when someone opens a server): procs, history, series and usage files,
   cached for the agent's own max-age (at least 10 s);
 - one request at a time per server, conditional (ETag) and gzip'ed, 3 s timeout;
-- an unreachable server is retried after 15, 30, 60, 120, then every 300 s.
+- an unreachable server is retried after 15 and 30 s, then every 60 s.
 
 Every payload is checked against the agent's closed schema and its id before it is
 cached, so the page only ever sees what the agent is allowed to publish.
@@ -45,7 +45,7 @@ FQDN_RE = re.compile(r"^[a-z0-9][a-z0-9.-]{0,252}$")
 
 BACKGROUND = {"now.json": 15, "services.json": 120, "daily.json": 900, "host.json": 600, "spark.json": 600}
 ON_DEMAND_FLOOR = 10
-BACKOFF = (15, 30, 60, 120, 300)
+BACKOFF = (15, 30, 60)  # one connection attempt a minute to a dead server, and quick recovery
 TIMEOUT = 3.0
 MAX_BYTES = 8 * 1024 * 1024
 HOSTS_RELOAD = 30.0
