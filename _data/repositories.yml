@@ -1,9 +1,15 @@
 github_users:
 
 github_organizations:
+  - urban-toolkit
   - uic-evl
   - spear-uic
   - sage-3
+
+# Organizations that list only these repositories; the others list all their public repositories.
+# urban-toolkit: the repositories of the projects in the wheel on urbantk.org's home page.
+github_organization_repos:
+  urban-toolkit: [utk, streetweave, autark, curio, urbanite, va-blueprint, neural-3d]
 
 repo_description_lines_max: 3
 
