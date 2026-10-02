@@ -1,6 +1,6 @@
 // Server monitor (/internal/monitor/): one row per server, expand a row for details.
 // Data comes from the monitor hub on arcade, which polls each server's agent and lists the
-// servers: https://arcade.evl.uic.edu:6161/overview.json and /<id>/<file>
+// servers: https://arcade.evl.uic.edu/stats/overview.json and /stats/<id>/<file>
 // (github.com/uic-evl/evl-monitoring). Class names are written out in full so the site's
 // PurgeCSS keeps them.
 (function () {
@@ -108,7 +108,7 @@
   // data ----------------------------------------------------------------------
 
   function dataBase() {
-    var b = cfg.data_base || "https://arcade.evl.uic.edu:6161";
+    var b = cfg.data_base || "https://arcade.evl.uic.edu/stats";
     var local = location.hostname === "localhost" || location.hostname === "127.0.0.1";
     var q = new URLSearchParams(location.search).get("data");
     if (local && q) b = q;
