@@ -34,7 +34,7 @@ browser (www.evl.uic.edu/internal/monitor/, behind the /internal/ password)
 | `procs.json`, `history/*`, `series/*`, `usage.json` | only while someone has that server open | cached for at least 10 s |
 
 - **One request at a time per server,** with gzip and ETags, and a 3 s timeout.
-- **A server that stops answering** is retried after 15, 30, 60 and 120 s, then every 5 minutes.
+- **A server that stops answering** is retried after 15 and 30 s, then every minute.
 - **The load is fixed:** about 5 small requests a minute per server, measured with 20 pages open.
 - **Validation:** every reply is checked against the agent's closed schema before the hub keeps it.
 
@@ -106,6 +106,12 @@ If the server runs `ufw`, let the hub on arcade reach the agent:
 
 ```sh
 sudo ufw allow from 131.193.183.175 to any port 9877 proto tcp
+```
+
+On arcade itself, the hub reaches the local agent from a Docker network address instead:
+
+```sh
+sudo ufw allow from 172.16.0.0/12 to any port 9877 proto tcp
 ```
 
 ## Install the hub on arcade
