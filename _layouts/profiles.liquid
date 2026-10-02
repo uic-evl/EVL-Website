@@ -104,7 +104,7 @@ layout: page
                           {% endif %}
                         </div>
                         {% if profile.dirTitle %}{{ profile.dirTitle }}<br>{% endif %}
-                        {{ profile.department }}<br>
+                        {% if profile.department %}{{ profile.department }}<br>{% endif %}
                         <div class="social-icons" style="margin-left: 1px !important;">
                         
                           {% if profile.email %}
