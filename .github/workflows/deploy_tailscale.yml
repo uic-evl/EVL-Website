@@ -4,10 +4,6 @@ on:
   push:
     branches:
       - deployment
-    # monitor agent and deploy files are not part of the site build
-    paths-ignore:
-      - "_monitor/**"
-      - ".github/workflows/monitor-*.yml"
   workflow_dispatch:
 
 jobs:

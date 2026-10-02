@@ -1,7 +1,8 @@
 // Server monitor (/internal/monitor/): one row per server, expand a row for details.
-// Data comes from the monitor hub on arcade, which polls each server's agent:
-//   https://arcade.evl.uic.edu:6161/overview.json and /<id>/<file>   (see _monitor/README.md)
-// Class names are written out in full so the site's PurgeCSS keeps them.
+// Data comes from the monitor hub on arcade, which polls each server's agent and lists the
+// servers: https://arcade.evl.uic.edu:6161/overview.json and /<id>/<file>
+// (github.com/uic-evl/evl-monitoring). Class names are written out in full so the site's
+// PurgeCSS keeps them.
 (function () {
   "use strict";
 
@@ -20,7 +21,9 @@
 
   var cfg = null;
   var base = "";
-  var hosts = [];
+  var hosts = []; // in the hub's order
+  var rows = {}; // by id
+  var rowOrder = "";
   var charts = [];
   var hidden = false;
 
@@ -137,6 +140,127 @@
   }
 
   // rows ------------------------------------------------------------------------
+
+  function makeRow(x) {
+    var section = el("section", "mon-server mon-state-loading");
+    section.setAttribute("data-id", x.id);
+    var button = el("button", "mon-row");
+    button.type = "button";
+    button.setAttribute("aria-expanded", "false");
+    button.setAttribute("aria-controls", "mon-detail-" + x.id);
+    var name = el("span", "mon-name");
+    var nameText = el("strong");
+    var groupText = el("small");
+    name.appendChild(nameText);
+    name.appendChild(groupText);
+    button.appendChild(name);
+    var status = el("span", "mon-status");
+    var dot = el("i", "mon-dot");
+    dot.setAttribute("aria-hidden", "true");
+    var statusText = el("span", "mon-status-text", "Connecting");
+    status.appendChild(dot);
+    status.appendChild(statusText);
+    button.appendChild(status);
+    var cells = {};
+    [["cpu", "mon-cell mon-cpu", "CPU"], ["mem", "mon-cell mon-mem", "Memory"], ["gpu", "mon-cell mon-gpu", "GPUs"], ["d30", "mon-cell mon-30d", "Last 30 days"]].forEach(function (c) {
+      var cell = el("span", c[1]);
+      cell.setAttribute("data-label", c[2]);
+      cells[c[0]] = cell;
+      button.appendChild(cell);
+    });
+    var chev = el("i", "mon-chev");
+    chev.setAttribute("aria-hidden", "true");
+    button.appendChild(chev);
+    var detailEl = el("div", "mon-detail");
+    detailEl.id = "mon-detail-" + x.id;
+    detailEl.hidden = true;
+    section.appendChild(button);
+    section.appendChild(detailEl);
+    var h = {
+      id: x.id,
+      status: null, // live or planned, from hosts.yml through the hub
+      spec: null,
+      section: section,
+      button: button,
+      detailEl: detailEl,
+      statusText: statusText,
+      nameText: nameText,
+      groupText: groupText,
+      cells: cells,
+      state: "loading",
+      failures: 0,
+      now: null,
+      detail: null,
+    };
+    button.addEventListener("click", function () {
+      if (h.status !== "live") return;
+      if (h.detail && h.detail.open) closeDetail(h);
+      else openDetail(h);
+    });
+    return h;
+  }
+
+  // what hosts.yml says about the hardware, until the server reports
+  function showSpec(h, x) {
+    [["cpu", x.cpus], ["mem", x.memory], ["gpu", x.gpus]].forEach(function (c) {
+      var cell = clear(h.cells[c[0]]);
+      if (!c[1]) return;
+      var v = el("span", "mon-value mon-muted", c[1]);
+      v.title = c[1];
+      cell.appendChild(v);
+    });
+  }
+
+  function configure(h, x) {
+    h.nameText.textContent = x.name || x.id;
+    h.groupText.textContent = x.group || "";
+    var status = x.status === "planned" ? "planned" : "live";
+    var spec = [x.cpus, x.memory, x.gpus].join("|");
+    if (status === h.status && spec === h.spec) return;
+    h.status = status;
+    h.spec = spec;
+    h.button.disabled = status !== "live";
+    if (status === "planned") {
+      closeDetail(h);
+      h.now = null;
+      h.daily = null;
+      clear(h.cells.d30);
+      showSpec(h, x);
+      setState(h, "planned", "Not reporting yet");
+    } else if (!h.now) {
+      showSpec(h, x);
+    }
+  }
+
+  // one row per server in the overview, in its order; rows for removed servers go away
+  function syncRows(list) {
+    var seen = {};
+    list.forEach(function (x) {
+      seen[x.id] = true;
+      if (!rows[x.id]) rows[x.id] = makeRow(x);
+      configure(rows[x.id], x);
+    });
+    hosts.forEach(function (h) {
+      if (seen[h.id]) return;
+      closeDetail(h);
+      h.section.remove();
+      delete rows[h.id];
+    });
+    hosts = list.map(function (x) {
+      return rows[x.id];
+    });
+    document.getElementById("mon-head").hidden = !hosts.length;
+    var order = list.map(function (x) {
+      return x.id;
+    }).join(",");
+    if (order !== rowOrder) {
+      var box = document.getElementById("mon-list");
+      hosts.forEach(function (h) {
+        box.appendChild(h.section);
+      });
+      rowOrder = order;
+    }
+  }
 
   function setState(h, state, text) {
     h.state = state;
@@ -300,15 +424,12 @@
         overviewFailures = 0;
         overviewSeen = true;
         document.getElementById("mon-banner").hidden = true;
-        var byId = {};
+        syncRows(o.hosts);
         o.hosts.forEach(function (x) {
-          byId[x.id] = x;
-        });
-        hosts.forEach(function (h) {
-          if (h.status === "live" && byId[h.id]) applyHost(h, byId[h.id]);
+          if (rows[x.id].status === "live") applyHost(rows[x.id], x);
         });
         updateSummary();
-        scheduleOverview((o.now_seconds || cfg.poll_seconds || 15) * 1000 + Math.random() * 1000);
+        scheduleOverview((o.now_seconds || 15) * 1000 + Math.random() * 1000);
       })
       .catch(function () {
         if (ctl.signal.aborted && hidden) return;
@@ -318,6 +439,7 @@
           hosts.forEach(function (h) {
             if (h.status === "live") setState(h, h.now ? "stale" : "offline", "No data");
           });
+          if (!overviewSeen) document.getElementById("mon-summary").textContent = "No data.";
         }
         scheduleOverview(BACKOFF[Math.min(overviewFailures - 1, BACKOFF.length - 1)] * 1000);
       })
@@ -949,35 +1071,6 @@
       window.Chart.defaults.font.family = getComputedStyle(document.body).fontFamily;
     }
 
-    Array.prototype.forEach.call(document.querySelectorAll(".evl-monitor .mon-server"), function (section) {
-      var id = section.getAttribute("data-id");
-      var h = {
-        id: id,
-        status: section.getAttribute("data-status"),
-        section: section,
-        button: section.querySelector(".mon-row"),
-        detailEl: section.querySelector(".mon-detail"),
-        statusText: section.querySelector(".mon-status-text"),
-        cells: {
-          cpu: section.querySelector(".mon-cpu"),
-          mem: section.querySelector(".mon-mem"),
-          gpu: section.querySelector(".mon-gpu"),
-          d30: section.querySelector(".mon-30d"),
-        },
-        state: section.getAttribute("data-status") === "live" ? "loading" : "planned",
-        failures: 0,
-        now: null,
-        detail: null,
-      };
-      hosts.push(h);
-      if (h.status !== "live") return;
-      h.button.addEventListener("click", function () {
-        if (h.detail && h.detail.open) closeDetail(h);
-        else openDetail(h);
-      });
-    });
-
-    updateSummary();
     resumeAll();
 
     document.addEventListener("visibilitychange", function () {

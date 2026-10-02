@@ -12,13 +12,3 @@ assets/libs/
 node_modules/
 vendor
 .idea
-
-# EVL monitor (_monitor/)
-_monitor/ansible/inventory.local.yml
-_monitor/ansible/.build/
-__pycache__/
-*.egg-info/
-.pytest_cache/
-.ruff_cache/
-_monitor/agent/.env
-_monitor/agent/.compose-files

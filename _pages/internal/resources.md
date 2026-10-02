@@ -6,8 +6,6 @@ description: EVL computing and networking resources
 nav: false
 ---
 
-**[Server monitor](/internal/monitor/)**: live load, GPUs, models and services on EVL's servers.
-
 <div class="row justify-content-sm-center">
   <div class="col-md-6 mt-3 mt-md-0">
     {% include figure.liquid path="assets/img/wall.jpg" title="example image" class="img-fluid rounded z-depth-1" %}

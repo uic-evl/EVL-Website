@@ -8,6 +8,8 @@ sitemap: false
 chart:
   chartjs: true
 monitor: true
+# the monitor hub on arcade; it lists the servers (github.com/uic-evl/evl-monitoring)
+monitor_data: https://arcade.evl.uic.edu:6161
 ---
 
 <div class="evl-monitor" id="evl-monitor">
@@ -17,39 +19,15 @@ monitor: true
     open only on the UIC network or VPN.
   </p>
 
-  <div class="mon-head" aria-hidden="true">
+  <div class="mon-head" id="mon-head" aria-hidden="true" hidden>
     <span>Server</span><span>Status</span><span>CPU</span><span>Memory</span><span>GPUs</span><span>Last 30 days</span><span></span>
   </div>
-
-  {% for group in site.data.monitor.groups %}
-    {% for hid in group.hosts %}
-      {% assign h = site.data.monitor.hosts[hid] %}
-      {% if h.status == "live" %}{% assign state = "mon-state-loading" %}{% else %}{% assign state = "mon-state-planned" %}{% endif %}
-      <section class="mon-server {{ state }}" data-id="{{ hid }}" data-status="{{ h.status }}">
-        <button class="mon-row" type="button" aria-expanded="false" aria-controls="mon-detail-{{ hid }}" {% if h.status != "live" %}disabled{% endif %}>
-          <span class="mon-name">
-            <strong>{{ h.name }}</strong>
-            <small>{{ group.name }}</small>
-          </span>
-          <span class="mon-status">
-            <i class="mon-dot" aria-hidden="true"></i>
-            <span class="mon-status-text">{% if h.status == "live" %}Connecting{% else %}Not reporting yet{% endif %}</span>
-          </span>
-          <span class="mon-cell mon-cpu" data-label="CPU"><span class="mon-value mon-muted" title="{{ h.cpus }}">{{ h.cpus }}</span></span>
-          <span class="mon-cell mon-mem" data-label="Memory"><span class="mon-value mon-muted" title="{{ h.memory }}">{{ h.memory }}</span></span>
-          <span class="mon-cell mon-gpu" data-label="GPUs"><span class="mon-value mon-muted" title="{{ h.gpus }}">{{ h.gpus }}</span></span>
-          <span class="mon-cell mon-30d" data-label="Last 30 days"></span>
-          <i class="mon-chev" aria-hidden="true"></i>
-        </button>
-        <div class="mon-detail" id="mon-detail-{{ hid }}" hidden></div>
-      </section>
-    {% endfor %}
-  {% endfor %}
+  <div id="mon-list"></div>
 
   <noscript><p>This page needs JavaScript to show live data.</p></noscript>
   <p class="mon-note">
     Load is the average of CPU, memory, GPU utilization and GPU memory use. GPU process owners are
     the host accounts that own each process; for a container, that is the account its processes run as.
   </p>
-  <script type="application/json" id="monitor-config">{{ site.data.monitor | jsonify }}</script>
+  <script type="application/json" id="monitor-config">{"data_base": {{ page.monitor_data | jsonify }}}</script>
 </div>

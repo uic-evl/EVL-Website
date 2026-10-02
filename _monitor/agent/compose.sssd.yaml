@@ -1,6 +1,0 @@
-# Hosts whose accounts come from SSSD (UIC AD): lets the agent name directory users.
-services:
-  agent:
-    volumes:
-      - /var/lib/sss/pipes:/var/lib/sss/pipes:ro
-      - /var/lib/sss/mc:/var/lib/sss/mc:ro
