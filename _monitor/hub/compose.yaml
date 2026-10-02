@@ -11,10 +11,13 @@ services:
     command: ["evl_monitor.hub"]
     # back up whenever Docker starts, including after a reboot; `docker compose down` stops for good
     restart: always
-    # uid 0 only to read the host's root-only TLS key; no capabilities, read-only, no new privileges
+    # The TLS key on the host may belong to any account and sit in a private directory, so the
+    # hub keeps one capability: reading files whatever their owner (DAC_READ_SEARCH). It can only
+    # use it on its read-only mounts below. No other capabilities, no new privileges.
     user: "0:0"
     read_only: true
     cap_drop: [ALL]
+    cap_add: [DAC_READ_SEARCH]
     security_opt: ["no-new-privileges:true"]
     ports:
       - "${HUB_BIND_IP:-0.0.0.0}:${HUB_PORT:-6161}:6161"

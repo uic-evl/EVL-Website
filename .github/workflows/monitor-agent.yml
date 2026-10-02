@@ -65,7 +65,8 @@ jobs:
           openssl req -x509 -newkey rsa:2048 -nodes -days 2 -subj "/CN=localhost" \
             -addext "subjectAltName=DNS:localhost,IP:127.0.0.1" \
             -keyout /tmp/hub/tls/key.pem -out /tmp/hub/tls/cert.pem 2>/dev/null
-          sudo chown -R root:root /tmp/hub/tls && sudo chmod 600 /tmp/hub/tls/key.pem   # like a real server key
+          # like arcade: the key belongs to a non-root account, mode 0600, in a private directory
+          chmod 600 /tmp/hub/tls/key.pem && chmod 711 /tmp/hub/tls
           printf '%s\n' "groups:" "  - {id: g, name: CI, hosts: [ci, later]}" "hosts:" \
             "  ci: {name: CI, fqdn: 172.17.0.1, status: live}" \
             "  later: {name: Later, fqdn: later.evl.uic.edu, status: planned}" > /tmp/hub/data/monitor.yml

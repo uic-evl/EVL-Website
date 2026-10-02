@@ -333,6 +333,16 @@ def test_https_and_certificate_reload(tmp_path):
         subject = dict(x[0] for x in c.sock.getpeercert()["subject"])
         assert subject["commonName"] == "second"  # renewed certificate, no restart
         c.close()
+        # a half-written renewal (a new certificate next to the old key) keeps the working pair
+        os.makedirs(tmp_path / "third")
+        _cert(tmp_path / "third", "third")
+        time.sleep(1.1)
+        os.replace(tmp_path / "third" / "cert.pem", tmp_path / "cert.pem")
+        c = http.client.HTTPSConnection("127.0.0.1", port, timeout=5, context=ctx2)
+        c.request("GET", "/healthz")
+        assert c.getresponse().status == 200
+        assert dict(x[0] for x in c.sock.getpeercert()["subject"])["commonName"] == "second"
+        c.close()
     finally:
         srv.shutdown()
         srv.server_close()
