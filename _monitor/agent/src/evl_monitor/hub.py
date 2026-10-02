@@ -392,12 +392,24 @@ class TLSServer(BoundedServer):
         super().__init__(addr, handler, max_conn)
 
     def context(self) -> ssl.SSLContext:
-        stamp = (os.stat(self.cert).st_mtime, os.stat(self.key).st_mtime)
+        try:
+            stamp = (os.stat(self.cert).st_mtime, os.stat(self.key).st_mtime)
+        except OSError:
+            if self._ctx is None:
+                raise
+            return self._ctx  # files briefly missing during a renewal: keep serving
         with self._ctx_lock:
             if self._ctx is None or stamp != self._ctx_stamp:
                 ctx = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
                 ctx.minimum_version = ssl.TLSVersion.TLSv1_2
-                ctx.load_cert_chain(self.cert, self.key)
+                try:
+                    ctx.load_cert_chain(self.cert, self.key)
+                except (ssl.SSLError, OSError):
+                    if self._ctx is None:
+                        raise  # no certificate at all: fail at start
+                    # a half-written renewal (new certificate, old key): keep the working pair
+                    log.warning("could not load the renewed certificate yet; keeping the previous one")
+                    return self._ctx
                 self._ctx, self._ctx_stamp = ctx, stamp
             return self._ctx
 

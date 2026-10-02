@@ -42,8 +42,6 @@ if [ -z "$CERT" ] || [ -z "$KEY" ]; then
 fi
 [ -r "$CERT" ] || die "cannot read certificate $CERT"
 [ -r "$KEY" ] || die "cannot read key $KEY"
-# the hub reads the key as root with no capabilities, which works only for a root-owned key
-[ "$(stat -c %u "$KEY")" = 0 ] || die "the key $KEY must be owned by root"
 if command -v openssl >/dev/null; then
   echo "Certificate: $CERT"
   openssl x509 -in "$CERT" -noout -subject -enddate | sed 's/^/  /'
