@@ -21,4 +21,4 @@ nav: false
 
 - [Resources](/internal/resources/) - EVL computing and networking resources, and who uses them
 - [AI Services](/internal/ai-services/) - AI services available to EVLers
-- [Status](/internal/status/) - Status of EVL systems and services
+- [Monitor](/internal/monitor/) - Status of EVL systems and services
