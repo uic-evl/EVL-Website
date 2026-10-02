@@ -25,7 +25,7 @@ jobs:
       - name: Check connectivity
         run: |
           tailscale status
-          tailscale ping --until-direct=false -c 3 www-new
+          tailscale ping --until-direct=false -c 3 www
 
       - name: Set up SSH key
         run: |
@@ -36,5 +36,5 @@ jobs:
 
       - name: Deploy the content
         run: |
-          ssh -o StrictHostKeyChecking=accept-new -i ~/.ssh/id_ed25519 evlroot@www-new \
+          ssh -o StrictHostKeyChecking=accept-new -i ~/.ssh/id_ed25519 evlroot@www \
             'echo "Created by GitHub Actions on $(date -u +%Y-%m-%dT%H:%M:%SZ)" > ~/ci-deployment.txt && cat ~/ci-deployment.txt && ./DEPLOY'

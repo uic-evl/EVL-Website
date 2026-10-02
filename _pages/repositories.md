@@ -51,14 +51,20 @@ nav: false
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     const organizations = {{ site.data.repositories.github_organizations | jsonify }};
+    const onlyRepos = {{ site.data.repositories.github_organization_repos | jsonify }} || {};
 
-    // Cache last commit data to avoid redundant API calls
-    let commitCache = {};
+    // GitHub allows 60 unauthenticated API requests per hour, so the page makes two per organization
+    // (its info and its repository list) and nothing per repository.
+    function fetchJson(url) {
+      return fetch(url).then(response => {
+        if (!response.ok) throw new Error(`GitHub API answered ${response.status} for ${url}`);
+        return response.json();
+      });
+    }
 
     organizations.forEach(org => {
       // Fetch organization info and stats
-      fetch(`https://api.github.com/orgs/${org}`)
-        .then(response => response.json())
+      fetchJson(`https://api.github.com/orgs/${org}`)
         .then(data => {
           // Update the organization display name
           document.getElementById(`${org}-display-name`).textContent = data.name || org;
@@ -82,25 +88,27 @@ nav: false
         });
     });
 
-    // Function to recursively fetch repositories from paginated API and store them for sorting
+    // Function to recursively fetch repositories from paginated API, then sort and display them
     function fetchAllRepos(reposUrl, org, page, allRepos) {
-      fetch(`${reposUrl}?per_page=100&page=${page}`)
-        .then(response => response.json())
+      fetchJson(`${reposUrl}?per_page=100&page=${page}`)
         .then(repos => {
-          if (repos.length > 0) {
-            // Append the current page of repositories to the allRepos array
-            allRepos = allRepos.concat(repos);
+          // Append the current page of repositories to the allRepos array
+          allRepos = allRepos.concat(repos);
 
-            // If there are exactly 100 repos, fetch the next page
-            if (repos.length === 100) {
-              fetchAllRepos(reposUrl, org, page + 1, allRepos);
-            } else {
-              // Fetch last commit for all repos, then sort and display
-              fetchAllCommitsAndSort(allRepos, org);
-            }
-          } else if (page === 1) {
+          // If there are exactly 100 repos, fetch the next page
+          if (repos.length === 100) {
+            fetchAllRepos(reposUrl, org, page + 1, allRepos);
+            return;
+          }
+
+          // Keep only the listed repositories of an organization that has a list
+          const only = onlyRepos[org];
+          const shown = only ? allRepos.filter(repo => only.includes(repo.name)) : allRepos;
+          if (shown.length === 0) {
             // If there are no repositories at all
             document.getElementById(`${org}-repos`).innerHTML = "<li>No repositories available.</li>";
+          } else {
+            sortAndDisplay(shown, org);
           }
         })
         .catch(error => {
@@ -109,68 +117,26 @@ nav: false
         });
     }
 
-    // Function to fetch last commits for all repos, then sort and display
-    function fetchAllCommitsAndSort(repos, org) {
+    // The date of a repository's last push, which the repository list already carries
+    function lastPush(repo) {
+      return new Date(repo.pushed_at || repo.updated_at);
+    }
+
+    // Function to sort repos by last push (most recent first) and display them
+    function sortAndDisplay(repos, org) {
       const reposElement = document.getElementById(`${org}-repos`);
-      reposElement.innerHTML = '<li>Loading commit information...</li>';
+      repos.sort((a, b) => lastPush(b) - lastPush(a));
 
-      // Fetch all commits in parallel
-      const commitPromises = repos.map(repo => {
-        if (commitCache[repo.name]) {
-          return Promise.resolve({ repo, commitData: commitCache[repo.name] });
-        }
-        return fetch(`${repo.url}/commits?per_page=1`)
-          .then(response => response.json())
-          .then(commits => {
-            if (commits.length > 0) {
-              const lastCommit = commits[0];
-              const commitData = {
-                lastCommitter: lastCommit.author ? lastCommit.author.login : lastCommit.commit.author.name,
-                lastCommitterUrl: lastCommit.author ? lastCommit.author.html_url : '#',
-                lastCommitDate: new Date(lastCommit.commit.author.date),
-                lastCommitDateString: new Date(lastCommit.commit.author.date).toLocaleDateString()
-              };
-              commitCache[repo.name] = commitData;
-              return { repo, commitData };
-            }
-            return { repo, commitData: null };
-          })
-          .catch(error => {
-            console.error(`Error fetching commit for ${repo.name}:`, error);
-            return { repo, commitData: null };
-          });
-      });
-
-      // Wait for all commits to be fetched, then sort and display
-      Promise.all(commitPromises).then(results => {
-        // Sort by last commit date (most recent first)
-        results.sort((a, b) => {
-          const dateA = a.commitData ? a.commitData.lastCommitDate : new Date(a.repo.updated_at);
-          const dateB = b.commitData ? b.commitData.lastCommitDate : new Date(b.repo.updated_at);
-          return dateB - dateA;
-        });
-
-        // Clear and display sorted repositories
-        reposElement.innerHTML = '';
-        results.forEach(({ repo, commitData }) => {
-          const li = document.createElement('li');
-          li.id = repo.name;
-
-          if (commitData) {
-            li.innerHTML = `
-              <a href="${repo.html_url}" target="_blank">${repo.name}</a>:
-              ${repo.description || "No description available."}
-              (Last updated: ${commitData.lastCommitDateString} by <a href="${commitData.lastCommitterUrl}" target="_blank">${commitData.lastCommitter}</a>)
-            `;
-          } else {
-            li.innerHTML = `
-              <a href="${repo.html_url}" target="_blank">${repo.name}</a>:
-              ${repo.description || "No description available."}
-              (Last updated: ${new Date(repo.updated_at).toLocaleDateString()})
-            `;
-          }
-          reposElement.appendChild(li);
-        });
+      reposElement.innerHTML = '';
+      repos.forEach(repo => {
+        const li = document.createElement('li');
+        li.id = repo.name;
+        li.innerHTML = `
+          <a href="${repo.html_url}" target="_blank">${repo.name}</a>:
+          ${repo.description || "No description available."}
+          (Last updated: ${lastPush(repo).toLocaleDateString()})
+        `;
+        reposElement.appendChild(li);
       });
     }
 
