@@ -25,7 +25,7 @@ services:
       HUB_HOSTS: /config/monitor.yml
       HUB_TLS_CERT: /tls/cert/${HUB_CERT_FILE:?}
       HUB_TLS_KEY: /tls/key/${HUB_KEY_FILE:?}
-      HUB_CORS_ORIGINS: ${HUB_CORS_ORIGINS:-https://www.evl.uic.edu,https://www-new.evl.uic.edu}
+      HUB_CORS_ORIGINS: ${HUB_CORS_ORIGINS:-}   # empty: the site and local previews (hub.DEFAULT_CORS)
       HUB_NOW_SECONDS: ${HUB_NOW_SECONDS:-15}
       HUB_DEV: ${HUB_DEV:-}
     volumes:

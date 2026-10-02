@@ -49,6 +49,9 @@ BACKOFF = (15, 30, 60, 120, 300)
 TIMEOUT = 3.0
 MAX_BYTES = 8 * 1024 * 1024
 HOSTS_RELOAD = 30.0
+# the site, plus a local Jekyll preview (the data is not secret, and nothing sends credentials)
+DEFAULT_CORS = ("https://www.evl.uic.edu,https://www-new.evl.uic.edu,"
+                "http://localhost:4000,http://127.0.0.1:4000,http://localhost:8080,http://127.0.0.1:8080")
 
 MAX_AGE_RE = re.compile(r"max-age=(\d+)")
 
@@ -455,7 +458,7 @@ def main(argv: list[str]) -> int:
     agent_port = int(_env("HUB_AGENT_PORT", "9877"))
     hub = Hub(lambda: load_hosts(hosts_file, suffix, agent_port), now_seconds=int(_env("HUB_NOW_SECONDS", "15")))
     hub.refresh_hosts(force=True)
-    cors = [o for o in _env("HUB_CORS_ORIGINS", "https://www.evl.uic.edu,https://www-new.evl.uic.edu").split(",") if o]
+    cors = [o for o in _env("HUB_CORS_ORIGINS", DEFAULT_CORS).split(",") if o]
     server = make_hub_server(hub, _env("HUB_BIND", "0.0.0.0"), int(_env("HUB_PORT", "6161")), cors,
                              _env("HUB_TLS_CERT"), _env("HUB_TLS_KEY"))
     threading.Thread(target=server.serve_forever, name="http", daemon=True).start()
