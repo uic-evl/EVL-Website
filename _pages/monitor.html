@@ -8,15 +8,15 @@ sitemap: false
 chart:
   chartjs: true
 monitor: true
-# the monitor hub on arcade; it lists the servers (github.com/uic-evl/evl-monitoring)
-monitor_data: https://arcade.evl.uic.edu:6161
+# the monitor hub on arcade, through arcade's nginx; it lists the servers
+# (github.com/uic-evl/evl-monitoring)
+monitor_data: https://arcade.evl.uic.edu/stats
 ---
 
 <div class="evl-monitor" id="evl-monitor">
   <p class="mon-summary" id="mon-summary" aria-live="polite">Connecting to the servers.</p>
   <p class="mon-banner" id="mon-banner" role="status" hidden>
-    The monitor hub (arcade.evl.uic.edu:6161) cannot be reached from this network. It may be
-    open only on the UIC network or VPN.
+    The monitor hub (arcade.evl.uic.edu/stats) cannot be reached right now.
   </p>
 
   <div class="mon-head" id="mon-head" aria-hidden="true" hidden>
