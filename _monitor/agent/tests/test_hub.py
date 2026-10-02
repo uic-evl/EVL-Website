@@ -338,6 +338,15 @@ def test_https_and_certificate_reload(tmp_path):
         srv.server_close()
 
 
+def test_empty_settings_mean_the_defaults(monkeypatch):
+    from evl_monitor import hub as hub_mod
+    monkeypatch.setenv("HUB_CORS_ORIGINS", "")
+    assert hub_mod._env("HUB_CORS_ORIGINS", hub_mod.DEFAULT_CORS) == hub_mod.DEFAULT_CORS
+    assert "https://www.evl.uic.edu" in hub_mod.DEFAULT_CORS.split(",")
+    monkeypatch.setenv("HUB_CORS_ORIGINS", "https://a.example")
+    assert hub_mod._env("HUB_CORS_ORIGINS", hub_mod.DEFAULT_CORS) == "https://a.example"
+
+
 def test_overview_entry_is_cacheable(tmp_path):
     hub, *_ = make_hub(tmp_path)
     hub.poll_once()

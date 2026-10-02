@@ -428,7 +428,8 @@ def make_hub_server(hub: Hub, bind: str, port: int, cors_origins=(), cert: str =
 
 
 def _env(name: str, default: str = "") -> str:
-    return os.environ.get(name, default).strip()
+    """A setting; empty counts as unset (compose passes `${X:-}` as an empty string)."""
+    return (os.environ.get(name, "").strip() or default).strip()
 
 
 def check() -> int:
@@ -458,7 +459,8 @@ def main(argv: list[str]) -> int:
     agent_port = int(_env("HUB_AGENT_PORT", "9877"))
     hub = Hub(lambda: load_hosts(hosts_file, suffix, agent_port), now_seconds=int(_env("HUB_NOW_SECONDS", "15")))
     hub.refresh_hosts(force=True)
-    cors = [o for o in _env("HUB_CORS_ORIGINS", DEFAULT_CORS).split(",") if o]
+    # compose passes an empty value when unset: empty means the default list
+    cors = [o for o in (_env("HUB_CORS_ORIGINS") or DEFAULT_CORS).split(",") if o]
     server = make_hub_server(hub, _env("HUB_BIND", "0.0.0.0"), int(_env("HUB_PORT", "6161")), cors,
                              _env("HUB_TLS_CERT"), _env("HUB_TLS_KEY"))
     threading.Thread(target=server.serve_forever, name="http", daemon=True).start()
