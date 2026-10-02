@@ -138,11 +138,13 @@ History is kept across updates and restarts.
 
 ## Add a server
 
-1. Add the host to `_data/monitor.yml` with `status: live` (or `planned` until it is racked),
-   in a pull request.
-2. Install the agent on the new server (above).
+Step by step, with the firewall checks and what to do when a server shows offline:
+[ADDING-A-SERVER.md](ADDING-A-SERVER.md). In short:
+
+1. Install the agent on the new server (above) and let arcade reach its port 9877.
+2. Add the host to `_data/monitor.yml` with `status: live`, in a pull request.
 3. After the merge, `sudo git -C /opt/evl-monitor pull` on arcade. The hub starts polling
-   the new server within a minute, without a restart.
+   the new server within 30 seconds, without a restart.
 
 ## Run it locally
 
