@@ -21,7 +21,7 @@ _styles: >
 
 <p>EVL's publications, citations, PhD graduates, funding and open-source work by calendar year since {{ impact.years.first.label }}. The numbers come from this site's <a href="/publications/">Publications</a>, <a href="/people/">Members</a>, <a href="/about/funding/">Funding</a> and <a href="/repositories/">Repositories</a> pages, and change when those pages do.</p>
 
-<p>{% if impact.updated %}Citations, repositories, stars and downloads were last collected on {{ impact.updated }}.{% else %}Citations, repositories, stars and downloads have not been collected yet.{% endif %} Download the table as <a href="/impact/evl-impact.csv" download>CSV</a> or <a href="/impact/impact.json">JSON</a>.</p>
+<p>{% if impact.updated %}Citations, repositories and downloads were last collected on {{ impact.updated }}.{% else %}Citations, repositories and downloads have not been collected yet.{% endif %} Download the table as <a href="/impact/evl-impact.csv" download>CSV</a> or <a href="/impact/impact.json">JSON</a>.</p>
 
 <div class="table-responsive">
 <table class="table table-sm evl-impact">
@@ -68,7 +68,7 @@ _styles: >
 
 <ul>
 <li>Years are calendar years. {{ impact.years.last.label }} runs through {{ impact.through }}.</li>
-<li>Code: <a href="https://github.com/uic-evl/EVL-Website/blob/deployment/_plugins/impact.rb">_plugins/impact.rb</a> counts every row when the site is built, and <a href="https://github.com/uic-evl/EVL-Website/blob/deployment/_impact/collect.mjs">_impact/collect.mjs</a> collects citations, repositories, stars and downloads once a week and whenever the bibliography or the repository list changes.</li>
+<li>Code: <a href="https://github.com/uic-evl/EVL-Website/blob/deployment/_plugins/impact.rb">_plugins/impact.rb</a> counts every row when the site is built, and <a href="https://github.com/uic-evl/EVL-Website/blob/deployment/_impact/collect.mjs">_impact/collect.mjs</a> collects citations, repositories and downloads once a week and whenever the bibliography or the repository list changes.</li>
 </ul>
 
 {% else %}

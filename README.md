@@ -106,10 +106,10 @@ The [Impact](https://www.evl.uic.edu/impact/) page (`_pages/impact.md`) counts, 
 | Citations | OpenAlex, for the same entries |
 | PhD graduates | the `alumni` column of `_data/people.csv` ("PhD 25") |
 | Funded projects, new funding | `_data/grants.csv`, including grants that have ended |
-| Open repositories, GitHub stars | the organizations in `_data/repositories.yml` |
+| Open repositories | the organizations in `_data/repositories.yml` |
 | Package downloads | the packages in `_data/impact.yml`, from PyPI and npm |
 
-`_plugins/impact.rb` counts every row at each build, so a new paper, grant, graduate or repository shows up on the next deploy. Citations, repositories, stars and downloads come from `_data/impact_metrics.json`, which the "Impact numbers" workflow (`.github/workflows/impact.yml`) collects with `_impact/collect.mjs` and commits. It runs every Monday and whenever the bibliography, the repository list or `_data/impact.yml` changes.
+`_plugins/impact.rb` counts every row at each build, so a new paper, grant, graduate or repository shows up on the next deploy. Citations, repositories and downloads come from `_data/impact_metrics.json`, which the "Impact numbers" workflow (`.github/workflows/impact.yml`) collects with `_impact/collect.mjs` and commits. It runs every Monday and whenever the bibliography, the repository list or `_data/impact.yml` changes.
 
 To count a new package, add it under its repository in `_data/impact.yml`.
 

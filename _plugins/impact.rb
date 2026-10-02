@@ -25,7 +25,7 @@ module EvlImpact
   GROUPS = [
     ["Research", %w[publications citations phd-graduates]],
     ["Funding", %w[funded-projects new-funding]],
-    ["Open source", %w[repositories stars downloads]],
+    ["Open source", %w[repositories downloads]],
   ].freeze
 
   # Lowercase ASCII words: HTML entities, LaTeX accents, commands and braces, and diacritics removed.
@@ -78,7 +78,6 @@ module EvlImpact
       safely("phd-graduates") { phd_graduates }
       safely("funded-projects") { funding }
       safely("repositories") { repositories }
-      safely("stars") { stars }
       safely("downloads") { downloads }
       self
     end

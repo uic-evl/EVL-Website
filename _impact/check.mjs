@@ -9,8 +9,8 @@ import { fileURLToPath } from 'node:url'
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const SITE = path.join(ROOT, '_site')
-const ROWS = ['publications', 'citations', 'phd-graduates', 'funded-projects', 'new-funding', 'repositories', 'stars', 'downloads']
-const COLLECTED = ['citations', 'repositories', 'stars', 'downloads']
+const ROWS = ['publications', 'citations', 'phd-graduates', 'funded-projects', 'new-funding', 'repositories', 'downloads']
+const COLLECTED = ['citations', 'repositories', 'downloads']
 
 const problems = []
 const read = (file) => fs.readFileSync(path.join(SITE, file), 'utf8')
