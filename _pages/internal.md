@@ -6,6 +6,8 @@ description: For EVLers only
 nav: false
 ---
 
+**[Server monitor](/internal/monitor/)**: live load, GPUs, models and services on EVL's servers.
+
 <div class="row justify-content-sm-center">
   <div class="col-md-6 mt-3 mt-md-0">
     {% include figure.liquid path="assets/img/wall.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
@@ -17,7 +19,6 @@ nav: false
 
 ## Resources
 
-- [Server monitor](/internal/monitor/): live load, GPUs, models and services on EVL's servers
 - Networking: 100Gbps UIC research networking to StarLight Exchange
 - CAVE2 Cluster: VR system, 72 screens
 - GPU Cluster: COMPaaS DLV, 27 nodes, 68 AI GPUs
