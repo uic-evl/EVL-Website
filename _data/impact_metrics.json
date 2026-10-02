@@ -1,0 +1,5593 @@
+{
+ "citations": {
+  "lookups": {
+   "AbAyBe18": {
+    "id": "W2801707092",
+    "via": "doi"
+   },
+   "AdInJo24": {
+    "id": "W4404847821",
+    "via": "doi"
+   },
+   "Ag06": {
+    "id": "W2248305282",
+    "via": "doi"
+   },
+   "AiSaSc11": {
+    "id": "W2028433555",
+    "via": "doi"
+   },
+   "AkBa02": {
+    "id": "W2115752813",
+    "via": "doi"
+   },
+   "AlAuJo20": {
+    "id": "W3037365845",
+    "via": "doi"
+   },
+   "AlFo15": {
+    "id": "W2294779258",
+    "via": "doi"
+   },
+   "AlJo19": {
+    "checked": "2026-10-02",
+    "id": null,
+    "via": "title"
+   },
+   "AlJoNi19": {
+    "id": "W2990661578",
+    "via": "doi"
+   },
+   "AlRuAl19": {
+    "id": "W2946229075",
+    "via": "doi"
+   },
+   "AlXuKe13": {
+    "id": "W1485042717",
+    "via": "doi"
+   },
+   "AlZhMa26": {
+    "id": "W7147465313",
+    "via": "doi"
+   },
+   "AnPaSa00": {
+    "id": "W1874571208",
+    "via": "doi"
+   },
+   "AnPaSa00a": {
+    "id": "W2042652698",
+    "via": "doi"
+   },
+   "Anon18": {
+    "checked": "2026-10-02",
+    "id": "W2887827698",
+    "via": "title"
+   },
+   "Au14": {
+    "id": "W1978217810",
+    "via": "doi"
+   },
+   "AuChSn14": {
+    "checked": "2026-10-02",
+    "id": null,
+    "via": "title"
+   },
+   "AuHwJo19": {
+    "id": "W2997599030",
+    "via": "doi"
+   },
+   "AuKuAl20": {
+    "id": "W3043219927",
+    "via": "doi"
+   },
+   "AuKuGo15": {
+    "checked": "2026-10-02",
+    "id": null,
+    "via": "title"
+   },
+   "AuReJo15": {
+    "id": "W1794378541",
+    "via": "doi"
+   },
+   "AuShLa26": {
+    "id": "W7163866935",
+    "via": "doi"
+   },
+   "AuShTa26": {
+    "id": "W7171544240",
+    "via": "doi"
+   },
+   "Ba22": {
+    "checked": "2026-10-02",
+    "id": null,
+    "via": "title"
+   },
+   "BaBa00": {
+    "id": "W2092183534",
+    "via": "doi"
+   },
+   "BaBa03": {
+    "id": "W1986567574",
+    "via": "doi"
+   },
+   "BaBaDe00": {
+    "id": "W2136858590",
+    "via": "doi"
+   },
+   "BaBoRa02": {
+    "id": "W2086434298",
+    "via": "doi"
+   },
+   "BaCaMu16": {
+    "id": "W2527610886",
+    "via": "doi"
+   },
+   "BaKuMi19": {
+    "id": "W2975003185",
+    "via": "doi"
+   },
+   "BaLuLe07": {
+    "id": "W2026325814",
+    "via": "doi"
+   },
+   "BaVeMa14": {
+    "checked": "2026-10-02",
+    "id": null,
+    "via": "title"
+   },
+   "BeCaEl17": {
+    "id": "W2592011087",
+    "via": "doi"
+   },
+   "BeLeTh23": {
+    "id": "W4386173956",
+    "via": "doi"
+   },
+   "BeMo07": {
+    "id": "W2121584646",
+    "via": "doi"
+   },
+   "BhBuJo21": {
+    "id": "W4213256986",
+    "via": "doi"
+   },
+   "BhFlRo16": {
+    "id": "W2476957922",
+    "via": "doi"
+   },
+   "BhJo21": {
+    "id": "W3125431316",
+    "via": "doi"
+   },
+   "BiBrMi23": {
+    "id": "W4387552673",
+    "via": "doi"
+   },
+   "BiFlVa21": {
+    "id": "W3169134685",
+    "via": "doi"
+   },
+   "BiJoVa98": {
+    "id": "W1559511220",
+    "via": "doi"
+   },
+   "BlPiDa14": {
+    "checked": "2026-10-02",
+    "id": "W1494294405",
+    "via": "title"
+   },
+   "BoAlFi25": {
+    "id": "W4406785306",
+    "via": "arxiv"
+   },
+   "BoKe98": {
+    "id": "W2154327700",
+    "via": "doi"
+   },
+   "BoZhAj25": {
+    "id": "W4416004349",
+    "via": "doi"
+   },
+   "Br03": {
+    "id": "W2023327200",
+    "via": "doi"
+   },
+   "BrCzFo98": {
+    "id": "W2165418477",
+    "via": "doi"
+   },
+   "BrLaPa26": {
+    "id": "W7161808894",
+    "via": "doi"
+   },
+   "BrReLo19": {
+    "id": "W2982451451",
+    "via": "doi"
+   },
+   "BrSaWu26": {
+    "checked": "2026-10-02",
+    "id": "W7161842177",
+    "via": "title"
+   },
+   "BuFiVi14": {
+    "id": "W2127883272",
+    "via": "doi"
+   },
+   "BuJaMa15": {
+    "id": "W1904002291",
+    "via": "doi"
+   },
+   "BuJuVi16": {
+    "id": "W2182241434",
+    "via": "doi"
+   },
+   "BuLeJu14": {
+    "id": "W1555900535",
+    "via": "doi"
+   },
+   "BuMaVi15": {
+    "id": "W2286420110",
+    "via": "doi"
+   },
+   "BuReJo20": {
+    "id": "W3045292659",
+    "via": "doi"
+   },
+   "BuViLe12": {
+    "id": "W4251446457",
+    "via": "doi"
+   },
+   "BuViLe13": {
+    "checked": "2026-10-02",
+    "id": null,
+    "via": "title"
+   },
+   "Ca09": {
+    "id": "W4212968967",
+    "via": "doi"
+   },
+   "Ca16": {
+    "id": "W2555439351",
+    "via": "doi"
+   },
+   "Ca16a": {
+    "id": "W2345743369",
+    "via": "doi"
+   },
+   "CaBoBu17": {
+    "id": "W2905629164",
+    "via": "doi"
+   },
+   "CaCaFo16": {
+    "checked": "2026-10-02",
+    "id": "W2982593592",
+    "via": "title"
+   },
+   "CaCaFo16a": {
+    "checked": "2026-10-02",
+    "id": null,
+    "via": "title"
+   },
+   "CaFo16": {
+    "id": "W2589103256",
+    "via": "doi"
+   },
+   "CaFo16a": {
+    "id": "W2588562645",
+    "via": "doi"
+   },
+   "CaMe16": {
+    "checked": "2026-10-02",
+    "id": "W2569032179",
+    "via": "title"
+   },
+   "CaMuFo16": {
+    "checked": "2026-10-02",
+    "id": "W2978611958",
+    "via": "title"
+   },
+   "CaMuFo16a": {
+    "checked": "2026-10-02",
+    "id": null,
+    "via": "title"
+   },
+   "CaRhFo16": {
+    "id": "W2585278951",
+    "via": "doi"
+   },
+   "CaWeMo23": {
+    "id": "W4382358982",
+    "via": "doi"
+   },
+   "Ch18": {
+    "id": "W2898791416",
+    "via": "doi"
+   },
+   "ChCaFo15": {
+    "id": "W2196146583",
+    "via": "doi"
+   },
+   "ChGhMo19": {
+    "id": "W2803004259",
+    "via": "doi"
+   },
+   "ChLeHu09": {
+    "id": "W2120545224",
+    "via": "doi"
+   },
+   "ChLeHu10": {
+    "id": "W2167206881",
+    "via": "doi"
+   },
+   "ChMa16": {
+    "id": "W2517131748",
+    "via": "doi"
+   },
+   "ChMcTa12": {
+    "id": "W2001624283",
+    "via": "doi"
+   },
+   "ChMiFe22": {
+    "id": "W3187025953",
+    "via": "doi"
+   },
+   "ChReLo22": {
+    "id": "W4289827787",
+    "via": "doi"
+   },
+   "ChSaOh17": {
+    "id": "W2761504849",
+    "via": "doi"
+   },
+   "ChVeDu18": {
+    "id": "W2793125939",
+    "via": "doi"
+   },
+   "CoCrSh26": {
+    "id": "W7161776938",
+    "via": "doi"
+   },
+   "CoKrRe10": {
+    "id": "W4205713093",
+    "via": "doi"
+   },
+   "CoReTs15": {
+    "id": "W1503463130",
+    "via": "doi"
+   },
+   "CoReTs21": {
+    "id": "W2885626652",
+    "via": "doi"
+   },
+   "CoYeAl16": {
+    "id": "W2576533530",
+    "via": "doi"
+   },
+   "CoYeFo15": {
+    "id": "W1959870056",
+    "via": "doi"
+   },
+   "CrLePa93": {
+    "id": "W2136218087",
+    "via": "doi"
+   },
+   "CrSaDe92": {
+    "id": "W2044116517",
+    "via": "doi"
+   },
+   "CrSaDe93": {
+    "id": "W4385484117",
+    "via": "doi"
+   },
+   "CrSaDe93a": {
+    "id": "W2079638262",
+    "via": "doi"
+   },
+   "CuArBa25": {
+    "id": "W4417094685",
+    "via": "doi"
+   },
+   "CzPaSa97": {
+    "id": "W1999880428",
+    "via": "doi"
+   },
+   "DaCuFo16": {
+    "id": "W2600373392",
+    "via": "doi"
+   },
+   "DaFrLu15": {
+    "checked": "2026-10-02",
+    "id": "W2401991345",
+    "via": "title"
+   },
+   "DaFrPa94": {
+    "id": "W4254186156",
+    "via": "doi"
+   },
+   "DaMuAu15": {
+    "id": "W2126619073",
+    "via": "doi"
+   },
+   "DaMuFo15": {
+    "id": "W1523357704",
+    "via": "doi"
+   },
+   "DaPeFo16": {
+    "id": "W2469514293",
+    "via": "doi"
+   },
+   "DaPiBl15": {
+    "checked": "2026-10-02",
+    "id": "W2220855841",
+    "via": "title"
+   },
+   "DaWi14": {
+    "id": "W2002008002",
+    "via": "doi"
+   },
+   "De00": {
+    "id": "W2134725895",
+    "via": "doi"
+   },
+   "De00a": {
+    "id": "W2139704332",
+    "via": "doi"
+   },
+   "De76": {
+    "id": "W1985502182",
+    "via": "doi"
+   },
+   "De84": {
+    "id": "W1881546862",
+    "via": "doi"
+   },
+   "DeAcAi11": {
+    "id": "W2118605391",
+    "via": "doi"
+   },
+   "DeBaLu04": {
+    "id": "W2112236434",
+    "via": "doi"
+   },
+   "DeBoDe24": {
+    "id": "W4387885600",
+    "via": "doi"
+   },
+   "DeBrSt96": {
+    "id": "W2083019194",
+    "via": "doi"
+   },
+   "DeErFo15": {
+    "checked": "2026-10-02",
+    "id": null,
+    "via": "title"
+   },
+   "DeFoPa96": {
+    "id": "W2150629669",
+    "via": "doi"
+   },
+   "DeLeRe09": {
+    "id": "W1966586072",
+    "via": "doi"
+   },
+   "DeLuCr22": {
+    "id": "W4210663852",
+    "via": "doi"
+   },
+   "DeSaBr01": {
+    "id": "W91249730",
+    "via": "doi"
+   },
+   "DeSaCr93": {
+    "id": "W4241112126",
+    "via": "doi"
+   },
+   "DeSaDa98": {
+    "id": "W1711563768",
+    "via": "doi"
+   },
+   "DhHiBr24": {
+    "id": "W4405756116",
+    "via": "doi"
+   },
+   "Do97": {
+    "id": "W2039215725",
+    "via": "doi"
+   },
+   "DoAnPa05": {
+    "id": "W2029652656",
+    "via": "doi"
+   },
+   "DoTuBh17": {
+    "id": "W2624445996",
+    "via": "doi"
+   },
+   "DuLiKe01": {
+    "id": "W2102755146",
+    "via": "doi"
+   },
+   "DuLiKe02": {
+    "id": "W2039608782",
+    "via": "doi"
+   },
+   "DuWiYa15": {
+    "id": "W2413227637",
+    "via": "doi"
+   },
+   "DySeUs26": {
+    "id": null,
+    "via": "arxiv"
+   },
+   "El15": {
+    "id": null,
+    "via": "doi"
+   },
+   "ElMoVo17": {
+    "checked": "2026-10-02",
+    "id": null,
+    "via": "title"
+   },
+   "ElMoVo17a": {
+    "checked": "2026-10-02",
+    "id": null,
+    "via": "title"
+   },
+   "ElMoVo18": {
+    "checked": "2026-10-02",
+    "id": null,
+    "via": "title"
+   },
+   "ElMoVo18a": {
+    "checked": "2026-10-02",
+    "id": null,
+    "via": "title"
+   },
+   "ElMoWh17": {
+    "id": "W2724559516",
+    "via": "doi"
+   },
+   "ElWeHa19": {
+    "id": "W2972315975",
+    "via": "doi"
+   },
+   "EmFoSa23": {
+    "id": "W4387559231",
+    "via": "arxiv"
+   },
+   "EtFo15": {
+    "checked": "2026-10-02",
+    "id": null,
+    "via": "title"
+   },
+   "EtFo16": {
+    "id": "W2337354714",
+    "via": "doi"
+   },
+   "EtLiCr15": {
+    "id": "W2395274837",
+    "via": "doi"
+   },
+   "EtLiPa16": {
+    "id": "W2398934807",
+    "via": "doi"
+   },
+   "EtMuBo15": {
+    "id": "W1921666650",
+    "via": "doi"
+   },
+   "EtMuFo14": {
+    "id": "W2030511318",
+    "via": "doi"
+   },
+   "FaLiFa22": {
+    "id": "W4296079434",
+    "via": "doi"
+   },
+   "FeGa09": {
+    "id": "W2033706938",
+    "via": "doi"
+   },
+   "FeLoSt13": {
+    "id": "W26994638",
+    "via": "doi"
+   },
+   "FeLoSt14": {
+    "id": "W2033764546",
+    "via": "doi"
+   },
+   "FeMaCh11": {
+    "id": "W57976199",
+    "via": "doi"
+   },
+   "FeMoHo24": {
+    "id": "W4401007975",
+    "via": "doi"
+   },
+   "FeNiMa14": {
+    "id": "W2076993091",
+    "via": "doi"
+   },
+   "FeNiTh13": {
+    "id": "W1977550631",
+    "via": "doi"
+   },
+   "FeRiDo14": {
+    "id": "W2039201989",
+    "via": "doi"
+   },
+   "FeRiGu12": {
+    "id": "W2182543740",
+    "via": "doi"
+   },
+   "FeSoLo14": {
+    "checked": "2026-10-02",
+    "id": null,
+    "via": "title"
+   },
+   "FeWuTa25": {
+    "id": "W4411800324",
+    "via": "doi"
+   },
+   "Fi01": {
+    "id": "W2144135646",
+    "via": "doi"
+   },
+   "FlNiWe22": {
+    "id": "W3192730383",
+    "via": "doi"
+   },
+   "FlWaWe26": {
+    "id": "W7138915827",
+    "via": "doi"
+   },
+   "FlWeMo23": {
+    "id": "W4389104801",
+    "via": "doi"
+   },
+   "Fo14": {
+    "id": "W13339910",
+    "via": "doi"
+   },
+   "Fo15": {
+    "id": "W2059414324",
+    "via": "doi"
+   },
+   "Fo15a": {
+    "checked": "2026-10-02",
+    "id": null,
+    "via": "title"
+   },
+   "FoBuLe18": {
+    "id": "W2752551804",
+    "via": "doi"
+   },
+   "FoBuMu15": {
+    "id": "W1610833755",
+    "via": "doi"
+   },
+   "FoVi15": {
+    "checked": "2026-10-02",
+    "id": null,
+    "via": "title"
+   },
+   "FrEiHo22": {
+    "id": "W4307136819",
+    "via": "doi"
+   },
+   "GaSuLa09": {
+    "id": "W2128570208",
+    "via": "doi"
+   },
+   "GhAdSa95": {
+    "id": "W2154619649",
+    "via": "doi"
+   },
+   "GiBa99": {
+    "id": "W1973785037",
+    "via": "doi"
+   },
+   "GiBaCo99": {
+    "id": "W1987737841",
+    "via": "doi"
+   },
+   "GiSaDe03": {
+    "id": "W2246062103",
+    "via": "doi"
+   },
+   "GiThBa02": {
+    "id": "W1963963661",
+    "via": "doi"
+   },
+   "GnPeGu14": {
+    "id": "W2010208463",
+    "via": "doi"
+   },
+   "Go01": {
+    "id": "W2126067341",
+    "via": "doi"
+   },
+   "GoLeDe14": {
+    "id": "W2601725386",
+    "via": "doi"
+   },
+   "GoRo94": {
+    "id": "W2060406526",
+    "via": "doi"
+   },
+   "GoSiBr25": {
+    "id": "W4411490478",
+    "via": "doi"
+   },
+   "Gr09": {
+    "id": "W2151099165",
+    "via": "doi"
+   },
+   "Gr10": {
+    "id": "W2136323176",
+    "via": "doi"
+   },
+   "GrGuHa03": {
+    "id": "W2088001117",
+    "via": "doi"
+   },
+   "HaBrLa23": {
+    "id": "W4317213649",
+    "via": "doi"
+   },
+   "HaDe91": {
+    "id": "W2097896816",
+    "via": "doi"
+   },
+   "HaKaSa90": {
+    "id": "W4248207135",
+    "via": "doi"
+   },
+   "HaKiTa23": {
+    "id": "W4388206897",
+    "via": "doi"
+   },
+   "HaLeSa93": {
+    "id": "W2085187756",
+    "via": "doi"
+   },
+   "HaNo90": {
+    "id": "W2022927826",
+    "via": "doi"
+   },
+   "HaPiAg19": {
+    "id": "W2913831350",
+    "via": "doi"
+   },
+   "HaPiUr15": {
+    "id": "W2295272795",
+    "via": "doi"
+   },
+   "HaSaKa89": {
+    "id": "W4244010489",
+    "via": "doi"
+   },
+   "HaSeIn26": {
+    "id": "W7133244747",
+    "via": "doi"
+   },
+   "HeAlEl03": {
+    "id": "W1973627980",
+    "via": "doi"
+   },
+   "HeAmIn24": {
+    "id": "W4404848939",
+    "via": "doi"
+   },
+   "HeLeYu02": {
+    "id": "W2150607931",
+    "via": "doi"
+   },
+   "HeWaLe06": {
+    "id": "W2143929863",
+    "via": "doi"
+   },
+   "HeWaVi06": {
+    "id": "W2149729846",
+    "via": "doi"
+   },
+   "HiReJe06": {
+    "id": "W2087260335",
+    "via": "doi"
+   },
+   "HlHoKr14": {
+    "id": "W2139617913",
+    "via": "doi"
+   },
+   "HoMiLi22": {
+    "id": "W4205906562",
+    "via": "doi"
+   },
+   "HoSeMi22": {
+    "id": "W4226263243",
+    "via": "doi"
+   },
+   "ImJoLe99": {
+    "id": "W2545861695",
+    "via": "doi"
+   },
+   "ImJoLe99a": {
+    "id": "W1685180324",
+    "via": "doi"
+   },
+   "InSaDe97": {
+    "id": "W2005141319",
+    "via": "doi"
+   },
+   "JaReJo11": {
+    "id": "W2153395947",
+    "via": "doi"
+   },
+   "JeLeJo10": {
+    "id": "W2164368507",
+    "via": "doi"
+   },
+   "JeReJa06": {
+    "id": "W3143809231",
+    "via": "doi"
+   },
+   "JeSiKi20": {
+    "id": "W3024732788",
+    "via": "doi"
+   },
+   "JeThVi14": {
+    "checked": "2026-10-02",
+    "id": "W2402742600",
+    "via": "title"
+   },
+   "JiRuXi25": {
+    "checked": "2026-10-02",
+    "id": "W4403760490",
+    "via": "title"
+   },
+   "JoFo94": {
+    "id": "W2134425363",
+    "via": "doi"
+   },
+   "JoFo95": {
+    "id": "W2038787408",
+    "via": "doi"
+   },
+   "JoFo95a": {
+    "id": "W1571842245",
+    "via": "doi"
+   },
+   "JoLe01": {
+    "id": "W141386582",
+    "via": "doi"
+   },
+   "JoLeMo06": {
+    "id": "W2057109017",
+    "via": "doi"
+   },
+   "JoLoCh17": {
+    "id": "W2611771175",
+    "via": "doi"
+   },
+   "JoMoCh02": {
+    "id": "W4256541644",
+    "via": "doi"
+   },
+   "JoMoCh02a": {
+    "id": "W2125282429",
+    "via": "doi"
+   },
+   "JoMoOh01": {
+    "id": "W2119655593",
+    "via": "doi"
+   },
+   "JoMoOh99": {
+    "id": "W2164824453",
+    "via": "doi"
+   },
+   "JoMoOh99b": {
+    "id": "W1826586397",
+    "via": "doi"
+   },
+   "JoReMa24": {
+    "id": "W4393970903",
+    "via": "doi"
+   },
+   "JoRoLe98": {
+    "id": "W2113855390",
+    "via": "doi"
+   },
+   "JyJo25": {
+    "id": "W4408324710",
+    "via": "doi"
+   },
+   "KaClSu23": {
+    "id": "W4382461849",
+    "via": "doi"
+   },
+   "KaMoCo16": {
+    "id": "W2528296488",
+    "via": "doi"
+   },
+   "KaSuPa23": {
+    "id": "W4382464066",
+    "via": "doi"
+   },
+   "KeAf95": {
+    "id": "W2039886402",
+    "via": "doi"
+   },
+   "KeDeSa95": {
+    "id": "W2124838353",
+    "via": "doi"
+   },
+   "KeKe00": {
+    "id": "W2127184947",
+    "via": "doi"
+   },
+   "KeLe11": {
+    "id": "W2028907466",
+    "via": "doi"
+   },
+   "KeLoK17": {
+    "id": "W2753901906",
+    "via": "doi"
+   },
+   "KeSaSm07": {
+    "id": "W2095038812",
+    "via": "doi"
+   },
+   "KeYaYa12": {
+    "id": "W1572483615",
+    "via": "doi"
+   },
+   "Ki09": {
+    "id": "W2072151337",
+    "via": "doi"
+   },
+   "KiKoBe20": {
+    "checked": "2026-10-02",
+    "id": null,
+    "via": "title"
+   },
+   "KiLiBu17": {
+    "id": "W2906427326",
+    "via": "doi"
+   },
+   "KiThMa17": {
+    "id": "W2607396809",
+    "via": "doi"
+   },
+   "KoKoKa07": {
+    "id": "W2021461914",
+    "via": "doi"
+   },
+   "KoLeJo09": {
+    "id": "W2118040125",
+    "via": "doi"
+   },
+   "KoLeJo12": {
+    "id": "W2491799204",
+    "via": "doi"
+   },
+   "KoPaRe24": {
+    "id": "W4402451520",
+    "via": "doi"
+   },
+   "KoPeGi07": {
+    "id": "W2165713084",
+    "via": "doi"
+   },
+   "KoPrSc10": {
+    "id": "W1972413265",
+    "via": "doi"
+   },
+   "KrViVe04": {
+    "id": "W2136080821",
+    "via": "doi"
+   },
+   "KuAuDi16": {
+    "id": "W2566358525",
+    "via": "doi"
+   },
+   "KuAuDi20": {
+    "checked": "2026-10-02",
+    "id": "W3037197438",
+    "via": "title"
+   },
+   "KuDiAu20": {
+    "checked": "2026-10-02",
+    "id": "W3032727632",
+    "via": "title"
+   },
+   "KuShWa25": {
+    "id": "W4411515885",
+    "via": "doi"
+   },
+   "KuTh02": {
+    "id": "W1972605835",
+    "via": "doi"
+   },
+   "LaVaCo15": {
+    "id": "W2062374546",
+    "via": "doi"
+   },
+   "LaVaLe15": {
+    "id": "W2313248301",
+    "via": "doi"
+   },
+   "LeBrRe17": {
+    "id": null,
+    "via": "doi"
+   },
+   "LeBrRe18": {
+    "id": null,
+    "via": "doi"
+   },
+   "LeBrRe18a": {
+    "id": null,
+    "via": "doi"
+   },
+   "LeDeSi03": {
+    "id": "W1989689146",
+    "via": "doi"
+   },
+   "LeFo14": {
+    "checked": "2026-10-02",
+    "id": null,
+    "via": "title"
+   },
+   "LeFo17": {
+    "id": "W2223312598",
+    "via": "doi"
+   },
+   "LeIsSz19": {
+    "id": "W2942658839",
+    "via": "doi"
+   },
+   "LeJo96": {
+    "id": "W2039316594",
+    "via": "doi"
+   },
+   "LeJoBr99": {
+    "id": "W2025102058",
+    "via": "doi"
+   },
+   "LeJoDe96": {
+    "id": "W2121569842",
+    "via": "doi"
+   },
+   "LeJoDe97": {
+    "id": "W2165982410",
+    "via": "doi"
+   },
+   "LeJoDe99b": {
+    "id": "W2134296613",
+    "via": "doi"
+   },
+   "LeJoLe15": {
+    "checked": "2026-10-02",
+    "id": "W2486570230",
+    "via": "title"
+   },
+   "LeJoRe13": {
+    "id": "W2146402040",
+    "via": "doi"
+   },
+   "LeJoVa96": {
+    "id": "W2544755263",
+    "via": "doi"
+   },
+   "LeKoKi19": {
+    "id": "W3012531524",
+    "via": "doi"
+   },
+   "LeReJo06": {
+    "id": "W2071102560",
+    "via": "doi"
+   },
+   "LeReJo08": {
+    "id": "W2534769067",
+    "via": "doi"
+   },
+   "LeReTh26": {
+    "id": "W7137959038",
+    "via": "doi"
+   },
+   "LeThVi17": {
+    "id": "W2610945334",
+    "via": "doi"
+   },
+   "LeYuSc01": {
+    "id": "W4254421371",
+    "via": "doi"
+   },
+   "Li20": {
+    "checked": "2026-10-02",
+    "id": null,
+    "via": "title"
+   },
+   "LiDeSa98": {
+    "id": "W2109970148",
+    "via": "doi"
+   },
+   "LiDiZo20": {
+    "id": "W3097623574",
+    "via": "doi"
+   },
+   "LiFaPa23": {
+    "checked": "2026-10-02",
+    "id": "W4315567908",
+    "via": "title"
+   },
+   "LiGoMa13": {
+    "id": "W2046996556",
+    "via": "doi"
+   },
+   "LiKePa23": {
+    "id": "W4383749386",
+    "via": "doi"
+   },
+   "LiLaPa23": {
+    "id": "W4390906047",
+    "via": "doi"
+   },
+   "LiScHe11": {
+    "id": "W1965798188",
+    "via": "doi"
+   },
+   "LiScTa21": {
+    "id": "W3170410460",
+    "via": "doi"
+   },
+   "LiZhJi21": {
+    "id": "W3179500067",
+    "via": "doi"
+   },
+   "LiZhTa24": {
+    "id": "W4396900894",
+    "via": "doi"
+   },
+   "LiZoTa21": {
+    "id": "W3106683923",
+    "via": "doi"
+   },
+   "LoBaRe22": {
+    "id": "W4289827728",
+    "via": "doi"
+   },
+   "LoFeSt17": {
+    "id": "W2474970079",
+    "via": "doi"
+   },
+   "LoRe07": {
+    "id": "W1982791013",
+    "via": "doi"
+   },
+   "LuBa00": {
+    "id": "W4236485581",
+    "via": "doi"
+   },
+   "LuBaDe03": {
+    "id": "W2070240107",
+    "via": "doi"
+   },
+   "LuBaDe09": {
+    "id": "W2008455446",
+    "via": "doi"
+   },
+   "LuBaMe01": {
+    "id": "W2094211664",
+    "via": "doi"
+   },
+   "LuBaRi07": {
+    "id": "W2110509853",
+    "via": "doi"
+   },
+   "LuBuSu19": {
+    "id": "W2904418625",
+    "via": "doi"
+   },
+   "LuChMy12": {
+    "id": "W2024733457",
+    "via": "doi"
+   },
+   "LuChOl14": {
+    "id": "W2054690695",
+    "via": "doi"
+   },
+   "LuElEl19": {
+    "id": "W2973023562",
+    "via": "doi"
+   },
+   "LuHaOl11": {
+    "id": "W2084175737",
+    "via": "doi"
+   },
+   "LuKeKa07": {
+    "id": "W2097698118",
+    "via": "doi"
+   },
+   "LuKeKl05": {
+    "id": "W1568572313",
+    "via": "doi"
+   },
+   "LuKlFi05": {
+    "id": "W2153287918",
+    "via": "doi"
+   },
+   "LuMaNi13": {
+    "checked": "2026-10-02",
+    "id": "W2796682208",
+    "via": "title"
+   },
+   "LuWeCh14": {
+    "id": "W2129520735",
+    "via": "doi"
+   },
+   "LuWeEl20": {
+    "id": "W3005422048",
+    "via": "doi"
+   },
+   "Ma15": {
+    "checked": "2026-10-02",
+    "id": "W2316255397",
+    "via": "title"
+   },
+   "Ma18a": {
+    "id": "W2752126964",
+    "via": "doi"
+   },
+   "MaAuNi14": {
+    "id": "W2034819808",
+    "via": "doi"
+   },
+   "MaBoFe23": {
+    "id": "W4388581052",
+    "via": "doi"
+   },
+   "MaBuLu17": {
+    "checked": "2026-10-02",
+    "id": null,
+    "via": "title"
+   },
+   "MaCh17": {
+    "id": "W2572411653",
+    "via": "doi"
+   },
+   "MaDeBr10": {
+    "id": "W1584646283",
+    "via": "doi"
+   },
+   "MaFoJo16": {
+    "id": "W2618864748",
+    "via": "doi"
+   },
+   "MaFoLl16": {
+    "id": "W4251826125",
+    "via": "doi"
+   },
+   "MaGoHs12": {
+    "checked": "2026-10-02",
+    "id": null,
+    "via": "title"
+   },
+   "MaHaLe13": {
+    "id": "W2092222318",
+    "via": "doi"
+   },
+   "MaHaYi12": {
+    "id": "W2219175373",
+    "via": "doi"
+   },
+   "MaHoBr24": {
+    "id": "W4399428073",
+    "via": "doi"
+   },
+   "MaKaBu98": {
+    "id": "W4240935802",
+    "via": "doi"
+   },
+   "MaKeFo15": {
+    "id": null,
+    "via": "doi"
+   },
+   "MaKuBu17": {
+    "id": "W2905706352",
+    "via": "doi"
+   },
+   "MaLeJo19": {
+    "id": "W2916390135",
+    "via": "doi"
+   },
+   "MaLeRe17": {
+    "id": "W2587884718",
+    "via": "doi"
+   },
+   "MaLiZh14": {
+    "id": "W1661268968",
+    "via": "doi"
+   },
+   "MaLuMa16": {
+    "id": "W2574003595",
+    "via": "doi"
+   },
+   "MaLuPi15": {
+    "id": "W2280969913",
+    "via": "doi"
+   },
+   "MaLuTe17": {
+    "id": "W2588098774",
+    "via": "doi"
+   },
+   "MaMaBu19": {
+    "id": "W2790037687",
+    "via": "doi"
+   },
+   "MaMaMo24": {
+    "id": "W4401608397",
+    "via": "doi"
+   },
+   "MaMaOl13": {
+    "id": "W2083739891",
+    "via": "doi"
+   },
+   "MaMo20": {
+    "id": "W3048588149",
+    "via": "doi"
+   },
+   "MaMoBh08": {
+    "id": "W2004264340",
+    "via": "doi"
+   },
+   "MaNiIn16": {
+    "id": "W2551793962",
+    "via": "doi"
+   },
+   "MaPaRe24": {
+    "id": "W4404916255",
+    "via": "doi"
+   },
+   "MaPeLl17": {
+    "id": "W2772951808",
+    "via": "doi"
+   },
+   "MaPiBu19": {
+    "id": "W2973876835",
+    "via": "doi"
+   },
+   "MaReLe14": {
+    "id": "W2073297680",
+    "via": "doi"
+   },
+   "MaReLe16": {
+    "id": "W2555587831",
+    "via": "doi"
+   },
+   "MaSeBo24": {
+    "id": "W4404847807",
+    "via": "doi"
+   },
+   "MaSeMa25": {
+    "id": "W4413059360",
+    "via": "doi"
+   },
+   "MaWeTr23": {
+    "id": "W4390621229",
+    "via": "doi"
+   },
+   "MaYaYa24": {
+    "id": "W4395483140",
+    "via": "doi"
+   },
+   "McDeBr88": {
+    "id": "W2028391713",
+    "via": "doi"
+   },
+   "McVoMa21": {
+    "id": "W3197870283",
+    "via": "doi"
+   },
+   "MeSaCu90": {
+    "id": "W2073125289",
+    "via": "doi"
+   },
+   "MeSaMc19": {
+    "id": "W2977053560",
+    "via": "doi"
+   },
+   "MoFeSi23": {
+    "id": "W4297459490",
+    "via": "doi"
+   },
+   "MoHoAl24": {
+    "id": "W4387885690",
+    "via": "doi"
+   },
+   "MoHoVe25": {
+    "id": "W4402402085",
+    "via": "doi"
+   },
+   "MoJoCh01": {
+    "id": "W4210934730",
+    "via": "doi"
+   },
+   "MoJoCh01a": {
+    "id": "W4254126655",
+    "via": "doi"
+   },
+   "MoJoOh99": {
+    "id": "W2144201113",
+    "via": "doi"
+   },
+   "MoLuKo17": {
+    "id": "W2762917960",
+    "via": "doi"
+   },
+   "MuFo14": {
+    "id": "W2007917214",
+    "via": "doi"
+   },
+   "MuFo14a": {
+    "id": "W1989230901",
+    "via": "doi"
+   },
+   "NaDeVi10": {
+    "id": "W2074532554",
+    "via": "doi"
+   },
+   "NaHuJo19": {
+    "id": "W2970824674",
+    "via": "doi"
+   },
+   "NaJeRe09": {
+    "id": "W2021045000",
+    "via": "doi"
+   },
+   "NaJo23": {
+    "id": "W4387993561",
+    "via": "doi"
+   },
+   "NaJo23a": {
+    "id": "W4389302511",
+    "via": "doi"
+   },
+   "NaKeBe19": {
+    "checked": "2026-10-02",
+    "id": null,
+    "via": "title"
+   },
+   "NaKeTa23": {
+    "id": "W4307605733",
+    "via": "doi"
+   },
+   "NaReRe15": {
+    "id": "W1963574921",
+    "via": "doi"
+   },
+   "Ne98": {
+    "id": "W1826967190",
+    "via": "doi"
+   },
+   "NgDyKa18": {
+    "id": "W2886581694",
+    "via": "doi"
+   },
+   "NiFlNa21": {
+    "id": "W4200321362",
+    "via": "doi"
+   },
+   "NiFlNa22": {
+    "id": "W4297460118",
+    "via": "doi"
+   },
+   "NiJo19": {
+    "id": "W2981106107",
+    "via": "doi"
+   },
+   "NiTsRe16": {
+    "id": "W2500871384",
+    "via": "doi"
+   },
+   "NoArKe15": {
+    "id": "W2074530959",
+    "via": "doi"
+   },
+   "NoArMa16": {
+    "checked": "2026-10-02",
+    "id": "W2540711500",
+    "via": "title"
+   },
+   "NoArSh13": {
+    "checked": "2026-10-02",
+    "id": "W2405479772",
+    "via": "title"
+   },
+   "NoBuKe19": {
+    "id": "W2973161813",
+    "via": "doi"
+   },
+   "NoKe18": {
+    "id": "W2889482643",
+    "via": "doi"
+   },
+   "NoTaKe14": {
+    "id": "W1964450501",
+    "via": "doi"
+   },
+   "OfReMa13": {
+    "id": "W2103999190",
+    "via": "doi"
+   },
+   "OmMoHo25": {
+    "id": "W4392270888",
+    "via": "doi"
+   },
+   "OzCaFo16": {
+    "checked": "2026-10-02",
+    "id": "W2982642959",
+    "via": "title"
+   },
+   "Pa96": {
+    "id": "W2063431171",
+    "via": "doi"
+   },
+   "PaAnDa02": {
+    "id": "W2035697383",
+    "via": "doi"
+   },
+   "PaEtFo16": {
+    "id": "W2508189011",
+    "via": "doi"
+   },
+   "PaFo15": {
+    "id": "W1630068686",
+    "via": "doi"
+   },
+   "PaKaLe00": {
+    "id": "W1976551587",
+    "via": "doi"
+   },
+   "PaKe99": {
+    "id": "W2144156073",
+    "via": "doi"
+   },
+   "PaLeJo01": {
+    "id": "W2096619394",
+    "via": "doi"
+   },
+   "PaLeJo04": {
+    "id": "W1548540664",
+    "via": "doi"
+   },
+   "PaPaPa26": {
+    "id": "W7160913662",
+    "via": "arxiv"
+   },
+   "PaSaDe99": {
+    "id": "W2046861918",
+    "via": "doi"
+   },
+   "PaVoMa21": {
+    "id": "W3122532687",
+    "via": "doi"
+   },
+   "PeKoGi07": {
+    "id": "W2118611499",
+    "via": "doi"
+   },
+   "PeKoGi07a": {
+    "id": "W2108762174",
+    "via": "doi"
+   },
+   "PeKoSa08": {
+    "id": "W2096043682",
+    "via": "doi"
+   },
+   "PeMo19": {
+    "id": "W2948962120",
+    "via": "doi"
+   },
+   "PeSaGe06": {
+    "id": "W1969210196",
+    "via": "doi"
+   },
+   "PiFoBa15": {
+    "id": "W817614323",
+    "via": "doi"
+   },
+   "PoBuDo22": {
+    "id": "W4312064821",
+    "via": "doi"
+   },
+   "RaSaLo22": {
+    "id": "W3204033341",
+    "via": "doi"
+   },
+   "ReAuFe13": {
+    "checked": "2026-10-02",
+    "id": null,
+    "via": "title"
+   },
+   "ReChMo13": {
+    "id": "W2001544918",
+    "via": "doi"
+   },
+   "ReFeKn13": {
+    "id": "W2007738535",
+    "via": "doi"
+   },
+   "ReJeHu09": {
+    "id": "W2081994938",
+    "via": "doi"
+   },
+   "ReJoLe14": {
+    "id": "W2086216718",
+    "via": "doi"
+   },
+   "ReJoMa12": {
+    "id": "W1993747944",
+    "via": "doi"
+   },
+   "ReJoPa15": {
+    "id": "W2086478402",
+    "via": "doi"
+   },
+   "ReJoPa16": {
+    "id": "W2313429416",
+    "via": "doi"
+   },
+   "ReKnNo13": {
+    "id": "W1971619264",
+    "via": "doi"
+   },
+   "ReLoBr17": {
+    "checked": "2026-10-02",
+    "id": null,
+    "via": "title"
+   },
+   "ReMaAu16": {
+    "id": "W647806084",
+    "via": "doi"
+   },
+   "ReMaOf13": {
+    "id": "W2157639256",
+    "via": "doi"
+   },
+   "ReMaTs25": {
+    "checked": "2026-10-02",
+    "id": "W4409762497",
+    "via": "title"
+   },
+   "ReOfJo14": {
+    "checked": "2026-10-02",
+    "id": null,
+    "via": "title"
+   },
+   "ReOjDe98": {
+    "id": "W2147492826",
+    "via": "doi"
+   },
+   "RePl13": {
+    "checked": "2026-10-02",
+    "id": null,
+    "via": "title"
+   },
+   "ReTaJo11": {
+    "id": "W2045317751",
+    "via": "doi"
+   },
+   "ReTaMi25": {
+    "id": "W4409762497",
+    "via": "doi"
+   },
+   "ReVaBa03": {
+    "id": "W1976710349",
+    "via": "doi"
+   },
+   "RiBaLu07": {
+    "id": "W2146897978",
+    "via": "doi"
+   },
+   "RiLuBa10": {
+    "id": "W2095716277",
+    "via": "doi"
+   },
+   "RoBi98": {
+    "id": "W1481224046",
+    "via": "doi"
+   },
+   "RoCrDe95": {
+    "id": "W24589791",
+    "via": "doi"
+   },
+   "RoJoMo99": {
+    "id": "W2104597259",
+    "via": "doi"
+   },
+   "RuTa24": {
+    "id": "W4402916326",
+    "via": "doi"
+   },
+   "SaChVe23": {
+    "id": "W4386585066",
+    "via": "doi"
+   },
+   "SaFoTo14": {
+    "id": "W190174881",
+    "via": "doi"
+   },
+   "SaFrGr99": {
+    "id": "W2108029400",
+    "via": "doi"
+   },
+   "SaLuPa24": {
+    "id": "W4391335485",
+    "via": "doi"
+   },
+   "SaMaGe05": {
+    "id": "W4249752998",
+    "via": "doi"
+   },
+   "SaPeTa17": {
+    "checked": "2026-10-02",
+    "id": null,
+    "via": "title"
+   },
+   "SaWaGu19": {
+    "id": "W2977007898",
+    "via": "doi"
+   },
+   "SaYuCh18": {
+    "checked": "2026-10-02",
+    "id": null,
+    "via": "title"
+   },
+   "ScEvJo04": {
+    "id": "W2021254792",
+    "via": "doi"
+   },
+   "ScEvJo04a": {
+    "id": "W1576412862",
+    "via": "doi"
+   },
+   "ScLe10": {
+    "id": "W199729033",
+    "via": "doi"
+   },
+   "ScVeRe04": {
+    "id": "W2044199066",
+    "via": "doi"
+   },
+   "SeDyMa24": {
+    "id": "W4404847844",
+    "via": "doi"
+   },
+   "SeFyMa24": {
+    "checked": "2026-10-02",
+    "id": "W4405352033",
+    "via": "title"
+   },
+   "ShGrLu26": {
+    "id": "W7162072980",
+    "via": "arxiv"
+   },
+   "ShKe00": {
+    "id": "W2290420923",
+    "via": "doi"
+   },
+   "ShLuEm23": {
+    "id": "W4381245691",
+    "via": "arxiv"
+   },
+   "ShLuEm24": {
+    "id": "W4403210816",
+    "via": "doi"
+   },
+   "ShLuPe26": {
+    "id": "W7170048709",
+    "via": "arxiv"
+   },
+   "ShVeLi24": {
+    "checked": "2026-10-02",
+    "id": null,
+    "via": "title"
+   },
+   "ShWaTa22": {
+    "id": "W3217750859",
+    "via": "doi"
+   },
+   "ShWaZh24": {
+    "id": "W4389104972",
+    "via": "doi"
+   },
+   "ShWaZh25": {
+    "checked": "2026-10-02",
+    "id": "W4403081484",
+    "via": "title"
+   },
+   "SiJeRe04": {
+    "id": "W2151907143",
+    "via": "doi"
+   },
+   "SiNaLu06": {
+    "id": "W4254778663",
+    "via": "doi"
+   },
+   "SiScTa06": {
+    "id": "W2083190850",
+    "via": "doi"
+   },
+   "Sm16": {
+    "checked": "2026-10-02",
+    "id": null,
+    "via": "title"
+   },
+   "SmXuSu12": {
+    "id": "W2086928685",
+    "via": "doi"
+   },
+   "SoKrZh23": {
+    "id": "W4387559225",
+    "via": "arxiv"
+   },
+   "SoLoFe15": {
+    "id": "W2410174273",
+    "via": "doi"
+   },
+   "SrMaMi21": {
+    "id": "W4200039489",
+    "via": "doi"
+   },
+   "SrTrAc22": {
+    "id": "W4281831978",
+    "via": "doi"
+   },
+   "SrVeSi22": {
+    "id": "W4285392478",
+    "via": "doi"
+   },
+   "StLaSa25": {
+    "id": "W4409917558",
+    "via": "doi"
+   },
+   "StSoFe18": {
+    "id": "W2755118961",
+    "via": "doi"
+   },
+   "SuAyBu25": {
+    "id": "W4412097516",
+    "via": "doi"
+   },
+   "SuLeJo09": {
+    "id": "W2072634266",
+    "via": "doi"
+   },
+   "SuLeJo10": {
+    "id": "W4248741877",
+    "via": "doi"
+   },
+   "SuLeJo13": {
+    "id": "W2427906732",
+    "via": "doi"
+   },
+   "TaCoGu25": {
+    "id": "W4416004458",
+    "via": "doi"
+   },
+   "TaKiLe22": {
+    "id": "W4295955099",
+    "via": "doi"
+   },
+   "TaReWa23": {
+    "id": "W4387604299",
+    "via": "doi"
+   },
+   "TaZhCa21": {
+    "checked": "2026-10-02",
+    "id": null,
+    "via": "title"
+   },
+   "TaZhDe26": {
+    "id": "W4414968546",
+    "via": "doi"
+   },
+   "TeBa01": {
+    "id": "W4241652209",
+    "via": "doi"
+   },
+   "TeBa02": {
+    "id": "W2146744146",
+    "via": "doi"
+   },
+   "TeBa98": {
+    "id": "W3133047180",
+    "via": "doi"
+   },
+   "ThBaBa00": {
+    "id": "W2066376120",
+    "via": "doi"
+   },
+   "ThKaAb17": {
+    "id": "W2808418066",
+    "via": "doi"
+   },
+   "Ti03": {
+    "id": "W2044255559",
+    "via": "doi"
+   },
+   "ToZdEl20": {
+    "id": "W3010135971",
+    "via": "doi"
+   },
+   "TrArSh23": {
+    "id": "W4384522997",
+    "via": "doi"
+   },
+   "TrFlAr23": {
+    "id": "W4390992240",
+    "via": "doi"
+   },
+   "TrLeDe19": {
+    "id": "W2943506695",
+    "via": "doi"
+   },
+   "TrLiAr20": {
+    "id": "W3127235920",
+    "via": "doi"
+   },
+   "TrLiAr21": {
+    "id": "W4205555026",
+    "via": "doi"
+   },
+   "TrRoCa19": {
+    "id": "W2970409710",
+    "via": "doi"
+   },
+   "TrWeBe24": {
+    "id": "W4403041631",
+    "via": "doi"
+   },
+   "TrWeBe24a": {
+    "id": "W4403041631",
+    "via": "doi"
+   },
+   "Ts06": {
+    "id": "W2066344404",
+    "via": "doi"
+   },
+   "Ts07": {
+    "id": "W4256422826",
+    "via": "doi"
+   },
+   "Ts07a": {
+    "id": "W2611859385",
+    "via": "doi"
+   },
+   "TsAgKo12": {
+    "checked": "2026-10-02",
+    "id": null,
+    "via": "title"
+   },
+   "TsCaJo22": {
+    "id": "W4287509549",
+    "via": "doi"
+   },
+   "TsHiNa06": {
+    "id": "W1968072102",
+    "via": "doi"
+   },
+   "TsHiNa07": {
+    "id": "W2326741328",
+    "via": "doi"
+   },
+   "TsJyNi24": {
+    "id": "W4404479911",
+    "via": "doi"
+   },
+   "TsReCo15": {
+    "checked": "2026-10-02",
+    "id": null,
+    "via": "title"
+   },
+   "TsReCo16": {
+    "id": "W2558472647",
+    "via": "doi"
+   },
+   "TsStKa13": {
+    "checked": "2026-10-02",
+    "id": "W181087982",
+    "via": "title"
+   },
+   "UsDyKu23": {
+    "id": "W4389387101",
+    "via": "doi"
+   },
+   "VaMoAh22": {
+    "id": "W4307041077",
+    "via": "doi"
+   },
+   "VeChSa22": {
+    "id": "W4306179866",
+    "via": "doi"
+   },
+   "VeLeCo03": {
+    "id": "W2043821191",
+    "via": "doi"
+   },
+   "ViBuLe09": {
+    "id": "W2052377199",
+    "via": "doi"
+   },
+   "ViEtFo15": {
+    "id": "W2047849685",
+    "via": "doi"
+   },
+   "ViFo14": {
+    "id": "W1996156658",
+    "via": "doi"
+   },
+   "ViLeNa08": {
+    "id": "W2171166083",
+    "via": "doi"
+   },
+   "ViNaRe09": {
+    "id": "W2158046414",
+    "via": "doi"
+   },
+   "ViShTa07": {
+    "id": "W2052932084",
+    "via": "doi"
+   },
+   "ViZuLe08": {
+    "id": "W2124696285",
+    "via": "doi"
+   },
+   "WaBrRo25": {
+    "id": "W4409701007",
+    "via": "doi"
+   },
+   "WaCaVa21": {
+    "id": "W3197944324",
+    "via": "doi"
+   },
+   "WaKiMc04": {
+    "id": "W1510847759",
+    "via": "doi"
+   },
+   "WaRiMe25": {
+    "id": "W4416343231",
+    "via": "arxiv"
+   },
+   "WaSaSc18": {
+    "id": "W2802146972",
+    "via": "doi"
+   },
+   "WaViJe06": {
+    "id": "W2024618163",
+    "via": "doi"
+   },
+   "WeAtZh25": {
+    "id": "W4402402047",
+    "via": "doi"
+   },
+   "WeBuLa26": {
+    "id": "W7169790928",
+    "via": "arxiv"
+   },
+   "WeCaVa20": {
+    "id": "W3080835070",
+    "via": "doi"
+   },
+   "WeFlCa23": {
+    "id": "W4382240299",
+    "via": "doi"
+   },
+   "WeHaLu19": {
+    "id": "W2969355467",
+    "via": "doi"
+   },
+   "WeHaTa14": {
+    "id": "W1997483622",
+    "via": "doi"
+   },
+   "WeHaVa20": {
+    "id": "W3024923072",
+    "via": "doi"
+   },
+   "WeLeDh24": {
+    "id": "W4393277614",
+    "via": "doi"
+   },
+   "WeLuCh13": {
+    "checked": "2026-10-02",
+    "id": null,
+    "via": "title"
+   },
+   "WeLuVa21": {
+    "id": "W3168418505",
+    "via": "doi"
+   },
+   "WeMoNa23": {
+    "id": "W4385665074",
+    "via": "doi"
+   },
+   "WhLaCo99": {
+    "id": "W2035850566",
+    "via": "doi"
+   },
+   "WuInMa24": {
+    "id": "W4401416664",
+    "via": "doi"
+   },
+   "XiAjWo16": {
+    "checked": "2026-10-02",
+    "id": "W2523290873",
+    "via": "title"
+   },
+   "XiWaZh23": {
+    "id": "W4390874391",
+    "via": "doi"
+   },
+   "XuPaLa26": {
+    "id": "W7161848854",
+    "via": "doi"
+   },
+   "YaKeAl12": {
+    "id": "W1972868892",
+    "via": "doi"
+   },
+   "YeAjCo15": {
+    "id": "W2284714407",
+    "via": "doi"
+   },
+   "YeBaBa99": {
+    "id": "W2167344475",
+    "via": "doi"
+   },
+   "YiLiTi15": {
+    "id": "W2461643290",
+    "via": "doi"
+   },
+   "YoWeHa26": {
+    "checked": "2026-10-02",
+    "id": "W7166066261",
+    "via": "title"
+   },
+   "ZdVoMa18": {
+    "id": "W2902534205",
+    "via": "doi"
+   },
+   "ZeBaSc98": {
+    "id": "W4242662795",
+    "via": "doi"
+   },
+   "ZeBaTh00": {
+    "id": "W2116511452",
+    "via": "doi"
+   },
+   "ZhLeDe03": {
+    "id": "W2106578418",
+    "via": "doi"
+   },
+   "ZhLuBa03": {
+    "id": "W2036407209",
+    "via": "doi"
+   },
+   "ZhMuDe00": {
+    "id": "W2152662290",
+    "via": "doi"
+   },
+   "ZhPaLa25": {
+    "id": "W4406778840",
+    "via": "arxiv"
+   },
+   "ZhPaLa26": {
+    "id": "W7117987872",
+    "via": "doi"
+   },
+   "ZhPaLa26a": {
+    "id": "W7155097805",
+    "via": "arxiv"
+   },
+   "ZhPaLa26b": {
+    "id": "W7155056287",
+    "via": "arxiv"
+   },
+   "ZhSuPa25": {
+    "id": "W4416203789",
+    "via": "doi"
+   },
+   "ZhSuPa25a": {
+    "id": null,
+    "via": "arxiv"
+   },
+   "ZhWuTa26": {
+    "id": "W4416242545",
+    "via": "doi"
+   },
+   "ZoLiWa20": {
+    "id": "W3127588730",
+    "via": "doi"
+   },
+   "ZoTa21": {
+    "id": "W3202716970",
+    "via": "doi"
+   },
+   "ZvBrHi23": {
+    "id": "W4387994442",
+    "via": "doi"
+   }
+  },
+  "through": "2026-10-02",
+  "works": {
+   "W13339910": {},
+   "W141386582": {
+    "2020": 1,
+    "2024": 2,
+    "2025": 2
+   },
+   "W1481224046": {
+    "2022": 1,
+    "2025": 1
+   },
+   "W1485042717": {
+    "2020": 4,
+    "2021": 1,
+    "2022": 1,
+    "2023": 4,
+    "2024": 2,
+    "2026": 1
+   },
+   "W1494294405": {},
+   "W1503463130": {},
+   "W1510847759": {},
+   "W1523357704": {
+    "2020": 3,
+    "2021": 2,
+    "2024": 1,
+    "2026": 1
+   },
+   "W1548540664": {},
+   "W1555900535": {
+    "2020": 1
+   },
+   "W1559511220": {
+    "2020": 1,
+    "2021": 1,
+    "2023": 1
+   },
+   "W1568572313": {
+    "2021": 1,
+    "2022": 1,
+    "2023": 1
+   },
+   "W1571842245": {},
+   "W1572483615": {
+    "2020": 1,
+    "2021": 1,
+    "2023": 2,
+    "2024": 2,
+    "2025": 2
+   },
+   "W1576412862": {
+    "2020": 1,
+    "2025": 1
+   },
+   "W1584646283": {},
+   "W1610833755": {},
+   "W1630068686": {
+    "2020": 2,
+    "2021": 1,
+    "2023": 2,
+    "2025": 1,
+    "2026": 1
+   },
+   "W1661268968": {},
+   "W1685180324": {
+    "2020": 1,
+    "2022": 1,
+    "2023": 1,
+    "2024": 1
+   },
+   "W1711563768": {
+    "2023": 1
+   },
+   "W1794378541": {
+    "2020": 2,
+    "2022": 4,
+    "2023": 1,
+    "2024": 2,
+    "2025": 1,
+    "2026": 1
+   },
+   "W181087982": {
+    "2023": 1
+   },
+   "W1826586397": {},
+   "W1826967190": {
+    "2020": 2,
+    "2023": 2
+   },
+   "W1874571208": {
+    "2021": 1
+   },
+   "W1881546862": {
+    "2021": 1,
+    "2023": 1
+   },
+   "W190174881": {
+    "2020": 2,
+    "2026": 1
+   },
+   "W1904002291": {},
+   "W1921666650": {},
+   "W1959870056": {
+    "2022": 1,
+    "2023": 1,
+    "2024": 1
+   },
+   "W1963574921": {},
+   "W1963963661": {},
+   "W1964450501": {
+    "2020": 1
+   },
+   "W1965798188": {},
+   "W1966586072": {
+    "2022": 1,
+    "2023": 1
+   },
+   "W1968072102": {},
+   "W1969210196": {
+    "2025": 1
+   },
+   "W1971619264": {
+    "2020": 4,
+    "2021": 1,
+    "2022": 1,
+    "2023": 1
+   },
+   "W1972413265": {
+    "2020": 1
+   },
+   "W1972605835": {},
+   "W1972868892": {
+    "2020": 2,
+    "2023": 2,
+    "2024": 1
+   },
+   "W1973627980": {},
+   "W1973785037": {},
+   "W1976551587": {
+    "2020": 4,
+    "2021": 2,
+    "2022": 1,
+    "2023": 2,
+    "2024": 1,
+    "2025": 2
+   },
+   "W1976710349": {},
+   "W1977550631": {
+    "2020": 16,
+    "2021": 10,
+    "2022": 9,
+    "2023": 11,
+    "2024": 18,
+    "2025": 15,
+    "2026": 7
+   },
+   "W1978217810": {},
+   "W1982791013": {},
+   "W1985502182": {
+    "2023": 1,
+    "2024": 1
+   },
+   "W1986567574": {
+    "2021": 1
+   },
+   "W1987737841": {
+    "2024": 1
+   },
+   "W1989230901": {},
+   "W1989689146": {},
+   "W1993747944": {
+    "2022": 1,
+    "2025": 1
+   },
+   "W1996156658": {
+    "2024": 1
+   },
+   "W199729033": {},
+   "W1997483622": {
+    "2020": 3,
+    "2023": 1
+   },
+   "W1999880428": {
+    "2020": 6,
+    "2021": 5,
+    "2022": 3,
+    "2023": 6,
+    "2024": 6,
+    "2025": 2
+   },
+   "W2001544918": {
+    "2020": 1,
+    "2021": 1,
+    "2025": 1,
+    "2026": 1
+   },
+   "W2001624283": {
+    "2022": 1,
+    "2024": 1
+   },
+   "W2002008002": {
+    "2020": 4,
+    "2021": 6,
+    "2022": 2,
+    "2023": 4,
+    "2025": 1
+   },
+   "W2004264340": {
+    "2020": 1,
+    "2022": 1,
+    "2023": 1,
+    "2024": 1
+   },
+   "W2005141319": {
+    "2024": 2
+   },
+   "W2007738535": {
+    "2020": 8,
+    "2021": 5,
+    "2022": 2,
+    "2023": 2,
+    "2024": 5,
+    "2025": 1
+   },
+   "W2007917214": {
+    "2020": 2,
+    "2022": 2
+   },
+   "W2008455446": {
+    "2020": 9,
+    "2021": 14,
+    "2022": 5,
+    "2023": 6,
+    "2024": 6,
+    "2025": 7,
+    "2026": 3
+   },
+   "W2010208463": {
+    "2020": 1,
+    "2022": 2,
+    "2023": 1,
+    "2024": 1,
+    "2025": 1
+   },
+   "W2021045000": {},
+   "W2021254792": {
+    "2020": 2,
+    "2021": 1,
+    "2022": 1,
+    "2023": 2,
+    "2024": 1,
+    "2025": 1
+   },
+   "W2021461914": {},
+   "W2022927826": {},
+   "W2023327200": {
+    "2024": 1
+   },
+   "W2024618163": {
+    "2021": 1
+   },
+   "W2024733457": {},
+   "W2025102058": {
+    "2020": 2,
+    "2022": 1
+   },
+   "W2026325814": {
+    "2020": 5,
+    "2021": 6,
+    "2022": 6,
+    "2023": 1,
+    "2024": 3,
+    "2025": 3,
+    "2026": 4
+   },
+   "W2028391713": {
+    "2020": 4,
+    "2021": 11,
+    "2022": 7,
+    "2023": 10,
+    "2024": 8,
+    "2025": 2,
+    "2026": 2
+   },
+   "W2028433555": {
+    "2024": 2
+   },
+   "W2028907466": {
+    "2020": 1,
+    "2022": 1,
+    "2023": 2,
+    "2024": 1,
+    "2025": 1
+   },
+   "W2029652656": {
+    "2021": 1,
+    "2022": 1,
+    "2025": 1,
+    "2026": 1
+   },
+   "W2030511318": {
+    "2023": 2
+   },
+   "W2033706938": {
+    "2020": 3,
+    "2021": 2,
+    "2022": 2,
+    "2023": 3,
+    "2024": 1,
+    "2025": 6,
+    "2026": 1
+   },
+   "W2033764546": {
+    "2021": 4,
+    "2023": 5,
+    "2025": 1
+   },
+   "W2034819808": {
+    "2020": 16,
+    "2021": 9,
+    "2022": 5,
+    "2023": 3,
+    "2024": 3,
+    "2025": 1,
+    "2026": 2
+   },
+   "W2035697383": {},
+   "W2035850566": {},
+   "W2036407209": {},
+   "W2038787408": {
+    "2021": 1
+   },
+   "W2039201989": {},
+   "W2039215725": {},
+   "W2039316594": {
+    "2022": 1,
+    "2024": 1
+   },
+   "W2039608782": {
+    "2020": 2,
+    "2021": 6,
+    "2022": 1,
+    "2023": 2,
+    "2024": 2,
+    "2025": 3,
+    "2026": 2
+   },
+   "W2039886402": {
+    "2020": 3,
+    "2021": 2,
+    "2024": 2,
+    "2025": 1
+   },
+   "W2042652698": {
+    "2020": 1,
+    "2026": 1
+   },
+   "W2043821191": {},
+   "W2044116517": {
+    "2020": 87,
+    "2021": 81,
+    "2022": 78,
+    "2023": 85,
+    "2024": 125,
+    "2025": 56,
+    "2026": 50
+   },
+   "W2044199066": {},
+   "W2044255559": {},
+   "W2045317751": {
+    "2020": 6,
+    "2021": 4,
+    "2022": 4,
+    "2023": 4,
+    "2024": 5,
+    "2025": 2,
+    "2026": 3
+   },
+   "W2046861918": {},
+   "W2046996556": {
+    "2020": 15,
+    "2021": 14,
+    "2022": 7,
+    "2023": 18,
+    "2024": 11,
+    "2025": 9,
+    "2026": 6
+   },
+   "W2047849685": {},
+   "W2052377199": {},
+   "W2052932084": {},
+   "W2054690695": {
+    "2020": 1,
+    "2021": 3,
+    "2022": 3,
+    "2023": 1
+   },
+   "W2057109017": {
+    "2020": 4,
+    "2021": 4,
+    "2022": 2,
+    "2024": 4
+   },
+   "W2059414324": {
+    "2021": 1,
+    "2025": 1
+   },
+   "W2060406526": {},
+   "W2062374546": {
+    "2020": 4,
+    "2021": 2,
+    "2022": 1,
+    "2023": 2,
+    "2024": 3
+   },
+   "W2063431171": {
+    "2021": 1,
+    "2024": 2
+   },
+   "W2066344404": {},
+   "W2066376120": {
+    "2024": 1
+   },
+   "W2070240107": {},
+   "W2071102560": {
+    "2023": 1
+   },
+   "W2072151337": {
+    "2024": 1,
+    "2025": 1
+   },
+   "W2072634266": {},
+   "W2073125289": {
+    "2024": 1
+   },
+   "W2073297680": {
+    "2020": 6,
+    "2021": 1,
+    "2022": 3,
+    "2023": 7,
+    "2024": 5,
+    "2025": 1,
+    "2026": 2
+   },
+   "W2074530959": {},
+   "W2074532554": {
+    "2020": 1,
+    "2021": 1
+   },
+   "W2076993091": {
+    "2020": 4,
+    "2021": 2,
+    "2022": 1,
+    "2024": 1,
+    "2025": 2
+   },
+   "W2079638262": {
+    "2020": 62,
+    "2021": 64,
+    "2022": 50,
+    "2023": 46,
+    "2024": 41,
+    "2025": 27,
+    "2026": 17
+   },
+   "W2081994938": {
+    "2022": 1,
+    "2024": 1
+   },
+   "W2083019194": {
+    "2020": 1
+   },
+   "W2083190850": {
+    "2020": 1,
+    "2023": 1
+   },
+   "W2083739891": {
+    "2020": 3,
+    "2021": 1,
+    "2022": 5,
+    "2023": 3,
+    "2024": 2,
+    "2025": 1,
+    "2026": 1
+   },
+   "W2084175737": {},
+   "W2085187756": {},
+   "W2086216718": {
+    "2020": 2,
+    "2021": 3,
+    "2022": 1,
+    "2024": 1
+   },
+   "W2086434298": {
+    "2020": 4,
+    "2021": 2,
+    "2022": 2,
+    "2023": 1,
+    "2024": 1,
+    "2025": 2
+   },
+   "W2086478402": {
+    "2020": 10,
+    "2021": 5,
+    "2022": 3,
+    "2023": 7,
+    "2024": 7,
+    "2025": 3,
+    "2026": 2
+   },
+   "W2086928685": {
+    "2020": 11,
+    "2021": 4,
+    "2022": 1,
+    "2023": 2,
+    "2024": 2,
+    "2025": 2
+   },
+   "W2087260335": {},
+   "W2088001117": {},
+   "W2092183534": {
+    "2020": 1,
+    "2022": 1,
+    "2025": 1
+   },
+   "W2092222318": {
+    "2020": 4,
+    "2022": 7,
+    "2024": 1,
+    "2025": 1,
+    "2026": 1
+   },
+   "W2094211664": {
+    "2021": 1
+   },
+   "W2095038812": {
+    "2020": 5,
+    "2021": 3,
+    "2022": 1,
+    "2023": 3,
+    "2024": 6,
+    "2025": 2
+   },
+   "W2095716277": {},
+   "W2096043682": {
+    "2020": 4,
+    "2021": 3,
+    "2022": 2,
+    "2023": 3,
+    "2024": 3,
+    "2025": 2,
+    "2026": 1
+   },
+   "W2096619394": {
+    "2020": 1,
+    "2024": 1
+   },
+   "W2097698118": {
+    "2020": 6,
+    "2021": 1,
+    "2022": 5,
+    "2023": 2,
+    "2024": 4,
+    "2025": 1,
+    "2026": 2
+   },
+   "W2097896816": {
+    "2020": 1,
+    "2022": 1,
+    "2024": 2,
+    "2025": 1
+   },
+   "W2102755146": {
+    "2020": 6,
+    "2021": 7,
+    "2022": 5,
+    "2023": 10,
+    "2024": 5,
+    "2025": 2,
+    "2026": 1
+   },
+   "W2103999190": {},
+   "W2104597259": {
+    "2020": 18,
+    "2021": 11,
+    "2022": 11,
+    "2023": 8,
+    "2024": 6,
+    "2025": 6,
+    "2026": 3
+   },
+   "W2106578418": {
+    "2021": 1
+   },
+   "W2108029400": {},
+   "W2108762174": {
+    "2024": 1
+   },
+   "W2109970148": {},
+   "W2110509853": {
+    "2020": 1
+   },
+   "W2112236434": {},
+   "W2113855390": {
+    "2020": 7,
+    "2021": 1,
+    "2022": 6,
+    "2023": 4,
+    "2024": 5,
+    "2025": 1
+   },
+   "W2115752813": {},
+   "W2116511452": {
+    "2024": 1
+   },
+   "W2118040125": {
+    "2020": 1,
+    "2022": 2,
+    "2024": 1,
+    "2026": 1
+   },
+   "W2118605391": {
+    "2020": 2,
+    "2021": 5,
+    "2023": 7,
+    "2024": 4,
+    "2025": 3,
+    "2026": 4
+   },
+   "W2118611499": {
+    "2020": 1,
+    "2024": 1,
+    "2025": 1
+   },
+   "W2119655593": {
+    "2020": 2,
+    "2021": 1,
+    "2022": 1
+   },
+   "W2120545224": {
+    "2020": 1,
+    "2021": 1,
+    "2023": 1
+   },
+   "W2121569842": {
+    "2021": 1,
+    "2025": 1
+   },
+   "W2121584646": {},
+   "W2124696285": {},
+   "W2124838353": {
+    "2020": 1
+   },
+   "W2125282429": {
+    "2023": 1
+   },
+   "W2126067341": {},
+   "W2126619073": {
+    "2020": 5,
+    "2021": 4,
+    "2022": 1,
+    "2023": 4,
+    "2024": 3,
+    "2025": 2,
+    "2026": 1
+   },
+   "W2127184947": {
+    "2020": 4,
+    "2021": 1,
+    "2022": 3,
+    "2023": 3,
+    "2024": 2
+   },
+   "W2127883272": {
+    "2020": 4,
+    "2021": 1
+   },
+   "W2128570208": {
+    "2020": 2,
+    "2021": 2,
+    "2023": 1,
+    "2024": 1
+   },
+   "W2129520735": {
+    "2022": 1,
+    "2026": 1
+   },
+   "W2134296613": {
+    "2021": 2,
+    "2022": 1,
+    "2023": 1
+   },
+   "W2134425363": {},
+   "W2134725895": {
+    "2021": 1,
+    "2024": 1
+   },
+   "W2136080821": {},
+   "W2136218087": {
+    "2020": 7,
+    "2021": 3,
+    "2022": 3,
+    "2023": 5,
+    "2024": 10,
+    "2025": 8
+   },
+   "W2136323176": {
+    "2023": 1
+   },
+   "W2136858590": {},
+   "W2139617913": {
+    "2020": 1,
+    "2024": 1
+   },
+   "W2139704332": {},
+   "W2143929863": {},
+   "W2144135646": {},
+   "W2144156073": {
+    "2020": 9,
+    "2021": 5,
+    "2022": 2,
+    "2023": 3,
+    "2024": 6,
+    "2025": 1
+   },
+   "W2144201113": {
+    "2020": 2,
+    "2021": 2,
+    "2022": 1,
+    "2023": 1,
+    "2025": 1
+   },
+   "W2146402040": {
+    "2020": 5,
+    "2021": 2,
+    "2022": 1,
+    "2023": 1,
+    "2024": 2,
+    "2025": 3,
+    "2026": 1
+   },
+   "W2146744146": {},
+   "W2146897978": {
+    "2021": 2,
+    "2022": 1
+   },
+   "W2147492826": {
+    "2022": 1,
+    "2023": 1
+   },
+   "W2149729846": {},
+   "W2150607931": {
+    "2020": 5,
+    "2021": 4,
+    "2022": 5,
+    "2023": 4,
+    "2024": 1,
+    "2025": 1
+   },
+   "W2150629669": {
+    "2020": 1,
+    "2024": 3,
+    "2026": 1
+   },
+   "W2151099165": {},
+   "W2151907143": {},
+   "W2152662290": {
+    "2020": 1,
+    "2022": 1,
+    "2023": 2
+   },
+   "W2153287918": {
+    "2020": 5,
+    "2021": 2,
+    "2022": 2,
+    "2023": 3,
+    "2024": 5,
+    "2025": 2
+   },
+   "W2153395947": {
+    "2021": 1,
+    "2024": 1
+   },
+   "W2154327700": {
+    "2020": 3,
+    "2021": 1,
+    "2022": 2,
+    "2023": 2,
+    "2025": 3
+   },
+   "W2154619649": {
+    "2021": 1,
+    "2023": 1,
+    "2026": 1
+   },
+   "W2157639256": {},
+   "W2158046414": {},
+   "W2164368507": {
+    "2020": 1,
+    "2024": 1
+   },
+   "W2164824453": {
+    "2020": 3,
+    "2024": 1
+   },
+   "W2165418477": {
+    "2023": 1
+   },
+   "W2165713084": {
+    "2024": 1,
+    "2025": 1
+   },
+   "W2165982410": {
+    "2021": 1,
+    "2024": 1,
+    "2025": 1
+   },
+   "W2167206881": {
+    "2022": 1,
+    "2023": 2
+   },
+   "W2167344475": {
+    "2020": 1,
+    "2023": 2,
+    "2024": 1,
+    "2026": 1
+   },
+   "W2171166083": {},
+   "W2182241434": {
+    "2022": 1
+   },
+   "W2182543740": {
+    "2021": 1,
+    "2026": 1
+   },
+   "W2196146583": {
+    "2021": 4,
+    "2022": 2
+   },
+   "W2219175373": {
+    "2020": 2,
+    "2022": 1,
+    "2023": 1,
+    "2024": 1
+   },
+   "W2220855841": {},
+   "W2223312598": {
+    "2020": 1,
+    "2021": 1,
+    "2022": 1,
+    "2023": 1,
+    "2024": 1
+   },
+   "W2246062103": {},
+   "W2248305282": {
+    "2021": 1,
+    "2024": 1
+   },
+   "W2280969913": {
+    "2020": 3,
+    "2021": 1
+   },
+   "W2284714407": {
+    "2020": 3,
+    "2021": 2,
+    "2022": 3,
+    "2023": 2,
+    "2024": 1
+   },
+   "W2286420110": {},
+   "W2290420923": {
+    "2021": 1,
+    "2026": 1
+   },
+   "W2294779258": {
+    "2020": 2,
+    "2021": 3
+   },
+   "W2295272795": {
+    "2020": 2,
+    "2021": 2,
+    "2022": 1,
+    "2024": 3
+   },
+   "W2313248301": {
+    "2020": 2,
+    "2022": 2,
+    "2023": 3,
+    "2024": 4,
+    "2025": 1
+   },
+   "W2313429416": {
+    "2020": 5,
+    "2021": 4,
+    "2022": 2,
+    "2023": 1,
+    "2024": 3,
+    "2025": 3,
+    "2026": 1
+   },
+   "W2316255397": {
+    "2020": 1,
+    "2021": 2,
+    "2022": 3,
+    "2023": 1,
+    "2024": 1
+   },
+   "W2326741328": {},
+   "W2337354714": {
+    "2020": 3,
+    "2022": 3
+   },
+   "W2345743369": {
+    "2022": 1
+   },
+   "W2395274837": {
+    "2020": 1,
+    "2021": 1,
+    "2023": 1,
+    "2024": 2
+   },
+   "W2398934807": {
+    "2020": 4,
+    "2021": 1,
+    "2022": 2,
+    "2024": 1
+   },
+   "W2401991345": {
+    "2020": 1
+   },
+   "W2402742600": {
+    "2020": 1
+   },
+   "W2405479772": {},
+   "W2410174273": {
+    "2020": 1,
+    "2021": 2,
+    "2022": 2,
+    "2024": 3,
+    "2025": 3,
+    "2026": 1
+   },
+   "W2413227637": {
+    "2020": 1,
+    "2021": 7,
+    "2022": 3,
+    "2023": 6,
+    "2025": 3,
+    "2026": 1
+   },
+   "W2427906732": {
+    "2021": 1,
+    "2023": 1,
+    "2026": 1
+   },
+   "W24589791": {
+    "2021": 1,
+    "2025": 3
+   },
+   "W2461643290": {
+    "2020": 1,
+    "2021": 1,
+    "2022": 1,
+    "2023": 1,
+    "2024": 1,
+    "2025": 1
+   },
+   "W2469514293": {
+    "2020": 5,
+    "2021": 4,
+    "2022": 4,
+    "2023": 7,
+    "2024": 13,
+    "2025": 6,
+    "2026": 2
+   },
+   "W2474970079": {
+    "2020": 7,
+    "2021": 2,
+    "2022": 6,
+    "2023": 4,
+    "2025": 7
+   },
+   "W2476957922": {},
+   "W2486570230": {},
+   "W2491799204": {
+    "2021": 1
+   },
+   "W2500871384": {
+    "2020": 1
+   },
+   "W2508189011": {
+    "2020": 1,
+    "2021": 1
+   },
+   "W2517131748": {
+    "2020": 7,
+    "2021": 11,
+    "2022": 5,
+    "2023": 8,
+    "2024": 9,
+    "2025": 7,
+    "2026": 4
+   },
+   "W2523290873": {
+    "2020": 1,
+    "2021": 2,
+    "2026": 1
+   },
+   "W2527610886": {},
+   "W2528296488": {},
+   "W2534769067": {
+    "2020": 1
+   },
+   "W2540711500": {
+    "2021": 3,
+    "2023": 1,
+    "2024": 1,
+    "2026": 1
+   },
+   "W2544755263": {
+    "2021": 2,
+    "2023": 1,
+    "2025": 1
+   },
+   "W2545861695": {
+    "2022": 2
+   },
+   "W2551793962": {
+    "2021": 1,
+    "2023": 2
+   },
+   "W2555439351": {
+    "2022": 1,
+    "2023": 1
+   },
+   "W2555587831": {
+    "2022": 1,
+    "2025": 1
+   },
+   "W2558472647": {
+    "2020": 2
+   },
+   "W2566358525": {
+    "2020": 7,
+    "2021": 2,
+    "2022": 2,
+    "2023": 2,
+    "2024": 5,
+    "2025": 3
+   },
+   "W2569032179": {},
+   "W2572411653": {
+    "2020": 4,
+    "2021": 3,
+    "2022": 3,
+    "2023": 5,
+    "2024": 2,
+    "2025": 1,
+    "2026": 1
+   },
+   "W2574003595": {
+    "2020": 1,
+    "2022": 1
+   },
+   "W2576533530": {
+    "2021": 1,
+    "2022": 1,
+    "2023": 3,
+    "2024": 1
+   },
+   "W2585278951": {
+    "2020": 1,
+    "2021": 5,
+    "2022": 1,
+    "2023": 8,
+    "2024": 5,
+    "2025": 1,
+    "2026": 1
+   },
+   "W2587884718": {
+    "2020": 3,
+    "2021": 1,
+    "2022": 1,
+    "2023": 1,
+    "2024": 1,
+    "2025": 3
+   },
+   "W2588098774": {
+    "2021": 1,
+    "2022": 2
+   },
+   "W2588562645": {},
+   "W2589103256": {
+    "2020": 1,
+    "2023": 3,
+    "2024": 3,
+    "2025": 1,
+    "2026": 1
+   },
+   "W2592011087": {
+    "2020": 5,
+    "2021": 13,
+    "2022": 4,
+    "2023": 4,
+    "2024": 2,
+    "2025": 3
+   },
+   "W2600373392": {
+    "2020": 1
+   },
+   "W2601725386": {},
+   "W2607396809": {
+    "2020": 5,
+    "2021": 9,
+    "2022": 5,
+    "2023": 4,
+    "2024": 7,
+    "2025": 4,
+    "2026": 2
+   },
+   "W2610945334": {},
+   "W2611771175": {
+    "2020": 2,
+    "2021": 2,
+    "2022": 1,
+    "2024": 1,
+    "2026": 2
+   },
+   "W2611859385": {},
+   "W2618864748": {
+    "2020": 5,
+    "2021": 3,
+    "2022": 6,
+    "2023": 7,
+    "2024": 6,
+    "2025": 1
+   },
+   "W2624445996": {
+    "2020": 3,
+    "2021": 2,
+    "2022": 2,
+    "2023": 1,
+    "2024": 1
+   },
+   "W26994638": {},
+   "W2724559516": {
+    "2020": 7,
+    "2021": 16,
+    "2022": 17,
+    "2023": 15,
+    "2024": 9,
+    "2025": 8,
+    "2026": 2
+   },
+   "W2752126964": {
+    "2020": 9,
+    "2021": 4,
+    "2022": 9,
+    "2023": 5,
+    "2024": 6,
+    "2025": 8,
+    "2026": 6
+   },
+   "W2752551804": {
+    "2020": 1,
+    "2021": 4,
+    "2022": 3,
+    "2023": 3,
+    "2024": 3,
+    "2026": 1
+   },
+   "W2753901906": {
+    "2020": 1,
+    "2021": 2,
+    "2022": 3,
+    "2023": 4,
+    "2024": 2,
+    "2025": 1,
+    "2026": 2
+   },
+   "W2755118961": {
+    "2021": 1,
+    "2022": 3,
+    "2023": 3,
+    "2025": 2,
+    "2026": 2
+   },
+   "W2761504849": {
+    "2020": 2,
+    "2021": 2
+   },
+   "W2762917960": {
+    "2020": 3,
+    "2021": 4,
+    "2022": 8,
+    "2023": 5,
+    "2024": 2
+   },
+   "W2772951808": {
+    "2020": 2,
+    "2022": 5,
+    "2023": 1
+   },
+   "W2790037687": {
+    "2020": 5,
+    "2021": 10,
+    "2022": 6,
+    "2023": 6,
+    "2024": 4,
+    "2025": 6,
+    "2026": 3
+   },
+   "W2793125939": {
+    "2020": 1,
+    "2022": 2
+   },
+   "W2796682208": {},
+   "W2801707092": {
+    "2020": 21,
+    "2021": 28,
+    "2022": 10,
+    "2023": 11,
+    "2024": 7,
+    "2025": 6,
+    "2026": 1
+   },
+   "W2802146972": {
+    "2024": 1
+   },
+   "W2803004259": {
+    "2020": 9,
+    "2021": 8,
+    "2022": 1,
+    "2023": 6,
+    "2024": 2,
+    "2025": 6,
+    "2026": 3
+   },
+   "W2808418066": {
+    "2020": 2,
+    "2021": 1,
+    "2022": 4,
+    "2023": 2,
+    "2024": 2,
+    "2025": 1
+   },
+   "W2885626652": {},
+   "W2886581694": {
+    "2020": 1,
+    "2021": 4,
+    "2022": 7,
+    "2023": 2,
+    "2024": 3,
+    "2025": 1
+   },
+   "W2887827698": {
+    "2020": 14,
+    "2021": 14,
+    "2022": 4,
+    "2023": 3,
+    "2024": 3,
+    "2025": 1
+   },
+   "W2889482643": {
+    "2020": 1,
+    "2023": 1
+   },
+   "W2898791416": {
+    "2020": 1
+   },
+   "W2902534205": {
+    "2020": 6,
+    "2021": 8,
+    "2022": 2,
+    "2023": 4,
+    "2024": 3,
+    "2025": 2
+   },
+   "W2904418625": {
+    "2020": 8,
+    "2021": 7,
+    "2022": 5,
+    "2023": 6,
+    "2024": 6,
+    "2025": 8,
+    "2026": 2
+   },
+   "W2905629164": {
+    "2025": 1
+   },
+   "W2905706352": {
+    "2022": 1
+   },
+   "W2906427326": {},
+   "W2913831350": {
+    "2021": 6,
+    "2022": 1,
+    "2024": 1,
+    "2026": 1
+   },
+   "W2916390135": {
+    "2020": 6,
+    "2021": 5,
+    "2022": 3,
+    "2023": 6,
+    "2024": 6,
+    "2025": 2,
+    "2026": 1
+   },
+   "W2942658839": {
+    "2020": 6,
+    "2021": 8,
+    "2022": 8,
+    "2023": 4,
+    "2024": 3,
+    "2025": 2,
+    "2026": 1
+   },
+   "W2943506695": {
+    "2021": 3,
+    "2022": 4,
+    "2026": 1
+   },
+   "W2946229075": {
+    "2020": 6,
+    "2021": 8,
+    "2022": 10,
+    "2023": 11,
+    "2024": 15,
+    "2025": 8,
+    "2026": 3
+   },
+   "W2948962120": {
+    "2024": 1
+   },
+   "W2969355467": {
+    "2020": 6,
+    "2021": 12,
+    "2022": 3,
+    "2023": 10,
+    "2024": 4,
+    "2025": 2,
+    "2026": 1
+   },
+   "W2970409710": {
+    "2021": 1,
+    "2024": 2,
+    "2025": 1,
+    "2026": 2
+   },
+   "W2970824674": {
+    "2024": 1
+   },
+   "W2972315975": {
+    "2021": 1
+   },
+   "W2973023562": {},
+   "W2973161813": {},
+   "W2973876835": {
+    "2020": 5,
+    "2021": 8,
+    "2022": 7,
+    "2023": 1,
+    "2024": 4,
+    "2025": 4,
+    "2026": 1
+   },
+   "W2975003185": {},
+   "W2977007898": {},
+   "W2977053560": {
+    "2021": 1,
+    "2023": 1,
+    "2024": 1
+   },
+   "W2978611958": {
+    "2021": 1
+   },
+   "W2981106107": {
+    "2020": 1,
+    "2021": 3,
+    "2022": 2,
+    "2023": 7,
+    "2024": 3,
+    "2025": 4,
+    "2026": 2
+   },
+   "W2982451451": {
+    "2021": 1,
+    "2022": 2,
+    "2024": 2
+   },
+   "W2982593592": {
+    "2021": 1,
+    "2022": 1,
+    "2023": 1,
+    "2025": 1
+   },
+   "W2982642959": {},
+   "W2990661578": {
+    "2024": 3,
+    "2025": 1
+   },
+   "W2997599030": {
+    "2021": 2,
+    "2022": 1
+   },
+   "W3005422048": {
+    "2020": 2,
+    "2021": 7,
+    "2022": 1,
+    "2023": 3,
+    "2024": 1,
+    "2025": 4,
+    "2026": 1
+   },
+   "W3010135971": {
+    "2020": 4,
+    "2021": 12,
+    "2022": 5,
+    "2023": 6,
+    "2024": 4,
+    "2025": 3
+   },
+   "W3012531524": {
+    "2020": 1,
+    "2021": 4,
+    "2023": 2,
+    "2024": 2,
+    "2025": 1,
+    "2026": 1
+   },
+   "W3024732788": {
+    "2020": 2,
+    "2021": 4
+   },
+   "W3024923072": {
+    "2020": 2,
+    "2021": 9,
+    "2022": 3,
+    "2023": 8,
+    "2024": 3,
+    "2025": 6,
+    "2026": 3
+   },
+   "W3032727632": {
+    "2021": 1,
+    "2022": 1,
+    "2023": 1
+   },
+   "W3037197438": {
+    "2021": 1,
+    "2022": 1,
+    "2023": 1
+   },
+   "W3037365845": {
+    "2022": 1,
+    "2024": 2,
+    "2025": 1
+   },
+   "W3043219927": {
+    "2022": 1,
+    "2024": 2,
+    "2025": 1
+   },
+   "W3045292659": {
+    "2022": 1,
+    "2024": 1,
+    "2025": 1
+   },
+   "W3048588149": {
+    "2021": 1,
+    "2022": 1,
+    "2026": 1
+   },
+   "W3080835070": {
+    "2020": 1,
+    "2021": 2,
+    "2023": 3,
+    "2024": 1,
+    "2025": 1
+   },
+   "W3097623574": {
+    "2020": 3,
+    "2021": 21,
+    "2022": 21,
+    "2023": 41,
+    "2024": 33,
+    "2025": 24,
+    "2026": 12
+   },
+   "W3106683923": {
+    "2021": 4,
+    "2022": 6,
+    "2023": 8,
+    "2024": 3,
+    "2025": 4,
+    "2026": 4
+   },
+   "W3122532687": {
+    "2022": 6,
+    "2023": 4,
+    "2024": 4,
+    "2025": 1
+   },
+   "W3125431316": {
+    "2023": 1,
+    "2025": 1
+   },
+   "W3127235920": {
+    "2021": 1,
+    "2022": 1,
+    "2024": 1
+   },
+   "W3127588730": {
+    "2021": 12,
+    "2022": 3,
+    "2023": 5,
+    "2024": 4,
+    "2025": 8,
+    "2026": 1
+   },
+   "W3133047180": {},
+   "W3143809231": {
+    "2021": 1,
+    "2023": 2,
+    "2025": 1
+   },
+   "W3168418505": {
+    "2021": 1,
+    "2022": 2,
+    "2023": 4,
+    "2024": 3,
+    "2025": 5
+   },
+   "W3169134685": {
+    "2023": 2,
+    "2025": 2,
+    "2026": 3
+   },
+   "W3170410460": {
+    "2021": 1,
+    "2022": 10,
+    "2023": 4,
+    "2024": 8,
+    "2025": 1,
+    "2026": 2
+   },
+   "W3179500067": {
+    "2022": 3,
+    "2023": 6,
+    "2024": 3,
+    "2025": 7,
+    "2026": 1
+   },
+   "W3187025953": {
+    "2022": 8,
+    "2023": 9,
+    "2024": 7,
+    "2025": 11,
+    "2026": 4
+   },
+   "W3192730383": {
+    "2021": 1,
+    "2022": 4,
+    "2023": 8,
+    "2024": 9,
+    "2025": 6,
+    "2026": 3
+   },
+   "W3197870283": {
+    "2023": 1,
+    "2024": 2,
+    "2025": 6,
+    "2026": 9
+   },
+   "W3197944324": {
+    "2022": 1,
+    "2023": 6,
+    "2024": 6,
+    "2025": 12,
+    "2026": 3
+   },
+   "W3202716970": {
+    "2021": 4,
+    "2022": 9,
+    "2023": 46,
+    "2024": 61,
+    "2025": 53,
+    "2026": 19
+   },
+   "W3204033341": {
+    "2022": 4,
+    "2023": 4,
+    "2024": 8,
+    "2025": 6,
+    "2026": 6
+   },
+   "W3217750859": {
+    "2022": 1,
+    "2023": 3,
+    "2025": 2
+   },
+   "W4200039489": {
+    "2022": 5,
+    "2023": 1
+   },
+   "W4200321362": {},
+   "W4205555026": {
+    "2023": 5,
+    "2024": 1
+   },
+   "W4205713093": {},
+   "W4205906562": {
+    "2022": 8,
+    "2023": 7,
+    "2024": 13,
+    "2025": 13,
+    "2026": 11
+   },
+   "W4210663852": {
+    "2022": 6,
+    "2023": 4,
+    "2024": 7,
+    "2025": 5,
+    "2026": 1
+   },
+   "W4210934730": {},
+   "W4212968967": {},
+   "W4213256986": {
+    "2021": 1
+   },
+   "W4226263243": {
+    "2022": 1,
+    "2023": 1,
+    "2025": 2
+   },
+   "W4236485581": {
+    "2020": 1
+   },
+   "W4240935802": {
+    "2020": 1
+   },
+   "W4241112126": {
+    "2024": 2,
+    "2025": 1
+   },
+   "W4241652209": {},
+   "W4242662795": {
+    "2021": 2,
+    "2024": 1
+   },
+   "W4244010489": {
+    "2020": 1,
+    "2021": 2,
+    "2022": 4,
+    "2023": 6,
+    "2024": 2,
+    "2025": 3,
+    "2026": 2
+   },
+   "W4248207135": {
+    "2023": 2
+   },
+   "W4248741877": {
+    "2020": 12,
+    "2021": 10,
+    "2022": 13,
+    "2023": 6,
+    "2024": 9,
+    "2025": 7,
+    "2026": 8
+   },
+   "W4249752998": {
+    "2025": 1
+   },
+   "W4251446457": {},
+   "W4251826125": {
+    "2021": 1,
+    "2022": 3,
+    "2023": 1
+   },
+   "W4254126655": {},
+   "W4254186156": {
+    "2020": 1,
+    "2023": 1
+   },
+   "W4254421371": {},
+   "W4254778663": {},
+   "W4256422826": {},
+   "W4256541644": {
+    "2022": 4,
+    "2024": 3,
+    "2025": 1
+   },
+   "W4281831978": {
+    "2023": 1,
+    "2025": 3
+   },
+   "W4285392478": {
+    "2023": 1,
+    "2024": 2,
+    "2025": 2
+   },
+   "W4287509549": {
+    "2024": 3,
+    "2026": 1
+   },
+   "W4289827728": {
+    "2022": 2,
+    "2024": 2
+   },
+   "W4289827787": {
+    "2022": 1,
+    "2024": 2
+   },
+   "W4295955099": {
+    "2023": 5,
+    "2024": 2,
+    "2025": 3,
+    "2026": 3
+   },
+   "W4296079434": {
+    "2023": 4,
+    "2024": 8,
+    "2025": 20,
+    "2026": 12
+   },
+   "W4297459490": {
+    "2023": 3,
+    "2024": 9,
+    "2025": 10,
+    "2026": 2
+   },
+   "W4297460118": {
+    "2023": 1,
+    "2024": 1
+   },
+   "W4306179866": {
+    "2022": 2,
+    "2023": 21,
+    "2024": 11,
+    "2025": 7,
+    "2026": 4
+   },
+   "W4307041077": {
+    "2023": 1,
+    "2024": 3,
+    "2025": 11,
+    "2026": 4
+   },
+   "W4307136819": {
+    "2023": 2,
+    "2024": 9,
+    "2025": 6,
+    "2026": 1
+   },
+   "W4307605733": {
+    "2022": 1
+   },
+   "W4312064821": {
+    "2024": 1
+   },
+   "W4315567908": {
+    "2023": 2,
+    "2026": 1
+   },
+   "W4317213649": {
+    "2023": 2,
+    "2025": 7,
+    "2026": 1
+   },
+   "W4381245691": {
+    "2024": 1
+   },
+   "W4382240299": {
+    "2023": 2,
+    "2024": 2,
+    "2025": 7,
+    "2026": 2
+   },
+   "W4382358982": {
+    "2023": 1,
+    "2024": 1,
+    "2025": 6,
+    "2026": 1
+   },
+   "W4382461849": {
+    "2023": 2,
+    "2024": 1,
+    "2025": 4,
+    "2026": 2
+   },
+   "W4382464066": {
+    "2024": 8,
+    "2025": 4,
+    "2026": 5
+   },
+   "W4383749386": {
+    "2024": 2
+   },
+   "W4384522997": {
+    "2023": 1,
+    "2024": 1,
+    "2025": 2
+   },
+   "W4385484117": {
+    "2020": 13,
+    "2021": 14,
+    "2022": 14,
+    "2023": 18,
+    "2024": 19,
+    "2025": 14,
+    "2026": 3
+   },
+   "W4385665074": {
+    "2023": 1,
+    "2024": 1,
+    "2025": 4,
+    "2026": 1
+   },
+   "W4386173956": {
+    "2024": 1,
+    "2025": 1,
+    "2026": 1
+   },
+   "W4386585066": {
+    "2023": 1,
+    "2024": 5,
+    "2025": 2
+   },
+   "W4387552673": {},
+   "W4387559225": {
+    "2024": 3,
+    "2025": 5
+   },
+   "W4387559231": {
+    "2024": 3
+   },
+   "W4387604299": {
+    "2024": 3,
+    "2025": 3
+   },
+   "W4387885600": {
+    "2024": 1,
+    "2025": 9
+   },
+   "W4387885690": {
+    "2023": 1,
+    "2024": 9,
+    "2025": 8,
+    "2026": 5
+   },
+   "W4387993561": {},
+   "W4387994442": {
+    "2023": 3,
+    "2024": 28,
+    "2025": 36,
+    "2026": 21
+   },
+   "W4388206897": {
+    "2024": 2,
+    "2025": 1
+   },
+   "W4388581052": {
+    "2024": 1,
+    "2025": 3,
+    "2026": 1
+   },
+   "W4389104801": {
+    "2024": 3,
+    "2025": 4,
+    "2026": 3
+   },
+   "W4389104972": {
+    "2024": 2,
+    "2025": 15,
+    "2026": 14
+   },
+   "W4389302511": {
+    "2025": 1
+   },
+   "W4389387101": {
+    "2024": 4,
+    "2025": 1,
+    "2026": 1
+   },
+   "W4390621229": {
+    "2024": 1,
+    "2025": 1
+   },
+   "W4390874391": {
+    "2024": 5,
+    "2025": 11,
+    "2026": 3
+   },
+   "W4390906047": {
+    "2023": 1,
+    "2025": 3,
+    "2026": 1
+   },
+   "W4390992240": {},
+   "W4391335485": {
+    "2024": 3,
+    "2025": 6,
+    "2026": 2
+   },
+   "W4392270888": {
+    "2024": 1,
+    "2025": 4,
+    "2026": 4
+   },
+   "W4393277614": {
+    "2024": 1,
+    "2025": 1,
+    "2026": 1
+   },
+   "W4393970903": {
+    "2025": 4,
+    "2026": 2
+   },
+   "W4395483140": {
+    "2024": 1,
+    "2025": 3
+   },
+   "W4396900894": {
+    "2024": 1,
+    "2025": 2,
+    "2026": 1
+   },
+   "W4399428073": {
+    "2025": 1
+   },
+   "W4401007975": {
+    "2024": 3,
+    "2025": 9,
+    "2026": 2
+   },
+   "W4401416664": {
+    "2024": 1,
+    "2025": 3,
+    "2026": 4
+   },
+   "W4401608397": {
+    "2026": 1
+   },
+   "W4402402047": {
+    "2025": 18,
+    "2026": 16
+   },
+   "W4402402085": {
+    "2025": 7
+   },
+   "W4402451520": {},
+   "W4402916326": {
+    "2025": 5,
+    "2026": 2
+   },
+   "W4403041631": {},
+   "W4403081484": {
+    "2025": 1,
+    "2026": 2
+   },
+   "W4403210816": {
+    "2025": 1
+   },
+   "W4403760490": {
+    "2025": 3,
+    "2026": 1
+   },
+   "W4404479911": {
+    "2025": 1
+   },
+   "W4404847807": {},
+   "W4404847821": {
+    "2026": 1
+   },
+   "W4404847844": {
+    "2025": 1,
+    "2026": 1
+   },
+   "W4404848939": {},
+   "W4404916255": {
+    "2025": 2
+   },
+   "W4405352033": {
+    "2025": 1
+   },
+   "W4405756116": {
+    "2025": 4,
+    "2026": 1
+   },
+   "W4406778840": {},
+   "W4406785306": {},
+   "W4408324710": {},
+   "W4409701007": {
+    "2025": 2,
+    "2026": 1
+   },
+   "W4409762497": {},
+   "W4409917558": {},
+   "W4411490478": {
+    "2025": 5,
+    "2026": 3
+   },
+   "W4411515885": {
+    "2025": 2
+   },
+   "W4411800324": {
+    "2025": 1,
+    "2026": 2
+   },
+   "W4412097516": {
+    "2025": 1,
+    "2026": 4
+   },
+   "W4413059360": {},
+   "W4414968546": {},
+   "W4416004349": {
+    "2026": 1
+   },
+   "W4416004458": {
+    "2026": 2
+   },
+   "W4416203789": {
+    "2026": 1
+   },
+   "W4416242545": {},
+   "W4416343231": {},
+   "W4417094685": {},
+   "W57976199": {
+    "2024": 1,
+    "2025": 1
+   },
+   "W647806084": {
+    "2020": 5,
+    "2021": 3,
+    "2022": 2,
+    "2024": 4,
+    "2025": 1,
+    "2026": 1
+   },
+   "W7117987872": {},
+   "W7133244747": {},
+   "W7137959038": {},
+   "W7138915827": {},
+   "W7147465313": {},
+   "W7155056287": {},
+   "W7155097805": {},
+   "W7160913662": {},
+   "W7161776938": {},
+   "W7161808894": {},
+   "W7161842177": {},
+   "W7161848854": {},
+   "W7162072980": {},
+   "W7163866935": {},
+   "W7166066261": {},
+   "W7169790928": {},
+   "W7170048709": {},
+   "W7171544240": {},
+   "W817614323": {},
+   "W91249730": {}
+  }
+ },
+ "collected": "2026-10-02",
+ "npm": {
+  "packages": {
+   "@sage3/sagebase": {
+    "repo": "sage-3/next",
+    "years": {
+     "2022": 2119,
+     "2023": 1069,
+     "2024": 479,
+     "2025": 806,
+     "2026": 723
+    }
+   },
+   "@sage3/sageplugin": {
+    "repo": "sage-3/next",
+    "years": {
+     "2023": 1727,
+     "2024": 367,
+     "2025": 490,
+     "2026": 447
+    }
+   },
+   "@urban-toolkit/autk": {
+    "repo": "urban-toolkit/autark",
+    "years": {
+     "2026": 3004
+    }
+   },
+   "@urban-toolkit/autk-compute": {
+    "repo": "urban-toolkit/autark",
+    "years": {
+     "2026": 5100
+    }
+   },
+   "@urban-toolkit/autk-core": {
+    "repo": "urban-toolkit/autark",
+    "years": {
+     "2026": 3111
+    }
+   },
+   "@urban-toolkit/autk-db": {
+    "repo": "urban-toolkit/autark",
+    "years": {
+     "2026": 5645
+    }
+   },
+   "@urban-toolkit/autk-map": {
+    "repo": "urban-toolkit/autark",
+    "years": {
+     "2026": 5832
+    }
+   },
+   "@urban-toolkit/autk-plot": {
+    "repo": "urban-toolkit/autark",
+    "years": {
+     "2026": 5049
+    }
+   }
+  },
+  "through": "2026-09-30"
+ },
+ "pypi": {
+  "packages": {
+   "pysage3": {
+    "repo": "sage-3/next",
+    "years": {
+     "2024": 5398,
+     "2025": 288975,
+     "2026": 241082
+    }
+   },
+   "utk": {
+    "repo": "urban-toolkit/utk",
+    "years": {
+     "2023": 1682,
+     "2024": 1963,
+     "2025": 1689,
+     "2026": 925
+    }
+   },
+   "utk-curio": {
+    "repo": "urban-toolkit/curio",
+    "years": {
+     "2025": 4011,
+     "2026": 1842
+    }
+   }
+  },
+  "through": "2026-10-01"
+ },
+ "repos": [
+  {
+   "created": "2024-05-15",
+   "fork": false,
+   "org": "sage-3",
+   "repo": "SAGE-3/.github",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2021-04-06",
+   "fork": false,
+   "org": "sage-3",
+   "repo": "SAGE-3/SAGE-3.github.io",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2024-06-11",
+   "fork": true,
+   "org": "sage-3",
+   "repo": "SAGE-3/SageKernelServer",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2024-05-29",
+   "fork": false,
+   "org": "sage-3",
+   "repo": "SAGE-3/articulate-sage3",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2022-05-24",
+   "fork": false,
+   "org": "sage-3",
+   "repo": "SAGE-3/next",
+   "starred": null,
+   "stars": 19
+  },
+  {
+   "created": "2023-11-15",
+   "fork": false,
+   "org": "sage-3",
+   "repo": "SAGE-3/plugins",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2024-06-13",
+   "fork": false,
+   "org": "sage-3",
+   "repo": "SAGE-3/sage-virtualized-environment-manager",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2021-12-15",
+   "fork": false,
+   "org": "sage-3",
+   "repo": "SAGE-3/sage3-public",
+   "starred": null,
+   "stars": 3
+  },
+  {
+   "created": "2023-05-01",
+   "fork": false,
+   "org": "sage-3",
+   "repo": "SAGE-3/vipsit2",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2026-07-28",
+   "fork": false,
+   "org": "sage-3",
+   "repo": "SAGE-3/virtualized-environment-orchestration",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2026-04-07",
+   "fork": false,
+   "org": "spear-uic",
+   "repo": "SPEAR-UIC/BitIR",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2020-07-29",
+   "fork": false,
+   "org": "spear-uic",
+   "repo": "SPEAR-UIC/CODES",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2021-10-29",
+   "fork": false,
+   "org": "spear-uic",
+   "repo": "SPEAR-UIC/CQGym",
+   "starred": null,
+   "stars": 16
+  },
+  {
+   "created": "2017-10-20",
+   "fork": false,
+   "org": "spear-uic",
+   "repo": "SPEAR-UIC/CQSim",
+   "starred": null,
+   "stars": 41
+  },
+  {
+   "created": "2026-02-24",
+   "fork": false,
+   "org": "spear-uic",
+   "repo": "SPEAR-UIC/CQSimLive",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2025-02-05",
+   "fork": false,
+   "org": "spear-uic",
+   "repo": "SPEAR-UIC/CQSimPlus",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2025-04-03",
+   "fork": false,
+   "org": "spear-uic",
+   "repo": "SPEAR-UIC/CodeGreen",
+   "starred": null,
+   "stars": 2
+  },
+  {
+   "created": "2024-10-01",
+   "fork": false,
+   "org": "spear-uic",
+   "repo": "SPEAR-UIC/DCRNN",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2021-08-27",
+   "fork": false,
+   "org": "spear-uic",
+   "repo": "SPEAR-UIC/DNPC",
+   "starred": null,
+   "stars": 2
+  },
+  {
+   "created": "2026-02-26",
+   "fork": false,
+   "org": "spear-uic",
+   "repo": "SPEAR-UIC/HPC-workload-analysis",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2026-02-18",
+   "fork": false,
+   "org": "spear-uic",
+   "repo": "SPEAR-UIC/IPDPS26-LLM-Energy",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2026-03-19",
+   "fork": false,
+   "org": "spear-uic",
+   "repo": "SPEAR-UIC/JSSPP26-SafeWall",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2024-07-25",
+   "fork": false,
+   "org": "spear-uic",
+   "repo": "SPEAR-UIC/LASSI",
+   "starred": null,
+   "stars": 13
+  },
+  {
+   "created": "2025-06-27",
+   "fork": false,
+   "org": "spear-uic",
+   "repo": "SPEAR-UIC/MAGUS",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2026-06-10",
+   "fork": false,
+   "org": "spear-uic",
+   "repo": "SPEAR-UIC/MARS",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2025-03-19",
+   "fork": false,
+   "org": "spear-uic",
+   "repo": "SPEAR-UIC/MFNetSim",
+   "starred": null,
+   "stars": 1
+  },
+  {
+   "created": "2022-07-21",
+   "fork": false,
+   "org": "spear-uic",
+   "repo": "SPEAR-UIC/MRSch",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2023-12-20",
+   "fork": false,
+   "org": "spear-uic",
+   "repo": "SPEAR-UIC/MonEQ",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2026-03-22",
+   "fork": false,
+   "org": "spear-uic",
+   "repo": "SPEAR-UIC/PARS",
+   "starred": null,
+   "stars": 1
+  },
+  {
+   "created": "2021-08-29",
+   "fork": false,
+   "org": "spear-uic",
+   "repo": "SPEAR-UIC/PoLiMEr-dnpc",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2022-09-13",
+   "fork": false,
+   "org": "spear-uic",
+   "repo": "SPEAR-UIC/SEEr",
+   "starred": null,
+   "stars": 1
+  },
+  {
+   "created": "2025-04-05",
+   "fork": false,
+   "org": "spear-uic",
+   "repo": "SPEAR-UIC/SMART",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2026-02-10",
+   "fork": false,
+   "org": "spear-uic",
+   "repo": "SPEAR-UIC/SmartCap",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2020-01-09",
+   "fork": false,
+   "org": "spear-uic",
+   "repo": "SPEAR-UIC/Union",
+   "starred": null,
+   "stars": 1
+  },
+  {
+   "created": "2017-10-20",
+   "fork": false,
+   "org": "spear-uic",
+   "repo": "SPEAR-UIC/libprofil",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2022-07-19",
+   "fork": false,
+   "org": "spear-uic",
+   "repo": "SPEAR-UIC/mantis",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2021-06-11",
+   "fork": false,
+   "org": "spear-uic",
+   "repo": "SPEAR-UIC/q-adaptive_sst",
+   "starred": null,
+   "stars": 3
+  },
+  {
+   "created": "2021-06-08",
+   "fork": false,
+   "org": "spear-uic",
+   "repo": "SPEAR-UIC/sst-core",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2021-06-08",
+   "fork": false,
+   "org": "spear-uic",
+   "repo": "SPEAR-UIC/sst-elements",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2017-10-20",
+   "fork": false,
+   "org": "spear-uic",
+   "repo": "SPEAR-UIC/topomap",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2024-10-01",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/.github",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2019-05-16",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/10RulesBionets",
+   "starred": null,
+   "stars": 1
+  },
+  {
+   "created": "2021-05-01",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/ANIMO",
+   "starred": null,
+   "stars": 1
+  },
+  {
+   "created": "2022-09-01",
+   "fork": true,
+   "org": "uic-evl",
+   "repo": "uic-evl/AlveolusAnalysis",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2024-08-08",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/ApneaSarcopeniaHNC",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2016-04-20",
+   "fork": true,
+   "org": "uic-evl",
+   "repo": "uic-evl/BioinformaticsVis2016",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2023-08-30",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/CS529HW1",
+   "starred": null,
+   "stars": 2
+  },
+  {
+   "created": "2023-09-05",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/CS529ThreeJsHW",
+   "starred": null,
+   "stars": 1
+  },
+  {
+   "created": "2017-03-17",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/CareTransition",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2021-04-22",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/Chicago-crime-pavana-mastersThesis",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2020-05-14",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/Clinical_vs_Pathological_Staging",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2018-06-26",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/Curation-UI",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2024-02-05",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/DOE_DigitalTwin",
+   "starred": null,
+   "stars": 3
+  },
+  {
+   "created": "2023-05-23",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/DigitalTwinVis",
+   "starred": null,
+   "stars": 1
+  },
+  {
+   "created": "2024-09-29",
+   "fork": true,
+   "org": "uic-evl",
+   "repo": "uic-evl/EVL-Website",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2017-05-08",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/EnglewoodSocialServices",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2023-01-15",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/Environmental_Justice_Workshop23",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2021-04-20",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/EuroVisNetworkVisualization",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2016-08-24",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/EventEvent2016",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2017-06-02",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/Exploring-Chicago-Project",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2013-09-04",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/LifeLike",
+   "starred": null,
+   "stars": 1
+  },
+  {
+   "created": "2016-05-23",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/LymphaticCancerViz",
+   "starred": null,
+   "stars": 1
+  },
+  {
+   "created": "2024-04-27",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/MLVis_Template",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2021-04-26",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/Naveen_fitbitDataInterface",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2024-03-08",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/OsteoradionecrosisVis",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2015-09-12",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/Proto-SNP",
+   "starred": null,
+   "stars": 1
+  },
+  {
+   "created": "2023-03-03",
+   "fork": true,
+   "org": "uic-evl",
+   "repo": "uic-evl/QubbedDataAnalysis",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2023-01-18",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/R01_Spatial",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2013-08-27",
+   "fork": true,
+   "org": "uic-evl",
+   "repo": "uic-evl/SAGENext",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2017-04-21",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/SMART",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2018-11-09",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/SMART-UI-Backend",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2018-05-14",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/SMARTER",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2018-08-15",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/SMARTUI",
+   "starred": null,
+   "stars": 1
+  },
+  {
+   "created": "2018-12-13",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/SMARTUI-Revision",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2025-06-09",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/SageEdge",
+   "starred": null,
+   "stars": 6
+  },
+  {
+   "created": "2013-08-23",
+   "fork": true,
+   "org": "uic-evl",
+   "repo": "uic-evl/SagePad",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2016-01-15",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/Spatial-Non-Spatial-STAR",
+   "starred": null,
+   "stars": 1
+  },
+  {
+   "created": "2015-09-15",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/Stress_Tensor_Analysis",
+   "starred": null,
+   "stars": 1
+  },
+  {
+   "created": "2024-12-10",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/UIC_CS_Dissertation_Template_2024",
+   "starred": null,
+   "stars": 1
+  },
+  {
+   "created": "2016-09-14",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/VGTC-2016-Data-Contest",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2022-02-18",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/bio-search",
+   "starred": null,
+   "stars": 1
+  },
+  {
+   "created": "2013-02-11",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/cave2-audio-server",
+   "starred": null,
+   "stars": 2
+  },
+  {
+   "created": "2017-04-26",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/chicago-energy-visualization",
+   "starred": null,
+   "stars": 1
+  },
+  {
+   "created": "2021-08-29",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/covid-19-ensemblevis",
+   "starred": null,
+   "stars": 1
+  },
+  {
+   "created": "2015-01-20",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/cs528",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2019-10-01",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/cs529-vds",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2018-03-14",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/curation",
+   "starred": null,
+   "stars": 2
+  },
+  {
+   "created": "2020-11-30",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/curation-backend",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2019-02-09",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/curation-pipeline",
+   "starred": null,
+   "stars": 3
+  },
+  {
+   "created": "2017-03-02",
+   "fork": true,
+   "org": "uic-evl",
+   "repo": "uic-evl/d3.nomogram",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2022-05-04",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/deep-umbra",
+   "starred": null,
+   "stars": 11
+  },
+  {
+   "created": "2020-04-08",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/eurovis2020_alsaiari",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2026-10-02",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/evl-monitoring",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2022-03-04",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/hnc-predictor",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2024-09-18",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/intel-gpu",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2020-02-24",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/many-at-once-paper",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2019-12-14",
+   "fork": true,
+   "org": "uic-evl",
+   "repo": "uic-evl/mashy426.github.io",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2020-01-30",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/microscopy_classification",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2013-06-06",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/omegalib",
+   "starred": null,
+   "stars": 79
+  },
+  {
+   "created": "2013-06-08",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/omegalib-evl-apps",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2014-03-01",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/omegalib-history",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2015-04-01",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/omegalib-standalone-examples",
+   "starred": null,
+   "stars": 1
+  },
+  {
+   "created": "2013-06-17",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/omegalib-windows",
+   "starred": null,
+   "stars": 1
+  },
+  {
+   "created": "2013-06-06",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/omicron",
+   "starred": null,
+   "stars": 23
+  },
+  {
+   "created": "2015-03-11",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/omicron-examples",
+   "starred": null,
+   "stars": 1
+  },
+  {
+   "created": "2013-12-15",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/omicron-unity",
+   "starred": null,
+   "stars": 21
+  },
+  {
+   "created": "2014-06-06",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/railSim",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2016-04-29",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/sensei-panama",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2014-05-25",
+   "fork": true,
+   "org": "uic-evl",
+   "repo": "uic-evl/virtual-Earth-Project",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2020-02-20",
+   "fork": false,
+   "org": "uic-evl",
+   "repo": "uic-evl/wisdome",
+   "starred": {},
+   "stars": 0
+  },
+  {
+   "created": "2024-04-04",
+   "fork": false,
+   "org": "urban-toolkit",
+   "repo": "urban-toolkit/autark",
+   "starred": null,
+   "stars": 9
+  },
+  {
+   "created": "2024-06-16",
+   "fork": false,
+   "org": "urban-toolkit",
+   "repo": "urban-toolkit/curio",
+   "starred": null,
+   "stars": 36
+  },
+  {
+   "created": "2024-03-12",
+   "fork": false,
+   "org": "urban-toolkit",
+   "repo": "urban-toolkit/neural-3d",
+   "starred": null,
+   "stars": 5
+  },
+  {
+   "created": "2024-09-30",
+   "fork": false,
+   "org": "urban-toolkit",
+   "repo": "urban-toolkit/streetweave",
+   "starred": null,
+   "stars": 4
+  },
+  {
+   "created": "2025-04-07",
+   "fork": false,
+   "org": "urban-toolkit",
+   "repo": "urban-toolkit/urbanite",
+   "starred": null,
+   "stars": 8
+  },
+  {
+   "created": "2022-05-23",
+   "fork": false,
+   "org": "urban-toolkit",
+   "repo": "urban-toolkit/utk",
+   "starred": null,
+   "stars": 71
+  },
+  {
+   "created": "2025-04-06",
+   "fork": false,
+   "org": "urban-toolkit",
+   "repo": "urban-toolkit/va-blueprint",
+   "starred": null,
+   "stars": 3
+  }
+ ],
+ "starSnapshots": {
+  "SAGE-3/next": {
+   "first": "2026-10-02",
+   "years": {
+    "2026": 19
+   }
+  },
+  "SAGE-3/sage3-public": {
+   "first": "2026-10-02",
+   "years": {
+    "2026": 3
+   }
+  },
+  "SPEAR-UIC/CQGym": {
+   "first": "2026-10-02",
+   "years": {
+    "2026": 16
+   }
+  },
+  "SPEAR-UIC/CQSim": {
+   "first": "2026-10-02",
+   "years": {
+    "2026": 41
+   }
+  },
+  "SPEAR-UIC/CodeGreen": {
+   "first": "2026-10-02",
+   "years": {
+    "2026": 2
+   }
+  },
+  "SPEAR-UIC/DNPC": {
+   "first": "2026-10-02",
+   "years": {
+    "2026": 2
+   }
+  },
+  "SPEAR-UIC/LASSI": {
+   "first": "2026-10-02",
+   "years": {
+    "2026": 13
+   }
+  },
+  "SPEAR-UIC/MFNetSim": {
+   "first": "2026-10-02",
+   "years": {
+    "2026": 1
+   }
+  },
+  "SPEAR-UIC/PARS": {
+   "first": "2026-10-02",
+   "years": {
+    "2026": 1
+   }
+  },
+  "SPEAR-UIC/SEEr": {
+   "first": "2026-10-02",
+   "years": {
+    "2026": 1
+   }
+  },
+  "SPEAR-UIC/Union": {
+   "first": "2026-10-02",
+   "years": {
+    "2026": 1
+   }
+  },
+  "SPEAR-UIC/q-adaptive_sst": {
+   "first": "2026-10-02",
+   "years": {
+    "2026": 3
+   }
+  },
+  "uic-evl/10RulesBionets": {
+   "first": "2026-10-02",
+   "years": {
+    "2026": 1
+   }
+  },
+  "uic-evl/ANIMO": {
+   "first": "2026-10-02",
+   "years": {
+    "2026": 1
+   }
+  },
+  "uic-evl/CS529HW1": {
+   "first": "2026-10-02",
+   "years": {
+    "2026": 2
+   }
+  },
+  "uic-evl/CS529ThreeJsHW": {
+   "first": "2026-10-02",
+   "years": {
+    "2026": 1
+   }
+  },
+  "uic-evl/DOE_DigitalTwin": {
+   "first": "2026-10-02",
+   "years": {
+    "2026": 3
+   }
+  },
+  "uic-evl/DigitalTwinVis": {
+   "first": "2026-10-02",
+   "years": {
+    "2026": 1
+   }
+  },
+  "uic-evl/LifeLike": {
+   "first": "2026-10-02",
+   "years": {
+    "2026": 1
+   }
+  },
+  "uic-evl/LymphaticCancerViz": {
+   "first": "2026-10-02",
+   "years": {
+    "2026": 1
+   }
+  },
+  "uic-evl/Proto-SNP": {
+   "first": "2026-10-02",
+   "years": {
+    "2026": 1
+   }
+  },
+  "uic-evl/SMARTUI": {
+   "first": "2026-10-02",
+   "years": {
+    "2026": 1
+   }
+  },
+  "uic-evl/SageEdge": {
+   "first": "2026-10-02",
+   "years": {
+    "2026": 6
+   }
+  },
+  "uic-evl/Spatial-Non-Spatial-STAR": {
+   "first": "2026-10-02",
+   "years": {
+    "2026": 1
+   }
+  },
+  "uic-evl/Stress_Tensor_Analysis": {
+   "first": "2026-10-02",
+   "years": {
+    "2026": 1
+   }
+  },
+  "uic-evl/UIC_CS_Dissertation_Template_2024": {
+   "first": "2026-10-02",
+   "years": {
+    "2026": 1
+   }
+  },
+  "uic-evl/bio-search": {
+   "first": "2026-10-02",
+   "years": {
+    "2026": 1
+   }
+  },
+  "uic-evl/cave2-audio-server": {
+   "first": "2026-10-02",
+   "years": {
+    "2026": 2
+   }
+  },
+  "uic-evl/chicago-energy-visualization": {
+   "first": "2026-10-02",
+   "years": {
+    "2026": 1
+   }
+  },
+  "uic-evl/covid-19-ensemblevis": {
+   "first": "2026-10-02",
+   "years": {
+    "2026": 1
+   }
+  },
+  "uic-evl/curation": {
+   "first": "2026-10-02",
+   "years": {
+    "2026": 2
+   }
+  },
+  "uic-evl/curation-pipeline": {
+   "first": "2026-10-02",
+   "years": {
+    "2026": 3
+   }
+  },
+  "uic-evl/deep-umbra": {
+   "first": "2026-10-02",
+   "years": {
+    "2026": 11
+   }
+  },
+  "uic-evl/omegalib": {
+   "first": "2026-10-02",
+   "years": {
+    "2026": 79
+   }
+  },
+  "uic-evl/omegalib-standalone-examples": {
+   "first": "2026-10-02",
+   "years": {
+    "2026": 1
+   }
+  },
+  "uic-evl/omegalib-windows": {
+   "first": "2026-10-02",
+   "years": {
+    "2026": 1
+   }
+  },
+  "uic-evl/omicron": {
+   "first": "2026-10-02",
+   "years": {
+    "2026": 23
+   }
+  },
+  "uic-evl/omicron-examples": {
+   "first": "2026-10-02",
+   "years": {
+    "2026": 1
+   }
+  },
+  "uic-evl/omicron-unity": {
+   "first": "2026-10-02",
+   "years": {
+    "2026": 21
+   }
+  },
+  "urban-toolkit/autark": {
+   "first": "2026-10-02",
+   "years": {
+    "2026": 9
+   }
+  },
+  "urban-toolkit/curio": {
+   "first": "2026-10-02",
+   "years": {
+    "2026": 36
+   }
+  },
+  "urban-toolkit/neural-3d": {
+   "first": "2026-10-02",
+   "years": {
+    "2026": 5
+   }
+  },
+  "urban-toolkit/streetweave": {
+   "first": "2026-10-02",
+   "years": {
+    "2026": 4
+   }
+  },
+  "urban-toolkit/urbanite": {
+   "first": "2026-10-02",
+   "years": {
+    "2026": 8
+   }
+  },
+  "urban-toolkit/utk": {
+   "first": "2026-10-02",
+   "years": {
+    "2026": 71
+   }
+  },
+  "urban-toolkit/va-blueprint": {
+   "first": "2026-10-02",
+   "years": {
+    "2026": 3
+   }
+  }
+ },
+ "start": 2020
+}
