@@ -10,7 +10,7 @@ set -eu
 ID="${1:-}"
 PORT="${MONITOR_PORT:-9877}"
 BIND="${MONITOR_BIND_IP:-0.0.0.0}"
-WEB_SERVER_IP="131.193.78.85"  # www.evl.uic.edu, the relay that reads this agent
+HUB_IP="131.193.183.175"  # arcade.evl.uic.edu, where the monitor hub runs
 
 die() { echo "install.sh: $*" >&2; exit 1; }
 
@@ -82,9 +82,9 @@ docker exec evl-monitor-agent python -m evl_monitor.check "http://127.0.0.1:$POR
 
 if command -v ufw >/dev/null && ufw status 2>/dev/null | grep -q "Status: active"; then
   if ! ufw status | grep -q "$PORT"; then
-    echo "note: ufw is active. Let the web server reach the agent with:"
-    echo "      sudo ufw allow from $WEB_SERVER_IP to any port $PORT proto tcp"
+    echo "note: ufw is active. Let the monitor hub on arcade reach the agent with:"
+    echo "      sudo ufw allow from $HUB_IP to any port $PORT proto tcp"
   fi
 fi
 echo "Done. The agent starts again with Docker after a reboot."
-echo "From the web server: curl -s http://$FQDN:$PORT/healthz"
+echo "From arcade: curl -s http://$FQDN:$PORT/healthz"

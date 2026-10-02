@@ -89,6 +89,7 @@ class Handler(BaseHTTPRequestHandler):
             return
         if path == "/healthz":
             ok, body = health()
+            body = dict(body, requests=getattr(self.server, "served", 0))
             self._send(200 if ok else 503, json.dumps(body, separators=(",", ":")).encode(),
                        "no-store", head)
             return
@@ -99,6 +100,10 @@ class Handler(BaseHTTPRequestHandler):
         if entry is None:
             self._send(503, b'{"error":"starting"}', "no-store", head, extra={"Retry-After": "5"})
             return
+        self.serve_entry(entry, head)
+
+    def serve_entry(self, entry, head: bool, extra_headers: dict | None = None) -> None:
+        """Send a prebuilt entry: gzip when accepted, ETag and 304."""
         gz = accepts_gzip(self.headers.get("Accept-Encoding"))
         etag = entry.etag_gz if gz else entry.etag
         inm = self.headers.get("If-None-Match")
@@ -109,7 +114,7 @@ class Handler(BaseHTTPRequestHandler):
             self._common(entry.cache_control)
             self.end_headers()
             return
-        extra = {"ETag": etag}
+        extra = {"ETag": etag, **(extra_headers or {})}
         if gz:
             extra["Content-Encoding"] = "gzip"
         self._send(200, entry.gz if gz else entry.raw, entry.cache_control, head, extra=extra)
@@ -132,9 +137,11 @@ class BoundedServer(ThreadingHTTPServer):
 
     def __init__(self, addr, handler, max_conn: int):
         self._slots = threading.BoundedSemaphore(max_conn)
+        self.served = 0  # connections accepted, reported by /healthz to show the load
         super().__init__(addr, handler)
 
     def process_request(self, request, client_address):
+        self.served += 1
         if not self._slots.acquire(blocking=False):
             try:
                 request.shutdown(socket.SHUT_RDWR)

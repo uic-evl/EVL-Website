@@ -1,16 +1,16 @@
-# EVL server monitor (www.evl.uic.edu/monitor). This is the one host list.
+# EVL server monitor (www.evl.uic.edu/internal/monitor). This is the one host list.
 #
-# The page reads it (site.data.monitor), and _monitor/tools/render_nginx.py turns
-# the live hosts into the web server's relay config (_monitor/web/). Everything
-# here is public: no SSH users, keys or addresses.
+# The page reads it (site.data.monitor), and the hub on arcade reads it to know which
+# agents to poll (git pull on arcade picks up changes). Everything here is public:
+# no SSH users, keys or addresses.
 #
-# status: live     the agent is deployed; the page polls it
+# status: live     the agent is deployed; the hub polls it
 #         planned  shown as "Not reporting yet"; never polled
 # gpu:    the host has NVIDIA GPUs
-# After adding or changing hosts, run python _monitor/tools/render_nginx.py
 
-data_base: /monitor/data
-poll_seconds: 5
+# where the page reads its data: the hub on arcade (see _monitor/README.md)
+data_base: https://arcade.evl.uic.edu:6161
+poll_seconds: 15
 
 groups:
   - id: docc

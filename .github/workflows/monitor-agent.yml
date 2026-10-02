@@ -59,6 +59,27 @@ jobs:
           assert d["containers_status"] == "ok", d["containers_status"]
           assert {"evl-monitor-agent", "evl-monitor-docker-proxy"} <= names, names
           print(sorted(names))'
+      - name: Install the hub with a test certificate and poll the agent
+        run: |
+          mkdir -p /tmp/hub/tls /tmp/hub/data
+          openssl req -x509 -newkey rsa:2048 -nodes -days 2 -subj "/CN=localhost" \
+            -addext "subjectAltName=DNS:localhost,IP:127.0.0.1" \
+            -keyout /tmp/hub/tls/key.pem -out /tmp/hub/tls/cert.pem 2>/dev/null
+          printf '%s\n' "groups:" "  - {id: g, name: CI, hosts: [ci, later]}" "hosts:" \
+            "  ci: {name: CI, fqdn: 172.17.0.1, status: live}" \
+            "  later: {name: Later, fqdn: later.evl.uic.edu, status: planned}" > /tmp/hub/data/monitor.yml
+          sudo HUB_TLS_CERT=/tmp/hub/tls/cert.pem HUB_TLS_KEY=/tmp/hub/tls/key.pem \
+            HUB_HOSTS_DIR=/tmp/hub/data HUB_DEV=1 HUB_FQDN=localhost _monitor/hub/install-hub.sh
+          curl -fsS --cacert /tmp/hub/tls/cert.pem -H "Origin: https://www.evl.uic.edu" -D /tmp/h \
+            https://localhost:6161/overview.json | python3 -c '
+          import json, sys
+          d = json.load(sys.stdin)
+          st = {h["id"]: h["status"] for h in d["hosts"]}
+          assert st == {"ci": "live", "later": "planned"}, st
+          print(st)'
+          grep -qi "access-control-allow-origin: https://www.evl.uic.edu" /tmp/h
+          curl -fsS --cacert /tmp/hub/tls/cert.pem https://localhost:6161/ci/history/1h.json >/dev/null
+          docker inspect evl-monitor-hub --format '{{.HostConfig.ReadonlyRootfs}} {{.HostConfig.CapDrop}} {{.HostConfig.RestartPolicy.Name}}' | grep -qx 'true \[ALL\] always'
       - name: History survives a restart and a reinstall
         run: |
           points() { curl -fsS http://127.0.0.1:9877/history/1h.json | python3 -c 'import json,sys; print(sum(v is not None for v in json.load(sys.stdin)["host"]["cpu_pct"]["mean"]))'; }
@@ -74,6 +95,8 @@ jobs:
           test "$before" -gt 0
           test "$after_restart" -ge "$before"
           test "$after_install" -ge "$before"
-      - name: Agent logs
+      - name: Logs
         if: always()
-        run: docker logs evl-monitor-agent 2>&1 | tail -50
+        run: |
+          docker logs evl-monitor-agent 2>&1 | tail -50
+          docker logs evl-monitor-hub 2>&1 | tail -50 || true

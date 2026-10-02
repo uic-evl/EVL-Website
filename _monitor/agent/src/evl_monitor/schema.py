@@ -333,6 +333,36 @@ DAILY = Obj({
 })
 
 
+class Nullable(Node):
+    """A node that also accepts null."""
+
+    def __init__(self, node: Node):
+        self.node, self.null = node, True
+
+    def check(self, v, path):
+        if v is not None:
+            self.node.check(v, path)
+
+
+HUB_STATUS = ("connecting", "live", "stale", "offline", "planned")
+HUB_ERROR = ("timeout", "unreachable", "dns", "http_error", "bad_payload")
+
+OVERVIEW = Obj({
+    "v": V1, "ts": TS, "hub": SEMVER, "now_seconds": Int(1, 3600),
+    "hosts": List(Obj({
+        "id": ID,
+        "name": Text(PRINTABLE, 64),
+        "group": Text(PRINTABLE, 64),
+        "status": Enum(HUB_STATUS),
+        "age_s": Int(0, null=True),
+        "last_ok": Int(0, null=True),
+        "error": Enum(HUB_ERROR, null=True),
+        "now": Nullable(NOW),
+        "daily": Nullable(DAILY),
+    }), 64),
+})
+
+
 def validate(schema: Node, payload) -> None:
     schema.check(payload, "$")
 

@@ -1,29 +1,44 @@
 # EVL server monitor
 
-The page at https://www.evl.uic.edu/monitor/ shows live load, history, GPU use, containers,
-models and web services for the EVL servers.
+The page at https://www.evl.uic.edu/internal/monitor/ shows live load, history, GPU use,
+containers, models and web services for the EVL servers.
 
 ```
-browser --HTTPS--> www.evl.uic.edu (nginx on the web server)
-                     /monitor/                 the page (_pages/monitor.html)
-                     /monitor/data/<id>/...  --HTTP, campus only-->  <id>.evl.uic.edu:9877
-                                                                       evl-monitor agent (Docker)
+browser (www.evl.uic.edu/internal/monitor/, behind the /internal/ password)
+   --HTTPS-->  arcade.evl.uic.edu:6161   hub (Docker, arcade)
+                 polls over the campus network -->  <id>.evl.uic.edu:9877   agent (Docker, each server)
 ```
 
-Each server runs the agent, a small container that samples the host every 5 seconds, keeps
-compact history in SQLite and serves JSON on port 9877. The servers are reachable only inside
-UIC, so the web server's nginx relays `/monitor/data/<id>/<file>` to each agent. The page reads
-those URLs from its own origin.
+- **The agent** runs on each server. It is a small container that samples that server every
+  5 seconds, keeps compact history in SQLite, and serves JSON on port 9877.
+- **The hub** runs on arcade. It polls every agent gently, caches what it gets, and serves it
+  to the page over HTTPS on port 6161. The servers only ever hear from the hub, however many
+  people have the page open.
 
 | Folder | What it holds |
 |---|---|
-| `agent/` | the agent (Python), its Dockerfile, compose files and `install.sh` |
-| `web/` | the web server's relay config, generated from `_data/monitor.yml` |
-| `tools/` | `render_nginx.py` (writes `web/`), `hosts.py` (checks the host list), `check_dashes.py` |
+| `agent/` | the agent and hub code (Python), the Dockerfile, the agent's compose files and `install.sh` |
+| `hub/` | the hub's compose file and `install-hub.sh` |
+| `tools/` | `hosts.py` (checks the host list), `check_dashes.py` |
 
-`_data/monitor.yml` is the list of hosts. The page and the relay config both come from it.
+`_data/monitor.yml` is the list of hosts. The page and the hub both read it.
 
-## Files each agent serves
+## How gently the hub polls
+
+| File | When | Interval |
+|---|---|---|
+| `now.json` | always | 15 s |
+| `services.json` | always | 2 min |
+| `daily.json` | always | 15 min |
+| `host.json`, `spark.json` | always | 10 min |
+| `procs.json`, `history/*`, `series/*`, `usage.json` | only while someone has that server open | cached for at least 10 s |
+
+- **One request at a time per server,** with gzip and ETags, and a 3 s timeout.
+- **A server that stops answering** is retried after 15, 30, 60 and 120 s, then every 5 minutes.
+- **The load is fixed:** about 5 small requests a minute per server, measured with 20 pages open.
+- **Validation:** every reply is checked against the agent's closed schema before the hub keeps it.
+
+## Files each agent serves (the hub serves the same files at `/<id>/<file>`)
 
 | File | Contents | Refreshed |
 |---|---|---|
@@ -35,12 +50,14 @@ those URLs from its own origin.
 | `usage.json` | GPU hours and GPU-memory hours per user and container, per day, for 400 days | 1 min |
 | `history/<range>.json` | the series the page draws, mean and max | per bucket |
 | `series/<range>.json` | every stored series, mean, max and min | per bucket |
-| `spark.json` | the last 24 hours of CPU, memory and GPU means, for the overview cards | 10 min |
-| `healthz` | 200 while sampling, 503 if stalled | |
+| `spark.json` | the last 24 hours of CPU, memory and GPU means | 10 min |
+| `healthz` | 200 while sampling, 503 if stalled, and the number of requests served | |
 
-Days in `daily.json` and `usage.json` are calendar days in Chicago time (`MONITOR_TZ`).
+The hub also serves `overview.json`, with every host's status (live, stale, offline or planned),
+its latest `now.json` and its `daily.json`, in one file for the page's table.
 
-History ranges and their bucket widths:
+Days in `daily.json` and `usage.json` are calendar days in Chicago time (`MONITOR_TZ`). History
+ranges and their bucket widths:
 
 | Range | Bucket | Points |
 |---|---|---|
@@ -53,11 +70,19 @@ History ranges and their bucket widths:
 The history database has a fixed size: older buckets are dropped as new ones close. It takes
 about 30 MB for a 4-GPU host, in the `evl-monitor_data` Docker volume.
 
-Everything in these files is public. They never contain process command lines, environment
-variables, IP addresses or hostnames beyond the server's own name. Each payload is checked
-against a closed schema before it is served.
+The hub's data is readable by anyone who can reach arcade on port 6161; only the page is behind
+the `/internal/` password. The files never contain process command lines, environment variables
+or IP addresses, and each payload is checked against a closed schema before it is served.
 
-## Install on a server
+## Reach a server
+
+The servers are reachable only inside UIC. From elsewhere, go through the jump host:
+
+```sh
+ssh -J fabiom@compaas-dlv.evl.uic.edu:2222 <user>@<id>.evl.uic.edu
+```
+
+## Install the agent on a server
 
 You need Docker with compose v2. On GPU servers you also need the NVIDIA container toolkit
 (`nvidia-ctk runtime configure --runtime=docker`, then restart Docker).
@@ -65,7 +90,7 @@ You need Docker with compose v2. On GPU servers you also need the NVIDIA contain
 ```sh
 sudo git clone --depth 1 --filter=blob:none --sparse --branch deployment \
   https://github.com/uic-evl/EVL-Website.git /opt/evl-monitor
-sudo git -C /opt/evl-monitor sparse-checkout set _monitor/agent
+sudo git -C /opt/evl-monitor sparse-checkout set _monitor/agent _monitor/hub _data
 sudo /opt/evl-monitor/_monitor/agent/install.sh <id>
 ```
 
@@ -74,90 +99,81 @@ sudo /opt/evl-monitor/_monitor/agent/install.sh <id>
 - detects GPUs (NVIDIA runtime) and SSSD accounts;
 - builds the image on the server;
 - starts two containers, `evl-monitor-agent` and `evl-monitor-docker-proxy`, with
-  `restart: always`, and enables the Docker service at boot, so both come back after a reboot;
+  `restart: always`, and enables Docker at boot, so both come back after a reboot;
 - checks every file the agent serves.
 
-If the host runs `ufw`, allow the web server:
+If the server runs `ufw`, let the hub on arcade reach the agent:
 
 ```sh
-sudo ufw allow from 131.193.78.85 to any port 9877 proto tcp
+sudo ufw allow from 131.193.183.175 to any port 9877 proto tcp
 ```
 
-## Update a server
+## Install the hub on arcade
+
+After the agent, on arcade only:
+
+```sh
+sudo /opt/evl-monitor/_monitor/hub/install-hub.sh
+```
+
+The script finds the `*.evl.uic.edu` certificate in arcade's nginx config. It then starts
+`evl-monitor-hub` on port 6161 (`restart: always`) and waits for the first poll round. The hub
+reloads the certificate when it is renewed, and rereads `_data/monitor.yml` when it changes.
+
+## Update
 
 ```sh
 sudo git -C /opt/evl-monitor pull
 sudo /opt/evl-monitor/_monitor/agent/install.sh <id>
+sudo /opt/evl-monitor/_monitor/hub/install-hub.sh   # arcade only
 ```
 
 History is kept across updates and restarts.
 
 ## Add a server
 
-1. Add the host to `_data/monitor.yml` with `status: live` (or `planned` until it is racked).
-2. Run `python _monitor/tools/render_nginx.py`, which rewrites `_monitor/web/`.
-3. Install the agent on the server (above).
-4. Update the relay on the web server (below).
-5. Open a pull request with the three changed files.
-
-## The relay on the web server
-
-Copy the two generated files and include the snippet once in the `www.evl.uic.edu` server block:
-
-```sh
-sudo cp _monitor/web/evl-monitor-http.conf /etc/nginx/conf.d/
-sudo cp _monitor/web/evl-monitor.conf /etc/nginx/snippets/
-# once: add this line inside the "listen 443" server block for www.evl.uic.edu
-#   include snippets/evl-monitor.conf;
-sudo nginx -t && sudo systemctl reload nginx
-curl -s https://www.evl.uic.edu/monitor/data/<id>/now.json | head -c 200
-```
-
-The snippet names `resolver 127.0.0.53`, the systemd-resolved stub. If the web server uses
-another resolver, run `render_nginx.py --resolver <ip>`.
+1. Add the host to `_data/monitor.yml` with `status: live` (or `planned` until it is racked),
+   in a pull request.
+2. Install the agent on the new server (above).
+3. After the merge, `sudo git -C /opt/evl-monitor pull` on arcade. The hub starts polling
+   the new server within a minute, without a restart.
 
 ## Run it locally
 
-Fake data, on any machine with Docker:
+Fake agents behind the real hub, with the hosts from `_data/monitor.yml`:
 
 ```sh
-docker compose -f _monitor/agent/compose.dev.yaml up --build
-# http://127.0.0.1:9877/now.json
+cd _monitor/agent && pip install -e ".[test]"
+python -m evl_monitor.fakegw --port 4001                  # add --stale utk --offline sage200 to see those states
+# with the site running locally (docker compose up, or bundle exec jekyll serve):
+# http://localhost:8080/internal/monitor/?data=http://localhost:4001
 ```
 
-Several fake hosts behind the production URL layout, with one stale and one offline, for
-working on the page:
+Tests: `cd _monitor/agent && pytest` (the HTTPS tests use the `openssl` command).
+
+Check the hub or an agent:
 
 ```sh
-cd _monitor/agent && pip install -e .
-python -m evl_monitor.fakegw --port 4001 --hosts arcade:4,sage200:2,utk:1 --stale utk --offline sage200
-# with the site running locally (bundle exec jekyll serve):
-# http://localhost:4000/monitor/?data=http://localhost:4001/monitor/data
-```
-
-Tests: `cd _monitor/agent && pip install -e ".[test]" && pytest`.
-
-Check a deployed agent, directly or through the relay:
-
-```sh
-python -m evl_monitor.check https://www.evl.uic.edu/monitor/data/<id>/ --id <id>
+python -m evl_monitor.check https://arcade.evl.uic.edu:6161/<id>/ --id <id>
 ```
 
 ## Settings
 
-`install.sh` writes `_monitor/agent/.env`. These variables can be set before running it:
+`install.sh` writes `_monitor/agent/.env`; `install-hub.sh` writes `_monitor/hub/.env`. These
+variables can be set before running them:
 
 | Variable | Default | Meaning |
 |---|---|---|
 | `MONITOR_PORT` | `9877` | port the agent serves on |
-| `MONITOR_BIND_IP` | `0.0.0.0` | address the agent listens on |
 | `MONITOR_MOUNTS` | `auto` | `auto` (local filesystems, up to 8) or `label:/path,...` |
 | `MONITOR_PROCS` | `full` | `full` (users, containers, names), `count` (numbers only) or `off` |
+| `HUB_PORT` | `6161` | port the hub serves on |
+| `HUB_TLS_CERT`, `HUB_TLS_KEY` | from nginx | the hub's certificate and key |
+| `HUB_NOW_SECONDS` | `15` | how often the hub asks each agent for `now.json` |
 
 ## Remove
 
 ```sh
-cd /opt/evl-monitor/_monitor/agent
-sudo docker compose -p evl-monitor down       # keeps history
-sudo docker compose -p evl-monitor down -v    # deletes history too
+sudo docker compose -f /opt/evl-monitor/_monitor/agent/compose.yaml -p evl-monitor down      # keeps history
+sudo docker compose -f /opt/evl-monitor/_monitor/hub/compose.yaml -p evl-monitor-hub down    # arcade
 ```

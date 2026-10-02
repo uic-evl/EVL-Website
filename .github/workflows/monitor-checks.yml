@@ -30,21 +30,11 @@ jobs:
         with:
           python-version: "3.12"
       - name: Install
-        run: pip install pyyaml jinja2
+        run: pip install pyyaml
       - name: No en or em dashes
         run: python _monitor/tools/check_dashes.py
       - name: Host list is valid
         run: python _monitor/tools/hosts.py
-      - name: Relay config matches the host list
-        run: python _monitor/tools/render_nginx.py --check
-      - name: nginx accepts the relay config
-        run: |
-          python _monitor/tools/render_nginx.py --out /tmp/relay
-          docker run --rm \
-            -v /tmp/relay/nginx.conf:/etc/nginx/nginx.conf:ro \
-            -v /tmp/relay/conf.d:/etc/nginx/conf.d:ro \
-            -v /tmp/relay/snippets:/etc/nginx/snippets:ro \
-            nginx:1.24 nginx -t
       - name: Page script parses
         run: |
           if [ -f assets/js/monitor.js ]; then node --check assets/js/monitor.js; fi

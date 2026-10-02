@@ -1,0 +1,49 @@
+# EVL monitor hub (arcade only). install-hub.sh writes .env next to this file:
+#   sudo ./install-hub.sh
+# It polls every agent listed in _data/monitor.yml and serves the page's data on 6161.
+name: evl-monitor-hub
+
+services:
+  hub:
+    build: ../agent
+    image: evl-monitor-agent:${HUB_TAG:-local}
+    container_name: evl-monitor-hub
+    command: ["evl_monitor.hub"]
+    # back up whenever Docker starts, including after a reboot; `docker compose down` stops for good
+    restart: always
+    # uid 0 only to read the host's root-only TLS key; no capabilities, read-only, no new privileges
+    user: "0:0"
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    ports:
+      - "${HUB_BIND_IP:-0.0.0.0}:${HUB_PORT:-6161}:6161"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    environment:
+      HUB_PORT: "6161"
+      HUB_HOSTS: /config/monitor.yml
+      HUB_TLS_CERT: /tls/cert/${HUB_CERT_FILE:?}
+      HUB_TLS_KEY: /tls/key/${HUB_KEY_FILE:?}
+      HUB_CORS_ORIGINS: ${HUB_CORS_ORIGINS:-https://www.evl.uic.edu,https://www-new.evl.uic.edu}
+      HUB_NOW_SECONDS: ${HUB_NOW_SECONDS:-15}
+      HUB_DEV: ${HUB_DEV:-}
+    volumes:
+      # directories, not files: git pull and certificate renewal replace files
+      - ${HUB_HOSTS_DIR:?}:/config:ro
+      - ${HUB_CERT_DIR:?}:/tls/cert:ro
+      - ${HUB_KEY_DIR:?}:/tls/key:ro
+    tmpfs:
+      - /tmp:size=16m
+    healthcheck:
+      test: ["CMD", "python", "-m", "evl_monitor.hub", "--check"]
+      interval: 30s
+      timeout: 5s
+      start_period: 20s
+      retries: 3
+    mem_limit: 256m
+    cpus: 0.5
+    pids_limit: 64
+    logging:
+      driver: json-file
+      options: {max-size: "5m", max-file: "2"}

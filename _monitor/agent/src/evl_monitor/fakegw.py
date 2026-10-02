@@ -1,12 +1,12 @@
-"""Several fake hosts behind the production URL layout, for page development.
+"""Fake agents behind the real hub, for page development.
 
-    python -m evl_monitor.fakegw --port 4001 \
-        --hosts arcade:4,sage200:2,utk:1 --stale utk --offline sage200
+    python -m evl_monitor.fakegw --port 4001 [--stale utk] [--offline sage200]
 
-serves http://localhost:4001/monitor/data/<id>/<file> with a year of synthetic
-history per host. A `--stale` host publishes once and then stops sampling; an
-`--offline` host answers 502, like the nginx relay does for a dead host. CORS is
-open to localhost origins so a local Jekyll server can read it.
+reads the site's _data/monitor.yml (names, groups, planned hosts, GPU counts from the
+`gpus` field), starts one fake agent per live host on a local port with a year of
+synthetic history, and serves the real hub on http://localhost:4001 with CORS for
+localhost. A `--stale` host publishes once and then stops sampling; an `--offline`
+host has no agent at all. Open the local site with ?data=http://localhost:4001
 """
 
 from __future__ import annotations
@@ -22,16 +22,18 @@ from . import fake
 from .agent import Agent
 from .clock import RealClock
 from .config import Config
+from .hub import HostEntry, Hub, make_hub_server
 from .publish import Publisher
-from .server import BoundedServer, Handler
+from .server import make_server
 from .store import Store
 
-PATH_RE = re.compile(r"^/monitor/data/(?P<id>[a-z0-9][a-z0-9-]{0,31})(?P<file>/.*)$")
-LOCAL_ORIGIN_RE = re.compile(r"^http://(localhost|127\.0\.0\.1)(:\d+)?$")
+HERE = os.path.dirname(os.path.abspath(__file__))
+DATA = os.path.normpath(os.path.join(HERE, "..", "..", "..", "..", "_data", "monitor.yml"))
+LOCAL_ORIGINS = ("http://localhost:8080", "http://127.0.0.1:8080", "http://localhost:4000", "http://127.0.0.1:4000")
 
 
-class Host:
-    def __init__(self, ident: str, gpus: int, root: str, clock):
+class FakeAgent:
+    def __init__(self, ident: str, gpus: int, root: str, clock, stale: bool):
         env = {"MONITOR_ID": ident, "MONITOR_FAKE": "1", "MONITOR_FAKE_GPUS": str(gpus),
                "MONITOR_MOUNTS": "root:/,data:/data"}
         self.cfg = Config.from_env(env)
@@ -42,57 +44,61 @@ class Host:
         self.agent = Agent(self.cfg, clock, collectors, self.store, self.publisher)
         self.agent.startup()
         collectors.start_services(self.agent.publish_services, self.agent.gpu_use)
+        self.server = make_server("127.0.0.1", 0, self.publisher, self.agent.health)
+        self.port = self.server.server_address[1]
+        self.stale = stale
         self.stop = threading.Event()
 
-    def run(self, once: bool) -> None:
-        if once:
+    def start(self) -> None:
+        threading.Thread(target=self.server.serve_forever, daemon=True).start()
+        if self.stale:
             self.agent.tick(int(RealClock().time()))
-            return
-        self.agent.run(self.stop)
+        else:
+            threading.Thread(target=self.agent.run, args=(self.stop,), daemon=True).start()
 
 
-def make_handler(hosts: dict[str, Host], offline: set[str]):
-    class GatewayHandler(Handler):
-        def resolve(self, path):
-            m = PATH_RE.match(path)
-            if not m or m["id"] in offline or m["id"] not in hosts:
-                return None, None, path
-            h = hosts[m["id"]]
-            return h.publisher, h.agent.health, m["file"]
-
-        def end_headers(self):
-            origin = self.headers.get("Origin") if hasattr(self, "headers") else None
-            if origin and LOCAL_ORIGIN_RE.match(origin):
-                self.send_header("Access-Control-Allow-Origin", origin)
-                self.send_header("Access-Control-Expose-Headers", "Date, ETag")
-            super().end_headers()
-
-    return GatewayHandler
+def gpu_count(text: str | None) -> int:
+    m = re.match(r"\s*(\d+)\s*x", text or "")
+    return int(m.group(1)) if m else 0
 
 
 def main(argv: list[str]) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--port", type=int, default=4001)
-    ap.add_argument("--hosts", default="arcade:4,sage200:2,utk:1")
+    ap.add_argument("--hosts-file", default=DATA)
     ap.add_argument("--stale", default="")
     ap.add_argument("--offline", default="")
     args = ap.parse_args(argv)
 
-    clock = RealClock()
-    root = tempfile.mkdtemp(prefix="evl-fakegw-")
+    import yaml
+
+    with open(args.hosts_file) as f:
+        data = yaml.safe_load(f)
     stale = {s for s in args.stale.split(",") if s}
     offline = {s for s in args.offline.split(",") if s}
-    hosts = {}
-    for item in args.hosts.split(","):
-        ident, _, gpus = item.partition(":")
-        hosts[ident] = Host(ident, int(gpus or 0), root, clock)
-    for ident, h in hosts.items():
-        threading.Thread(target=h.run, args=(ident in stale,), daemon=True).start()
+    clock = RealClock()
+    root = tempfile.mkdtemp(prefix="evl-fakegw-")
+    entries = []
+    for g in data["groups"]:
+        for hid in g["hosts"]:
+            h = data["hosts"][hid]
+            port = 1  # nothing listens there: offline
+            if h.get("status") == "live" and hid not in offline:
+                a = FakeAgent(hid, gpu_count(h.get("gpus")), root, clock, hid in stale)
+                a.start()
+                port = a.port
+            entries.append(HostEntry(id=hid, name=h.get("name", hid), group=g["name"], fqdn="127.0.0.1",
+                                     status="live" if h.get("status") == "live" else "planned", port=port))
 
-    srv = BoundedServer(("127.0.0.1", args.port), make_handler(hosts, offline), 64)
-    print(f"fake relay on http://127.0.0.1:{args.port}/monitor/data/<id>/  hosts: {', '.join(hosts)}")
+    hub = Hub(lambda: entries)
+    hub.refresh_hosts(force=True)
+    server = make_hub_server(hub, "127.0.0.1", args.port, LOCAL_ORIGINS)
+    threading.Thread(target=server.serve_forever, daemon=True).start()
+    print(f"fake hub on http://127.0.0.1:{args.port}/overview.json  hosts: {', '.join(e.id for e in entries)}",
+          flush=True)
+    stop = threading.Event()
     try:
-        srv.serve_forever()
+        hub.run(stop)
     except KeyboardInterrupt:
         pass
     return 0
