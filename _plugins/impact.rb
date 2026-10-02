@@ -321,16 +321,22 @@ module EvlImpact
       return @rows["stars"] = row("stars", LABELS["stars"], @years.map { nil }, rule: stars_rule) unless @metrics
       repos = metric_repos
       snapshots = @metrics["starSnapshots"] || {}
+      # Per organization and year: its stars, nil when not known, or :none when it had no repositories yet.
       by_org = orgs.to_h do |org|
         mine = repos.select { |r| r["org"] == org }
         [org, @years.map do |y|
-          counts = mine.map { |r| r["created"].to_s[0, 4].to_i > y ? 0 : repo_stars(r, y, snapshots) }
+          existing = mine.reject { |r| r["created"].to_s[0, 4].to_i > y }
+          next :none if existing.empty?
+          counts = existing.map { |r| repo_stars(r, y, snapshots) }
           counts.include?(nil) ? nil : counts.sum
         end]
       end
+      # A year's total is the sum of the organizations whose stars are known; it is not available when none of the
+      # organizations that had repositories is known.
       values = @years.each_index.map do |i|
-        known = by_org.values.map { |v| v[i] }.compact
-        known.empty? ? nil : known.sum
+        with_repos = by_org.values.map { |v| v[i] }.reject { |v| v == :none }
+        known = with_repos.compact
+        with_repos.any? && known.empty? ? nil : known.sum
       end
       firsts = snapshots.values.filter_map { |s| Date.iso8601(s["first"].to_s) rescue nil }
       late = by_org.select { |_, v| v.include?(nil) }.keys
