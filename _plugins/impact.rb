@@ -336,11 +336,12 @@ module EvlImpact
       values = @years.each_index.map do |i|
         with_repos = by_org.values.map { |v| v[i] }.reject { |v| v == :none }
         known = with_repos.compact
-        with_repos.any? && known.empty? ? nil : known.sum
+        with_repos.empty? || !known.empty? ? known.sum : nil
       end
       firsts = snapshots.values.filter_map { |s| Date.iso8601(s["first"].to_s) rescue nil }
       late = by_org.select { |_, v| v.include?(nil) }.keys
-      since = late.any? && firsts.any? ? " The stars of #{late.join(' and ')} are counted from #{EvlImpact.long_date(firsts.min)} on." : ""
+      names = late.size > 1 ? "#{late[0..-2].join(', ')} and #{late[-1]}" : late.first
+      since = late.any? && firsts.any? ? " The stars of #{names} are counted from #{EvlImpact.long_date(firsts.min)} on." : ""
       @rows["stars"] = row(
         "stars", LABELS["stars"], values, rule: stars_rule + since,
         sources: [{ "label" => "Repositories", "url" => "/repositories/" }],
