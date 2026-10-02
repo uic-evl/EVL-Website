@@ -1,0 +1,417 @@
+@use "variables" as *;
+
+/*******************************************************************************
+ * Server monitor page (/monitor/). Everything is scoped under .evl-monitor.
+ ******************************************************************************/
+
+.evl-monitor {
+  // status (always shown with a text label)
+  --mon-ok: #{$green-color};
+  --mon-stale: #{$orange-color};
+  --mon-off: #{$red-color};
+  --mon-planned: #{$grey-color};
+  --mon-warn: #{$yellow-color};
+  // series, in fixed order (GPU i always takes slot i + 1)
+  --mon-s1: #2a78d6;
+  --mon-s2: #eb6834;
+  --mon-s3: #1baf7a;
+  --mon-s4: #eda100;
+  --mon-s5: #e87ba4;
+  --mon-s6: #008300;
+  --mon-s7: #4a3aa7;
+  --mon-s8: #e34948;
+  --mon-track: rgba(42, 120, 214, 0.14);
+  --mon-row-hover: rgba(0, 0, 0, 0.025);
+
+  font-variant-numeric: tabular-nums;
+}
+
+html[data-theme="dark"] .evl-monitor {
+  --mon-s1: #3987e5;
+  --mon-s2: #d95926;
+  --mon-s3: #199e70;
+  --mon-s4: #c98500;
+  --mon-s5: #d55181;
+  --mon-s6: #008300;
+  --mon-s7: #9085e9;
+  --mon-s8: #e66767;
+  --mon-track: rgba(57, 135, 229, 0.22);
+  --mon-row-hover: rgba(255, 255, 255, 0.03);
+}
+
+.evl-monitor .mon-summary {
+  color: var(--global-text-color-light);
+  margin-bottom: 1rem;
+}
+
+.evl-monitor .mon-banner {
+  margin-bottom: 1rem;
+  padding: 0.6rem 0.9rem;
+  font-size: 0.88rem;
+  border: 1px solid var(--mon-stale);
+  border-left-width: 4px;
+  border-radius: 8px;
+  background: var(--global-card-bg-color);
+}
+
+// column header (visual only; each row button carries its own label)
+.evl-monitor .mon-head,
+.evl-monitor .mon-row {
+  display: grid;
+  grid-template-columns: minmax(9rem, 1.5fr) 8.5rem minmax(5rem, 1fr) minmax(6rem, 1fr) minmax(6rem, 1.1fr) 8rem 1rem;
+  gap: 1rem;
+  align-items: center;
+}
+
+.evl-monitor .mon-head {
+  padding: 0 1rem 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--global-text-color-light);
+}
+
+.evl-monitor .mon-server {
+  background: var(--global-card-bg-color);
+  border: 1px solid var(--global-divider-color);
+  border-radius: 12px;
+  margin-bottom: 0.6rem;
+  overflow: hidden;
+}
+
+.evl-monitor .mon-row {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  background: none;
+  border: 0;
+  color: var(--global-text-color);
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+
+  &:hover {
+    background: var(--mon-row-hover);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--global-theme-color);
+    outline-offset: -2px;
+    border-radius: 12px;
+  }
+}
+
+.evl-monitor .mon-name {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+
+  strong {
+    font-weight: 600;
+  }
+
+  small {
+    color: var(--global-text-color-light);
+    font-size: 0.78rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.evl-monitor .mon-status {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.85rem;
+}
+
+.evl-monitor .mon-dot {
+  flex: none;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background: var(--mon-planned);
+}
+
+.evl-monitor .mon-state-live .mon-dot { background: var(--mon-ok); }
+.evl-monitor .mon-state-stale .mon-dot { background: var(--mon-stale); }
+.evl-monitor .mon-state-offline .mon-dot { background: var(--mon-off); }
+.evl-monitor .mon-state-loading .mon-dot { background: var(--mon-planned); opacity: 0.5; }
+
+.evl-monitor .mon-state-stale .mon-cell,
+.evl-monitor .mon-state-offline .mon-cell {
+  opacity: 0.55;
+}
+
+.evl-monitor .mon-state-planned .mon-row {
+  cursor: default;
+}
+
+.evl-monitor .mon-state-planned .mon-row:hover {
+  background: none;
+}
+
+.evl-monitor .mon-cell {
+  font-size: 0.85rem;
+  min-width: 0;
+}
+
+.evl-monitor .mon-value {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.evl-monitor .mon-muted {
+  color: var(--global-text-color-light);
+}
+
+// meter: the fill is the series blue, the track a lighter step of it
+.evl-monitor .mon-meter {
+  display: block;
+  height: 6px;
+  margin-top: 0.3rem;
+  border-radius: 3px;
+  background: var(--mon-track);
+  overflow: hidden;
+
+  > i {
+    display: block;
+    height: 100%;
+    border-radius: 3px;
+    background: var(--mon-s1);
+  }
+}
+
+// one tiny column per GPU (utilization)
+.evl-monitor .mon-gpubars {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 1.4rem;
+  margin-top: 0.15rem;
+
+  > i {
+    flex: 0 1 8px;
+    min-height: 1px;
+    border-radius: 2px 2px 0 0;
+    background: var(--mon-s1);
+  }
+
+  > i.mon-none {
+    background: var(--mon-track);
+    height: 100%;
+  }
+}
+
+.evl-monitor .mon-spark {
+  display: block;
+  width: 100%;
+  height: 1.6rem;
+
+  rect {
+    fill: var(--mon-s1);
+  }
+}
+
+.evl-monitor .mon-chev {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-right: 2px solid var(--global-text-color-light);
+  border-bottom: 2px solid var(--global-text-color-light);
+  transform: rotate(45deg);
+  transition: transform 0.15s ease;
+  justify-self: end;
+}
+
+.evl-monitor .mon-row[aria-expanded="true"] .mon-chev {
+  transform: rotate(225deg);
+}
+
+.evl-monitor .mon-state-planned .mon-chev {
+  visibility: hidden;
+}
+
+.evl-monitor .mon-state-planned .mon-30d {
+  visibility: hidden;
+}
+
+// expanded detail ------------------------------------------------------------
+
+.evl-monitor .mon-detail {
+  padding: 0.25rem 1rem 1.25rem;
+  border-top: 1px solid var(--global-divider-color);
+
+  h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin: 1.4rem 0 0.6rem;
+  }
+}
+
+.evl-monitor .mon-facts {
+  margin: 0.9rem 0 0;
+  font-size: 0.85rem;
+  color: var(--global-text-color-light);
+}
+
+.evl-monitor .mon-ranges {
+  display: inline-flex;
+  margin-top: 1rem;
+  border: 1px solid var(--global-divider-color);
+  border-radius: 8px;
+  overflow: hidden;
+
+  button {
+    padding: 0.25rem 0.75rem;
+    font-size: 0.8rem;
+    border: 0;
+    background: none;
+    color: var(--global-text-color);
+    cursor: pointer;
+
+    + button {
+      border-left: 1px solid var(--global-divider-color);
+    }
+
+    &[aria-pressed="true"] {
+      background: var(--global-theme-color);
+      color: #ffffff;
+    }
+  }
+}
+
+.evl-monitor .mon-charts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem 1.5rem;
+  margin-top: 1rem;
+}
+
+.evl-monitor .mon-fig {
+  margin: 0;
+
+  figcaption {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--global-text-color-light);
+    margin-bottom: 0.3rem;
+  }
+}
+
+.evl-monitor .mon-chart {
+  position: relative;
+  height: 170px;
+}
+
+.evl-monitor .mon-chart-wide {
+  height: 190px;
+}
+
+.evl-monitor .mon-table {
+  width: 100%;
+  font-size: 0.82rem;
+  border-collapse: collapse;
+
+  th {
+    font-weight: 500;
+    color: var(--global-text-color-light);
+    text-align: left;
+    padding: 0.3rem 0.6rem 0.3rem 0;
+    border-bottom: 1px solid var(--global-divider-color);
+  }
+
+  td {
+    padding: 0.4rem 0.6rem 0.4rem 0;
+    border-bottom: 1px solid var(--global-divider-color);
+    vertical-align: top;
+  }
+
+  tr:last-child td {
+    border-bottom: 0;
+  }
+
+  .mon-meter {
+    width: 5rem;
+  }
+}
+
+.evl-monitor .mon-table-wrap {
+  overflow-x: auto;
+}
+
+.evl-monitor .mon-key {
+  display: inline-block;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 2px;
+  margin-right: 0.35rem;
+  vertical-align: -0.05rem;
+}
+
+.evl-monitor .mon-badge {
+  display: inline-block;
+  margin: 0.1rem 0.25rem 0 0;
+  padding: 0 0.4rem;
+  font-size: 0.72rem;
+  border: 1px solid var(--global-divider-color);
+  border-radius: 6px;
+  color: var(--global-text-color-light);
+  white-space: nowrap;
+}
+
+.evl-monitor .mon-proc {
+  display: block;
+  white-space: nowrap;
+}
+
+.evl-monitor .mon-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.85rem;
+
+  li {
+    padding: 0.2rem 0;
+  }
+}
+
+.evl-monitor .mon-stopped {
+  opacity: 0.6;
+}
+
+.evl-monitor .mon-note {
+  font-size: 0.78rem;
+  color: var(--global-text-color-light);
+  margin: 0.4rem 0 0;
+}
+
+@media (max-width: 767.98px) {
+  .evl-monitor .mon-head {
+    display: none;
+  }
+
+  .evl-monitor .mon-row {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem 1rem;
+  }
+
+  .evl-monitor .mon-name {
+    grid-column: 1 / -1;
+  }
+
+  .evl-monitor .mon-cell[data-label]::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 0.72rem;
+    color: var(--global-text-color-light);
+  }
+
+  .evl-monitor .mon-chev {
+    display: none;
+  }
+
+  .evl-monitor .mon-charts {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

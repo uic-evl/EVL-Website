@@ -1,0 +1,33 @@
+---
+layout: page
+title: Server Monitor
+permalink: /internal/monitor/
+description: Live load, GPUs, models and services on EVL's servers.
+nav: false
+sitemap: false
+chart:
+  chartjs: true
+monitor: true
+# the monitor hub on arcade; it lists the servers (github.com/uic-evl/evl-monitoring)
+monitor_data: https://arcade.evl.uic.edu:6161
+---
+
+<div class="evl-monitor" id="evl-monitor">
+  <p class="mon-summary" id="mon-summary" aria-live="polite">Connecting to the servers.</p>
+  <p class="mon-banner" id="mon-banner" role="status" hidden>
+    The monitor hub (arcade.evl.uic.edu:6161) cannot be reached from this network. It may be
+    open only on the UIC network or VPN.
+  </p>
+
+  <div class="mon-head" id="mon-head" aria-hidden="true" hidden>
+    <span>Server</span><span>Status</span><span>CPU</span><span>Memory</span><span>GPUs</span><span>Last 30 days</span><span></span>
+  </div>
+  <div id="mon-list"></div>
+
+  <noscript><p>This page needs JavaScript to show live data.</p></noscript>
+  <p class="mon-note">
+    Load is the average of CPU, memory, GPU utilization and GPU memory use. GPU process owners are
+    the host accounts that own each process; for a container, that is the account its processes run as.
+  </p>
+  <script type="application/json" id="monitor-config">{"data_base": {{ page.monitor_data | jsonify }}}</script>
+</div>
