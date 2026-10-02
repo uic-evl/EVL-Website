@@ -1,0 +1,121 @@
+name: Impact numbers
+
+# Collects the Impact page's citations, repositories, stars and downloads (_impact/collect.mjs) and commits
+# _data/impact_metrics.json to deployment when they change, then starts the deploy. On a pull request, or when
+# started by hand on another branch, it builds the site and checks the page instead.
+
+on:
+  push:
+    branches: [deployment]
+    paths:
+      - _bibliography/papers-enhanced.bib
+      - _config.yml
+      - _data/repositories.yml
+      - _data/impact.yml
+      - _impact/**
+      - package.json
+      - package-lock.json
+      - .github/workflows/impact.yml
+  pull_request:
+    paths:
+      - _bibliography/**
+      - _config.yml
+      - _data/**
+      - _impact/**
+      - _pages/impact.md
+      - _plugins/impact.rb
+      - package.json
+      - package-lock.json
+      - .github/workflows/impact.yml
+  schedule:
+    - cron: "23 7 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: impact-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Collect citations, repositories, stars and downloads
+        run: node _impact/collect.mjs
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          STARS_TOKEN: ${{ secrets.IMPACT_STARS_TOKEN }}
+          OPENALEX_KEY: ${{ secrets.OPENALEX_KEY }}
+
+      - uses: actions/upload-artifact@v6
+        with:
+          name: impact-metrics
+          path: _data/impact_metrics.json
+
+      - name: Commit the numbers and deploy
+        if: github.ref == 'refs/heads/deployment' && github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp _data/impact_metrics.json "$RUNNER_TEMP/impact_metrics.json"
+          commit() {
+            git add _data/impact_metrics.json
+            if git diff --cached --quiet; then
+              echo "The numbers did not change."
+              return 1
+            fi
+            git commit -q -m "Update impact numbers"
+          }
+          commit || exit 0
+          if ! git push origin HEAD:deployment; then
+            # Someone pushed meanwhile: put the numbers on top of their commit.
+            git fetch --depth=1 origin deployment
+            git reset -q --hard FETCH_HEAD
+            cp "$RUNNER_TEMP/impact_metrics.json" _data/impact_metrics.json
+            commit || exit 0
+            git push origin HEAD:deployment
+          fi
+          # A push made with the workflow's token starts no workflow, so the deploy is started here.
+          gh workflow run deploy_tailscale.yml --ref deployment
+
+  build:
+    needs: collect
+    if: github.event_name == 'pull_request' || (github.event_name == 'workflow_dispatch' && github.ref != 'refs/heads/deployment')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/download-artifact@v7
+        with:
+          name: impact-metrics
+          path: _data
+
+      - name: Build the site
+        run: |
+          set -o pipefail
+          docker run --rm -e PAGES_REPO_NWO=uic-evl/EVL-Website -v "$PWD:/srv/jekyll" -w /srv/jekyll --entrypoint sh \
+            amirpourmand/al-folio:v0.14.0 -c 'bundle install --quiet && bundle exec jekyll build --future --baseurl ""' \
+            2>&1 | tee build.log
+          grep -E "Impact:" build.log || echo "No Impact warnings."
+
+      - name: Check the Impact page
+        run: node _impact/check.mjs
+
+      - uses: actions/upload-artifact@v6
+        with:
+          name: impact-page
+          path: _site/impact/

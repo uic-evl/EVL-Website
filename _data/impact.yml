@@ -1,0 +1,18 @@
+# Inputs of the Impact page (/impact/). The page counts everything else from this site's own files:
+# the bibliography, _data/grants.csv, _data/people.csv and _data/repositories.yml.
+
+# The first year the page shows; it runs through the current year.
+start: 2020
+
+# The packages each repository publishes. Every repository here must be one the Repositories page lists.
+# An npm name may end in `*`, which matches the packages of that npm organization (scope).
+packages:
+  - repo: urban-toolkit/utk
+    pypi: [utk]
+  - repo: urban-toolkit/curio
+    pypi: [utk-curio]
+  - repo: urban-toolkit/autark
+    npm: ["@urban-toolkit/autk*"]
+  - repo: sage-3/next
+    pypi: [pysage3]
+    npm: ["@sage3/*"]
