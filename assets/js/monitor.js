@@ -839,7 +839,8 @@
         cell.appendChild(el("span", "mon-muted", "idle"));
       } else {
         p.procs.slice(0, 5).forEach(function (x) {
-          var who = x.user + (x.container ? " in " + x.container : "") + (x.name ? ", " + x.name : "");
+          // the agent reports no user: a process is its container (or the host) and its name
+          var who = [x.container, x.name].filter(Boolean).join(", ") || "process";
           cell.appendChild(el("span", "mon-proc", who + (num(x.mem_gib) ? " (" + gib(x.mem_gib) + ")" : "")));
         });
         var more = p.procs.length - 5 + (p.more || 0);
