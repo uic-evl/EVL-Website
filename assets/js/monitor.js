@@ -782,7 +782,8 @@
       parts.push(f.cpu_model + (topo.length ? " (" + topo.join(", ") + ")" : ""));
     }
     if (host.mem && num(host.mem.total_gib)) parts.push(gib(host.mem.total_gib) + " RAM");
-    if (f.gpu_driver) parts.push("NVIDIA driver " + f.gpu_driver + (f.cuda ? ", CUDA " + f.cuda : ""));
+    // NVML reports a version number; the Intel sysfs reader reports the kernel driver's name
+    if (f.gpu_driver) parts.push((/^\d/.test(f.gpu_driver) ? "NVIDIA driver " : "GPU driver ") + f.gpu_driver + (f.cuda ? ", CUDA " + f.cuda : ""));
     if (num(host.boot_ts)) parts.push("up " + duration(Date.now() / 1000 - host.boot_ts));
     h.detail.facts.textContent = parts.join(" · ");
   }
