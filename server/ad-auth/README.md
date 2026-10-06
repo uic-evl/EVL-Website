@@ -57,4 +57,5 @@ so merge the site change before reloading nginx, or copy the two files into
 - Group restriction works as in nginx-ad-proxy: set `$xAuthGroups` / `$xAuthUsers` in the nginx
   location. The groups are read once at login and stored in the cookie.
 - `AD_DOMAIN` with a dot binds as `user@domain` (simple bind over StartTLS); without a dot it binds
-  as `DOMAIN\user` with NTLM. Use whichever nginx-ad-proxy's `.env` used.
+  as `DOMAIN\user` with NTLM. Prefer the DNS form. NTLM needs the `pycryptodome` package, which
+  is in `requirements.txt`; without it ldap3 fails with "unsupported hash type MD4".
