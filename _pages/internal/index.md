@@ -28,4 +28,5 @@ New EVLers should also fill out the [EVL new person form](https://forms.cloud.mi
 - [Resources](/internal/resources/) - EVL computing and networking resources, and who uses them
 - [AI Services](/internal/ai-services/) - AI services available to EVLers
 - [Monitor](/internal/monitor/) - Live load, GPUs, models and services on EVL's servers
+- [ARCADE Room User Guide](/internal/arcade/) - Using the ARCADE visual data science room, with a link to the full guide
 - [Repositories](/repositories/) - EVL code repositories on GitHub
