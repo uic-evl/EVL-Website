@@ -8,7 +8,9 @@ toc:
   sidebar: left
 ---
 
-*Last edited October 6, 2026. Source: [AI Servers and Services](https://docs.google.com/document/d/1ztuJ7YWnXJW5oil8GNIUodhIi1QCnejQ6kFpBo95h3s/edit?usp=sharing) (Google Doc). Live status of these servers and services: [Monitor](/internal/monitor/).*
+*Last edited October 6, 2026. Source: [AI Servers and Services](https://docs.google.com/document/d/1ztuJ7YWnXJW5oil8GNIUodhIi1QCnejQ6kFpBo95h3s/edit?usp=sharing) (Google Doc).*
+
+*Live status of these servers and services: [Monitor](/internal/monitor/).*
 
 ## Equipment
 
