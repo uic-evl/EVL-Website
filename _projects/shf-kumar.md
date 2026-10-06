@@ -4,7 +4,7 @@ title: SHF
 description: "Scalable and Extensible I/O Runtime and Tools for Next Generation Adaptive Data Layouts"
 permalink: /projects/shf-kumar/
 date: 2023-10-01
-img: images/kumar_shf_2023.png-srcw.jpg
+img: images/sidharth_kumar.jpg-srcw.jpg
 importance: 1
 category: research
 status: active
@@ -12,9 +12,12 @@ tags: [shf]
 ---
 
 <div class="row justify-content-sm-center">
-  <div class="col-sm-8 mt-3 mt-md-0">
-    {% include figure.liquid path="/images/kumar_shf_2023.png-srcw.jpg" title="Scalable and Extensible I/O Runtime and Tools for Next Generation Adaptive Data Layouts" class="img-fluid rounded z-depth-1" %}
+  <div class="col-sm-4 mt-3 mt-md-0">
+    {% include figure.liquid path="/images/sidharth_kumar.jpg-srcw.jpg" title="Sidharth Kumar" class="img-fluid rounded z-depth-1" %}
   </div>
+</div>
+<div class="caption">
+  Sidharth Kumar, PI.
 </div>
 
 ## Grant
