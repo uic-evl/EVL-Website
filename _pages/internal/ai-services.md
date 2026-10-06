@@ -8,7 +8,7 @@ toc:
   sidebar: left
 ---
 
-*Last edited October 6, 2026. Source: [AI Servers and Services](https://docs.google.com/document/d/1ztuJ7YWnXJW5oil8GNIUodhIi1QCnejQ6kFpBo95h3s/edit?usp=sharing) (Google Doc).*
+*Last edited October 6, 2026. Source: [AI Servers and Services](https://docs.google.com/document/d/1ztuJ7YWnXJW5oil8GNIUodhIi1QCnejQ6kFpBo95h3s/edit?usp=sharing) (Google Doc). Live status of these servers and services: [Monitor](/internal/monitor/).*
 
 ## Equipment
 
@@ -61,7 +61,7 @@ The servers, organized by funding:
 
 #### SAGE3
 
-- [sage200.evl.uic.edu](https://sage200.evl.uic.edu)
+- sage200.evl.uic.edu
   - Linux
   - **2x NVIDIA H200 NVL, 141 GB HBM3e**
   - 2x AMD EPYC 9655 96-core processor
@@ -164,3 +164,12 @@ Applications:
 - **VR Gaussian Splats**: immersive viewing of 3D Gaussian splatting scenes in virtual reality.
 - **VIPS it**: large image processor for SAGE3, converting gigapixel images into zoomable tiles, built on libvips.
 - **3D Video Player**: frame-exact WebCodecs video player with stereo 3D rendering, synchronizing any number of clients to a shared clock, up to tiled video-wall deployments.
+
+<div class="row justify-content-sm-center mt-4">
+  <div class="col-sm-8 mt-3 mt-md-0">
+    {% include figure.liquid path="assets/img/internal/arcade-website.png" title="arcade.evl.uic.edu" class="img-fluid rounded z-depth-1" %}
+  </div>
+</div>
+<div class="caption">
+  The ARCADE web site at <a href="https://arcade.evl.uic.edu/">arcade.evl.uic.edu</a>, listing the hosted data science applications.
+</div>
