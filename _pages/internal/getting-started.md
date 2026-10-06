@@ -13,6 +13,7 @@ Welcome to EVL. This page covers the practical things: how to get set up, how th
 - **Fill out the [EVL new person form](https://forms.cloud.microsoft/r/vVjEmwzSuz).** This is how you get added to the lab's lists, accounts and the people page.
 - **Get building and lab access.** Ask your advisor or the lab's staff to get your i-card activated for the lab doors.
 - **Ask to be added to the lab's communication channels**, and watch for the weekly Tech Meeting announcement.
+- **Login to Slack** at [evlers.slack.com](https://evlers.slack.com). Most day-to-day lab communication happens there.
 - **Find a desk.** Talk to your advisor before claiming one; some desks belong to particular projects or groups.
 
 ## The space is shared
