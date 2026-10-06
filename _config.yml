@@ -221,6 +221,7 @@ kramdown:
 # Includes & excludes
 include: ["_pages", "_scripts", "assets/img/homepage"]
 exclude:
+  - server/
   - bin/
   - old/
   - CONTRIBUTING.md
