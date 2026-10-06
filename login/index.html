@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>EVL Login</title>
+  <style>
+    :root {
+      --bg: #F7F7F8;
+      --card: #ffffff;
+      --fg: #1f1f1f;
+      --muted: #666;
+      --border: #ddd;
+      --accent: #D50032;
+      --error: #c0392b;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #18181B;
+        --card: #232327;
+        --fg: #e6e6e6;
+        --muted: #9a9a9a;
+        --border: #3a3a3a;
+        --accent: #FF3B5C;
+        --error: #ff6b6b;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+    }
+    .card {
+      width: 100%;
+      max-width: 400px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px 28px;
+    }
+    .logo { display: block; height: 48px; margin: 0 auto 16px; }
+    h1 { margin: 0 0 4px; font-size: 1.4rem; text-align: center; }
+    .sub { margin: 0 0 24px; color: var(--muted); text-align: center; font-size: 0.95rem; }
+    label { display: block; font-size: 0.9rem; margin: 14px 0 6px; }
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 10px 12px;
+      font-size: 1rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--bg);
+      color: var(--fg);
+    }
+    input:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: transparent; }
+    button {
+      width: 100%;
+      margin-top: 22px;
+      padding: 11px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+      background: var(--accent);
+      border: 0;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover { filter: brightness(1.08); }
+    .error {
+      display: none;
+      margin: 0 0 8px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      background: color-mix(in srgb, var(--error) 12%, transparent);
+      color: var(--error);
+      font-size: 0.92rem;
+    }
+    .error.show { display: block; }
+    .foot { margin: 22px 0 0; color: var(--muted); font-size: 0.85rem; text-align: center; }
+    .foot a { color: inherit; }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <img class="logo" src="/assets/img/new-logo-withtext.png" alt="EVL">
+    <h1>Internal pages</h1>
+    <p class="sub">Sign in with your UIC NetID and password.</p>
+
+    <p id="error" class="error" role="alert"></p>
+
+    <form method="post" action="/auth-ad/login" autocomplete="on">
+      <input type="hidden" name="next" id="next" value="/internal/">
+      <label for="username">NetID</label>
+      <input type="text" id="username" name="username" autocomplete="username" autocapitalize="none" spellcheck="false" required autofocus>
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" autocomplete="current-password" required>
+      <button type="submit">Sign in</button>
+    </form>
+
+    <p class="foot">For EVLers only. <a href="/">Back to evl.uic.edu</a></p>
+  </main>
+
+  <script>
+    // Where to go after login: the page that was requested. This page is served either in place of a
+    // protected page (status 401, URL unchanged) or at /login/?next=... after a failed attempt.
+    (function () {
+      var params = new URLSearchParams(location.search);
+      var next = location.pathname.indexOf("/login") === 0 ? params.get("next") : location.pathname + location.search;
+      if (!next || next.charAt(0) !== "/" || next.charAt(1) === "/") next = "/internal/";
+      document.getElementById("next").value = next;
+
+      var messages = {
+        bad: "Wrong NetID or password.",
+        denied: "Your account is not allowed to see these pages.",
+        locked: "Too many attempts. Wait a minute and try again.",
+        expired: "Your session expired. Sign in again.",
+        error: "The login service is unavailable. Try again later."
+      };
+      var err = params.get("error");
+      if (err && messages[err]) {
+        var box = document.getElementById("error");
+        box.textContent = messages[err];
+        box.classList.add("show");
+      }
+    })();
+  </script>
+</body>
+</html>

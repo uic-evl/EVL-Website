@@ -1,0 +1,12 @@
+# Login service for the /internal/ pages. Replaces the nginx-ad-proxy container on the same port.
+#
+#   cp env.example .env   # then fill in AD_* and SESSION_SECRET
+#   docker compose up -d --build
+services:
+  ad-auth:
+    build: .
+    container_name: ad-auth
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      - "127.0.0.1:8000:8000"
