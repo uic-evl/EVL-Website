@@ -103,7 +103,8 @@ layout: page
                             {% endif %}
                           {% endif %}
                         </div>
-                        {% if profile.dirTitle %}{{ profile.dirTitle }}<br>{% endif %}
+                        {% comment %} Alumni show name (degrees) and department only; dirTitle stays in the CSV as a record {% endcomment %}
+                        {% if profile.dirTitle and status != "alumni" %}{{ profile.dirTitle }}<br>{% endif %}
                         {% if profile.department %}{{ profile.department }}<br>{% endif %}
                         <div class="social-icons" style="margin-left: 1px !important;">
                         
