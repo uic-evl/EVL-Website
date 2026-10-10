@@ -103,8 +103,10 @@ layout: page
                             {% endif %}
                           {% endif %}
                         </div>
-                        {% comment %} Alumni show name (degrees) and department only; dirTitle stays in the CSV as a record {% endcomment %}
-                        {% if profile.dirTitle and status != "alumni" %}{{ profile.dirTitle }}<br>{% endif %}
+                        {% comment %} Alumni show name (degrees) and department only; students show only their current
+                           (first) title line. Earlier titles stay in the CSV as a record {% endcomment %}
+                        {% if profile.dirTitle and status == "student" %}{{ profile.dirTitle | split: "<br>" | first }}<br>
+                        {% elsif profile.dirTitle and status != "alumni" %}{{ profile.dirTitle }}<br>{% endif %}
                         {% if profile.department %}{{ profile.department }}<br>{% endif %}
                         <div class="social-icons" style="margin-left: 1px !important;">
                         
