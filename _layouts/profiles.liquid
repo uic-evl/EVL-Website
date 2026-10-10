@@ -116,6 +116,12 @@ layout: page
                           {% if profile.linkedin %}
                             <a href="{{ profile.linkedin }}" class="mx-0" title="LinkedIn"><i class="fa-brands fa-linkedin  mr-1"></i></a>
                           {% endif %}
+                          {% if profile.scholar %}
+                            <a href="{{ profile.scholar }}" class="mx-0" title="Google Scholar"><i class="ai ai-google-scholar  mr-1"></i></a>
+                          {% endif %}
+                          {% if profile.github %}
+                            <a href="{{ profile.github }}" class="mx-0" title="GitHub"><i class="fa-brands fa-github  mr-1"></i></a>
+                          {% endif %}
                         </div>
                       </div>
                     {% endfor %}
