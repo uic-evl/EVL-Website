@@ -11,6 +11,7 @@ _styles: >
   .evl-impact thead th:first-child, .evl-impact tbody th { text-align: left; }
   .evl-impact thead small { display: block; font-weight: normal; color: var(--global-text-color-light); }
   .evl-impact .evl-impact-group th { padding-top: 1rem; font-weight: 600; color: var(--global-theme-color); }
+  .evl-impact tbody th[scope="row"] { padding-left: 1.5rem; }
   .evl-impact-ref { margin-left: .2em; font-size: .75em; font-weight: normal; vertical-align: super; }
   .evl-impact-counted > li { margin-bottom: .75rem; }
   .evl-impact-counted .evl-impact-list { margin-top: .25rem; }
