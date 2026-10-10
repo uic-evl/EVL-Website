@@ -543,4 +543,20 @@ html[data-theme="dark"] {
   .status-link {
     text-transform: capitalize;
   }
+
+  // Alumni A | B-C | ... index: spread across the full column width, and
+  // kept under the fixed navbar while scrolling through the alumni list
+  .alumni-letters {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    position: sticky;
+    top: 68px; // navbar height
+    z-index: 10;
+    padding: 0.5rem 0;
+    background-color: var(--global-bg-color);
+    // cover the card gutters on both sides so names don't show beside the bar
+    box-shadow: -20px 0 0 var(--global-bg-color), 20px 0 0 var(--global-bg-color);
+    border-bottom: 1px solid var(--global-divider-color);
+  }
 }

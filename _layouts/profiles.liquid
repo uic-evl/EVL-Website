@@ -47,17 +47,17 @@ layout: page
       <h2 class="people-category" id="{{ status }}">{{ display_names[forloop.index0] }}</h2>
     </div>
                   {% assign people_count = people_in_status | size %}
-
-                  {% if status == "alumni" %}
-                  {% assign grouped_letters = "A,B-C,D-F,G-I,J-L,M-O,P-R,S-U,V-Z" | split: "," %}
-                    <div class="col-12 mt-0 mt-md-4 pt-1 pt-md-3 pb-1 text-center">
-                      {% for group in grouped_letters %}
-                        <a class="letter-link" href="#{{ status }}-{{ group | replace: '-', '' }}">{{ group }}</a>{% unless forloop.last %} | {% endunless %}
-                      {% endfor %}
-                    </div>
-                  {% endif %}
-
                 </div>
+
+                {% comment %} Outside the heading row so it can stay stuck under the navbar for the whole alumni list {% endcomment %}
+                {% if status == "alumni" %}
+                  {% assign grouped_letters = "A,B-C,D-F,G-I,J-L,M-O,P-R,S-U,V-Z" | split: "," %}
+                  <nav class="alumni-letters mt-0 mt-md-4" aria-label="Alumni by last name">
+                    {% for group in grouped_letters %}
+                      <a class="letter-link" href="#{{ status }}-{{ group | replace: '-', '' }}">{{ group }}</a>{% unless forloop.last %}<span aria-hidden="true">|</span>{% endunless %}
+                    {% endfor %}
+                  </nav>
+                {% endif %}
 
                 <div class="container px-0">
                   <div class="row pb-4">
@@ -103,7 +103,10 @@ layout: page
                             {% endif %}
                           {% endif %}
                         </div>
-                        {% if profile.dirTitle %}{{ profile.dirTitle }}<br>{% endif %}
+                        {% comment %} Alumni show name (degrees) and department only; students show only their current
+                           (first) title line. Earlier titles stay in the CSV as a record {% endcomment %}
+                        {% if profile.dirTitle and status == "student" %}{{ profile.dirTitle | split: "<br>" | first }}<br>
+                        {% elsif profile.dirTitle and status != "alumni" %}{{ profile.dirTitle }}<br>{% endif %}
                         {% if profile.department %}{{ profile.department }}<br>{% endif %}
                         <div class="social-icons" style="margin-left: 1px !important;">
                         
@@ -115,6 +118,12 @@ layout: page
                           {% endif %}
                           {% if profile.linkedin %}
                             <a href="{{ profile.linkedin }}" class="mx-0" title="LinkedIn"><i class="fa-brands fa-linkedin  mr-1"></i></a>
+                          {% endif %}
+                          {% if profile.scholar %}
+                            <a href="{{ profile.scholar }}" class="mx-0" title="Google Scholar"><i class="ai ai-google-scholar  mr-1"></i></a>
+                          {% endif %}
+                          {% if profile.github %}
+                            <a href="{{ profile.github }}" class="mx-0" title="GitHub"><i class="fa-brands fa-github  mr-1"></i></a>
                           {% endif %}
                         </div>
                       </div>
