@@ -47,17 +47,17 @@ layout: page
       <h2 class="people-category" id="{{ status }}">{{ display_names[forloop.index0] }}</h2>
     </div>
                   {% assign people_count = people_in_status | size %}
-
-                  {% if status == "alumni" %}
-                  {% assign grouped_letters = "A,B-C,D-F,G-I,J-L,M-O,P-R,S-U,V-Z" | split: "," %}
-                    <div class="col-12 mt-0 mt-md-4 pt-1 pt-md-3 pb-1 text-center">
-                      {% for group in grouped_letters %}
-                        <a class="letter-link" href="#{{ status }}-{{ group | replace: '-', '' }}">{{ group }}</a>{% unless forloop.last %} | {% endunless %}
-                      {% endfor %}
-                    </div>
-                  {% endif %}
-
                 </div>
+
+                {% comment %} Outside the heading row so it can stay stuck under the navbar for the whole alumni list {% endcomment %}
+                {% if status == "alumni" %}
+                  {% assign grouped_letters = "A,B-C,D-F,G-I,J-L,M-O,P-R,S-U,V-Z" | split: "," %}
+                  <nav class="alumni-letters mt-0 mt-md-4" aria-label="Alumni by last name">
+                    {% for group in grouped_letters %}
+                      <a class="letter-link" href="#{{ status }}-{{ group | replace: '-', '' }}">{{ group }}</a>{% unless forloop.last %}<span aria-hidden="true">|</span>{% endunless %}
+                    {% endfor %}
+                  </nav>
+                {% endif %}
 
                 <div class="container px-0">
                   <div class="row pb-4">
