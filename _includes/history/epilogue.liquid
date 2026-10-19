@@ -1,42 +1,17 @@
 {%- assign ep = site.data.history.epilogue -%}
 <section class="history-epilogue" id="epilogue" aria-labelledby="epilogue-title">
-  <div class="history-epilogue-inner">
-    <p class="history-kicker">{{ ep.kicker }}</p>
-    <h2 class="history-epilogue-title" id="epilogue-title">{{ ep.title }}</h2>
-    <ol class="history-lessons">
-      {%- for l in ep.lessons -%}
-        <li class="history-lesson">
-          <span class="history-lesson-title">{{ l.title }}</span>
-          <span class="history-lesson-text">{{ l.text }}</span>
-        </li>
-      {%- endfor -%}
-    </ol>
-  </div>
-
   <div class="history-bookend">
     <div class="history-bookend-media">
       {%- include history/picture.liquid src=ep.bookend.src alt=ep.bookend.alt sizes="(min-width: 992px) 55vw, 100vw" -%}
       <p class="history-media-credit">{{ ep.bookend.credit }}</p>
     </div>
     <div class="history-bookend-text">
-      <h3 class="history-bookend-title">{{ ep.bookend.title }}</h3>
+      <h2 class="history-bookend-title" id="epilogue-title">{{ ep.bookend.title }}</h2>
       <p>{{ ep.bookend.text }}</p>
     </div>
   </div>
 
   <div class="history-epilogue-inner">
-    <h3 class="history-sources-title">Sources and thanks</h3>
-    <ol class="history-sources">
-      {%- for s in ep.sources -%}
-        <li>
-          {%- if s.url -%}
-            <a href="{% if s.url contains '://' %}{{ s.url }}{% else %}{{ s.url | relative_url }}{% endif %}">{{ s.text }}</a>
-          {%- else -%}
-            {{ s.text }}
-          {%- endif -%}
-        </li>
-      {%- endfor -%}
-    </ol>
     <p class="history-visit">{{ ep.visit }}</p>
     <p class="history-epilogue-links">
       {%- for l in ep.links -%}

@@ -199,21 +199,6 @@
     return el ? el.closest(".history-chapter") : null;
   }
 
-  function setMoreOpen(chapter, open) {
-    var toggle = chapter.querySelector(".history-more-toggle");
-    toArray(chapter.querySelectorAll(".history-step--more")).forEach(function (s) {
-      s.classList.toggle("is-open", open);
-    });
-    if (toggle) {
-      toggle.setAttribute("aria-expanded", open ? "true" : "false");
-      var label = toggle.querySelector(".history-more-label");
-      if (label) {
-        if (!label.getAttribute("data-label-closed")) label.setAttribute("data-label-closed", label.textContent);
-        label.textContent = open ? label.getAttribute("data-label-open") : label.getAttribute("data-label-closed");
-      }
-    }
-  }
-
   function openCard(step) {
     step.classList.add("is-open");
     var chapter = chapterOf(step);
@@ -225,33 +210,15 @@
     });
   }
 
-  // Make a step visible (opening its group or card) and scroll it into view.
+  // Make a step visible (opening its card) and scroll it into view.
   function reveal(step, behavior) {
     if (!step) return;
-    if (step.classList.contains("history-step--more") && !step.classList.contains("is-open")) {
-      setMoreOpen(chapterOf(step), true);
-    }
     if (step.classList.contains("history-step--card")) openCard(step);
     window.requestAnimationFrame(function () {
       step.scrollIntoView({ behavior: behavior || scrollBehavior(), block: "start" });
       requestUpdate();
     });
   }
-
-  toArray(root.querySelectorAll(".history-more-toggle")).forEach(function (toggle) {
-    toggle.addEventListener("click", function () {
-      var chapter = chapterOf(toggle);
-      var open = toggle.getAttribute("aria-expanded") !== "true";
-      setMoreOpen(chapter, open);
-      if (open) {
-        var first = chapter.querySelector(".history-step--more");
-        if (first) reveal(first);
-      } else {
-        toggle.scrollIntoView({ behavior: "auto", block: "center" });
-      }
-      requestUpdate();
-    });
-  });
 
   toArray(root.querySelectorAll(".history-card")).forEach(function (card) {
     card.addEventListener("click", function (event) {
@@ -298,21 +265,10 @@
 
     var state = {
       group: store("evl-history-timeline-group") === "area" ? "area" : "domain",
-      zoom: null, // a decade, or null for the overview
       year: null,
-      activeId: null,
-      heldUntil: 0, // after the reader picks a decade, don't follow the scroll for a moment
-      hovered: false
+      activeId: null
     };
-    guide.addEventListener("mouseenter", function () {
-      state.hovered = true;
-    });
-    guide.addEventListener("mouseleave", function () {
-      state.hovered = false;
-    });
 
-    var crumb = document.createElement("div");
-    crumb.className = "history-guide-crumb";
     var chart = document.createElement("div");
     chart.className = "history-guide-chart";
     var labels = document.createElement("div");
@@ -331,7 +287,6 @@
     var playhead = document.createElement("div");
     playhead.className = "history-guide-playhead";
     playhead.setAttribute("aria-hidden", "true");
-    plot.appendChild(crumb);
     plot.appendChild(chart);
     plot.appendChild(axis);
     plot.appendChild(legend);
@@ -352,16 +307,6 @@
 
     function decadeOf(year) {
       return Math.floor(year / 10) * 10;
-    }
-
-    function areaName(key) {
-      for (var i = 0; i < AREAS.length; i++) if (AREAS[i].key === key) return AREAS[i].short;
-      return key;
-    }
-
-    function domainName(key) {
-      for (var i = 0; i < DOMAINS.length; i++) if (DOMAINS[i].key === key) return DOMAINS[i].label;
-      return key;
     }
 
     function build() {
@@ -394,37 +339,11 @@
 
         marks.forEach(function (m) {
           if ((state.group === "domain" ? m.domain : m.area) !== lane.key) return;
-          // Every dot is something the story tells; it opens the step that tells it.
-          var el = document.createElement("button");
-          el.type = "button";
+          // Every dot is something the story tells; a click picks the decade behind it.
+          var el = document.createElement("span");
           el.className = "history-guide-mark";
+          el.setAttribute("aria-hidden", "true");
           el.style.setProperty("--mark-color", "var(--history-" + m.area + ")");
-          el.setAttribute("aria-label", (m.label || m.year) + ", " + m.title + " (" + areaName(m.area) + ", " + domainName(m.domain) + ")");
-          el.addEventListener("mouseenter", function () {
-            showTip(el, m);
-          });
-          el.addEventListener("focus", function () {
-            showTip(el, m);
-          });
-          el.addEventListener("mouseleave", hideTip);
-          el.addEventListener("blur", hideTip);
-          el.addEventListener("click", function () {
-            reveal(document.getElementById(m.id));
-          });
-          el.addEventListener("keydown", function (e) {
-            if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
-            var siblings = toArray(row.querySelectorAll(".history-guide-mark")).filter(function (s) {
-              return s.style.display !== "none";
-            });
-            siblings.sort(function (a, b) {
-              return parseFloat(a.getAttribute("data-x")) - parseFloat(b.getAttribute("data-x"));
-            });
-            var i = siblings.indexOf(el) + (e.key === "ArrowRight" ? 1 : -1);
-            if (siblings[i]) {
-              e.preventDefault();
-              siblings[i].focus();
-            }
-          });
           row.appendChild(el);
           markEls.push({ el: el, m: m, lane: lane.key });
         });
@@ -440,16 +359,16 @@
         var count = marks.filter(function (m) {
           return decadeOf(m.year) === dec;
         }).length;
-        btn.setAttribute("aria-label", "Zoom into the " + dec + "s (" + count + " milestones)");
+        var counted = count + (count === 1 ? " milestone" : " milestones");
+        btn.setAttribute("aria-label", "Jump to the " + dec + "s (" + counted + ")");
         btn.addEventListener("click", function () {
-          zoomTo(dec);
+          jumpTo(dec);
         });
-        var decadeTip = { title: dec + "s", year: count + (count === 1 ? " milestone" : " milestones"), decade: true };
         btn.addEventListener("mouseenter", function () {
-          showTip(btn, decadeTip);
+          showTip(btn, dec + "s", counted + " · select to jump there");
         });
         btn.addEventListener("focus", function () {
-          showTip(btn, decadeTip);
+          showTip(btn, dec + "s", counted + " · select to jump there");
         });
         btn.addEventListener("mouseleave", hideTip);
         btn.addEventListener("blur", hideTip);
@@ -471,19 +390,25 @@
           legend.appendChild(item);
         });
       }
+      if (window.innerWidth >= 768) {
+        var hint = document.createElement("span");
+        hint.className = "history-guide-hint";
+        hint.textContent = "Select a decade to jump to it";
+        legend.appendChild(hint);
+      }
       toggleBtns.forEach(function (b) {
         b.setAttribute("aria-checked", b.getAttribute("data-group") === state.group ? "true" : "false");
       });
       layout();
     }
 
+    // Each decade's milestones, packed into one cluster per lane at the decade's centre.
     function layout() {
       var width = track.clientWidth || 1;
       var colWidth = (width * 10) / span;
       var groups = {};
       markEls.forEach(function (item) {
-        var m = item.m;
-        var key = state.zoom === null ? item.lane + "|" + decadeOf(m.year) : item.lane + "|" + m.year;
+        var key = item.lane + "|" + decadeOf(item.m.year);
         (groups[key] = groups[key] || []).push(item);
       });
       Object.keys(groups).forEach(function (key) {
@@ -491,123 +416,53 @@
           return a.m.year - b.m.year || (a.m.primary ? -1 : 1);
         });
         var n = list.length;
+        var gap = Math.min(10, n > 1 ? (colWidth - 14) / (n - 1) : 10);
         list.forEach(function (item, i) {
-          var m = item.m;
-          var el = item.el;
-          var x;
-          if (state.zoom === null) {
-            // Overview: each decade's milestones packed into a cluster at the decade's centre.
-            // The decade itself is the click target here; single dots open once zoomed in.
-            var dIndex = decades.indexOf(decadeOf(m.year));
-            var gap = Math.min(10, n > 1 ? (colWidth - 14) / (n - 1) : 10);
-            x = (dIndex + 0.5) * colWidth + (i - (n - 1) / 2) * gap;
-            el.style.display = "";
-            el.style.pointerEvents = "none";
-            el.tabIndex = -1;
-          } else if (decadeOf(m.year) === state.zoom) {
-            // Zoomed: spread to their own years.
-            x = ((m.year - state.zoom + 0.5) / 10) * width + (i - (n - 1) / 2) * 9;
-            el.style.display = "";
-            el.style.pointerEvents = "";
-            el.removeAttribute("tabindex");
-          } else {
-            el.style.display = "none";
-            return;
-          }
-          el.style.left = x + "px";
-          el.setAttribute("data-x", x);
+          var dIndex = decades.indexOf(decadeOf(item.m.year));
+          item.el.style.left = (dIndex + 0.5) * colWidth + (i - (n - 1) / 2) * gap + "px";
         });
-      });
-
-      decadeBtns.forEach(function (b) {
-        b.el.style.display = state.zoom === null ? "" : "none";
       });
 
       axis.innerHTML = "";
-      if (state.zoom === null) {
-        decades.forEach(function (dec, i) {
-          var t = document.createElement("span");
-          t.className = "history-guide-tick";
-          t.style.left = ((i + 0.5) * 100 * 10) / span + "%";
-          t.textContent = dec + "s";
-          axis.appendChild(t);
-        });
-      } else {
-        for (var y = state.zoom; y < state.zoom + 10; y++) {
-          var tick = document.createElement("span");
-          tick.className = "history-guide-tick";
-          tick.style.left = ((y - state.zoom + 0.5) / 10) * 100 + "%";
-          tick.textContent = y > to ? "" : y;
-          axis.appendChild(tick);
-        }
-      }
-      renderCrumb();
+      decades.forEach(function (dec, i) {
+        var t = document.createElement("span");
+        t.className = "history-guide-tick";
+        t.style.left = ((i + 0.5) * 100 * 10) / span + "%";
+        t.textContent = dec + "s";
+        axis.appendChild(t);
+      });
       placePlayhead();
       setActiveMark();
     }
 
-    function renderCrumb() {
-      crumb.innerHTML = "";
-      if (state.zoom === null) {
-        var hint = document.createElement("span");
-        hint.textContent = window.innerWidth < 768 ? "Tap a decade to zoom in" : "All decades · select a decade to see its milestones";
-        crumb.appendChild(hint);
-        return;
-      }
-      var i = decades.indexOf(state.zoom);
-      function btn(text, fn, label) {
-        var b = document.createElement("button");
-        b.type = "button";
-        b.textContent = text;
-        if (label) b.setAttribute("aria-label", label);
-        b.addEventListener("click", fn);
-        crumb.appendChild(b);
-      }
-      btn("All decades", function () {
-        zoomTo(null);
-      });
-      crumb.appendChild(document.createTextNode("›"));
-      if (decades[i - 1] !== undefined) {
-        btn("‹ " + decades[i - 1] + "s", function () {
-          zoomTo(decades[i - 1]);
-        }, "Previous decade");
-      }
-      var strong = document.createElement("strong");
-      strong.textContent = state.zoom + "s";
-      crumb.appendChild(strong);
-      if (decades[i + 1] !== undefined) {
-        btn(decades[i + 1] + "s ›", function () {
-          zoomTo(decades[i + 1]);
-        }, "Next decade");
-      }
+    // The last year a part claims ("1990–1999" ends in 1999; "Today" and "1973–today" never end).
+    function partEnd(step) {
+      var chapter = step.closest(".history-chapter");
+      var years = ((chapter && chapter.getAttribute("data-years")) || "").match(/\d{4}/g);
+      return years && years.length > 1 ? parseInt(years[1], 10) : Infinity;
     }
 
-    function zoomTo(dec) {
-      state.zoom = dec;
-      state.heldUntil = Date.now() + 4000;
+    // Jump to the earliest step the story tells in a decade (the first one read, when years tie),
+    // opening its card if it is closed. A part that ends before the decade doesn't count:
+    // StarLight (2001) closes the 1990s.
+    function jumpTo(dec) {
+      var target = null;
+      steps.forEach(function (s) {
+        var y = stepYear(s);
+        if (y === null || decadeOf(y) !== dec || partEnd(s) < dec) return;
+        if (!target || y < stepYear(target)) target = s;
+      });
       hideTip();
-      layout();
+      reveal(target);
     }
 
     function placePlayhead() {
       var y = state.year;
-      if (y === null || y === undefined) {
-        playhead.style.display = "none";
-        return;
-      }
-      var pct;
-      if (state.zoom === null) {
-        pct = ((y - from + 0.5) / span) * 100;
-      } else if (y >= state.zoom && y < state.zoom + 10) {
-        pct = ((y - state.zoom + 0.5) / 10) * 100;
-      } else {
-        playhead.style.display = "none";
-        return;
-      }
-      playhead.style.display = "";
-      playhead.style.left = pct + "%";
+      var none = y === null || y === undefined;
+      playhead.style.display = none ? "none" : "";
+      if (!none) playhead.style.left = ((y - from + 0.5) / span) * 100 + "%";
       decadeBtns.forEach(function (b) {
-        b.el.classList.toggle("is-current", b.decade === decadeOf(Math.round(y)));
+        b.el.classList.toggle("is-current", !none && b.decade === decadeOf(Math.round(y)));
       });
     }
 
@@ -620,12 +475,12 @@
       });
     }
 
-    function showTip(el, m) {
+    function showTip(el, title, text) {
       tip.innerHTML = "";
       var strong = document.createElement("strong");
-      strong.textContent = m.title;
+      strong.textContent = title;
       var meta = document.createElement("span");
-      meta.textContent = m.decade ? m.year + " · select to zoom in" : (m.label || m.year) + " · " + areaName(m.area) + " · " + domainName(m.domain);
+      meta.textContent = text;
       tip.appendChild(strong);
       tip.appendChild(meta);
       tip.hidden = false;
@@ -634,8 +489,8 @@
       var left = r.left - p.left + r.width / 2 - tip.offsetWidth / 2;
       left = Math.max(0, Math.min(left, p.width - tip.offsetWidth));
       tip.style.left = left + "px";
-      // Decade tips sit under the axis; dot tips sit just under the dot.
-      tip.style.top = (m.decade ? p.height : r.bottom - p.top) + 6 + "px";
+      // Under the axis and the legend, clear of the dots.
+      tip.style.top = p.height + 6 + "px";
     }
 
     function hideTip() {
@@ -716,15 +571,6 @@
       }
       state.activeId = step ? step.id : null;
       state.year = year === null || year === undefined ? null : year;
-      // Follow the reader into another decade, unless they just picked one or are using the guide.
-      if (state.zoom !== null && state.year !== null && !state.hovered && Date.now() > state.heldUntil) {
-        var dec = decadeOf(Math.round(state.year));
-        if (dec !== state.zoom) {
-          state.zoom = dec;
-          layout();
-          return;
-        }
-      }
       placePlayhead();
       setActiveMark();
     });
@@ -757,110 +603,6 @@
   }
 
   var CHARTS = {
-    mix: function (svg, c) {
-      var pub = data.publications;
-      if (!pub) return;
-      var W = 600;
-      var total = pub.records;
-      var parts = [
-        { key: "hpc", label: "HPC", sub: "systems & scale", value: pub.mix.hpc },
-        { key: "vis", label: "Visualization", sub: "visual computing", value: pub.mix.vis },
-        { key: "hci", label: "HCI", sub: "people & interaction", value: pub.mix.hci }
-      ];
-      svg.setAttribute("viewBox", "0 0 " + W + " 190");
-      var x = 0;
-      parts.forEach(function (p, i) {
-        var w = (p.value / total) * W;
-        var gap = i < parts.length - 1 ? 2 : 0;
-        var rect = svgEl("rect", { x: x, y: 74, width: Math.max(0, w - gap), height: 40, rx: 4, fill: c[p.key] }, svg);
-        svgEl("title", {}, rect).textContent = p.label + ": " + Math.round((p.value / total) * 100) + "% of " + formatNumber(total) + " weighted records";
-        text(svg, x, 40, Math.round((p.value / total) * 100) + "%", { "font-size": 26, "font-weight": 700 });
-        text(svg, x, 62, p.label + " · " + p.sub, { "font-size": 12, class: "history-chart-muted" });
-        x += w;
-      });
-      text(svg, 0, 150, formatNumber(total) + " weighted career records · " + pub.people + " faculty and affiliated faculty", {
-        "font-size": 12,
-        class: "history-chart-muted"
-      });
-      text(svg, 0, 172, "A record that spans two areas splits evenly", { "font-size": 12, class: "history-chart-muted" });
-    },
-
-    territory: function (svg, c) {
-      var pub = data.publications;
-      if (!pub) return;
-      var r = pub.regions;
-      svg.setAttribute("viewBox", "0 0 600 440");
-      var circles = [
-        { key: "hpc", cx: 235, cy: 170, label: "HPC", lx: 120, ly: 50 },
-        { key: "vis", cx: 365, cy: 170, label: "Visualization", lx: 480, ly: 50 },
-        { key: "hci", cx: 300, cy: 285, label: "HCI", lx: 300, ly: 432 }
-      ];
-      circles.forEach(function (ci) {
-        svgEl("circle", { cx: ci.cx, cy: ci.cy, r: 125, fill: c[ci.key], "fill-opacity": 0.14, stroke: c[ci.key], "stroke-width": 2 }, svg);
-      });
-      circles.forEach(function (ci) {
-        text(svg, ci.lx, ci.ly, ci.label, { "font-size": 15, "font-weight": 700, "text-anchor": "middle" });
-      });
-      var regions = [
-        { v: r.hpc, x: 160, y: 140, label: "HPC only" },
-        { v: r.vis, x: 440, y: 140, label: "Visualization only" },
-        { v: r.hci, x: 300, y: 370, label: "HCI only" },
-        { v: r.hpc_vis, x: 300, y: 115, label: "HPC and visualization" },
-        { v: r.hpc_hci, x: 212, y: 270, label: "HPC and HCI", empty: true },
-        { v: r.vis_hci, x: 388, y: 270, label: "Visualization and HCI" },
-        { v: r.all, x: 300, y: 210, label: "All three" }
-      ];
-      regions.forEach(function (g) {
-        var t = text(svg, g.x, g.y, g.v, {
-          "font-size": g.v >= 5 ? 34 : 26,
-          "font-weight": 700,
-          "text-anchor": "middle",
-          class: g.empty ? "history-chart-muted" : ""
-        });
-        svgEl("title", {}, t).textContent = g.label + ": " + g.v + (g.v === 1 ? " person" : " people");
-        text(svg, g.x, g.y + 16, g.label, { "font-size": 10.5, "text-anchor": "middle", class: "history-chart-muted" });
-      });
-    },
-
-    clusters: function (svg, c) {
-      var pub = data.publications;
-      if (!pub) return;
-      svg.setAttribute("viewBox", "0 0 600 400");
-      var pos = {
-        exascale: { x: 110, y: 205 },
-        scivis: { x: 290, y: 100 },
-        va: { x: 490, y: 110 },
-        immersive: { x: 290, y: 290 },
-        creativity: { x: 490, y: 300 }
-      };
-      var radius = {};
-      pub.clusters.forEach(function (cl) {
-        radius[cl.id] = 16 + Math.sqrt(cl.size) * 13;
-      });
-      pub.cluster_links.forEach(function (l) {
-        var a = pos[l.a];
-        var b = pos[l.b];
-        if (!a || !b) return;
-        svgEl("line", { x1: a.x, y1: a.y, x2: b.x, y2: b.y, stroke: c.muted, "stroke-opacity": 0.55, "stroke-width": 1 + l.shared * 2.2, "stroke-linecap": "round" }, svg);
-        var mx = (a.x + b.x) / 2;
-        var my = (a.y + b.y) / 2;
-        svgEl("rect", { x: mx - 30, y: my - 10, width: 60, height: 18, rx: 9, fill: c.surface, stroke: c.rule }, svg);
-        text(svg, mx, my + 3.5, l.shared + " shared", { "font-size": 10.5, "text-anchor": "middle", class: "history-chart-muted" });
-      });
-      pub.clusters.forEach(function (cl) {
-        var p = pos[cl.id];
-        if (!p) return;
-        var circle = svgEl("circle", { cx: p.x, cy: p.y, r: radius[cl.id], fill: c[cl.area], stroke: c.surface, "stroke-width": 3 }, svg);
-        svgEl("title", {}, circle).textContent = cl.label + ": " + cl.size + " people";
-        text(svg, p.x, p.y + 7, cl.size, { "font-size": 20, "font-weight": 700, "text-anchor": "middle", fill: "#fff", style: "fill:#fff" });
-        var words = cl.label.split(" ");
-        var half = Math.ceil(words.length / 2);
-        var below = p.y + radius[cl.id] + 16;
-        text(svg, p.x, below, words.slice(0, half).join(" "), { "font-size": 12, "font-weight": 600, "text-anchor": "middle" });
-        text(svg, p.x, below + 14, words.slice(half).join(" "), { "font-size": 12, "font-weight": 600, "text-anchor": "middle" });
-      });
-    },
-
     software: function (svg, c) {
       var sw = data.software;
       if (!sw || !sw.downloads) {

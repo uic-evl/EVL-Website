@@ -18,6 +18,6 @@
     {%- endfor -%}
   </div>
   {%- if m_credits != "" -%}
-    <figcaption class="history-media-credit">{{ m_credits }}</figcaption>
+    <figcaption class="history-media-credit">{{ m_credits | replace: "PRESENCE 33 (2024)", '<a href="https://doi.org/10.1162/pres_a_00421">PRESENCE 33 (2024)</a>' }}</figcaption>
   {%- endif -%}
 </figure>

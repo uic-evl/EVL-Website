@@ -83,7 +83,6 @@ chapters:
         post: /news/1973/1973-09-01-2084/
 
       - id: founding-brief
-        more: true
         year: 1973
         area: hci
         domain: platforms
@@ -162,7 +161,6 @@ chapters:
         post: /news/1977/1977-01-01-2162/
 
       - id: zgrass
-        more: true
         year: 1977
         label: 1977–1987
         area: hci
@@ -185,7 +183,6 @@ chapters:
         post: /news/1973/1973-01-01-1935/
 
       - id: spiral-ptl
-        more: true
         year: 1980
         label: 1978–1983
         area: art
@@ -293,7 +290,6 @@ chapters:
         post: /news/1992/1992-06-01-1299/
 
       - id: cave-room
-        more: true
         year: 1992
         area: hci
         domain: platforms
@@ -333,7 +329,6 @@ chapters:
         post: /news/2007/2007-03-10-752/
 
       - id: lineage
-        more: true
         year: 1994
         label: 1994–1998
         area: hci
@@ -375,7 +370,6 @@ chapters:
         post: /news/1995/1995-12-04-317/
 
       - id: tele-immersion
-        more: true
         year: 1997
         label: 1996–1998
         area: hci
@@ -398,7 +392,6 @@ chapters:
         post: /news/1998/1998-03-25-1248/
 
       - id: star-tap
-        more: true
         year: 1997
         area: hpc
         domain: platforms
@@ -444,7 +437,6 @@ chapters:
       credit: Lance Long, EVL
     steps:
       - id: geowall-varrier
-        more: true
         year: 2001
         area: vis
         domain: earth
@@ -513,7 +505,6 @@ chapters:
         post: /news/2004/2004-01-01-1882/
 
       - id: sage2
-        more: true
         year: 2013
         label: 2004–2018
         area: vis
@@ -533,7 +524,6 @@ chapters:
         post: /news/2013/2013-08-16-2042/
 
       - id: cyber-commons
-        more: true
         year: 2009
         label: 2009–2011
         area: hci
@@ -611,7 +601,6 @@ chapters:
             credit: EVL
 
       - id: sensei
-        more: true
         year: 2014
         label: 2014–2019
         area: vis
@@ -643,7 +632,6 @@ chapters:
         post: /news/2015/2015-10-25-2141/
 
       - id: continuum
-        more: true
         year: 2016
         label: 2016–2019
         area: hci
@@ -660,7 +648,6 @@ chapters:
         post: /news/2016/2016-10-01-2316/
 
       - id: compaas
-        more: true
         year: 2018
         label: 2018–2022
         area: hpc
@@ -748,7 +735,6 @@ chapters:
           - { text: DOCC and the ARCADE, url: /projects/docc/ }
 
       - id: leadership
-        more: true
         timeline: false
         title: Leadership and continuity
         body: |
@@ -765,7 +751,6 @@ chapters:
         post: /news/2024/2024-09-16-2862/
 
       - id: continuum-testbed
-        more: true
         year: 2023
         label: 2023–2026
         area: hpc
@@ -783,7 +768,6 @@ chapters:
         post: /news/2026/2026-07-20-3019/
 
       - id: collaborators
-        more: true
         timeline: false
         title: Who the lab works with
         body: |
@@ -1060,35 +1044,6 @@ chapters:
     dek: Fifty years of instruments, networks, software and people, measured by what they made possible for others.
     data: true
     steps:
-      - id: literacies
-        timeline: false
-        chart: mix
-        title: One lab, three literacies
-        body: |
-          Start with what the lab is. Read across the whole careers of today's nineteen faculty and affiliated faculty, about 1,465 publications sort into three literacies: high-performance computing, visualization and human–computer interaction. Weighted the same way for everyone, the largest share is interaction, then visualization, then systems.
-
-          No career is one colour, and the overlaps are where the lab's instruments get built.
-
-      - id: territory
-        more: true
-        timeline: false
-        chart: territory
-        title: Shared territory
-        body: |
-          Count membership instead of coordinates: an area counts when it reaches a fifth of a person's record. Fourteen of the nineteen sit in two or more areas, and four sit in all three.
-
-          The empty region is the finding. Nobody spans HPC and HCI without visualization in between, which is why the lab holds together.
-
-      - id: clusters
-        more: true
-        timeline: false
-        chart: clusters
-        title: The lab's de facto groups
-        body: |
-          Read off shared venues and shared papers, five groups emerge: exascale systems; scientific and in-situ visualization; visual analytics and perception; immersive and collaborative environments; and creativity, learning and social computing.
-
-          Seven people sit in more than one. Those overlaps are what make this one lab rather than five.
-
       - id: rooms
         timeline: false
         diagram: lineage
@@ -1157,22 +1112,9 @@ chapters:
             credit: Lance Long, EVL
 
     method: |
-      **Publications.** Career records of 19 current faculty and affiliated faculty from DBLP, the ACM Digital Library and Google Scholar, approximate and rounded to the nearest five. Venues are coded HPC (SC, CCGrid, ICPE, IPDPS, JSSPP, PEARC), visualization (IEEE VIS, TVCG, CGF, LDAV, ECCV, CVPR) or HCI (CHI, CSCW, C&C, IMX, ISS, IEEE VR, and immersive and collaboration venues). A record that spans two areas splits evenly. No chart on this page shows an individual.
-
       **Software.** Repositories and package downloads are the figures on the [Impact](/impact/) page, counted when the site was last built.
 
 epilogue:
-  kicker: In closing
-  title: What fifty years of this taught the lab
-  lessons:
-    - title: Keep the people and the hardware together
-      text: Co-location makes almost everything else simpler. Proximity is the cheapest research infrastructure there is.
-    - title: Learn the vocabulary, not the whole discipline
-      text: Nobody has to become the other expert. They have to be able to talk to them precisely.
-    - title: Build tools with people, not for them
-      text: And use your own tools daily. It is the only reliable way to find out what is wrong with them.
-    - title: Keep the portfolio broad and overlapping
-      text: No single technology outlives fifty years. A varied portfolio is what lets the lab survive each one.
   bookend:
     title: Art or engineering?
     text: >-
@@ -1181,26 +1123,6 @@ epilogue:
     src: epilogue-design-milestones.jpg
     alt: Chicago Design Milestones 1920–2019 on the 150 Media Stream wall
     credit: Daria Tsoupikova, EVL
-  sources:
-    - text: >-
-        Adapted from Michael E. Papka's keynote “Fifty years at the Electronic Visualization Laboratory,”
-        NASA ESTIM 2026, theMART, Chicago, September 23, 2026.
-      url: /news/2026/2026-09-23-3032/
-    - text: >-
-        Johnson, A. E., Renambot, L., Marai, G. E., Tsoupikova, D., Papka, M. E., Long, L., Plepys, D.,
-        Talandis, J., Brown, M. D., Leigh, J., Sandin, D. J., and DeFanti, T. A. (2024). Electronic
-        Visualization Laboratory's 50th Anniversary Retrospective: Look to the Future, Build on the Past.
-        PRESENCE: Virtual and Augmented Reality 33, 77–127. Open access, CC BY 4.0.
-      url: https://doi.org/10.1162/pres_a_00421
-    - text: >-
-        Cruz-Neira, C., Sandin, D. J., DeFanti, T. A., Kenyon, R. V., and Hart, J. C. (1992). The CAVE:
-        audio visual experience automatic virtual environment. Communications of the ACM 35(6).
-    - text: EVL's news archive, 1971 to today, and the project records on this site.
-      url: /news/
-    - text: >-
-        Publication figures: DBLP, the ACM Digital Library and Google Scholar. Software figures: this
-        site's Impact page.
-    - text: Photographs by EVL, many by Lance Long. Credits appear with each image.
   visit: >-
     Engineering Research Facility, 842 W Taylor Street, Chicago. Visitors welcome, and the espresso
     machine still works.

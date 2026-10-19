@@ -1,7 +1,7 @@
 {%- comment -%}
-  The sticky timeline guide. history.js draws the lanes (by area or by domain), the decade
-  overview and zoom, and the playhead from #history-marks; without JavaScript the guide is a
-  row of decade links.
+  The sticky timeline guide. history.js draws the lanes (by area or by domain), a cluster of
+  dots per decade and the playhead from #history-marks; selecting a decade jumps to its first
+  step. Without JavaScript the guide is a row of decade links.
 {%- endcomment -%}
 {%- assign hg = site.data.history -%}
 <nav class="history-guide" id="history-guide" aria-label="Timeline, 1973 to {{ history_year }}">

@@ -5,7 +5,7 @@
   {%- assign st_visual = true -%}
 {%- endif -%}
 <article
-  class="history-step{% if st.more %} history-step--more{% endif %}{% if st_chapter.cards %} history-step--card{% endif %}{% unless st_visual %} history-step--text{% endunless %}"
+  class="history-step{% if st_chapter.cards %} history-step--card{% endif %}{% unless st_visual %} history-step--text{% endunless %}"
   id="{{ st.id }}"
   data-step="{{ st.id }}"
   {% if st.year %}data-year="{{ st.year }}"{% endif %}

@@ -1,5 +1,4 @@
 {%- assign ch = include.chapter -%}
-{%- assign ch_more = ch.steps | where: "more", true -%}
 <section
   class="history-chapter{% if ch.data %} history-chapter--data{% endif %}{% if ch.cards %} history-chapter--cards{% endif %}"
   id="{{ ch.id }}"
@@ -48,14 +47,6 @@
       {%- for st in ch.steps -%}
         {%- include history/step.liquid step=st chapter=ch -%}
       {%- endfor -%}
-      {%- if ch_more.size > 0 -%}
-        <div class="history-more">
-          <button type="button" class="history-more-toggle" aria-expanded="false">
-            <span class="history-more-label" data-label-open="Show fewer">More from {{ ch.years }} ({{ ch_more.size }})</span>
-            <span class="history-more-list">{{ ch_more | map: "title" | join: " · " }}</span>
-          </button>
-        </div>
-      {%- endif -%}
     </div>
 
     <div class="history-panel">

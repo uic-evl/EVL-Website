@@ -318,8 +318,7 @@ html:not(.history-js) .evl-history .history-guide-now {
 }
 
 .evl-history .history-guide-toggle button,
-.evl-history .history-guide-collapse,
-.evl-history .history-guide-crumb button {
+.evl-history .history-guide-collapse {
   padding: 0.15rem 0.7rem;
   font-size: 0.78rem;
   line-height: 1.5;
@@ -341,8 +340,6 @@ html:not(.history-js) .evl-history .history-guide-now {
 
 .evl-history .history-guide-toggle button:focus-visible,
 .evl-history .history-guide-collapse:focus-visible,
-.evl-history .history-guide-crumb button:focus-visible,
-.evl-history .history-guide-mark:focus-visible,
 .evl-history .history-guide-decade:focus-visible {
   outline: 2px solid var(--history-accent);
   outline-offset: 2px;
@@ -371,34 +368,6 @@ html:not(.history-js) .evl-history .history-guide-now {
   list-style: none;
   font-family: var(--history-mono);
   font-size: 0.8rem;
-}
-
-.evl-history .history-guide-crumb {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  min-height: 1.4rem;
-  font-family: var(--history-mono);
-  font-size: 0.72rem;
-  color: var(--history-muted);
-}
-
-.evl-history .history-guide-crumb button {
-  padding: 0 0.45rem;
-  font-family: var(--history-mono);
-  font-size: 0.72rem;
-}
-
-.evl-history .history-guide-crumb button:hover {
-  color: var(--history-ink);
-}
-
-.evl-history .history-guide-crumb strong {
-  color: var(--history-ink);
-}
-
-.evl-history .history-guide-crumb span {
-  color: inherit;
 }
 
 .evl-history .history-guide-chart {
@@ -444,12 +413,8 @@ html:not(.history-js) .evl-history .history-guide-now {
 .evl-history .history-guide-lane {
   position: relative;
   border-top: 1px solid var(--history-rule);
-  // Clicks on empty lane space reach the decade buttons underneath; the dots take their own.
+  // Clicks pass through the lanes and their dots to the decade buttons underneath.
   pointer-events: none;
-}
-
-.evl-history .history-guide-lane .history-guide-mark {
-  pointer-events: auto;
 }
 
 .evl-history .history-guide-lane:first-child {
@@ -464,7 +429,7 @@ html:not(.history-js) .evl-history .history-guide-now {
   background: transparent;
   border: 0;
   border-left: 1px solid var(--history-rule);
-  cursor: zoom-in;
+  cursor: pointer;
 }
 
 .evl-history .history-guide-decade:hover {
@@ -501,19 +466,7 @@ html:not(.history-js) .evl-history .history-guide-now {
   background: var(--mark-color);
   border: 0;
   border-radius: 50%;
-  cursor: pointer;
   transition: left 450ms ease, transform 150ms ease;
-}
-
-.evl-history .history-guide-mark::after {
-  // A hit target wider than the dot.
-  content: "";
-  position: absolute;
-  inset: -5px;
-}
-
-.evl-history .history-guide-mark:hover {
-  transform: scale(1.5);
 }
 
 .evl-history .history-guide-mark.is-active {
@@ -586,6 +539,11 @@ html:not(.history-js) .evl-history .history-guide-now {
   align-items: center;
   gap: 0.3rem;
   color: inherit;
+}
+
+.evl-history .history-guide-legend .history-guide-hint {
+  margin-left: auto;
+  font-family: var(--history-mono);
 }
 
 @media (max-width: 767.98px) {
@@ -941,54 +899,7 @@ html:not(.history-js) .evl-history .history-guide-now {
   display: none;
 }
 
-.evl-history .history-more {
-  margin: 0 0 2.5rem;
-}
-
-.evl-history .history-more-toggle {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-  width: 100%;
-  max-width: 40rem;
-  padding: 1rem 1.15rem;
-  text-align: left;
-  color: var(--history-ink);
-  background: transparent;
-  border: 1.5px dashed var(--history-rule);
-  border-radius: 10px;
-  cursor: pointer;
-}
-
-.evl-history .history-more-toggle:hover,
-.evl-history .history-more-toggle:focus-visible {
-  border-color: var(--history-accent);
-}
-
-.evl-history .history-more-label {
-  font-weight: 700;
-}
-
-.evl-history .history-more-label::before {
-  content: "+ ";
-  color: var(--history-accent);
-}
-
-.evl-history .history-more-toggle[aria-expanded="true"] .history-more-label::before {
-  content: "− ";
-}
-
-.evl-history .history-more-list {
-  font-size: 0.85rem;
-  color: var(--history-muted);
-}
-
-html:not(.history-js) .evl-history .history-more {
-  display: none;
-}
-
-// Collapsed steps and closed domain cards, only when JavaScript can open them.
-.history-js .evl-history .history-step--more:not(.is-open),
+// Closed domain cards, only when JavaScript can open them.
 .history-js .evl-history .history-step--card:not(.is-open) {
   display: none;
 }
@@ -1068,13 +979,6 @@ html:not(.history-js) .evl-history .history-more {
   .history-js .evl-history .history-panel .history-media-item img {
     max-height: var(--history-panel-img-h);
     object-fit: contain;
-  }
-
-  .history-js .evl-history .history-more {
-    display: flex;
-    align-items: center;
-    min-height: 30vh;
-    margin: 0;
   }
 }
 
@@ -1764,40 +1668,6 @@ html:not(.history-js) .evl-history .history-more {
   padding: 0 1.25rem;
 }
 
-.evl-history .history-epilogue-title {
-  margin: 0 0 2rem;
-  font-size: clamp(1.8rem, 4vw, 2.8rem);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-}
-
-.evl-history .history-lessons {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.75rem 2.5rem;
-  margin: 0 0 3.5rem;
-  padding: 0;
-  list-style: none;
-}
-
-.evl-history .history-lesson {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-  padding-top: 0.9rem;
-  border-top: 2px solid var(--history-accent);
-}
-
-.evl-history .history-lesson-title {
-  font-size: 1.2rem;
-  font-weight: 700;
-}
-
-.evl-history .history-lesson-text {
-  line-height: 1.55;
-  color: var(--history-muted);
-}
-
 .evl-history .history-bookend {
   display: grid;
   grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
@@ -1827,24 +1697,6 @@ html:not(.history-js) .evl-history .history-more {
   line-height: 1.55;
 }
 
-.evl-history .history-sources-title {
-  margin: 0 0 1rem;
-  font-size: 1.1rem;
-  font-weight: 700;
-}
-
-.evl-history .history-sources {
-  margin: 0 0 2rem;
-  padding-left: 1.25rem;
-  font-size: 0.9rem;
-  line-height: 1.55;
-  color: var(--history-muted);
-}
-
-.evl-history .history-sources li {
-  margin-bottom: 0.5rem;
-}
-
 .evl-history .history-visit {
   font-size: 1rem;
 }
@@ -1858,7 +1710,6 @@ html:not(.history-js) .evl-history .history-more {
 }
 
 @media (max-width: 767.98px) {
-  .evl-history .history-lessons,
   .evl-history .history-bookend {
     grid-template-columns: minmax(0, 1fr);
   }

@@ -67,7 +67,6 @@
 <script type="application/json" id="history-data">
   {
     "year": {{ history_year }},
-    "publications": {{ site.data.history_metrics.publications | jsonify }},
     "software": {
       {%- if im_downloads -%}
         "years": [{% for y in im.years %}{{ y.label | jsonify }}{% unless forloop.last %}, {% endunless %}{% endfor %}],

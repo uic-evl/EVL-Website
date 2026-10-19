@@ -3,18 +3,8 @@
   the summary and the table below are written at build time, so the numbers read without
   JavaScript too. Lab-level aggregates only.
 {%- endcomment -%}
-{%- assign pub = site.data.history_metrics.publications -%}
 {%- capture c_label -%}
   {%- case include.id -%}
-    {%- when "mix" -%}
-      {%- assign c_hci = pub.mix.hci | times: 100.0 | divided_by: pub.records | round -%}
-      {%- assign c_vis = pub.mix.vis | times: 100.0 | divided_by: pub.records | round -%}
-      {%- assign c_hpc = pub.mix.hpc | times: 100.0 | divided_by: pub.records | round -%}
-      Share of {{ pub.records }} weighted publication records by area: human–computer interaction {{ c_hci }} percent, visualization {{ c_vis }} percent, high-performance computing {{ c_hpc }} percent.
-    {%- when "territory" -%}
-      Three overlapping circles for HPC, visualization and HCI with {{ pub.people }} people: {{ pub.regions.hpc }} in HPC only, {{ pub.regions.vis }} in visualization only, {{ pub.regions.hci }} in HCI only, {{ pub.regions.hpc_vis }} in HPC and visualization, {{ pub.regions.vis_hci }} in visualization and HCI, {{ pub.regions.hpc_hci }} in HPC and HCI without visualization, and {{ pub.regions.all }} in all three.
-    {%- when "clusters" -%}
-      Five research groups as circles sized by members, joined where they share members: {% for c in pub.clusters %}{{ c.label }} {{ c.size }}{% unless forloop.last %}, {% endunless %}{% endfor %}. {{ pub.bridging }} people belong to more than one group.
     {%- when "software" -%}
       Package downloads of the lab's open-source software per year, from the Impact page.
   {%- endcase -%}
@@ -24,48 +14,6 @@
   <details class="history-data-card">
     <summary>Show the numbers</summary>
     {%- case include.id -%}
-      {%- when "mix" -%}
-        <table>
-          <thead><tr><th scope="col">Area</th><th scope="col">Weighted records</th><th scope="col">Share</th></tr></thead>
-          <tbody>
-            <tr><th scope="row">Human–computer interaction</th><td>{{ pub.mix.hci }}</td><td>{{ c_hci }}%</td></tr>
-            <tr><th scope="row">Visualization</th><td>{{ pub.mix.vis }}</td><td>{{ c_vis }}%</td></tr>
-            <tr><th scope="row">High-performance computing</th><td>{{ pub.mix.hpc }}</td><td>{{ c_hpc }}%</td></tr>
-            <tr><th scope="row">All {{ pub.people }} people</th><td>{{ pub.records }}</td><td>100%</td></tr>
-          </tbody>
-        </table>
-      {%- when "territory" -%}
-        <table>
-          <thead><tr><th scope="col">Areas reaching a fifth of a record</th><th scope="col">People</th></tr></thead>
-          <tbody>
-            <tr><th scope="row">HPC only</th><td>{{ pub.regions.hpc }}</td></tr>
-            <tr><th scope="row">Visualization only</th><td>{{ pub.regions.vis }}</td></tr>
-            <tr><th scope="row">HCI only</th><td>{{ pub.regions.hci }}</td></tr>
-            <tr><th scope="row">HPC and visualization</th><td>{{ pub.regions.hpc_vis }}</td></tr>
-            <tr><th scope="row">Visualization and HCI</th><td>{{ pub.regions.vis_hci }}</td></tr>
-            <tr><th scope="row">HPC and HCI</th><td>{{ pub.regions.hpc_hci }}</td></tr>
-            <tr><th scope="row">All three</th><td>{{ pub.regions.all }}</td></tr>
-          </tbody>
-        </table>
-      {%- when "clusters" -%}
-        <table>
-          <thead><tr><th scope="col">Group</th><th scope="col">Members</th></tr></thead>
-          <tbody>
-            {%- for c in pub.clusters -%}
-              <tr><th scope="row">{{ c.label }}</th><td>{{ c.size }}</td></tr>
-            {%- endfor -%}
-          </tbody>
-        </table>
-        <table>
-          <thead><tr><th scope="col">Groups sharing members</th><th scope="col">Shared</th></tr></thead>
-          <tbody>
-            {%- for l in pub.cluster_links -%}
-              {%- assign la = pub.clusters | where: "id", l.a | first -%}
-              {%- assign lb = pub.clusters | where: "id", l.b | first -%}
-              <tr><th scope="row">{{ la.label }} · {{ lb.label }}</th><td>{{ l.shared }}</td></tr>
-            {%- endfor -%}
-          </tbody>
-        </table>
       {%- when "software" -%}
         {%- assign c_im = site.data.impact_model -%}
         {%- assign c_dl = nil -%}
