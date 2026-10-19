@@ -1,0 +1,1211 @@
+# Content for the "50+ Years" page (an unlisted draft at /internal/history/). Rendered by _includes/history/*.liquid.
+#
+# Each chapter is a list of steps, one beat of the story each. Step fields:
+#   id        anchor on the page (unique)
+#   year      year used on the timeline guide (the first year of a range)
+#   label     year shown to readers, when it differs from `year` (e.g. "1976–77")
+#   area      vis | art | hci | hpc          colour on the timeline (lanes in this order)
+#   domain    platforms | arts | science | biomed | earth | cities | learning
+#                                             lane on the timeline (Domain view)
+#   timeline  false to leave a step off the timeline guide
+#   title     short title, also the timeline tooltip
+#   body      Markdown
+#   media     one to four images in assets/img/history/ (omit to keep the previous one)
+#   diagram   a drawn diagram (see _includes/history/diagram.liquid)
+#   specs     label/value rows, shown under the body
+#   stats     big numbers, shown under the body ("live: …" values are computed at build)
+#   people    the faculty grid (Part 04)
+#   chart     a Part 06 chart id
+#   post      the step's original news post
+#   links     extra links: [{ text, url }]
+#   mark_title  the step's label on the timeline guide, when it differs from `title`
+#   marks     more dates this step tells about, each a dot on the timeline that opens
+#             the step: [{ year, title }] (area and domain default to the step's)
+#
+# Only what the story tells appears on the timeline guide.
+
+hero:
+  title: Fifty years at the Electronic Visualization Laboratory
+  dek: >-
+    In 1973 a video artist and a computer scientist shared a room, a PDP-11 and an audience.
+    What grew from that room built the CAVE, wired the world's research networks to Chicago,
+    taught walls of screens to work as one, and still asks every newcomer the same question:
+    art or engineering?
+  then:
+    src: hero-1973-habitat.jpg
+    alt: The Circle Graphics Habitat's PDP-11 racks and Vector General display, a wireframe Death Star on its screen
+    credit: Steve Heminover
+  now:
+    src: hero-2026-arcade.jpg
+    alt: Students working at the ARCADE's LED wall in the Computer Design Research and Learning Center
+    credit: EVL
+  numbers:
+    - value: "1973"
+      label: Founded as the Circle Graphics Habitat, by computer science and art
+    - value: "1992"
+      label: The CAVE debuts at SIGGRAPH in Chicago
+    - value: "800+"
+      label: Papers, theses and articles in the lab's publication record
+    - value: "live: alumni"
+      label: Alumni on record, from film studios to national laboratories
+
+chapters:
+  # ---------------------------------------------------------------------------
+  - id: part-01
+    part: "01"
+    years: 1973–1989
+    start: 1973
+    end: 1990
+    title: Art and engineering
+    dek: A video artist and a computer scientist share a room, a PDP-11 and an audience.
+    opener:
+      src: p1-opener-video-art.jpg
+      alt: Two faces rendered in blue by real-time analog video processing
+      credit: EVL
+    steps:
+      - id: founders
+        year: 1973
+        label: 1969–1973
+        area: art
+        domain: arts
+        title: Two founders, two colleges
+        body: |
+          Dan Sandin came to UIC's School of Art and Design in 1969, trained in physics and carrying the idea for a video synthesizer. Tom DeFanti arrived from Ohio State in 1973 with GRASS, the graphics language of his PhD, hired at first to write instructional graphics for the chemistry department, which owned a PDP-11/45 and a Vector General display.
+
+          In September 1973 the two founded the **Circle Graphics Habitat**, named for the university's Chicago Circle campus: a joint program of engineering and art, and the start of what became the Electronic Visualization Laboratory.
+        media:
+          - src: p1-defanti-1971.jpg
+            alt: Tom DeFanti in 1971
+            credit: EVL
+          - src: p1-sandin-ip.jpg
+            alt: Dan Sandin seated beside the patch panels of his Image Processor
+            credit: PRESENCE 33 (2024), CC BY 4.0
+        post: /news/1973/1973-09-01-2084/
+
+      - id: founding-brief
+        more: true
+        year: 1973
+        area: hci
+        domain: platforms
+        title: The founding brief
+        body: |
+          The brief was practical from the start. Make graphics **user-oriented** and **easy to learn**. Keep them **low-cost**, so they reach people. Make them **interactive and real time**, so the person at the controls sees the result at once and can keep steering.
+
+          The Habitat put the machines and the people in one room. That is still how the lab works.
+        media:
+          - src: p1-habitat-equipment.jpg
+            alt: The PDP-11 racks beside the Vector General display and its control boxes
+            credit: Steve Heminover
+        post: /news/1976/1976-06-07-2161/
+
+      - id: image-processor
+        year: 1973
+        label: 1971–1973
+        area: art
+        domain: platforms
+        title: The Sandin Image Processor
+        body: |
+          Sandin's Image Processor was a modular, patch-programmable analog computer for video, modelled on the Moog synthesizer. Performers colorized, keyed and fed back live camera images in real time, a decade before affordable digital frame buffers.
+
+          He published the plans and gave the design away, so other artists could build their own. Latency: none you could perceive. Operator: a performer at the controls.
+        media:
+          - src: p1-sandin-ip-patch.jpg
+            alt: Cables patched across the Image Processor's modules
+            credit: Dan Sandin, EVL
+        post: /news/1971/1971-01-01-1934/
+
+      - id: eve
+        year: 1975
+        area: art
+        domain: arts
+        title: The Electronic Visualization Events
+        body: |
+          On April 15, 1975 the group staged the first Interactive Electronic Visualization Event in the rotunda of the Science and Engineering South building: live GRASS graphics, the Image Processor and Bob Snyder's synthesized music, open to the city. More events followed.
+
+          The words *Electronic Visualization* first appear here; they later named the program and the lab. So did a habit the lab never lost: building things that have to work in front of an audience on a fixed date.
+        media:
+          - src: p1-ieve-1975.jpg
+            alt: Members of the group around the Image Processor's patch panels, one holding a sign that reads COMPUTER
+            credit: EVL
+        post: /news/1975/1975-04-15-2086/
+
+      - id: death-star
+        year: 1976
+        label: 1976–77
+        area: vis
+        domain: arts
+        title: A wireframe Death Star
+        body: |
+          In 1976 the artist Larry Cuba came to the Habitat and animated the Death Star briefing sequence for the first *Star Wars* film in GRASS, on the lab's PDP-11 and Vector General.
+
+          The instrument was open to visiting practitioners. That is how a university graphics lab ended up in the visual vocabulary of a generation.
+        media:
+          - src: p1-death-star-vector-general.jpg
+            alt: The Vector General display showing the wireframe Death Star
+            credit: © 2013 Steve Heminover
+        post: /news/1976/1976-05-01-2093/
+
+      - id: sayre-glove
+        year: 1977
+        label: 1976–77
+        area: hci
+        domain: platforms
+        title: The Sayre Glove
+        body: |
+          Built on an idea by Rich Sayre and funded by the National Endowment for the Arts, the Sayre Glove was the first data glove. Flexible tubes ran along each finger with a light at one end and a photocell at the other, so bending a finger dimmed the light.
+
+          Sandin and DeFanti built it cheaply, as a way to steer graphics with the hand, years before virtual reality had a name.
+        media:
+          - src: p1-sayre-glove.jpg
+            alt: A glove with flexible sensor tubes and wires running along each finger
+            credit: Courtesy Dan Sandin, EVL
+        post: /news/1977/1977-01-01-2162/
+
+      - id: zgrass
+        more: true
+        year: 1977
+        label: 1977–1987
+        area: hci
+        domain: platforms
+        title: Graphics for people who are not programmers
+        marks:
+          - { year: 1980, title: "The Datamax UV-1, a low-cost Zgrass machine" }
+          - { year: 1987, title: "The Interactive Image at the Museum of Science and Industry" }
+        body: |
+          In 1977 Bally/Midway's game group hired DeFanti to port GRASS to its Z-80 *Z-Box*. The result, Zgrass, was rebuilt for raster graphics and sprites, but Midway never released it, so the Circle group built its own low-cost machine around it: the Datamax UV-1 (1980–81).
+
+          Artists with no programming background used it to make real work. In 1987 *The Interactive Image* at Chicago's Museum of Science and Industry ran on UV-1s.
+        media:
+          - src: p1-uv1-artists.jpg
+            alt: Artists and students sitting with a Datamax UV-1, its keyboard and monitor
+            credit: EVL
+          - src: p1-grass-still.jpg
+            alt: Points of light swept into a spiral by a GRASS program
+            credit: EVL
+        post: /news/1973/1973-01-01-1935/
+
+      - id: spiral-ptl
+        more: true
+        year: 1980
+        label: 1978–1983
+        area: art
+        domain: arts
+        title: A program, a museum, a name
+        marks:
+          - { year: 1983, title: "Spiral PTL enters MoMA's video collection" }
+        body: |
+          By 1978 the lab's video and computer courses had been formalized as the Electronic Visualization Program, and the Habitat took the same name: the Electronic Visualization Laboratory.
+
+          In 1980 Sandin, DeFanti and Mimi Shevitz made *Spiral PTL* on lab equipment, with the lab's own language and video instrument. The Museum of Modern Art screened it in 1982 and added it to its first video collection in 1983; the Video Data Bank holds it too.
+
+          An MFA in Electronic Visualization sat beside graduate study in computer science, what EVL has long described as the country's first science-and-art degree program. The pairing returned in fall 2022, when UIC launched a joint BS in Computer Science and Design.
+        media:
+          - src: p1-spiral-ptl.jpg
+            alt: Nine stills from Spiral PTL, spirals and starbursts of light
+            credit: Dan Sandin, Tom DeFanti and Mimi Shevitz, Spiral PTL, 1980
+        post: /news/2018/2018-10-15-2404/
+
+      - id: phscolograms
+        year: 1984
+        label: 1984–1992
+        area: vis
+        domain: arts
+        title: Depth without glasses
+        marks:
+          - { year: 1989, title: "The PHSCologram patent is filed" }
+        body: |
+          From 1984 EVL worked with Ellen Sandor's (art)n on PHSColograms: computer-generated barrier-strip autostereograms, images with real depth and no glasses. A fine black barrier in front of interleaved image strips shows each eye a different picture. The patent was filed in 1989 and issued in 1992.
+
+          A durable interest started here: give up the headgear wherever the physics allows it.
+        diagram: phscologram
+        post: /news/1989/1989-09-01-1340/
+
+      - id: visc
+        year: 1987
+        label: 1979–1987
+        area: vis
+        domain: science
+        title: Visualization in Scientific Computing
+        mark_title: "The NSF report on visualization in scientific computing"
+        marks:
+          - { year: 1979, title: "The first SIGGRAPH Video Review" }
+          - { year: 1981, title: "DeFanti becomes chair of ACM SIGGRAPH" }
+          - { year: 1986, title: "Maxine Brown joins EVL" }
+        body: |
+          In February 1987 a National Science Foundation panel on graphics, image processing and workstations, co-chaired by Bruce McCormick and DeFanti, gathered researchers, industry and federal agencies in Washington. That November McCormick, DeFanti and Maxine Brown published its report, *Visualization in Scientific Computing*. It helped establish scientific visualization as a field, and it set the direction of the lab's next decade.
+
+          The report grew out of years of community building. DeFanti co-chaired SIGGRAPH '79, launched the SIGGRAPH Video Review and chaired ACM SIGGRAPH from 1981 to 1985; Brown joined EVL as associate director in 1986.
+        media:
+          - src: p1-visc-1987.jpg
+            alt: Cover of the 1987 report Visualization in Scientific Computing
+            credit: ACM SIGGRAPH Computer Graphics 21(6), 1987
+        post: /news/1987/1987-11-01-2163/
+
+    interlude:
+      kicker: What the first fifteen years established
+      items:
+        - n: "01"
+          title: Build the instrument
+          text: If the display, the language or the network you need does not exist, that is the research.
+          src: p1-interlude-cavecam.jpg
+          alt: CAVEcam, a twin-lens stereo camera built at EVL
+        - n: "02"
+          title: Keep it in the room
+          text: Faculty, staff and students at desks beside the hardware they use. Proximity is a research method.
+          src: p1-interlude-cave2-room.jpg
+          alt: A group working at tables inside CAVE2, the walls lit with data
+        - n: "03"
+          title: Hand it to an outsider
+          text: An artist, a neurosurgeon, a climate modeller. If they can use it, it works.
+          src: p1-interlude-cave2-surgeons.jpg
+          alt: Neurosurgeons in white coats study a brain-vessel model on the CAVE2 wall
+
+  # ---------------------------------------------------------------------------
+  - id: part-02
+    part: "02"
+    years: 1990–1999
+    start: 1990
+    end: 2001
+    title: The room and the network
+    dek: A walk-in virtual environment, and the international infrastructure it made necessary.
+    opener:
+      src: p2-opener-cave-siggraph92.jpg
+      alt: The CAVE's black enclosure on the SIGGRAPH '92 show floor in Chicago
+      credit: EVL
+    steps:
+      - id: cave
+        year: 1992
+        label: 1991–1992
+        area: hci
+        domain: platforms
+        title: The CAVE
+        body: |
+          In 1991, the year EVL moved into the space it still occupies, Carolina Cruz-Neira, Sandin and DeFanti invented the CAVE: rear-projected stereo on the walls and floor of a room you walk into, with head tracking. You wear light glasses and can still see your own hands, your notes and your colleagues.
+
+          It debuted in summer 1992 at the SIGGRAPH Showcase at McCormick Place, which DeFanti ran while Maxine Brown chaired the conference, and became the first widely replicated, projection-based, walk-in virtual reality system in the world.
+        citation: >-
+          Cruz-Neira, Sandin, DeFanti, Kenyon and Hart. The CAVE: audio visual experience automatic virtual
+          environment. Communications of the ACM 35(6), June 1992.
+        media:
+          - src: p2-cave-entrance-1992.jpg
+            alt: Visitors queuing at the CAVE entrance at SIGGRAPH '92
+            credit: PRESENCE 33 (2024), CC BY 4.0
+        post: /news/1992/1992-06-01-1299/
+
+      - id: cave-room
+        more: true
+        year: 1992
+        area: hci
+        domain: platforms
+        timeline: false
+        title: What was in the room
+        body: |
+          The design put the projectors behind the walls and the people inside.
+        specs:
+          - { label: Enclosure, value: "Three rear-projected walls and a down-projected floor, roughly a 10-foot cube" }
+          - { label: Stereo, value: "CrystalEyes shutter glasses at 120 Hz, 60 Hz per eye" }
+          - { label: Tracking, value: "Electromagnetic: one tracked head, one wand" }
+          - { label: Compute, value: "Four SGI Crimson VGX workstations, one per surface" }
+          - { label: Occupancy, value: "A group: one pilot, several passengers, all able to talk" }
+          - { label: Debut, value: "SIGGRAPH '92, Chicago" }
+        media:
+          - src: p2-cave-diagram-cacm.jpg
+            alt: Diagram of the CAVE, projectors aimed at three walls and the floor around a standing viewer
+            credit: Communications of the ACM, 1992
+
+      - id: replication
+        year: 1993
+        label: 1993–2007
+        area: hci
+        domain: science
+        title: Replication as a research strategy
+        marks:
+          - { year: 1994, title: "VROOM: 40+ projects in three CAVEs" }
+          - { year: 2007, title: "IEEE VGTC award for the CAVE's inventors" }
+        body: |
+          Publish the design, help others build it, and let the next generation of research questions come back from other laboratories. NCSA and Argonne built CAVEs in 1993, and EVL built a fourth for ARPA. In 1994 Pyramid Systems licensed it, a line later carried on by Fakespace and Mechdyne, and SIGGRAPH '94's VROOM showed more than 40 projects in three CAVEs.
+
+          The acronym became a common noun. In 2007 Cruz-Neira, DeFanti and Sandin received the IEEE VGTC Virtual Reality Technical Achievement Award.
+        media:
+          - src: p2-cave-group.jpg
+            alt: Three visitors in stereo glasses inside a CAVE, a virtual city around them
+            credit: EVL
+        post: /news/2007/2007-03-10-752/
+
+      - id: lineage
+        more: true
+        year: 1994
+        label: 1994–1998
+        area: hci
+        domain: platforms
+        title: The CAVE lineage
+        marks:
+          - { year: 1996, title: "ImmersaDesk2" }
+          - { year: 1997, title: "The Infinity Wall" }
+          - { year: 1998, title: "PARIS, augmented reality on a desk" }
+        body: |
+          Each descendant traded one property of the original for reach.
+
+          The **ImmersaDesk** (1994) folded the CAVE into a drafting table that fits through a doorway, ships to a conference and sits in a working lab; the ImmersaDesk2 (1996) packed into a flight case. The **Infinity Wall** (1997) was large-format stereo for audiences rather than pilots. **PARIS** (1998) put the user's own hands into the scene: augmented reality on a desk.
+        media:
+          - src: p2-immersadesk-render.jpg
+            alt: Rendering of the ImmersaDesk
+            credit: Alan Cruz, EVL
+          - src: p2-paris.jpg
+            alt: A researcher working with the PARIS augmented-reality display
+            credit: Chris Scharver, EVL
+        post: /news/1994/1994-01-01-1770/
+
+      - id: iway
+        year: 1995
+        area: hpc
+        domain: science
+        title: I-WAY at SC'95
+        body: |
+          For one week in December 1995, Argonne, NCSA and EVL ran I-WAY: a wide-area experiment linking 17 sites over ATM networks, driving remote supercomputers and immersive displays live from the Supercomputing '95 floor in San Diego for more than 60 application groups.
+
+          Its middleware problems became the agenda of grid computing for the next decade, starting with the Globus project.
+        stats:
+          - { value: "17", label: sites }
+          - { value: "1", label: week to prove it }
+        media:
+          - src: p2-iway-map.jpg
+            alt: Map of the I-WAY's network connections across the United States
+            credit: DeFanti, Foster, Papka, Stevens and Kuhfuss, 1996
+        post: /news/1995/1995-12-04-317/
+
+      - id: tele-immersion
+        more: true
+        year: 1997
+        label: 1996–1998
+        area: hci
+        domain: science
+        title: Distance as a design constraint
+        marks:
+          - { year: 1996, title: "NICE, a shared virtual garden for children", domain: learning }
+          - { year: 1998, title: "The first iGrid" }
+        body: |
+          Tele-immersion joined CAVEs in different cities into one virtual room, with avatars, shared objects and voice. Latency, jitter and packet loss stopped being network statistics and became things people could feel.
+
+          CAVERNsoft (1997) gave developers a toolkit for it, NICE let children tend a shared virtual garden, and in 1998 the first iGrid gathered international research networks at SC'98. The lab acquired a networking research program.
+        media:
+          - src: p2-teleimmersion-chicago.jpg
+            alt: A participant in Chicago working beside the avatar of a remote collaborator
+            credit: EVL
+          - src: p2-teleimmersion-avatars.jpg
+            alt: Four avatars of collaborators at the other end of the link
+            credit: EVL
+        post: /news/1998/1998-03-25-1248/
+
+      - id: star-tap
+        more: true
+        year: 1997
+        area: hpc
+        domain: platforms
+        title: STAR TAP
+        marks:
+          - { year: 1999, title: "Euro-Link" }
+        body: |
+          If people were going to meet across oceans, their networks had to meet somewhere. In 1997 NSF funded STAR TAP, the Science, Technology And Research Transit Access Point, with DeFanti as principal investigator: a persistent place in Chicago where international research networks could peer with US research networks. Euro-Link followed in 1999.
+        diagram: startap
+        post: /news/1997/1997-05-01-365/
+
+      - id: starlight
+        year: 2001
+        area: hpc
+        domain: platforms
+        title: StarLight
+        body: |
+          In summer 2001 StarLight, the optical STAR TAP, went into operation. EVL built it with Northwestern's iCAIR and Argonne's Mathematics and Computer Science Division, in partnership with Canada's CANARIE and the Netherlands' SURFnet.
+
+          It moved from 1 and 10 Gigabit Ethernet toward whole wavelengths, helped found the Global Lambda Integrated Facility, and is still running: still in Chicago, still where the international lightpaths land.
+        media:
+          - src: p2-starlight-building.jpg
+            alt: The building at 710 North Lake Shore Drive that houses StarLight
+            credit: EVL
+        post: /news/2000/2000-10-01-1819/
+
+    interlude:
+      kicker: Why a visualization lab built networks
+      diagram: triad
+      closing: Whichever of the three the lab had not built was the one limiting the science. So it built all three.
+
+  # ---------------------------------------------------------------------------
+  - id: part-03
+    part: "03"
+    years: 2000–2014
+    start: 2001
+    end: 2014
+    title: Pixels at scale
+    dek: Optical networks, hundred-megapixel walls, and software that treats pixels as a stream.
+    opener:
+      src: p3-opener-microscopy-wall.jpg
+      alt: A researcher points at a cerebellum microscopy image spread across a tiled display wall
+      credit: Lance Long, EVL
+    steps:
+      - id: geowall-varrier
+        more: true
+        year: 2001
+        area: vis
+        domain: earth
+        title: Stereo for classrooms, and without glasses
+        body: |
+          Two answers to one question: how to put depth in front of more people. GeoWall (2001) built passive stereo from off-the-shelf parts for about $10,000, cheap enough for geoscience classrooms.
+
+          Varrier, first built in September 2001, went the other way: autostereo without glasses, a parallax barrier tuned to the tracked viewer. By 2003–04 it had grown into a 35-panel cylinder.
+        media:
+          - src: p3-varrier-cylinder.jpg
+            alt: The 35-panel cylindrical Varrier display showing terrain
+            credit: PRESENCE 33 (2024), CC BY 4.0
+          - src: p3-varrier-mars.jpg
+            alt: A visitor explores a virtual Mars on Varrier without glasses
+            credit: Lance Long, EVL
+        post: /news/2001/2001-03-01-1836/
+
+      - id: optiputer
+        year: 2002
+        label: 2002–2009
+        area: hpc
+        domain: science
+        title: The OptIPuter
+        body: |
+          Treat the optical network as the backplane of a distributed computer, and bandwidth as the abundant resource. The OptIPuter, a seven-year NSF Information Technology Research project led by Larry Smarr at Calit2, UC San Diego, with EVL as co-lead (DeFanti, Brown and Jason Leigh), was driven by medical imaging and the earth sciences: large images, distributed archives, remote collaborators.
+
+          Its products included the OptIPortal display, LambdaRAM and SAGE.
+        diagram: optiputer
+        post: /news/2002/2002-09-25-473/
+
+      - id: lambdavision
+        year: 2005
+        label: 2004–2005
+        area: vis
+        domain: platforms
+        title: LambdaVision
+        marks:
+          - { year: 2004, title: "Jason Leigh becomes director" }
+        body: |
+          Lit in July 2005, LambdaVision tiled 55 LCD panels into a wall 17 feet wide: 105 megapixels, driven by a thirty-node cluster and fed over dedicated lightpaths.
+
+          2004 also brought a new director, Jason Leigh, and the end of the original CAVE, dismantled after twelve years.
+        stats:
+          - { value: "105", label: megapixels }
+          - { value: "55", label: LCD panels }
+        media:
+          - src: p3-lambdavision.jpg
+            alt: LambdaVision under construction, a 55-panel wall rising in the lab
+            credit: EVL
+        post: /news/2005/2005-07-19-631/
+
+      - id: sage
+        year: 2004
+        area: vis
+        domain: platforms
+        title: Streaming pixels, not frames
+        body: |
+          SAGE, the Scalable Adaptive Graphics Environment (2004), decoupled rendering from display. Render nodes, instruments, cameras and laptops stream pixels; SAGE routes them and composites them into windows on any wall, at any resolution, shared by a group.
+
+          That single choice is why a microscope in San Diego, a simulation on a leadership machine and a student's laptop can occupy one surface at once.
+        diagram: sage
+        media:
+          - src: p3-sage-laptop.jpg
+            alt: A laptop running SAGE's controls in front of a tiled wall full of windows
+            credit: EVL
+        post: /news/2004/2004-01-01-1882/
+
+      - id: sage2
+        more: true
+        year: 2013
+        label: 2004–2018
+        area: vis
+        domain: platforms
+        title: From SAGE to SAGE2
+        body: |
+          The first SAGE was C++, built for LambdaVision and optical networks. SAGE2 (2013) moved it to the web: nothing to install, any browser can join. That took it from a few rooms to hundreds.
+
+          By 2018 SAGE2 had more than 4,000 users at more than 800 institutions in 18 countries.
+        media:
+          - src: p3-sage-2004.jpg
+            alt: SAGE windows from several sources on a tiled wall, 2004
+            credit: EVL
+          - src: p3-sage2-2013.jpg
+            alt: A presenter points at a SAGE2 wall of images in front of an audience
+            credit: EVL
+        post: /news/2013/2013-08-16-2042/
+
+      - id: cyber-commons
+        more: true
+        year: 2009
+        label: 2009–2011
+        area: hci
+        domain: learning
+        title: The wall becomes a classroom
+        marks:
+          - { year: 2011, title: "The 3D Cyber-Commons" }
+        body: |
+          Cyber-Commons put a 19-megapixel wall and a 20-gigabit network into an EVL classroom in 2009, and then the largest touch screen built to date. The 3D Cyber-Commons (2011) added passive stereo.
+
+          Students met the technology researchers used, in the room where they took their classes.
+        media:
+          - src: p3-cyber-commons-3d.jpg
+            alt: Two people in stereo glasses reach toward a DNA model on the 3D Cyber-Commons wall
+            credit: Lance Long, EVL
+        post: /news/2008/2008-01-01-1510/
+
+      - id: cave2
+        year: 2012
+        area: hci
+        domain: platforms
+        title: "CAVE2: hybrid reality"
+        marks:
+          - { year: 2013, title: "CAVE2 licensed to Mechdyne" }
+        body: |
+          Twenty years after the CAVE, EVL rebuilt the room out of LCD panels. CAVE2 (October 2012) is a 320-degree ring of 72 passive-stereo panels, 18 columns by 4 rows, driven by a 36-node cluster, with camera-based tracking and light glasses.
+
+          Hybrid means the room reconfigures for the same group, immersive in the morning and analytical in the afternoon, rather than forcing a choice in advance. Mechdyne licensed it in 2013.
+        specs:
+          - { label: Geometry, value: "320-degree ring, 18 columns × 4 rows" }
+          - { label: Panels, value: "72 passive-stereo LCDs" }
+          - { label: Resolution, value: "37 Mpixel in 3D, 74 Mpixel in 2D" }
+          - { label: Compute, value: "36-node cluster" }
+        media:
+          - src: p3-cave2-rendering.jpg
+            alt: Rendering of CAVE2's 320-degree ring of panels
+            credit: Jonas Talandis, EVL
+          - src: p3-cave2-enterprise.jpg
+            alt: A visitor inside a model of the Starship Enterprise's bridge in CAVE2
+            credit: Lance Long and Arthur Nishimoto, EVL
+        post: /news/2012/2012-10-03-1078/
+
+  # ---------------------------------------------------------------------------
+  - id: part-04
+    part: "04"
+    years: 2014–2026
+    start: 2014
+    end: now
+    title: One lab, many domains
+    dek: New rooms, new instruments and a new generation, and the lab's subjects multiply.
+    opener:
+      src: p4-opener-cave2-molecules.jpg
+      alt: Visitors in CAVE2 surrounded by large molecular models
+      credit: Lance Long, EVL
+    steps:
+      - id: instrument-shelf
+        timeline: false
+        title: The instrument shelf
+        body: |
+          The question is no longer which display wins. **CAVE2** is still here and still used, now one option among several. **Continuum** pairs a touch wall with a stereo wall. **SAGE walls** are the everyday surface, in meeting rooms and offices. **Headsets** give a private view beside the public wall.
+
+          The job is choosing the right one for the task, and moving one analysis across all four without losing its place.
+        media:
+          - src: p4-shelf-cave2.jpg
+            alt: A researcher in front of a molecular simulation on CAVE2
+            credit: EVL
+          - src: p4-shelf-continuum.jpg
+            alt: A presenter at Continuum's walls with a seated audience
+            credit: EVL
+          - src: p4-shelf-sage-wall.jpg
+            alt: A group discussing charts on a SAGE wall
+            credit: EVL
+          - src: p4-shelf-headset.jpg
+            alt: A student in a VR headset with a controller
+            credit: EVL
+
+      - id: sensei
+        more: true
+        year: 2014
+        label: 2014–2019
+        area: vis
+        domain: earth
+        title: SENSEI
+        marks:
+          - { year: 2015, title: "A forest in Panama, explored in CAVE2" }
+        body: |
+          SENSEI, an NSF instrument led by Maxine Brown, built ultra-high-resolution 3D panoramic cameras to bring distant places into the room: Egyptian temples, and a forest in Panama where researchers tracked animal movement and then explored it in CAVE2.
+        media:
+          - src: p4-sensei-panama.jpg
+            alt: Researchers in CAVE2 point at a panoramic forest scene from Panama
+            credit: Lance Long, EVL
+        post: /news/2014/2014-09-16-1179/
+
+      - id: vis-2015
+        year: 2015
+        area: vis
+        domain: science
+        title: IEEE VIS comes to Chicago
+        body: |
+          In October 2015 IEEE VIS, the visualization field's largest annual meeting, came to downtown Chicago, and EVL helped run it. Maxine Brown, by then EVL's director, was general co-chair with Michael E. Papka of Argonne, an EVL alumnus who would become the lab's director in 2024. G. Elisabeta Marai co-chaired the Doctoral Colloquium, and Angus Forbes and Daria Tsoupikova co-chaired the Arts Program with Inria's Fanny Chevalier. The Arts Program, with Dan Sandin as an invited artist, held a two-week exhibition at the School of the Art Institute of Chicago, open to the public.
+
+          Forbes's student Kyle Almryde won an honorable mention in the SciVis contest for this view of dark-matter halos. Twenty-eight years after the ViSC report, the field it helped start met in the lab's own city.
+        media:
+          - src: p4-vis2015-dark-sky.jpg
+            alt: Dark-matter halo merger trees drawn as glowing branches of colored points on black
+            credit: Kyle R. Almryde and Angus G. Forbes, EVL
+        post: /news/2015/2015-10-25-2141/
+
+      - id: continuum
+        more: true
+        year: 2016
+        label: 2016–2019
+        area: hci
+        domain: learning
+        title: Continuum
+        body: |
+          In 2016 an NSF instrumentation award turned Cyber-Commons into Continuum, a room that senses and supports the group working in it. Since 2019 it has paired a 24-foot, 37-megapixel touch wall with a 16-foot, 17-megapixel stereo wall, with ceiling microphones, cameras, lighting control and room-wide tracking.
+
+          It is a lab, a classroom and a meeting room, often on the same day.
+        media:
+          - src: p4-continuum-class.jpg
+            alt: A full class working in Continuum, the walls lit with SAGE windows
+            credit: PRESENCE 33 (2024), CC BY 4.0
+        post: /news/2016/2016-10-01-2316/
+
+      - id: compaas
+        more: true
+        year: 2018
+        label: 2018–2022
+        area: hpc
+        domain: platforms
+        title: Pools, not machines
+        body: |
+          COMPaaS DLV (NSF, 2018) treated CPUs, GPUs and storage as pools allocated on demand over a PCI Express fabric rather than as fixed machines, with Kubernetes, containerized GPU workloads and a public JupyterHub.
+
+          Researchers could add their own accelerators to the pool. More than forty faculty, students and collaborators used it.
+        diagram: compaas
+        post: /news/2018/2018-10-01-2401/
+
+      - id: sage3
+        year: 2020
+        label: 2020–2026
+        area: vis
+        domain: platforms
+        title: SAGE3
+        marks:
+          - { year: 2025, title: "SAGE named a top-ten UIC innovation" }
+          - { year: 2026, title: "SAGE's first 22 years" }
+        body: |
+          SAGE3, an NSF collaboration of UIC, the University of Hawaiʻi and Virginia Tech, re-architected the software for hybrid work: one shared canvas for a group, whether they stand at the wall or work from home. Notebooks, AI services and live visualizations are objects on the canvas, not separate applications, and a session can be saved and resumed the next day, or the next year.
+
+          An alpha arrived in 2021, a release at SC22 and AI-enhanced versions in 2025. That year UIC named SAGE one of its top ten innovations, and in 2026 the team told the story of its first 22 years.
+        media:
+          - src: p4-sage3-wall.jpg
+            alt: Two researchers at a SAGE3 wall full of papers, notebooks and charts
+            credit: EVL
+        post: /news/2025/2025-04-25-2903/
+        links:
+          - { text: SAGE3, url: /projects/sage3-renambot/ }
+
+      - id: new-generation
+        timeline: false
+        title: A new generation
+        marks:
+          - { year: 2019, title: "Wei Tang joins: computer vision", area: vis, domain: science }
+          - { year: 2019, title: "Joseph Michaelis joins: social robots for learning", area: hci, domain: learning }
+          - { year: 2020, title: "Fabio Miranda joins: urban visual analytics", area: vis, domain: cities }
+          - { year: 2022, title: "Nikita Soni joins: interfaces for learning", area: hci, domain: learning }
+          - { year: 2022, title: "Michael E. Papka returns: HPC and AI", area: hpc, domain: platforms }
+          - { year: 2022, title: "Andruid Kerne joins: creativity and embodiment", area: hci, domain: arts }
+          - { year: 2023, title: "Zhiling Lan joins: AI for supercomputers", area: hpc, domain: science }
+          - { year: 2023, title: "Sidharth Kumar joins: scientific data at scale", area: hpc, domain: science }
+          - { year: 2024, title: "Hyungil Kim joins: AR and XR human factors", area: hci, domain: science }
+          - { year: 2025, title: "Khairi Reda returns: perception and trust", area: vis, domain: biomed }
+          - { year: 2025, title: "Saeed Boorboor joins: immersive biomedical visualization", area: vis, domain: biomed }
+        body: |
+          Between 2019 and 2025, eleven faculty joined or returned, two of them EVL alumni. Each brought a domain with them.
+        people:
+          - { name: Wei Tang, year: 2019, image: Wei Tang.jpg, focus: "Computer vision: machines that understand people, objects and 3D scenes" }
+          - { name: Joseph Michaelis, year: 2019, image: Joseph Michaelis.jpg, focus: Social robots as companions for learning }
+          - { name: Fabio Miranda, year: 2020, image: Fabio Miranda.jpg, focus: Urban visual analytics and open tools for cities }
+          - { name: Nikita Nandish Soni, year: 2022, image: Nikita Nandish Soni.jpg, focus: Touch and speech interfaces for learning }
+          - { name: Michael E. Papka, year: 2022, image: Michael E. Papka.jpg, focus: "HPC and AI infrastructure, from exascale to the edge", alumnus: true }
+          - { name: Andruid Kerne, year: 2022, image: Andruid Kerne.jpg, focus: Creativity support and embodied interaction }
+          - { name: Zhiling Lan, year: 2023, image: Zhiling Lan.jpg, focus: Efficient and energy-aware supercomputing with AI }
+          - { name: Sidharth Kumar, year: 2023, image: Sidharth Kumar.jpg, focus: "Making massive scientific data fast to store, move and see" }
+          - { name: Hyungil Kim, year: 2024, image: Hyungil Kim.jpg, focus: Human factors of augmented and extended reality }
+          - { name: Khairi Reda, year: 2025, image: Khairi Reda.jpg, focus: Trustworthy visual analytics and perception, alumnus: true }
+          - { name: Saeed Boorboor, year: 2025, image: Saeed Boorboor.jpg, focus: Immersive and biomedical visualization }
+        links:
+          - { text: All members, url: /people/ }
+
+      - id: arcade
+        year: 2025
+        label: 2021–2026
+        area: vis
+        domain: platforms
+        title: A building of its own, and the ARCADE
+        marks:
+          - { year: 2021, title: "Groundbreaking for the new building" }
+          - { year: 2023, title: "DOCC begins" }
+        body: |
+          In 2021 UIC broke ground on the Computer Design Research and Learning Center, a 135,000-square-foot building on Taylor Street. In 2023 the lab began building DOCC, the Data Observation and Computation Collaboratory.
+
+          On July 16, 2025 its centrepiece, the **ARCADE**, premiered at the building's opening: 98 LED cabinets in a wall about 28 feet wide, 4K and active stereo, with GPU servers on site and a 100-gigabit link back to EVL. In 2026 NASA's near-real-time Earth imagery came to the wall.
+        media:
+          - src: p4-arcade-cdrlc.jpg
+            alt: The new building and the ARCADE's LED wall at its opening
+            credit: Jim Young (College of Engineering), Dana M. Plepys and Lance Long (EVL)
+        post: /news/2025/2025-07-16-2941/
+        links:
+          - { text: DOCC and the ARCADE, url: /projects/docc/ }
+
+      - id: leadership
+        more: true
+        timeline: false
+        title: Leadership and continuity
+        body: |
+          Maxine Brown, associate director since 1986, became director in 2014 and retired in 2020; Andrew Johnson, director of research, led the lab as interim director until 2024. EVL turned fifty in September 2023 and told its own history in the journal *PRESENCE* in 2024.
+
+          In September 2024 Michael E. Papka, an EVL alumnus who also directs the Argonne Leadership Computing Facility, became director, and in September 2026 Fabio Miranda was named deputy director. Dana Plepys retired in 2026 after 36 years as associate director.
+        media:
+          - src: p4-johnson-brown-cave2.jpg
+            alt: Andrew Johnson and Maxine Brown in front of the CAVE2 sign
+            credit: Lance Long, EVL
+          - src: p4-papka.jpg
+            alt: Michael E. Papka
+            credit: EVL
+        post: /news/2024/2024-09-16-2862/
+
+      - id: continuum-testbed
+        more: true
+        year: 2023
+        label: 2023–2026
+        area: hpc
+        domain: earth
+        title: A testbed across the computing continuum
+        marks:
+          - { year: 2026, title: "The Sage Summer of AI hackathon at EVL" }
+        body: |
+          The lab now works along the whole path data travels. At the edge, the sensors, cameras and AI nodes of the Sage project, the NAIRR Pilot and Sage Grande decide what to keep; in 2026 EVL hosted the Sage Summer of AI hackathon. In the middle, campus resource pools and shared walls let a group look at the data together. At the far end, leadership supercomputers such as Argonne's Aurora train, simulate and reanalyze at exascale.
+        diagram: continuum
+        media:
+          - src: p4-edge-sensor-class.jpg
+            alt: Students present an edge-based weather station sensor in an EVL classroom
+            credit: EVL
+        post: /news/2026/2026-07-20-3019/
+
+      - id: collaborators
+        more: true
+        timeline: false
+        title: Who the lab works with
+        body: |
+          **Sponsors, over the decades:** NSF, DOE, NIH, DOD, NASA, DOT, the National Endowment for the Arts, Argonne National Laboratory, the State of Illinois, UIC, the Joseph and Bessie Feinberg Foundation, the Shirley Ryan AbilityLab, the Spencer Foundation and Procter & Gamble.
+
+          **Disciplines inside UIC:** art, communication, design, dentistry, education, environmental sciences, health informatics, mathematics, medicine, neuroscience, public health and rehabilitation.
+
+          The breadth is not opportunism. It is the 1973 structure still operating.
+        media:
+          - src: p4-cave2-mars.jpg
+            alt: Two people study Mars and its rover imagery on the CAVE2 walls
+            credit: EVL
+          - src: p4-cave2-temple.jpg
+            alt: A visitor in stereo glasses inside a panorama of an Egyptian temple
+            credit: EVL
+
+  # ---------------------------------------------------------------------------
+  - id: part-05
+    part: "05"
+    years: Today
+    title: Domain by domain
+    cards: true
+    dek: Today's work, one domain at a time. People whose work spans domains appear in each.
+    opener:
+      src: p5-opener-continuum.jpg
+      alt: A Continuum wall showing brain imaging, heat maps and city data side by side
+      credit: Luc Renambot, EVL
+    steps:
+      - id: cities
+        summary: "OSCUR, the Urban Toolkit and Curio: open tools that turn city data into answers."
+        year: 2024
+        label: 2016–2026
+        area: vis
+        domain: cities
+        title: Cities
+        mark_title: "OSCUR begins"
+        marks:
+          - { year: 2016, title: "OpenGrid launches at EVL" }
+          - { year: 2021, title: "Environmental-justice maps of Chicago" }
+          - { year: 2023, title: "The Urban Toolkit" }
+          - { year: 2025, title: "Urbanite and StreetWeave" }
+        body: |
+          Chicago has long been a test bed. The City launched its OpenGrid platform at EVL in 2016, and environmental-justice maps built with UIC's School of Public Health (2021–25) put polluting sites next to homes and schools.
+
+          Fabio Miranda's group builds the **Urban Toolkit**: UTK, a grammar for urban visualization (IEEE VIS 2023); **Curio**, a dataflow framework for collaborative urban analytics (VIS 2024); Urbanite and StreetWeave (VIS 2025); Autark (2026); and machine learning for shade and sidewalks (Deep Umbra, Tile2Net).
+
+          **OSCUR**, an NSF software-institutes collaboration with NYU and the University of Washington (2024–2029), turns these into open cyberinfrastructure for urban computing. Curio already runs in UIC courses.
+        media:
+          - src: p5-cities-continuum.jpg
+            alt: Fabio Miranda and a colleague with a 3D city model on the Continuum wall
+            credit: EVL
+          - src: p5-cities-curio.jpg
+            alt: Curio dataflows for urban accessibility, climate and sunlight studies
+            credit: EVL
+        post: /news/2024/2024-09-01-2838/
+        links:
+          - { text: The Urban Toolkit, url: /projects/urban-miranda/ }
+          - { text: oscur.org, url: "https://oscur.org/" }
+
+      - id: biomedicine
+        summary: "From the Visible Embryo to cancer risk calculators used in clinics."
+        year: 2015
+        label: 1987–2026
+        area: vis
+        domain: biomed
+        title: Biomedicine
+        mark_title: "G. Elisabeta Marai joins"
+        marks:
+          - { year: 1987, title: "LEGS, a legged alternative to the wheelchair", area: hci }
+          - { year: 1992, title: "The Visible Embryo" }
+          - { year: 1997, title: "The Virtual Temporal Bone", area: hci }
+          - { year: 2012, title: "CAVE2 catches an error in a brain-vessel model", area: hci }
+          - { year: 2017, title: "NIH-funded cancer work begins" }
+          - { year: 2024, title: "The DITTO treatment digital twin" }
+          - { year: 2026, title: "New NIH awards: lymphedema and taste loss" }
+        body: |
+          The thread runs from a legged alternative to the wheelchair (1987) and the Visible Embryo (1992) through the Virtual Temporal Bone (1997) to brain-vessel models in CAVE2 (2012).
+
+          Since G. Elisabeta Marai joined in 2015 it has become a program. With MD Anderson, the University of Iowa and the University of Minnesota, and with NIH funding since 2017, her group works on head-and-neck cancer: risk calculators now used in clinics, THALIS and symptom-cluster analysis, and the DITTO treatment digital twin, all grounded in her activity-centered design framework (IEEE VIS 2017).
+
+          In 2026 two new NIH awards followed: smartphone computer vision for lymphedema, with Wei Tang, and *Flavor Charter* for patients who lose their sense of taste. Marai also co-directs UIC's institute for equitable health data science, and Saeed Boorboor (2025) brings immersive biomedical visualization.
+        media:
+          - src: p5-biomed-cave2.jpg
+            alt: G. Elisabeta Marai with co-investigators in CAVE2
+            credit: Lance Long, EVL
+          - src: p5-biomed-risk-calculator.jpg
+            alt: The interface of a head-and-neck cancer risk calculator
+            credit: EVL
+        post: /news/2021/2021-03-01-2540/
+        links:
+          - { text: Head-and-neck cancer decision support, url: /projects/cancer-marai/ }
+
+      - id: perception
+        summary: "How people see and reason with charts, from overdose dashboards to models of vision."
+        year: 2025
+        area: vis
+        domain: biomed
+        title: Public health and perception
+        mark_title: "Modeling human vision to evaluate charts"
+        marks:
+          - { year: 2021, title: "EuroVis Best Paper on color names" }
+        body: |
+          Khairi Reda, an EVL alumnus who returned in 2025, studies how people actually see, reason and decide with charts. In Indiana he helped build real-time dashboards of the services people used before fatal overdoses, used by health teams county by county (NIH HEAL Data2Action).
+
+          His EuroVis 2021 Best Paper, with Papka, showed that how easily a chart's colors can be named predicts how well people read it. A 2026 NSF award with Boorboor and Papka models human vision so a visualization can be evaluated without a user study for every design.
+        media:
+          - src: p5-reda-boorboor.jpg
+            alt: Khairi Reda and Saeed Boorboor
+            credit: EVL
+        post: /news/2026/2026-07-30-3027/
+
+      - id: systems
+        summary: "Supercomputers, edge AI and digital twins, from Aurora to a sensor on a pole."
+        year: 2023
+        area: hpc
+        domain: science
+        title: Systems and AI at scale
+        mark_title: "In situ visualization on Argonne's machines"
+        marks:
+          - { year: 2022, title: "The C²P² traineeship", domain: learning }
+          - { year: 2024, title: "AIMCI: AI that runs facilities", domain: platforms }
+          - { year: 2025, title: "EcoHPC: power as a schedulable resource" }
+        body: |
+          Michael Papka's work runs from the Argonne Leadership Computing Facility and Aurora to the edge: the C²P² computational-physics traineeship (DOE), the NAIRR Pilot's edge-AI testbed and its software workshop, and DAIMSL digital twins for robotic laboratories.
+
+          Zhiling Lan's AIMCI uses AI to run whole facilities, EcoHPC makes power a schedulable resource, and Tachyon builds a digital twin of the DUNE data pipeline. Sidharth Kumar makes massive simulation data small and fast, from declarative analytics at scale (PPoSS) to compact learned Gaussian models of huge volumes. Victor Mateevitsi visualizes simulations while they run (SC23 ISAV Best Paper), and Luc Renambot and Boorboor build AI assistants for scientific data with Argonne.
+
+          Miranda's tools sit here too: Urbanite keeps LLM-assisted dataflows aligned with what the analyst meant, Curio's agent catalog explains steps and finds data, and Autark runs GPU-accelerated geospatial computation entirely in the browser.
+        media:
+          - src: p5-systems-insitu.jpg
+            alt: In situ visualization of a fluid simulation running on a supercomputer
+            credit: EVL
+          - src: p5-systems-gaussians.jpg
+            alt: Volume data reconstructed from a compact learned Gaussian model
+            credit: EVL
+        post: /news/2023/2023-11-12-2786/
+
+      - id: learning
+        summary: "Social robots, touch interfaces, VIVES in Chicago Public Schools, and a new degree."
+        year: 2022
+        label: 2019–2026
+        area: hci
+        domain: learning
+        title: Learning and interaction
+        mark_title: "The joint BS in Computer Science and Design"
+        marks:
+          - { year: 2025, title: "CPS teachers' workshop at EVL", area: vis }
+          - { year: 2026, title: "VIVES in Chicago Public Schools", area: vis }
+        body: |
+          Joseph Michaelis builds social robots as companions for learning, and tools such as PATHWiSE that let teachers author robot-guided homework. Nikita Soni designs touch and speech interfaces for learners, including spherical displays for future science teachers. Andruid Kerne's Interface Ecology Lab studies creativity and embodied interaction, Debaleena Chattopadhyay designs interfaces people can trust, Hyungil Kim studies the human factors of augmented and extended reality, and Steve Jones studies human–machine communication.
+
+          Miranda's **VIVES**, *Visualizing Infrastructure for Vigorous Environmental Science in Chicago Public Schools* (Spencer Foundation, 2026–2029), grew out of a 2025 workshop at EVL with CPS science teachers: UIC, CPS classrooms and community partners use data visualization and youth participatory science to bring environmental science back into the curriculum.
+
+          And since fall 2022 the joint BS in Computer Science and Design, co-founded by Daria Tsoupikova, has brought a new kind of student into the lab's rooms.
+        media:
+          - src: p5-learning-classroom.jpg
+            alt: A large class working on laptops in front of EVL's display walls
+            credit: EVL
+          - src: p5-environmental-justice.jpg
+            alt: An environmental-justice map of Chicago showing polluting sites
+            credit: EVL
+        post: /news/2025/2025-06-26-2934/
+        links:
+          - { text: VIVES, url: /projects/vives-miranda/ }
+
+      - id: vision
+        summary: "Machines that understand people, objects and 3D scenes in images and video."
+        year: 2025
+        label: 2019–2026
+        area: vis
+        domain: science
+        title: Seeing machines
+        mark_title: "NSF CAREER award for Wei Tang"
+        body: |
+          Wei Tang's group teaches machines to understand people, objects and 3D scenes in images and video: 3D human pose estimation, part-whole 3D reconstruction learned from photo collections, and robust multi-object tracking, published at CVPR and ICCV.
+
+          In 2025 he received an NSF CAREER award for compositional learning of the physical world, and his vision work now powers the lymphedema project with Marai.
+        media:
+          - src: p5-vision-partwhole.jpg
+            alt: Photos of two birds beside their reconstructed 3D models, with parts in color
+            credit: Wei Tang, EVL
+        post: /news/2025/2025-07-01-2932/
+
+      - id: art-now
+        summary: "Hearts and Minds, Hummingbird, Chicago Design Milestones and Sandin's newest work."
+        year: 2021
+        label: 2014–2026
+        area: art
+        domain: arts
+        title: Art and immersive storytelling
+        mark_title: "Hummingbird at the Goodman Theatre"
+        marks:
+          - { year: 2014, title: "Hearts and Minds premieres in CAVE2" }
+          - { year: 2019, title: "Chicago Design Milestones" }
+          - { year: 2022, title: "Chicago design on Art on theMART" }
+          - { year: 2025, title: "The Image Processor, revived" }
+        body: |
+          The art half of the lab never left. Daria Tsoupikova's *Hearts and Minds* premiered in CAVE2 in 2014 and won the Robert Coover Award in 2016; *Chicago Design Milestones* filled the 150 Media Stream wall in 2019; *Hummingbird*, live theatre merged with multi-user virtual reality, played the Goodman Theatre's New Stages festival in 2021, staged at EVL; and in 2022 her team put a century of Chicago design on Art on theMART.
+
+          Dan Sandin keeps making work: *Particle Dreams in Spherical Harmonics* (2014), a 16K stereo camera (2019), and in 2025 a public revival of his Image Processor.
+        media:
+          - src: p5-art-hummingbird.jpg
+            alt: Virtual scenery and performers from Hummingbird
+            credit: EVL
+          - src: p5-art-particle-dreams.jpg
+            alt: Visitors in CAVE2 inside Dan Sandin's Particle Dreams
+            credit: Lance Long, EVL
+        post: /news/2021/2021-12-03-2603/
+
+      - id: earth
+        summary: "From GeoWall classrooms to NASA's Earth imagery on the ARCADE wall."
+        year: 2026
+        label: 2001–2026
+        area: vis
+        domain: earth
+        title: Earth and environment
+        mark_title: "NASA Earth on the ARCADE wall"
+        marks:
+          - { year: 2019, title: "Seeing aircraft contrails" }
+          - { year: 2023, title: "ProWis weather ensembles" }
+        body: |
+          Earth has been a domain since GeoWall: a forest in Panama in CAVE2 (2015), aircraft contrails (2019), ProWis for weather-forecast ensembles (IEEE VIS 2023 Best Paper Honorable Mention), Sage edge sensors measuring weather and air from 2023, and in 2026 NASA's near-real-time Earth imagery on the ARCADE wall.
+
+          That year Papka gave the keynote at NASA's ESTIM meeting, held at theMART in Chicago. This page is adapted from that talk.
+        media:
+          - src: p5-earth-nasa-arcade.jpg
+            alt: NASA Earth imagery on the ARCADE's LED wall
+            credit: EVL
+        post: /news/2026/2026-09-08-3026/
+
+      - id: recognition
+        summary: "Test-of-time awards, best papers, fellowships and a CAREER award."
+        timeline: false
+        title: Recognition
+        body: |
+          - **2021** · EuroVis Best Paper, for color nameability and chart reading (Reda, with Papka)
+          - **2021** · ISMB BioVis 10-year Test of Time, for RuleBender (Marai)
+          - **2022** · Kavli Fellow of the National Academy of Sciences (Miranda)
+          - **2023** · LDAV and ISAV best papers, and first place in the SciVis Contest
+          - **2024** · ACM Distinguished Member (Papka)
+          - **2025** · SAGE named one of UIC's top ten innovations
+          - **2025** · NSF CAREER award (Tang)
+          - **2025** · IEEE VIS 20-year Test of Time, for *Graph-theoretic scagnostics* (2005) by the late EVL faculty member Leland Wilkinson, EVL alumna Anushka Anand and Robert Grossman
+          - **2026** · Tom DeFanti named one of HPCwire's 35 HPC Legends
+        media:
+          - src: p5-recognition-scagnostics.jpg
+            alt: "Scagnostics: the convex hull, alpha hull and minimum spanning tree of a scatterplot"
+            credit: Wilkinson, Anand and Grossman, 2005
+        post: /news/2025/2025-11-02-2989/
+
+      - id: art-on-the-mart
+        summary: "Fall 2026: Argonne and EVL's science projected across theMART."
+        year: 2026
+        area: art
+        domain: arts
+        title: Where Data Becomes Light
+        marks:
+          - { year: 1989, title: "Sandin, Hart and Kauffman ray-trace 3D fractals", area: vis }
+        body: |
+          From September 10 to November 15, 2026, Art on theMART, the largest permanent digital art projection in the world, carried *Where Data Becomes Light: The Beauty of Scientific Visualization*, a collaboration between Argonne and EVL led by Papka and Tsoupikova.
+
+          It turns data from cosmology, Earth science, biomedical research, materials discovery, physics, chemistry and AI into public animation across 2.5 acres of river-facing wall, alongside Sandin's fractals: quaternion Julia sets that he, John Hart and the UIC mathematician Lou Kauffman learned to ray-trace in three dimensions for SIGGRAPH '89. It is the 1973 collaboration of science and art, outdoors and free to anyone walking by.
+        media:
+          - src: p5-art-on-the-mart-2026.jpg
+            alt: Scientific visualization projected across theMART's river facade at night
+            credit: Art on theMART, Argonne and EVL
+        post: /news/2026/2026-09-06-3024/
+
+  # ---------------------------------------------------------------------------
+  - id: part-06
+    part: "06"
+    years: 1973–today
+    title: What EVL enables
+    dek: Fifty years of instruments, networks, software and people, measured by what they made possible for others.
+    data: true
+    steps:
+      - id: literacies
+        timeline: false
+        chart: mix
+        title: One lab, three literacies
+        body: |
+          Start with what the lab is. Read across the whole careers of today's nineteen faculty and affiliated faculty, about 1,465 publications sort into three literacies: high-performance computing, visualization and human–computer interaction. Weighted the same way for everyone, the largest share is interaction, then visualization, then systems.
+
+          No career is one colour, and the overlaps are where the lab's instruments get built.
+
+      - id: territory
+        more: true
+        timeline: false
+        chart: territory
+        title: Shared territory
+        body: |
+          Count membership instead of coordinates: an area counts when it reaches a fifth of a person's record. Fourteen of the nineteen sit in two or more areas, and four sit in all three.
+
+          The empty region is the finding. Nobody spans HPC and HCI without visualization in between, which is why the lab holds together.
+
+      - id: clusters
+        more: true
+        timeline: false
+        chart: clusters
+        title: The lab's de facto groups
+        body: |
+          Read off shared venues and shared papers, five groups emerge: exascale systems; scientific and in-situ visualization; visual analytics and perception; immersive and collaborative environments; and creativity, learning and social computing.
+
+          Seven people sit in more than one. Those overlaps are what make this one lab rather than five.
+
+      - id: rooms
+        timeline: false
+        diagram: lineage
+        title: Rooms others built
+        body: |
+          EVL publishes its designs and helps others build them. Within a year of its debut the CAVE was running at NCSA and Argonne, with a fourth built for ARPA. Pyramid Systems licensed it in 1994, a line Fakespace and Mechdyne carried on, and CAVEs went up at dozens of institutions. The ImmersaDesk went commercial in 1998, and CAVE2 was licensed in 2013, the year Monash University opened the second one.
+
+          That is what success looks like for infrastructure research: the acronym became a common noun.
+
+      - id: networks
+        timeline: false
+        diagram: starlight
+        title: Networks others use
+        body: |
+          STAR TAP gave the world's research networks one place to meet US research networks, and StarLight has been that place since 2001: an open exchange in Chicago where national and international research-and-education networks connect, and where demonstrations from iGrid onward have moved science data across oceans.
+
+          The lab built the part every collaboration depends on, and others have used it for a quarter of a century.
+
+      - id: software
+        timeline: false
+        chart: software
+        title: Software others run
+        body: |
+          SAGE turned display walls into shared canvases for groups: by 2018 SAGE2 had more than 4,000 users at more than 800 institutions in 18 countries, and SAGE walls now number in the hundreds.
+
+          Today the lab's open-source work runs from SAGE3 to the Urban Toolkit, and other people install it every day.
+        stats:
+          - { value: "live: repositories", label: open-source repositories }
+          - { value: "live: downloads", label: "live: downloads-label" }
+        links:
+          - { text: Impact, url: /impact/ }
+          - { text: Repositories, url: /repositories/ }
+
+      - id: people
+        timeline: false
+        title: People others hire
+        body: |
+          **Film and games:** Pixar, Disney Animation, Weta Digital, Digital Domain, Rhythm & Hues, Amazon Games, Midway. **Industry:** Apple, Google, Amazon, Microsoft, General Motors, Qualcomm, Motorola, Mechdyne. **Research labs:** Argonne, NASA Goddard, Northrop Grumman, the Qualcomm Institute. **Universities:** Hawaiʻi at Mānoa, Buffalo, Indiana, Massachusetts, San Francisco State, USC Cinema, Chicago.
+
+          The phrase inside the lab is that no one ever leaves EVL.
+        stats:
+          - { value: "live: alumni", label: alumni on record }
+          - { value: "live: ms", label: master's degrees }
+          - { value: "live: mfa", label: MFAs }
+          - { value: "live: phd", label: PhDs }
+        stats_note: Degrees as recorded on the Members page; the early decades are incomplete.
+        media:
+          - src: p3-evlers-cave2-floor.jpg
+            alt: A fisheye view of EVL members lying in a circle on the CAVE2 floor
+            credit: EVL
+        links:
+          - { text: Members, url: /people/ }
+
+      - id: science
+        timeline: false
+        title: Science others do
+        body: |
+          - **Medicine.** In 2012 neurosurgeons studying a patient's brain-vessel model in CAVE2 spotted a wrong connection within five minutes. Today oncologists use head-and-neck cancer risk calculators built at EVL.
+          - **Earth.** GeoWall put stereo in geoscience classrooms for about $10,000. Sage nodes now sense weather and air in seventeen states.
+          - **Cities.** Planners, students and community groups build analyses in Curio and the Urban Toolkit.
+          - **Physics and computing.** I-WAY drove remote supercomputers live from a show floor; in situ visualization now watches simulations on Argonne's machines while they run.
+          - **Art and the public.** Artists with no programming background made work on the UV-1, and museums, theatres and theMART's riverfront have shown what the lab makes.
+        media:
+          - src: p5-biomed-brain-vessels.jpg
+            alt: Neurosurgeons and researchers study a brain-vessel model on the CAVE2 walls
+            credit: Lance Long, EVL
+
+    method: |
+      **Publications.** Career records of 19 current faculty and affiliated faculty from DBLP, the ACM Digital Library and Google Scholar, approximate and rounded to the nearest five. Venues are coded HPC (SC, CCGrid, ICPE, IPDPS, JSSPP, PEARC), visualization (IEEE VIS, TVCG, CGF, LDAV, ECCV, CVPR) or HCI (CHI, CSCW, C&C, IMX, ISS, IEEE VR, and immersive and collaboration venues). A record that spans two areas splits evenly. No chart on this page shows an individual.
+
+      **Software.** Repositories and package downloads are the figures on the [Impact](/impact/) page, counted when the site was last built.
+
+epilogue:
+  kicker: In closing
+  title: What fifty years of this taught the lab
+  lessons:
+    - title: Keep the people and the hardware together
+      text: Co-location makes almost everything else simpler. Proximity is the cheapest research infrastructure there is.
+    - title: Learn the vocabulary, not the whole discipline
+      text: Nobody has to become the other expert. They have to be able to talk to them precisely.
+    - title: Build tools with people, not for them
+      text: And use your own tools daily. It is the only reliable way to find out what is wrong with them.
+    - title: Keep the portfolio broad and overlapping
+      text: No single technology outlives fifty years. A varied portfolio is what lets the lab survive each one.
+  bookend:
+    title: Art or engineering?
+    text: >-
+      It is the question newcomers are asked on their first day at EVL. Fifty years in, the
+      answer is the one the lab was founded on: all of us are at least a little of both.
+    src: epilogue-design-milestones.jpg
+    alt: Chicago Design Milestones 1920–2019 on the 150 Media Stream wall
+    credit: Daria Tsoupikova, EVL
+  sources:
+    - text: >-
+        Adapted from Michael E. Papka's keynote “Fifty years at the Electronic Visualization Laboratory,”
+        NASA ESTIM 2026, theMART, Chicago, September 23, 2026.
+      url: /news/2026/2026-09-23-3032/
+    - text: >-
+        Johnson, A. E., Renambot, L., Marai, G. E., Tsoupikova, D., Papka, M. E., Long, L., Plepys, D.,
+        Talandis, J., Brown, M. D., Leigh, J., Sandin, D. J., and DeFanti, T. A. (2024). Electronic
+        Visualization Laboratory's 50th Anniversary Retrospective: Look to the Future, Build on the Past.
+        PRESENCE: Virtual and Augmented Reality 33, 77–127. Open access, CC BY 4.0.
+      url: https://doi.org/10.1162/pres_a_00421
+    - text: >-
+        Cruz-Neira, C., Sandin, D. J., DeFanti, T. A., Kenyon, R. V., and Hart, J. C. (1992). The CAVE:
+        audio visual experience automatic virtual environment. Communications of the ACM 35(6).
+    - text: EVL's news archive, 1971 to today, and the project records on this site.
+      url: /news/
+    - text: >-
+        Publication figures: DBLP, the ACM Digital Library and Google Scholar. Software figures: this
+        site's Impact page.
+    - text: Photographs by EVL, many by Lance Long. Credits appear with each image.
+  visit: >-
+    Engineering Research Facility, 842 W Taylor Street, Chicago. Visitors welcome, and the espresso
+    machine still works.
+  links:
+    - { text: Projects, url: /projects/ }
+    - { text: Members, url: /people/ }
+    - { text: Impact, url: /impact/ }
+    - { text: Visiting EVL, url: /about/location/ }

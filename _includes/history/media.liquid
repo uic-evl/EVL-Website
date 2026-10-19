@@ -1,0 +1,23 @@
+{%- comment -%}
+  A figure of one to four images from a step's `media` list. Params: items, sizes, full, eager.
+  One image fills the figure, two sit side by side, three or four form a grid.
+{%- endcomment -%}
+{%- assign m_items = include.items -%}
+{%- assign m_count = m_items | size -%}
+{%- assign m_credits = m_items | map: "credit" | uniq | join: " · " -%}
+<figure class="history-media history-media--{{ m_count }}">
+  <div class="history-media-grid">
+    {%- for m in m_items -%}
+      <div class="history-media-item">
+        {%- if m_count == 1 -%}
+          {%- include history/picture.liquid src=m.src alt=m.alt sizes=include.sizes full=include.full eager=include.eager -%}
+        {%- else -%}
+          {%- include history/picture.liquid src=m.src alt=m.alt sizes="(min-width: 992px) 25vw, 50vw" eager=include.eager -%}
+        {%- endif -%}
+      </div>
+    {%- endfor -%}
+  </div>
+  {%- if m_credits != "" -%}
+    <figcaption class="history-media-credit">{{ m_credits }}</figcaption>
+  {%- endif -%}
+</figure>

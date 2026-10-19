@@ -1,0 +1,15 @@
+{%- comment -%}
+  A step's visual: media, a drawn diagram, a chart, or the faculty grid. Rendered twice per
+  step, once in the sticky panel (desktop) and once inline (mobile, or without JavaScript);
+  CSS shows one of them, so only that copy loads its images and reaches assistive technology.
+{%- endcomment -%}
+{%- assign v = include.step -%}
+{%- if v.media -%}
+  {%- include history/media.liquid items=v.media sizes="(min-width: 992px) 52vw, 100vw" -%}
+{%- elsif v.diagram -%}
+  {%- include history/diagram.liquid name=v.diagram -%}
+{%- elsif v.chart -%}
+  {%- include history/chart.liquid id=v.chart -%}
+{%- elsif v.people -%}
+  {%- include history/people.liquid people=v.people -%}
+{%- endif -%}

@@ -1,0 +1,17 @@
+{%- comment -%} The faculty grid: portraits from assets/img/faculty/, the year each joined, and a one-line focus. {%- endcomment -%}
+<figure class="history-people">
+  <ul class="history-people-grid">
+    {%- for f in include.people -%}
+      <li class="history-person">
+        <span class="history-person-photo">
+          {%- include history/picture.liquid folder="faculty" src=f.image alt="" sizes="88px" -%}
+        </span>
+        <span class="history-person-text">
+          <span class="history-person-name">{{ f.name }}</span>
+          <span class="history-person-year">{{ f.year }}{% if f.alumnus %} · EVL alumnus{% endif %}</span>
+          <span class="history-person-focus">{{ f.focus }}</span>
+        </span>
+      </li>
+    {%- endfor -%}
+  </ul>
+</figure>

@@ -1,0 +1,84 @@
+{%- assign ch = include.chapter -%}
+{%- assign ch_more = ch.steps | where: "more", true -%}
+<section
+  class="history-chapter{% if ch.data %} history-chapter--data{% endif %}{% if ch.cards %} history-chapter--cards{% endif %}"
+  id="{{ ch.id }}"
+  data-part="{{ ch.part }}"
+  data-title="{{ ch.title | escape }}"
+  data-years="{{ ch.years }}"
+  aria-labelledby="{{ ch.id }}-title"
+>
+  <header class="history-opener{% if ch.opener %} history-opener--photo{% endif %}">
+    {%- if ch.opener -%}
+      <div class="history-opener-media">
+        {%- include history/picture.liquid src=ch.opener.src alt=ch.opener.alt sizes="100vw" full=true -%}
+      </div>
+    {%- endif -%}
+    <div class="history-opener-text">
+      <p class="history-kicker">Part {{ ch.part }} · {{ ch.years }}</p>
+      <h2 class="history-opener-title" id="{{ ch.id }}-title">{{ ch.title }}</h2>
+      <p class="history-opener-dek">{{ ch.dek }}</p>
+      {%- if ch.opener.credit -%}
+        <p class="history-opener-credit">{{ ch.opener.credit }}</p>
+      {%- endif -%}
+    </div>
+  </header>
+
+  {%- if ch.cards -%}
+    <div class="history-cards">
+      {%- for st in ch.steps -%}
+        <a class="history-card" href="#{{ st.id }}" data-open="{{ st.id }}" data-area="{{ st.area }}">
+          {%- if st.media -%}
+            {%- assign card_img = st.media | first -%}
+            <span class="history-card-media">
+              {%- include history/picture.liquid src=card_img.src alt="" sizes="(min-width: 992px) 22vw, 50vw" -%}
+            </span>
+          {%- endif -%}
+          <span class="history-card-body">
+            <span class="history-card-title">{{ st.title }}</span>
+            <span class="history-card-text">{{ st.summary }}</span>
+          </span>
+        </a>
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+
+  <div class="history-scrolly">
+    <div class="history-steps">
+      {%- for st in ch.steps -%}
+        {%- include history/step.liquid step=st chapter=ch -%}
+      {%- endfor -%}
+      {%- if ch_more.size > 0 -%}
+        <div class="history-more">
+          <button type="button" class="history-more-toggle" aria-expanded="false">
+            <span class="history-more-label" data-label-open="Show fewer">More from {{ ch.years }} ({{ ch_more.size }})</span>
+            <span class="history-more-list">{{ ch_more | map: "title" | join: " · " }}</span>
+          </button>
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div class="history-panel">
+      <div class="history-panel-inner">
+        {%- for st in ch.steps -%}
+          {%- if st.media or st.diagram or st.chart or st.people -%}
+            <div class="history-panel-frame" data-frame="{{ st.id }}">
+              {%- include history/visual.liquid step=st -%}
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+
+  {%- if ch.interlude -%}
+    {%- include history/interlude.liquid interlude=ch.interlude -%}
+  {%- endif -%}
+
+  {%- if ch.method -%}
+    <details class="history-method">
+      <summary>How we counted</summary>
+      {{ ch.method | markdownify }}
+    </details>
+  {%- endif -%}
+</section>
