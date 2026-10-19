@@ -182,3 +182,7 @@
 - to: https://legacy.evl.uic.edu/hearts_and_minds/
   from:
     - /hearts_and_minds/
+
+- to: /about/overview/
+  from:
+    - /about/history/

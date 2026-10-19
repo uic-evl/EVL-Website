@@ -6,8 +6,8 @@ nav: true
 nav_order: 1
 dropdown: true
 children:
-  - title: History
-    permalink: /about/history/
+  - title: Overview
+    permalink: /about/overview/
   - title: Location
     permalink: /about/location/
   - title: Funding
