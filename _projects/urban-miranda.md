@@ -7,10 +7,6 @@ importance: 1
 category: research
 status: active
 tags: [urban, visual analytics, open-source]
-_styles: >
-  .utk-impact td, .utk-impact thead th { text-align: right; }
-  .utk-impact thead th:first-child { text-align: left; }
-  .utk-impact small { display: block; font-weight: normal; color: var(--global-text-color-light); }
 # The toolkit's projects, in urbantk.org's order. Each card shows the project's image from urbantk.org
 # (assets/img/urbantk/<slug>.webp) and links to https://urbantk.org/<slug>/.
 toolkit:
@@ -54,21 +50,7 @@ The development of the Urban Toolkit is supported by the Open-Source Cyberinfras
 
 OSCUR addresses two obstacles in urban computing: the lack of documented, robust, well-engineered tools and open computing platforms, and a dispersed community of cross-disciplinary researchers and developers. At its core is a cyberinfrastructure of scalable, reusable and interoperable methods and tools for urban data, covering data discovery, cleaning, analytics, modeling, visualization, and reproducibility.
 
-More on OSCUR: [oscur.org](https://oscur.org/), [UIC Researchers Join National Project to Turn Urban Data into Healthier Cities](/news/2024/2024-09-01-2838/), and [OSCUR](/news/2024/2024-09-01-2846/).
-
-## Impact
-
-Two of the numbers urbantk.org collects each time it is published. Each year runs from September to August.
-
-<div id="utk-impact" hidden>
-  <table class="table table-sm utk-impact">
-    <thead>
-      <tr id="utk-impact-years"><th scope="col">Metric</th></tr>
-    </thead>
-    <tbody id="utk-impact-rows"></tbody>
-  </table>
-</div>
-<p><span id="utk-impact-updated"></span>How each number is counted: <a href="https://urbantk.org/impact/">urbantk.org/impact</a>.</p>
+More on OSCUR: [oscur.org](https://oscur.org/).
 
 ## Projects
 
@@ -94,52 +76,4 @@ Two of the numbers urbantk.org collects each time it is published. Each year run
 </div>
 {% endfor %}
 
-Images and numbers: [urbantk.org](https://urbantk.org).
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // The rows of urbantk.org/impact/ shown above. urbantk.org recomputes them every time it is published,
-    // and its build fails if either row goes missing from impact.json.
-    const rowIds = ['downloads-month', 'publications'];
-
-    fetch('https://urbantk.org/impact/impact.json')
-      .then(response => {
-        if (!response.ok) throw new Error(`urbantk.org answered ${response.status}`);
-        return response.json();
-      })
-      .then(impact => {
-        const rows = rowIds.map(id => impact.rows.find(row => row.id === id));
-        if (rows.some(row => !row)) throw new Error('impact.json has no ' + rowIds.join(' or ') + ' row');
-
-        const years = document.getElementById('utk-impact-years');
-        impact.years.forEach(year => {
-          const th = document.createElement('th');
-          th.scope = 'col';
-          th.textContent = year.label;
-          const period = document.createElement('small');
-          period.textContent = year.period;
-          th.appendChild(period);
-          years.appendChild(th);
-        });
-
-        const body = document.getElementById('utk-impact-rows');
-        rows.forEach(row => {
-          const tr = document.createElement('tr');
-          const label = document.createElement('th');
-          label.scope = 'row';
-          label.textContent = row.label;
-          tr.appendChild(label);
-          row.values.forEach(value => {
-            const td = document.createElement('td');
-            td.textContent = value === null ? 'Not available' : value.toLocaleString('en-US');
-            tr.appendChild(td);
-          });
-          body.appendChild(tr);
-        });
-
-        document.getElementById('utk-impact-updated').textContent = `Last updated ${impact.updated}. `;
-        document.getElementById('utk-impact').hidden = false;
-      })
-      .catch(error => console.error('Error fetching the Urban Toolkit impact numbers:', error));
-  });
-</script>
+Images: [urbantk.org](https://urbantk.org).
