@@ -1,0 +1,76 @@
+name: YouTube videos
+
+# Collects the evltube channel's videos and view counts (_youtube/collect.mjs) into
+# _data/youtube.json for the Videos page, commits the file to deployment when it changed, and
+# starts the deploy. On a pull request it only collects and uploads the file as an artifact.
+
+on:
+  push:
+    branches: [deployment]
+    paths:
+      - _youtube/**
+      - .github/workflows/youtube.yml
+  pull_request:
+    paths:
+      - _youtube/**
+      - _pages/videos.md
+      - .github/workflows/youtube.yml
+  schedule:
+    - cron: "17 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: youtube-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+
+      - name: Collect the channel's videos and view counts
+        run: node _youtube/collect.mjs
+        env:
+          YOUTUBE_API: ${{ secrets.YOUTUBE_API }}
+
+      - uses: actions/upload-artifact@v6
+        with:
+          name: youtube-videos
+          path: _data/youtube.json
+
+      - name: Commit the file and deploy
+        if: github.ref == 'refs/heads/deployment' && github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp _data/youtube.json "$RUNNER_TEMP/youtube.json"
+          commit() {
+            git add _data/youtube.json
+            if git diff --cached --quiet; then
+              echo "The video list did not change."
+              return 1
+            fi
+            git commit -q -m "Update YouTube videos"
+          }
+          commit || exit 0
+          if ! git push origin HEAD:deployment; then
+            # Someone pushed meanwhile: put the file on top of their commit.
+            git fetch --depth=1 origin deployment
+            git reset -q --hard FETCH_HEAD
+            cp "$RUNNER_TEMP/youtube.json" _data/youtube.json
+            commit || exit 0
+            git push origin HEAD:deployment
+          fi
+          # A push made with the workflow's token starts no workflow, so the deploy is started here.
+          gh workflow run deploy_tailscale.yml --ref deployment
