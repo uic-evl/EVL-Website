@@ -12,12 +12,8 @@ _styles: >
   .yt-stats span { font-size: .85rem; color: var(--global-text-color-light); text-transform: uppercase; letter-spacing: .06em; margin-top: .25rem; }
   .yt-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem; padding-bottom: .5rem; border-bottom: 1px solid var(--global-divider-color); }
   .yt-head h2 { margin: 0; font-size: 1.5rem; }
-  .yt-head a, .yt-head button { font-size: .85rem; }
-  .yt-head button { background: none; border: 1px solid var(--global-divider-color); border-radius: 2rem; padding: .25rem .9rem; color: var(--global-text-color); cursor: pointer; transition: border-color .15s, color .15s; }
-  .yt-head button:hover { border-color: var(--global-theme-color); color: var(--global-theme-color); }
+  .yt-head a { font-size: .85rem; }
   .yt-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem 1.25rem; margin: 0 0 3rem; }
-  .yt-card { display: none; }
-  .yt-card.yt-show { display: block; }
   .yt-player { position: relative; aspect-ratio: 16 / 9; background: #000; border-radius: .6rem; overflow: hidden; cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,.12); transition: transform .2s, box-shadow .2s; }
   .yt-card:hover .yt-player { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,.18); }
   .yt-player img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -34,7 +30,7 @@ _styles: >
 {% assign yt = site.data.youtube %}
 {% if yt and yt.videos.size > 0 %}
 
-<p>EVL has been publishing on YouTube since 2007: lectures, demos, and the making of the lab's displays, from the CAVE to the Arcade. A random pick of the latest videos, and the ones most people have watched. Counts collected on {{ yt.collected }}.</p>
+<p>EVL has been publishing on YouTube since 2007: lectures, demos, and the making of the lab's displays, from the CAVE to the Arcade. The latest uploads, and the ones most people have watched. Counts collected on {{ yt.collected }}.</p>
 
 <div class="yt-stats">
   <div><b>{{ yt.count }}</b><span>videos</span></div>
@@ -45,12 +41,12 @@ _styles: >
 
 <div class="yt-head">
   <h2 id="latest">Latest</h2>
-  <button type="button" id="yt-shuffle" hidden>Show another pick</button>
+  <a href="{{ yt.channel.url }}/videos" target="_blank" rel="noopener">All videos by date</a>
 </div>
 <div class="yt-grid" id="yt-latest">
-{%- assign newest = yt.videos | sort: "published" | reverse | slice: 0, 24 %}
+{%- assign newest = yt.videos | sort: "published" | reverse | slice: 0, 9 %}
 {%- for v in newest %}
-  <div class="yt-card{% if forloop.index <= 6 %} yt-show{% endif %}">
+  <div class="yt-card">
     <div class="yt-player" data-id="{{ v.id }}" title="Play: {{ v.title | escape }}">
       <img src="https://i.ytimg.com/vi/{{ v.id }}/hqdefault.jpg" alt="{{ v.title | escape }}" loading="lazy">
       <span class="yt-play"></span>
@@ -69,7 +65,7 @@ _styles: >
 <div class="yt-grid">
 {%- assign top = yt.videos | sort: "views" | reverse | slice: 0, 9 %}
 {%- for v in top %}
-  <div class="yt-card yt-show">
+  <div class="yt-card">
     <div class="yt-player" data-id="{{ v.id }}" title="Play: {{ v.title | escape }}">
       <img src="https://i.ytimg.com/vi/{{ v.id }}/hqdefault.jpg" alt="{{ v.title | escape }}" loading="lazy">
       <span class="yt-play"></span>
@@ -83,25 +79,6 @@ _styles: >
 
 <script>
 (function () {
-  // A different random pick of the latest videos on every visit; without JavaScript the six newest show.
-  var grid = document.getElementById("yt-latest");
-  var cards = Array.prototype.slice.call(grid.querySelectorAll(".yt-card"));
-  function shuffle() {
-    var order = cards.slice();
-    for (var i = order.length - 1; i > 0; i--) {
-      var j = Math.floor(Math.random() * (i + 1));
-      var t = order[i]; order[i] = order[j]; order[j] = t;
-    }
-    cards.forEach(function (c) { c.classList.remove("yt-show"); });
-    order.slice(0, 6).forEach(function (c) { c.classList.add("yt-show"); grid.appendChild(c); });
-  }
-  var button = document.getElementById("yt-shuffle");
-  if (cards.length > 6) {
-    button.hidden = false;
-    button.addEventListener("click", shuffle);
-    shuffle();
-  }
-
   // Thumbnails become the player only when clicked, so the page does not load fifteen YouTube players.
   document.addEventListener("click", function (e) {
     var player = e.target.closest(".yt-player");
