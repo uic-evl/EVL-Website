@@ -1,0 +1,29 @@
+{%- assign il = include.interlude -%}
+<aside class="history-interlude" aria-label="{{ il.kicker | escape }}">
+  <div class="history-interlude-inner">
+    <p class="history-kicker">Interlude</p>
+    <h3 class="history-interlude-title">{{ il.kicker }}</h3>
+    {%- if il.items -%}
+      <ol class="history-principles">
+        {%- for item in il.items -%}
+          <li class="history-principle">
+            {%- if item.src -%}
+              <span class="history-principle-media">
+                {%- include history/picture.liquid src=item.src alt=item.alt sizes="(min-width: 768px) 30vw, 100vw" -%}
+              </span>
+            {%- endif -%}
+            <span class="history-principle-n">{{ item.n }}</span>
+            <span class="history-principle-title">{{ item.title }}</span>
+            <span class="history-principle-text">{{ item.text }}</span>
+          </li>
+        {%- endfor -%}
+      </ol>
+    {%- endif -%}
+    {%- if il.diagram -%}
+      {%- include history/diagram.liquid name=il.diagram -%}
+    {%- endif -%}
+    {%- if il.closing -%}
+      <p class="history-interlude-closing">{{ il.closing }}</p>
+    {%- endif -%}
+  </div>
+</aside>

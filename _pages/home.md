@@ -13,11 +13,11 @@ highlights:
   - label: "1973"
     title: "Founded"
     text: "An interdisciplinary lab in UIC Computer Science, bringing together scientists, engineers and artists for five decades."
-    link: /about/history/
+    link: /about/overview/
   - label: "CAVE™"
     title: "Invented here"
     text: "The virtual-reality environment that defined immersive visualization, followed by ImmersaDesk and CAVE2."
-    link: /about/history/
+    link: /about/overview/
   - label: "SAGE3"
     title: "Collaboration software"
     text: "Open-source software for working with data across display walls, laptops and hybrid teams."
@@ -30,4 +30,4 @@ highlights:
 
 Established in 1973, the Electronic Visualization Laboratory (EVL) is an interdisciplinary research laboratory in the UIC College of Engineering’s Computer Science department. EVL specializes in collaborative visualization, virtual reality, visual data science, and advanced computing and networking infrastructure, helping scientists and engineers access, display, share and interact with data at scale.
 
-Read more about [EVL’s history](/about/history/) and [current projects](/projects/).
+Read more about [EVL’s history](/about/overview/) and [current projects](/projects/).

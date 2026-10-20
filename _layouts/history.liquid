@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="{{ site.lang }}">
+  <!-- Head -->
+  <head>
+    {% include head.liquid %}
+    <!-- Mark the page before first paint so the scroll layout applies without a flash; without JavaScript it reads as a plain article -->
+    <script>
+      document.documentElement.classList.add("history-js");
+    </script>
+  </head>
+
+  <!-- Body -->
+  <body class="{% if site.navbar_fixed %}fixed-top-nav{% endif %} {% unless site.footer_fixed %}sticky-bottom-footer{% endunless %}">
+    <!-- Header -->
+    {% include header.liquid %}
+
+    <!-- Content: full width, unlike default.liquid's .container -->
+    <main class="evl-history" role="main">
+      {{ content }}
+    </main>
+
+    <!-- Footer -->
+    {% include footer.liquid %}
+
+    <!-- JavaScripts -->
+    {% include scripts.liquid %}
+    <script defer src="{{ '/assets/js/history.js' | relative_url | bust_file_cache }}"></script>
+  </body>
+</html>

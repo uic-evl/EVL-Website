@@ -1,0 +1,78 @@
+{%- comment -%}
+  Build-time numbers for /history/. Sets:
+    history_year                       the year the site was built
+    history_alumni, history_ms,        counts from _data/people.csv (degrees as recorded there)
+    history_mfa, history_phd
+    history_repos, history_downloads   open-source figures from the Impact page's model
+    history_downloads_since            (_plugins/impact.rb); empty when they could not be counted
+  and writes the JSON the charts read (#history-data).
+{%- endcomment -%}
+{%- assign history_year = site.time | date: "%Y" | plus: 0 -%}
+
+{%- assign history_alumni = 0 -%}
+{%- assign history_ms = 0 -%}
+{%- assign history_mfa = 0 -%}
+{%- assign history_phd = 0 -%}
+{%- for p in site.data.people -%}
+  {%- if p.status == "alumni" -%}
+    {%- assign history_alumni = history_alumni | plus: 1 -%}
+  {%- endif -%}
+  {%- assign p_degrees = p.alumni | default: "" -%}
+  {%- if p_degrees contains "PhD" -%}
+    {%- assign history_phd = history_phd | plus: 1 -%}
+  {%- endif -%}
+  {%- if p_degrees contains "MFA" -%}
+    {%- assign history_mfa = history_mfa | plus: 1 -%}
+  {%- endif -%}
+  {%- if p_degrees contains "MS" -%}
+    {%- assign history_ms = history_ms | plus: 1 -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- comment -%} Open-source rows of the Impact model: the latest repository count and downloads per year. {%- endcomment -%}
+{%- assign history_repos = "" -%}
+{%- assign history_downloads = "" -%}
+{%- assign history_downloads_since = "" -%}
+{%- assign im = site.data.impact_model -%}
+{%- assign im_downloads = nil -%}
+{%- if im -%}
+  {%- for im_group in im.groups -%}
+    {%- for im_row in im_group.rows -%}
+      {%- if im_row.id == "repositories" -%}
+        {%- assign im_last = im_row.values | last -%}
+        {%- if im_last -%}
+          {%- assign history_repos = im_last -%}
+        {%- endif -%}
+      {%- elsif im_row.id == "downloads" -%}
+        {%- assign im_downloads = im_row -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endfor -%}
+  {%- if im_downloads -%}
+    {%- assign im_total = 0 -%}
+    {%- for v in im_downloads.values -%}
+      {%- if v and v > 0 -%}
+        {%- assign im_total = im_total | plus: v -%}
+        {%- if history_downloads_since == "" -%}
+          {%- assign history_downloads_since = im.years[forloop.index0].label -%}
+        {%- endif -%}
+      {%- endif -%}
+    {%- endfor -%}
+    {%- if im_total > 0 -%}
+      {%- assign history_downloads = im_total -%}
+    {%- endif -%}
+  {%- endif -%}
+{%- endif -%}
+
+<script type="application/json" id="history-data">
+  {
+    "year": {{ history_year }},
+    "software": {
+      {%- if im_downloads -%}
+        "years": [{% for y in im.years %}{{ y.label | jsonify }}{% unless forloop.last %}, {% endunless %}{% endfor %}],
+        "current": {{ im.years.last.current | default: false }},
+        "downloads": {{ im_downloads.values | jsonify }}
+      {%- endif -%}
+    }
+  }
+</script>

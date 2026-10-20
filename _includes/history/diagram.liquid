@@ -1,0 +1,176 @@
+{%- comment -%}
+  Diagrams drawn on the page, by name. Each one renders twice (panel and inline), so none uses
+  element ids. Colours come from the --history-* tokens in _sass/_history.scss.
+{%- endcomment -%}
+{%- case include.name -%}
+
+  {%- when "phscologram" -%}
+    <figure class="history-diagram history-diagram--phsc">
+      <svg viewBox="0 0 560 270" role="img" aria-label="How a barrier-strip autostereogram works: a fine barrier sits in front of interleaved image strips, so the left eye sees only the left image's strips and the right eye only the right's.">
+        <g class="history-svg-rays">
+          <line x1="58" y1="95" x2="360" y2="133" class="history-svg-ray-l" />
+          <line x1="58" y1="175" x2="360" y2="121" class="history-svg-ray-r" />
+          <line x1="58" y1="95" x2="360" y2="173" class="history-svg-ray-l" />
+          <line x1="58" y1="175" x2="360" y2="161" class="history-svg-ray-r" />
+        </g>
+        <g class="history-svg-barrier">
+          {%- for i in (0..10) -%}
+            {%- assign by = i | times: 20 | plus: 25 -%}
+            <rect x="296" y="{{ by }}" width="6" height="14" />
+          {%- endfor -%}
+        </g>
+        <g>
+          {%- for i in (0..22) -%}
+            {%- assign sy = i | times: 10 | plus: 25 -%}
+            {%- assign odd = i | modulo: 2 -%}
+            <rect x="356" y="{{ sy }}" width="16" height="10" class="{% if odd == 0 %}history-svg-strip-l{% else %}history-svg-strip-r{% endif %}" />
+          {%- endfor -%}
+        </g>
+        <circle cx="50" cy="95" r="9" class="history-svg-eye-l" />
+        <circle cx="50" cy="175" r="9" class="history-svg-eye-r" />
+        <text x="32" y="75" class="history-svg-label">Left eye</text>
+        <text x="32" y="205" class="history-svg-label">Right eye</text>
+        <text x="299" y="252" text-anchor="middle" class="history-svg-label">Barrier</text>
+        <text x="364" y="18" text-anchor="middle" class="history-svg-label">Interleaved image</text>
+        <text x="392" y="112" class="history-svg-note">Strips for the left eye</text>
+        <text x="392" y="168" class="history-svg-note">Strips for the right eye</text>
+      </svg>
+      <figcaption class="history-media-credit">Drawn after Sandin, Sandor, Cunnally et al., 1989</figcaption>
+    </figure>
+
+  {%- when "startap" or "starlight" -%}
+    {%- if include.name == "startap" -%}
+      {%- assign hub_title = "STAR TAP" -%}
+      {%- assign hub_sub = "Chicago, 1997" -%}
+      {%- assign hub_left = "Asia-Pacific research networks|European research networks|Canada's research network" | split: "|" -%}
+      {%- assign hub_right = "US research networks such as vBNS|Supercomputer centers|Universities and laboratories" | split: "|" -%}
+    {%- else -%}
+      {%- assign hub_title = "StarLight" -%}
+      {%- assign hub_sub = "Chicago, since 2001" -%}
+      {%- assign hub_left = "International research and education networks|National research networks|The Global Lambda Integrated Facility" | split: "|" -%}
+      {%- assign hub_right = "Universities and laboratories|Supercomputer centers|Science instruments and archives" | split: "|" -%}
+    {%- endif -%}
+    <figure class="history-diagram history-diagram--hub">
+      <ul class="history-hub-side history-hub-side--left">
+        {%- for n in hub_left -%}<li>{{ n }}</li>{%- endfor -%}
+      </ul>
+      <p class="history-hub-center"><strong>{{ hub_title }}</strong><span>{{ hub_sub }}</span></p>
+      <ul class="history-hub-side history-hub-side--right">
+        {%- for n in hub_right -%}<li>{{ n }}</li>{%- endfor -%}
+      </ul>
+      <figcaption class="history-diagram-caption">One place where the networks meet</figcaption>
+    </figure>
+
+  {%- when "triad" -%}
+    <figure class="history-diagram history-diagram--triad">
+      <ol class="history-triad">
+        <li class="history-triad-node">
+          <span class="history-triad-kicker">Display</span>
+          <span class="history-triad-title">Where the human is</span>
+          <span class="history-triad-text">CAVE, ImmersaDesk, tiled walls</span>
+        </li>
+        <li class="history-triad-node history-triad-node--accent">
+          <span class="history-triad-kicker">Network</span>
+          <span class="history-triad-title">What joins them</span>
+          <span class="history-triad-text">I-WAY, STAR TAP, StarLight, OptIPuter</span>
+        </li>
+        <li class="history-triad-node">
+          <span class="history-triad-kicker">Compute</span>
+          <span class="history-triad-title">Where the data is</span>
+          <span class="history-triad-text">Remote supercomputers, then and now</span>
+        </li>
+      </ol>
+    </figure>
+
+  {%- when "optiputer" -%}
+    <figure class="history-diagram history-diagram--bus">
+      <ul class="history-bus-nodes">
+        <li>Storage and archives</li>
+        <li>Supercomputers</li>
+        <li>Instruments: microscopes, sensors</li>
+        <li>Display walls</li>
+      </ul>
+      <p class="history-bus-line"><span>Dedicated lightpaths (λ): the network as the computer's backplane</span></p>
+      <figcaption class="history-diagram-caption">Bandwidth as the abundant resource</figcaption>
+    </figure>
+
+  {%- when "sage" -%}
+    <figure class="history-diagram history-diagram--flow">
+      <ol class="history-flow">
+        <li class="history-flow-node">
+          <span class="history-flow-kicker">Sources</span>
+          <span class="history-flow-text">Render nodes, instruments, cameras, laptops</span>
+        </li>
+        <li class="history-flow-node history-flow-node--accent">
+          <span class="history-flow-kicker">SAGE</span>
+          <span class="history-flow-text">Pixel streams routed and composited into windows</span>
+        </li>
+        <li class="history-flow-node">
+          <span class="history-flow-kicker">Surface</span>
+          <span class="history-flow-text">Any wall, any resolution, shared by a group</span>
+        </li>
+      </ol>
+    </figure>
+
+  {%- when "compaas" -%}
+    <figure class="history-diagram history-diagram--pools">
+      <ul class="history-pools">
+        <li class="history-pool"><span class="history-pool-name">CPUs</span><span class="history-pool-units" aria-hidden="true">{% for i in (1..8) %}<i></i>{% endfor %}</span></li>
+        <li class="history-pool"><span class="history-pool-name">GPUs</span><span class="history-pool-units" aria-hidden="true">{% for i in (1..8) %}<i></i>{% endfor %}</span></li>
+        <li class="history-pool"><span class="history-pool-name">Storage</span><span class="history-pool-units" aria-hidden="true">{% for i in (1..8) %}<i></i>{% endfor %}</span></li>
+      </ul>
+      <p class="history-pools-arrow">composed on demand over a PCI Express fabric</p>
+      <p class="history-pools-machine"><strong>A machine for this job</strong><span>Kubernetes · containers · JupyterHub</span></p>
+    </figure>
+
+  {%- when "continuum" -%}
+    <figure class="history-diagram history-diagram--flow history-diagram--continuum">
+      <ol class="history-flow">
+        <li class="history-flow-node history-flow-node--edge">
+          <span class="history-flow-kicker">Edge</span>
+          <span class="history-flow-title">At the data source</span>
+          <span class="history-flow-text">Sensors, cameras, instruments; where the decision about what to keep is made</span>
+        </li>
+        <li class="history-flow-node history-flow-node--middle">
+          <span class="history-flow-kicker">Intermediate</span>
+          <span class="history-flow-title">Regional aggregation</span>
+          <span class="history-flow-text">Campus resource pools and the shared walls where a group looks at it together</span>
+        </li>
+        <li class="history-flow-node history-flow-node--hpc">
+          <span class="history-flow-kicker">HPC and cloud</span>
+          <span class="history-flow-title">Leadership computing</span>
+          <span class="history-flow-text">Training, simulation and reanalysis at exascale</span>
+        </li>
+      </ol>
+    </figure>
+
+  {%- when "lineage" -%}
+    <figure class="history-diagram history-diagram--lineage">
+      <ol class="history-lineage">
+        <li>
+          <span class="history-lineage-year">1992</span>
+          <span class="history-lineage-what"><strong>The CAVE</strong> debuts at SIGGRAPH</span>
+          <ul>
+            <li><span class="history-lineage-year">1993</span> NCSA, Argonne, and a fourth for ARPA</li>
+            <li><span class="history-lineage-year">1994</span> Licensed to Pyramid Systems, later Fakespace and Mechdyne</li>
+            <li><span class="history-lineage-year">→</span> CAVEs at dozens of institutions</li>
+          </ul>
+        </li>
+        <li>
+          <span class="history-lineage-year">1994</span>
+          <span class="history-lineage-what"><strong>ImmersaDesk</strong>, the CAVE on a desk</span>
+          <ul>
+            <li><span class="history-lineage-year">1998</span> ImmersaDesk2 goes commercial</li>
+          </ul>
+        </li>
+        <li>
+          <span class="history-lineage-year">2012</span>
+          <span class="history-lineage-what"><strong>CAVE2</strong>, hybrid reality</span>
+          <ul>
+            <li><span class="history-lineage-year">2013</span> Licensed to Mechdyne; Monash University opens the second</li>
+          </ul>
+        </li>
+      </ol>
+    </figure>
+
+{%- endcase -%}

@@ -1,0 +1,52 @@
+{%- assign hh = site.data.history.hero -%}
+<header class="history-hero" id="top">
+  <div class="history-hero-media">
+    <figure class="history-hero-frame">
+      {%- include history/picture.liquid src=hh.then.src alt=hh.then.alt sizes="50vw" eager=true -%}
+      <figcaption class="history-hero-year">1973</figcaption>
+    </figure>
+    <figure class="history-hero-frame">
+      {%- include history/picture.liquid src=hh.now.src alt=hh.now.alt sizes="50vw" eager=true -%}
+      <figcaption class="history-hero-year">{{ history_year }}</figcaption>
+    </figure>
+  </div>
+
+  <div class="history-hero-text">
+    <p class="history-kicker">1973 → {{ history_year }}</p>
+    <h1 class="history-hero-title">{{ hh.title }}</h1>
+    <p class="history-hero-dek">{{ hh.dek }}</p>
+
+    <dl class="history-numbers">
+      {%- for n in hh.numbers -%}
+        <div class="history-number">
+          <dt class="history-number-value">
+            {%- if n.value == "live: alumni" -%}{{ history_alumni }}{%- else -%}{{ n.value }}{%- endif -%}
+          </dt>
+          <dd class="history-number-label">{{ n.label }}</dd>
+        </div>
+      {%- endfor -%}
+    </dl>
+
+    <nav class="history-contents" aria-label="Chapters">
+      <ol>
+        {%- for ch in site.data.history.chapters -%}
+          <li>
+            <a href="#{{ ch.id }}">
+              <span class="history-contents-part">{{ ch.part }}</span>
+              <span class="history-contents-title">{{ ch.title }}</span>
+              <span class="history-contents-years">{{ ch.years }}</span>
+            </a>
+          </li>
+        {%- endfor -%}
+        <li>
+          <a href="#epilogue">
+            <span class="history-contents-part">··</span>
+            <span class="history-contents-title">{{ site.data.history.epilogue.bookend.title }}</span>
+          </a>
+        </li>
+      </ol>
+    </nav>
+
+    <p class="history-hero-credit">Photos: {{ hh.then.credit }} (1973); {{ hh.now.credit }} ({{ history_year }})</p>
+  </div>
+</header>

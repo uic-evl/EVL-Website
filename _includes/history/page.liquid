@@ -1,0 +1,11 @@
+{%- comment -%}
+  The "50+ Years" page. Content lives in _data/history.yml, live numbers come from metrics.liquid;
+  history.js adds the scroll steps, the timeline guide and the chart.
+{%- endcomment -%}
+{%- include history/metrics.liquid -%}
+{%- include history/hero.liquid -%}
+{%- include history/guide.liquid -%}
+{%- for chapter in site.data.history.chapters -%}
+  {%- include history/chapter.liquid chapter=chapter -%}
+{%- endfor -%}
+{%- include history/epilogue.liquid -%}

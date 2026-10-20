@@ -1,0 +1,42 @@
+{%- comment -%}
+  Big numbers under a step. Values written "live: …" are counted at build time
+  (see metrics.liquid); a live value that could not be counted is left out.
+{%- endcomment -%}
+<dl class="history-stats">
+  {%- for s in include.stats -%}
+    {%- assign sv = s.value -%}
+    {%- assign sv_live = false -%}
+    {%- case s.value -%}
+      {%- when "live: alumni" -%}{%- assign sv = history_alumni -%}{%- assign sv_live = true -%}
+      {%- when "live: ms" -%}{%- assign sv = history_ms -%}{%- assign sv_live = true -%}
+      {%- when "live: mfa" -%}{%- assign sv = history_mfa -%}{%- assign sv_live = true -%}
+      {%- when "live: phd" -%}{%- assign sv = history_phd -%}{%- assign sv_live = true -%}
+      {%- when "live: repositories" -%}{%- assign sv = history_repos -%}{%- assign sv_live = true -%}
+      {%- when "live: downloads" -%}{%- assign sv = history_downloads -%}{%- assign sv_live = true -%}
+    {%- endcase -%}
+    {%- assign sl = s.label -%}
+    {%- if sl == "live: downloads-label" -%}
+      {%- capture sl -%}package downloads since {{ history_downloads_since }}{%- endcapture -%}
+    {%- endif -%}
+    {%- if sv_live -%}
+      {%- comment -%} Thousands separators for counted values. {%- endcomment -%}
+      {%- assign sv_digits = sv | append: "" | split: "" | reverse -%}
+      {%- capture sv_rev -%}
+        {%- for c in sv_digits -%}
+          {%- assign sv_k = forloop.index0 | modulo: 3 -%}
+          {%- if forloop.index0 > 0 and sv_k == 0 -%},{%- endif -%}{{ c }}
+        {%- endfor -%}
+      {%- endcapture -%}
+      {%- assign sv = sv_rev | split: "" | reverse | join: "" -%}
+    {%- endif -%}
+    {%- if sv != "" and sv != nil -%}
+      <div class="history-stat">
+        <dt class="history-stat-value">{{ sv }}</dt>
+        <dd class="history-stat-label">{{ sl }}</dd>
+      </div>
+    {%- endif -%}
+  {%- endfor -%}
+</dl>
+{%- if include.note -%}
+  <p class="history-stats-note">{{ include.note }}</p>
+{%- endif -%}

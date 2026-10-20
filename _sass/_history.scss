@@ -1,0 +1,1728 @@
+// /history/ ("50+ Years"): the scrollytelling history of EVL. Everything is scoped under
+// .evl-history. Class names are written out in full so the site's PurgeCSS keeps them.
+// Layout: without JavaScript, or below 992px, each step shows its own visual inline; with
+// JavaScript on wide screens the visuals move to a sticky panel beside the steps.
+
+$history-wide: 992px;
+
+.evl-history {
+  // Area colours (validated light and dark with the dataviz palette checks).
+  --history-hpc: #2a78d6;
+  --history-vis: #c1440e;
+  --history-hci: #d4a017;
+  --history-art: #b0479a;
+
+  --history-ink: var(--global-text-color);
+  --history-muted: var(--global-text-color-light);
+  --history-rule: var(--global-divider-color);
+  --history-surface: var(--global-card-bg-color);
+  --history-page: var(--global-bg-color);
+  --history-accent: var(--global-theme-color);
+  --history-dark: #111114;
+  --history-dark-ink: #f4f4f5;
+  --history-dark-muted: #b9b9c2;
+  --history-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+  --history-navbar: 68px;
+  // Offsets below the navbar and the timeline guide, in pixels. history.js keeps them current.
+  // Never write var() inside calc() here: the site's CSS minifier (jekyll-minifier) garbles it.
+  --history-top: 100px;
+  --history-panel-h: 80vh;
+  --history-panel-img-h: 70vh;
+
+  display: block;
+  color: var(--history-ink);
+  background: var(--history-page);
+  overflow-x: clip;
+}
+
+html[data-theme="dark"] .evl-history {
+  --history-hpc: #3987e5;
+  --history-vis: #b8461a;
+  --history-hci: #b38b12;
+  --history-art: #c35aa8;
+  --history-dark: #0b0b0d;
+}
+
+// The site colours every p, span, div… with --global-text-color; dark bands set their own.
+.evl-history .history-on-dark,
+.evl-history .history-on-dark p,
+.evl-history .history-on-dark span,
+.evl-history .history-on-dark div,
+.evl-history .history-on-dark li,
+.evl-history .history-on-dark strong,
+.evl-history .history-on-dark em,
+.evl-history .history-on-dark dt,
+.evl-history .history-on-dark dd,
+.evl-history .history-on-dark h1,
+.evl-history .history-on-dark h2,
+.evl-history .history-on-dark h3 {
+  color: var(--history-dark-ink);
+}
+
+.evl-history img {
+  max-width: 100%;
+  height: auto;
+}
+
+.evl-history [id] {
+  scroll-margin-top: var(--history-top);
+}
+
+.evl-history .history-kicker {
+  margin: 0 0 0.5rem;
+  font-family: var(--history-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--history-accent);
+}
+
+// ---------------------------------------------------------------------------------------
+// Hero
+
+.evl-history .history-hero {
+  background: var(--history-dark);
+  color: var(--history-dark-ink);
+  padding-bottom: 2.5rem;
+}
+
+.evl-history .history-hero-media {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  height: clamp(220px, 44vh, 520px);
+}
+
+.evl-history .history-hero-frame {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+}
+
+.evl-history .history-hero-frame img,
+.evl-history .history-hero-frame picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.evl-history .history-hero-year {
+  position: absolute;
+  left: 1rem;
+  bottom: 0.75rem;
+  padding: 0.15rem 0.55rem;
+  font-family: var(--history-mono);
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.55);
+  border-radius: 4px;
+}
+
+.evl-history .history-hero-text {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2.25rem 1.25rem 0;
+}
+
+.evl-history .history-hero-text,
+.evl-history .history-hero-text p,
+.evl-history .history-hero-text span,
+.evl-history .history-hero-text dt,
+.evl-history .history-hero-text dd,
+.evl-history .history-hero-text div {
+  color: var(--history-dark-ink);
+}
+
+.evl-history .history-hero .history-kicker {
+  color: #ff6b7f;
+}
+
+.evl-history .history-hero-title {
+  margin: 0 0 1rem;
+  max-width: 18ch;
+  font-size: clamp(2.1rem, 5.2vw, 4rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+
+.evl-history .history-hero-dek {
+  max-width: 62ch;
+  margin: 0 0 2rem;
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  line-height: 1.55;
+}
+
+.evl-history .history-hero-text .history-hero-dek {
+  color: var(--history-dark-muted);
+}
+
+.evl-history .history-numbers {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin: 0 0 2rem;
+  padding: 1.5rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.evl-history .history-number-value {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.evl-history .history-hero-text .history-number-value {
+  color: #5fd3e6;
+}
+
+.evl-history .history-number-label {
+  margin: 0.5rem 0 0;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.evl-history .history-hero-text .history-number-label {
+  color: var(--history-dark-muted);
+}
+
+.evl-history .history-contents ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.evl-history .history-contents a {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding: 0.45rem 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  text-decoration: none;
+  transition: background-color 150ms ease, border-color 150ms ease;
+}
+
+.evl-history .history-contents a:hover,
+.evl-history .history-contents a:focus-visible {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.45);
+}
+
+.evl-history .history-contents .history-contents-part {
+  font-family: var(--history-mono);
+  font-size: 0.75rem;
+  color: #5fd3e6;
+}
+
+.evl-history .history-contents .history-contents-title {
+  font-weight: 600;
+  color: #fff;
+}
+
+.evl-history .history-contents .history-contents-years {
+  font-size: 0.8rem;
+  color: var(--history-dark-muted);
+}
+
+.evl-history .history-hero-text .history-hero-credit {
+  margin: 1.5rem 0 0;
+  font-size: 0.75rem;
+  color: var(--history-dark-muted);
+}
+
+@media (max-width: 767.98px) {
+  .evl-history .history-numbers {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+// ---------------------------------------------------------------------------------------
+// Timeline guide
+
+.evl-history .history-guide {
+  position: sticky;
+  top: var(--history-navbar);
+  z-index: 1020;
+  background: color-mix(in srgb, var(--history-page) 92%, transparent);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--history-rule);
+}
+
+.evl-history .history-guide-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0.4rem 1.25rem 0.5rem;
+}
+
+.evl-history .history-guide-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 2rem;
+}
+
+.evl-history .history-guide-now {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.evl-history .history-guide-era {
+  font-family: var(--history-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--history-accent);
+}
+
+.evl-history .history-guide-step {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.evl-history .history-guide-controls {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+html:not(.history-js) .evl-history .history-guide-controls,
+html:not(.history-js) .evl-history .history-guide-now {
+  display: none;
+}
+
+.evl-history .history-guide-toggle {
+  display: inline-flex;
+  padding: 2px;
+  border: 1px solid var(--history-rule);
+  border-radius: 999px;
+}
+
+.evl-history .history-guide-toggle button,
+.evl-history .history-guide-collapse {
+  padding: 0.15rem 0.7rem;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: var(--history-muted);
+  background: transparent;
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.evl-history .history-guide-toggle button[aria-checked="true"] {
+  color: var(--history-surface);
+  background: var(--history-ink);
+}
+
+.evl-history .history-guide-collapse {
+  border: 1px solid var(--history-rule);
+}
+
+.evl-history .history-guide-toggle button:focus-visible,
+.evl-history .history-guide-collapse:focus-visible,
+.evl-history .history-guide-decade:focus-visible {
+  outline: 2px solid var(--history-accent);
+  outline-offset: 2px;
+}
+
+.evl-history .history-guide-plot {
+  position: relative;
+  margin-top: 0.35rem;
+}
+
+.evl-history .history-guide-plot:empty,
+.evl-history .history-guide.is-collapsed .history-guide-plot {
+  display: none;
+}
+
+.history-js .evl-history .history-guide-fallback {
+  display: none;
+}
+
+.evl-history .history-guide-fallback {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  margin: 0.25rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--history-mono);
+  font-size: 0.8rem;
+}
+
+.evl-history .history-guide-chart {
+  position: relative;
+  display: grid;
+  grid-template-columns: 9.5rem minmax(0, 1fr);
+}
+
+.evl-history .history-guide-labels {
+  display: flex;
+  flex-direction: column;
+}
+
+.evl-history .history-guide-label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  overflow: hidden;
+  font-size: 0.7rem;
+  line-height: 1;
+  white-space: nowrap;
+  color: var(--history-muted);
+}
+
+.evl-history .history-guide-label-text {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: inherit;
+}
+
+.evl-history .history-guide-swatch {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.evl-history .history-guide-track {
+  position: relative;
+}
+
+.evl-history .history-guide-lane {
+  position: relative;
+  border-top: 1px solid var(--history-rule);
+  // Clicks pass through the lanes and their dots to the decade buttons underneath.
+  pointer-events: none;
+}
+
+.evl-history .history-guide-lane:first-child {
+  border-top: 0;
+}
+
+.evl-history .history-guide-decade {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-left: 1px solid var(--history-rule);
+  cursor: pointer;
+}
+
+.evl-history .history-guide-decade:hover {
+  background: color-mix(in srgb, var(--history-ink) 5%, transparent);
+}
+
+.evl-history .history-guide-decade.is-current {
+  background: color-mix(in srgb, var(--history-accent) 9%, transparent);
+}
+
+.evl-history .history-guide-axis {
+  position: relative;
+  height: 1.1rem;
+  margin-left: 9.5rem;
+  font-family: var(--history-mono);
+  font-size: 0.66rem;
+  color: var(--history-muted);
+}
+
+.evl-history .history-guide-tick {
+  position: absolute;
+  top: 0.15rem;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.evl-history .history-guide-mark {
+  position: absolute;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  margin: -4px 0 0 -4px;
+  padding: 0;
+  background: var(--mark-color);
+  border: 0;
+  border-radius: 50%;
+  transition: left 450ms ease, transform 150ms ease;
+}
+
+.evl-history .history-guide-mark.is-active {
+  z-index: 2;
+  transform: scale(1.7);
+  box-shadow: 0 0 0 2px var(--history-page), 0 0 0 3.5px var(--mark-color);
+}
+
+// The other dates the active step tells about.
+.evl-history .history-guide-mark.is-related {
+  z-index: 1;
+  box-shadow: 0 0 0 1.5px var(--history-page), 0 0 0 3px var(--mark-color);
+}
+
+.evl-history .history-guide-playhead {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  margin-left: -1px;
+  background: var(--history-accent);
+  pointer-events: none;
+  transition: left 300ms ease;
+}
+
+.evl-history .history-guide-span {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: color-mix(in srgb, var(--history-accent) 12%, transparent);
+  border-left: 2px solid var(--history-accent);
+  border-right: 2px solid var(--history-accent);
+  pointer-events: none;
+}
+
+.evl-history .history-guide-tip {
+  position: absolute;
+  z-index: 5;
+  max-width: 18rem;
+  padding: 0.4rem 0.6rem;
+  font-size: 0.78rem;
+  line-height: 1.35;
+  color: var(--history-ink);
+  background: var(--history-surface);
+  border: 1px solid var(--history-rule);
+  border-radius: 6px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.14);
+  pointer-events: none;
+}
+
+.evl-history .history-guide-tip strong {
+  display: block;
+}
+
+.evl-history .history-guide-tip span {
+  color: var(--history-muted);
+}
+
+.evl-history .history-guide-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.9rem;
+  margin: 0.2rem 0 0 9.5rem;
+  font-size: 0.68rem;
+  color: var(--history-muted);
+}
+
+.evl-history .history-guide-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: inherit;
+}
+
+.evl-history .history-guide-legend .history-guide-hint {
+  margin-left: auto;
+  font-family: var(--history-mono);
+}
+
+@media (max-width: 767.98px) {
+  .evl-history .history-guide-inner {
+    padding: 0.3rem 1rem 0.35rem;
+  }
+
+  .evl-history .history-guide-bar {
+    min-height: 1.75rem;
+  }
+
+  .evl-history .history-guide-plot {
+    margin-top: 0.2rem;
+  }
+
+  .evl-history .history-guide-chart {
+    grid-template-columns: 5.5rem minmax(0, 1fr);
+  }
+
+  .evl-history .history-guide-axis {
+    margin-left: 5.5rem;
+  }
+
+  // Full width keeps the four area swatches on one line.
+  .evl-history .history-guide-legend {
+    flex-wrap: nowrap;
+    gap: 0.6rem;
+    margin-left: 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .evl-history .history-guide-step {
+    display: none;
+  }
+
+  .evl-history .history-guide-era {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .evl-history .history-guide-collapse-label {
+    font-size: 0;
+  }
+
+  .evl-history .history-guide-collapse-label::before {
+    content: "⌄";
+    font-size: 0.9rem;
+  }
+
+  .evl-history .history-guide:not(.is-collapsed) .history-guide-collapse-label::before {
+    content: "⌃";
+  }
+}
+
+// ---------------------------------------------------------------------------------------
+// Chapter openers
+
+.evl-history .history-opener {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: clamp(320px, 62vh, 720px);
+  background: var(--history-dark);
+}
+
+.evl-history .history-opener-media,
+.evl-history .history-opener-media picture,
+.evl-history .history-opener-media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.evl-history .history-opener-media img {
+  object-fit: cover;
+}
+
+.evl-history .history-opener-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.82) 0%, rgba(0, 0, 0, 0.45) 45%, rgba(0, 0, 0, 0.05) 100%);
+}
+
+.evl-history .history-opener-text {
+  position: relative;
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 3rem 1.25rem 2.5rem;
+}
+
+.evl-history .history-opener-text p,
+.evl-history .history-opener-text h2,
+.evl-history .history-opener-text span {
+  color: var(--history-dark-ink);
+}
+
+.evl-history .history-opener .history-kicker {
+  color: #5fd3e6;
+}
+
+.evl-history .history-opener-title {
+  margin: 0 0 0.75rem;
+  font-size: clamp(2.2rem, 6vw, 4.6rem);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  color: #fff;
+}
+
+.evl-history .history-opener-text .history-opener-dek {
+  max-width: 56ch;
+  margin: 0;
+  font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+  line-height: 1.5;
+  color: #e4e4e7;
+}
+
+.evl-history .history-opener-text .history-opener-credit {
+  margin: 1rem 0 0;
+  font-size: 0.72rem;
+  color: var(--history-dark-muted);
+}
+
+.evl-history .history-chapter--data .history-opener {
+  min-height: clamp(260px, 44vh, 480px);
+  background:
+    radial-gradient(circle at 85% 20%, color-mix(in srgb, var(--history-hpc) 35%, transparent), transparent 45%),
+    radial-gradient(circle at 70% 85%, color-mix(in srgb, var(--history-vis) 30%, transparent), transparent 40%),
+    radial-gradient(circle at 95% 70%, color-mix(in srgb, var(--history-hci) 30%, transparent), transparent 40%),
+    var(--history-dark);
+}
+
+// ---------------------------------------------------------------------------------------
+// Domain cards (Part 05)
+
+.evl-history .history-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 1fr));
+  gap: 1rem;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 0.5rem;
+}
+
+.evl-history .history-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  color: var(--history-ink);
+  text-decoration: none;
+  background: var(--history-surface);
+  border: 1px solid var(--history-rule);
+  border-top: 3px solid var(--card-color, var(--history-accent));
+  border-radius: 10px;
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+
+.evl-history .history-card[data-area="hpc"] { --card-color: var(--history-hpc); }
+.evl-history .history-card[data-area="vis"] { --card-color: var(--history-vis); }
+.evl-history .history-card[data-area="hci"] { --card-color: var(--history-hci); }
+.evl-history .history-card[data-area="art"] { --card-color: var(--history-art); }
+
+.evl-history .history-card:hover,
+.evl-history .history-card:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.1);
+}
+
+.evl-history .history-card.is-open {
+  box-shadow: 0 0 0 2px var(--card-color, var(--history-accent));
+}
+
+.evl-history .history-card-media {
+  display: block;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--history-dark);
+}
+
+.evl-history .history-card-media img,
+.evl-history .history-card-media picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.evl-history .history-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0.85rem 1rem 1rem;
+}
+
+.evl-history .history-card-title {
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.evl-history .history-card-text {
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: var(--history-muted);
+}
+
+// ---------------------------------------------------------------------------------------
+// Scroll steps and the sticky panel
+
+.evl-history .history-scrolly {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 1rem;
+}
+
+.evl-history .history-steps {
+  min-width: 0;
+}
+
+.evl-history .history-step {
+  margin: 0 0 2.5rem;
+}
+
+.evl-history .history-step-card {
+  max-width: 40rem;
+}
+
+.evl-history .history-step-year {
+  margin: 0 0 0.35rem;
+  font-family: var(--history-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  color: var(--history-accent);
+}
+
+.evl-history .history-step-title {
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.45rem, 2.4vw, 1.9rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+}
+
+.evl-history .history-step-body {
+  font-size: 1.04rem;
+  line-height: 1.65;
+}
+
+.evl-history .history-step-body p {
+  margin: 0 0 0.9rem;
+}
+
+.evl-history .history-step-body ul {
+  margin: 0 0 0.9rem;
+  padding-left: 1.1rem;
+}
+
+.evl-history .history-step-body li {
+  margin-bottom: 0.45rem;
+}
+
+.evl-history .history-specs {
+  margin: 1rem 0;
+  border-top: 1px solid var(--history-rule);
+}
+
+.evl-history .history-spec {
+  display: grid;
+  grid-template-columns: 7.5rem minmax(0, 1fr);
+  gap: 1rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--history-rule);
+}
+
+.evl-history .history-spec dt {
+  font-family: var(--history-mono);
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: var(--history-muted);
+}
+
+.evl-history .history-spec dd {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.evl-history .history-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+  margin: 1.25rem 0 0.5rem;
+}
+
+.evl-history .history-stat-value {
+  font-size: clamp(2rem, 3.5vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--history-ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.evl-history .history-stat-label {
+  margin: 0.3rem 0 0;
+  font-family: var(--history-mono);
+  font-size: 0.75rem;
+  color: var(--history-muted);
+}
+
+.evl-history .history-stats-note,
+.evl-history .history-citation {
+  margin: 0.75rem 0 0;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--history-muted);
+}
+
+.evl-history .history-citation {
+  font-family: var(--history-mono);
+  font-size: 0.76rem;
+}
+
+.evl-history .history-step-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.1rem;
+  margin: 1rem 0 0;
+  font-size: 0.9rem;
+}
+
+.evl-history .history-step-links a {
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.evl-history .history-step-links a::after {
+  content: " →";
+}
+
+.evl-history .history-step-archive {
+  font-family: var(--history-mono);
+  font-size: 0.8rem;
+}
+
+.evl-history .history-step-visual {
+  margin-top: 1.25rem;
+}
+
+.evl-history .history-panel {
+  display: none;
+}
+
+// Closed domain cards, only when JavaScript can open them.
+.history-js .evl-history .history-step--card:not(.is-open) {
+  display: none;
+}
+
+.history-js .evl-history .history-chapter--cards .history-scrolly:not(.has-open) {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.history-js .evl-history .history-chapter--cards .history-scrolly:not(.has-open) .history-panel {
+  display: none;
+}
+
+@media (min-width: $history-wide) {
+  .history-js .evl-history .history-scrolly {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .history-js .evl-history .history-step {
+    display: flex;
+    align-items: center;
+    min-height: 72vh;
+    margin: 0;
+    opacity: 0.42;
+    transition: opacity 300ms ease;
+  }
+
+  .history-js .evl-history .history-step.is-active {
+    opacity: 1;
+  }
+
+  .history-js .evl-history .history-step:first-child {
+    min-height: 60vh;
+  }
+
+  .history-js .evl-history .history-step-visual {
+    display: none;
+  }
+
+  .history-js .evl-history .history-panel {
+    position: sticky;
+    top: var(--history-top);
+    display: block;
+    height: var(--history-panel-h);
+  }
+
+  .history-js .evl-history .history-panel-inner {
+    position: relative;
+    height: 100%;
+  }
+
+  .history-js .evl-history .history-panel-frame {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 450ms ease, visibility 0s linear 450ms;
+  }
+
+  .history-js .evl-history .history-panel-frame.is-shown {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 450ms ease, visibility 0s;
+  }
+
+  .history-js .evl-history .history-panel-frame > * {
+    width: 100%;
+    max-height: 100%;
+  }
+
+  .history-js .evl-history .history-panel .history-media-item img {
+    max-height: var(--history-panel-img-h);
+    object-fit: contain;
+  }
+}
+
+// ---------------------------------------------------------------------------------------
+// Figures
+
+.evl-history .history-media {
+  margin: 0;
+}
+
+.evl-history .history-media-grid {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.evl-history .history-media--2 .history-media-grid {
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+
+.evl-history .history-media--3 .history-media-grid,
+.evl-history .history-media--4 .history-media-grid {
+  grid-template-columns: 1fr 1fr;
+}
+
+.evl-history .history-media-item img {
+  display: block;
+  width: 100%;
+  border-radius: 6px;
+}
+
+.evl-history .history-media--3 .history-media-item img,
+.evl-history .history-media--4 .history-media-item img {
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.evl-history .history-media-credit {
+  margin: 0.5rem 0 0;
+  font-size: 0.74rem;
+  line-height: 1.4;
+  color: var(--history-muted);
+}
+
+// People
+.evl-history .history-people {
+  margin: 0;
+}
+
+.evl-history .history-people-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+  gap: 0.9rem 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.evl-history .history-person {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.evl-history .history-person-photo {
+  flex: none;
+  width: 3.6rem;
+  height: 3.6rem;
+  overflow: hidden;
+  border-radius: 50%;
+  background: var(--history-rule);
+}
+
+.evl-history .history-person-photo img,
+.evl-history .history-person-photo picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.evl-history .history-person-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.evl-history .history-person-name {
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.evl-history .history-person-year {
+  font-family: var(--history-mono);
+  font-size: 0.72rem;
+  color: var(--history-accent);
+}
+
+.evl-history .history-person-focus {
+  font-size: 0.82rem;
+  line-height: 1.35;
+  color: var(--history-muted);
+}
+
+// ---------------------------------------------------------------------------------------
+// Diagrams
+
+.evl-history .history-diagram {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.evl-history .history-diagram-caption {
+  margin-top: 0.75rem;
+  font-family: var(--history-mono);
+  font-size: 0.74rem;
+  color: var(--history-muted);
+  text-align: center;
+}
+
+.evl-history .history-diagram svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 60vh;
+}
+
+.evl-history .history-svg-label,
+.evl-history .history-svg-note {
+  font-family: var(--history-mono);
+  font-size: 12px;
+  fill: var(--history-muted);
+}
+
+.evl-history .history-svg-note {
+  font-size: 11px;
+}
+
+.evl-history .history-svg-barrier rect {
+  fill: var(--history-ink);
+}
+
+.evl-history .history-svg-strip-l,
+.evl-history .history-svg-eye-l {
+  fill: var(--history-hpc);
+}
+
+.evl-history .history-svg-strip-r,
+.evl-history .history-svg-eye-r {
+  fill: var(--history-vis);
+}
+
+.evl-history .history-svg-ray-l,
+.evl-history .history-svg-ray-r {
+  stroke-width: 1.5;
+  stroke-dasharray: 4 4;
+}
+
+.evl-history .history-svg-ray-l {
+  stroke: var(--history-hpc);
+}
+
+.evl-history .history-svg-ray-r {
+  stroke: var(--history-vis);
+}
+
+// Hub (STAR TAP, StarLight)
+.evl-history .history-diagram--hub {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 0 1.5rem;
+}
+
+.evl-history .history-hub-side {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.evl-history .history-hub-side li {
+  position: relative;
+  padding: 0.55rem 0.75rem;
+  font-size: 0.85rem;
+  line-height: 1.3;
+  background: var(--history-surface);
+  border: 1px solid var(--history-rule);
+  border-radius: 8px;
+}
+
+.evl-history .history-hub-side li::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 1.5rem;
+  border-top: 1.5px solid var(--history-hpc);
+}
+
+.evl-history .history-hub-side--left li::after {
+  left: 100%;
+}
+
+.evl-history .history-hub-side--right li::after {
+  right: 100%;
+}
+
+.evl-history .history-hub-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 8.5rem;
+  height: 8.5rem;
+  margin: 0;
+  text-align: center;
+  color: #fff;
+  background: var(--history-hpc);
+  border-radius: 50%;
+  box-shadow: 0 0 0 8px color-mix(in srgb, var(--history-hpc) 18%, transparent);
+}
+
+.evl-history .history-hub-center strong,
+.evl-history .history-hub-center span {
+  color: #fff;
+}
+
+.evl-history .history-hub-center span {
+  font-family: var(--history-mono);
+  font-size: 0.7rem;
+}
+
+.evl-history .history-diagram--hub .history-diagram-caption {
+  grid-column: 1 / -1;
+}
+
+// Flows (SAGE, the computing continuum) and the display–network–compute triad
+.evl-history .history-flow,
+.evl-history .history-triad {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.evl-history .history-flow-node,
+.evl-history .history-triad-node {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1rem;
+  background: var(--history-surface);
+  border: 1px solid var(--history-rule);
+  border-radius: 10px;
+}
+
+.evl-history .history-flow-node + .history-flow-node::before,
+.evl-history .history-triad-node + .history-triad-node::before {
+  content: "→";
+  position: absolute;
+  top: 50%;
+  left: -1.2rem;
+  transform: translateY(-50%);
+  color: var(--history-accent);
+}
+
+.evl-history .history-triad-node + .history-triad-node::before {
+  content: "↔";
+}
+
+.evl-history .history-flow-node--accent,
+.evl-history .history-triad-node--accent {
+  border-color: var(--history-accent);
+}
+
+.evl-history .history-flow-node--edge { border-top: 3px solid var(--history-vis); }
+.evl-history .history-flow-node--middle { border-top: 3px solid var(--history-hci); }
+.evl-history .history-flow-node--hpc { border-top: 3px solid var(--history-hpc); }
+
+.evl-history .history-flow-kicker,
+.evl-history .history-triad-kicker {
+  font-family: var(--history-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--history-accent);
+}
+
+.evl-history .history-flow-title,
+.evl-history .history-triad-title {
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.evl-history .history-flow-text,
+.evl-history .history-triad-text {
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: var(--history-muted);
+}
+
+// The OptIPuter bus
+.evl-history .history-bus-nodes {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.evl-history .history-bus-nodes li {
+  position: relative;
+  padding: 0.75rem;
+  font-size: 0.85rem;
+  line-height: 1.3;
+  text-align: center;
+  background: var(--history-surface);
+  border: 1px solid var(--history-rule);
+  border-radius: 8px;
+}
+
+.evl-history .history-bus-nodes li::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  height: 1.5rem;
+  border-left: 2px solid var(--history-hpc);
+}
+
+.evl-history .history-bus-line {
+  margin: 1.5rem 0 0;
+  padding: 0.6rem 0.9rem;
+  font-family: var(--history-mono);
+  font-size: 0.78rem;
+  text-align: center;
+  color: #fff;
+  background: var(--history-hpc);
+  border-radius: 999px;
+}
+
+.evl-history .history-bus-line span {
+  color: #fff;
+}
+
+// COMPaaS pools
+.evl-history .history-pools {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.evl-history .history-pool {
+  padding: 0.75rem;
+  background: var(--history-surface);
+  border: 1px solid var(--history-rule);
+  border-radius: 10px;
+}
+
+.evl-history .history-pool-name {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.evl-history .history-pool-units {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+}
+
+.evl-history .history-pool-units i {
+  display: block;
+  aspect-ratio: 1;
+  background: color-mix(in srgb, var(--history-hpc) 30%, transparent);
+  border-radius: 3px;
+}
+
+.evl-history .history-pool-units i:nth-child(-n + 3) {
+  background: var(--history-hpc);
+}
+
+.evl-history .history-pools-arrow {
+  margin: 1rem 0;
+  font-family: var(--history-mono);
+  font-size: 0.78rem;
+  text-align: center;
+  color: var(--history-muted);
+}
+
+.evl-history .history-pools-arrow::before {
+  content: "↓ ";
+  color: var(--history-accent);
+}
+
+.evl-history .history-pools-machine {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0.9rem;
+  text-align: center;
+  border: 2px solid var(--history-hpc);
+  border-radius: 10px;
+}
+
+.evl-history .history-pools-machine span {
+  font-family: var(--history-mono);
+  font-size: 0.75rem;
+  color: var(--history-muted);
+}
+
+// Lineage of rooms others built
+.evl-history .history-lineage {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.evl-history .history-lineage > li {
+  position: relative;
+  padding: 0 0 1.25rem 1.5rem;
+  border-left: 2px solid var(--history-hci);
+}
+
+.evl-history .history-lineage > li::before {
+  content: "";
+  position: absolute;
+  left: -7px;
+  top: 0.25rem;
+  width: 12px;
+  height: 12px;
+  background: var(--history-hci);
+  border-radius: 50%;
+}
+
+.evl-history .history-lineage ul {
+  margin: 0.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.evl-history .history-lineage ul li {
+  padding: 0.3rem 0 0.3rem 1rem;
+  font-size: 0.88rem;
+  color: var(--history-muted);
+  border-left: 1px dashed var(--history-rule);
+}
+
+.evl-history .history-lineage-year {
+  display: inline-block;
+  min-width: 3.2rem;
+  font-family: var(--history-mono);
+  font-size: 0.78rem;
+  color: var(--history-accent);
+}
+
+@media (max-width: 767.98px) {
+  .evl-history .history-flow,
+  .evl-history .history-triad,
+  .evl-history .history-pools {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+  }
+
+  .evl-history .history-flow-node + .history-flow-node::before,
+  .evl-history .history-triad-node + .history-triad-node::before {
+    top: -1rem;
+    left: 50%;
+    transform: translateX(-50%) rotate(90deg);
+  }
+
+  .evl-history .history-bus-nodes {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .evl-history .history-diagram--hub {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    gap: 1rem;
+  }
+
+  .evl-history .history-hub-side li::after {
+    display: none;
+  }
+}
+
+// ---------------------------------------------------------------------------------------
+// Charts (Part 06)
+
+.evl-history .history-chart-figure {
+  margin: 0;
+}
+
+.evl-history .history-chart {
+  position: relative;
+  min-height: 240px;
+}
+
+.evl-history .history-chart svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.evl-history .history-chart text {
+  font-family: inherit;
+  fill: var(--history-ink);
+}
+
+.evl-history .history-chart .history-chart-muted {
+  fill: var(--history-muted);
+}
+
+.evl-history .history-chart .history-chart-rule {
+  stroke: var(--history-rule);
+}
+
+.evl-history .history-data-card {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+}
+
+.evl-history .history-data-card summary {
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.evl-history .history-data-card table {
+  width: 100%;
+  margin: 0.5rem 0;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+
+.evl-history .history-data-card th,
+.evl-history .history-data-card td {
+  padding: 0.3rem 0.5rem;
+  text-align: left;
+  border-bottom: 1px solid var(--history-rule);
+}
+
+.evl-history .history-data-card td {
+  text-align: right;
+}
+
+.evl-history .history-method {
+  max-width: 1240px;
+  margin: 0 auto 3rem;
+  padding: 0 1.25rem;
+  font-size: 0.9rem;
+  color: var(--history-muted);
+}
+
+.evl-history .history-method summary {
+  font-weight: 600;
+  color: var(--history-ink);
+  cursor: pointer;
+}
+
+// ---------------------------------------------------------------------------------------
+// Interludes
+
+.evl-history .history-interlude {
+  margin: 2rem 0 0;
+  padding: 3.5rem 0;
+  background: var(--history-dark);
+}
+
+.evl-history .history-interlude-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.evl-history .history-interlude-inner p,
+.evl-history .history-interlude-inner span,
+.evl-history .history-interlude-inner h3,
+.evl-history .history-interlude-inner li {
+  color: var(--history-dark-ink);
+}
+
+.evl-history .history-interlude .history-kicker {
+  color: #5fd3e6;
+}
+
+.evl-history .history-interlude-title {
+  margin: 0 0 2rem;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 700;
+  color: #fff;
+}
+
+.evl-history .history-principles {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.evl-history .history-principle {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding-top: 1rem;
+  border-top: 2px solid #5fd3e6;
+}
+
+.evl-history .history-principle-media img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 8;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.evl-history .history-interlude-inner .history-principle-n {
+  margin-top: 0.5rem;
+  font-family: var(--history-mono);
+  font-size: 0.75rem;
+  color: #5fd3e6;
+}
+
+.evl-history .history-interlude-inner .history-principle-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.evl-history .history-interlude-inner .history-principle-text {
+  line-height: 1.55;
+  color: var(--history-dark-muted);
+}
+
+.evl-history .history-interlude .history-diagram {
+  // The triad on a dark band: keep the cards light.
+  --history-surface: #1c1c21;
+  --history-rule: rgba(255, 255, 255, 0.16);
+  --history-muted: var(--history-dark-muted);
+}
+
+.evl-history .history-interlude-inner .history-triad-title {
+  color: #fff;
+}
+
+.evl-history .history-interlude-inner .history-triad-text {
+  color: var(--history-dark-muted);
+}
+
+.evl-history .history-interlude-inner .history-interlude-closing {
+  max-width: 48ch;
+  margin: 2rem 0 0;
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
+  line-height: 1.45;
+  color: #fff;
+}
+
+@media (max-width: 767.98px) {
+  .evl-history .history-principles {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+// ---------------------------------------------------------------------------------------
+// Epilogue
+
+.evl-history .history-epilogue {
+  padding: 4rem 0 3rem;
+  border-top: 1px solid var(--history-rule);
+}
+
+.evl-history .history-epilogue-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.evl-history .history-bookend {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  align-items: center;
+  gap: 2.5rem;
+  max-width: 1240px;
+  margin: 0 auto 3.5rem;
+  padding: 0 1.25rem;
+}
+
+.evl-history .history-bookend-media img {
+  display: block;
+  width: 100%;
+  border-radius: 8px;
+}
+
+.evl-history .history-bookend-title {
+  margin: 0 0 1rem;
+  font-size: clamp(2rem, 4.5vw, 3.4rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.evl-history .history-bookend-text p {
+  font-size: 1.2rem;
+  line-height: 1.55;
+}
+
+.evl-history .history-visit {
+  font-size: 1rem;
+}
+
+.evl-history .history-epilogue-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  margin: 1.5rem 0 0;
+  font-weight: 600;
+}
+
+@media (max-width: 767.98px) {
+  .evl-history .history-bookend {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+// ---------------------------------------------------------------------------------------
+// Reduced motion: no transitions; the playhead and panels jump.
+
+@media (prefers-reduced-motion: reduce) {
+  .evl-history *,
+  .evl-history *::before,
+  .evl-history *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}

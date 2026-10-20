@@ -1,0 +1,35 @@
+{%- comment -%}
+  One responsive image from assets/img/history/ (or assets/img/faculty/ with folder="faculty").
+  Params: src, alt, sizes (default 100vw), full (also serve the original JPEG on wide screens),
+  eager (load immediately), class.
+  The webp widths come from the imagemagick plugin; widths wider than the original are skipped.
+{%- endcomment -%}
+{%- assign p_folder = include.folder | default: "history" -%}
+{%- assign p_dir = "/assets/img/" | append: p_folder | append: "/" -%}
+{%- assign p_src = include.src -%}
+{%- assign p_base = p_src | remove: ".jpg" | remove: ".jpeg" | remove: ".png" -%}
+{%- assign p_dims = site.data.history_images[p_folder][p_src] -%}
+{%- assign p_url = p_dir | append: p_src | relative_url -%}
+<picture>
+  {%- if include.full -%}
+    <source media="(min-width: 1200px)" srcset="{{ p_url | uri_escape }}">
+  {%- endif -%}
+  {%- if site.imagemagick.enabled -%}
+    {%- capture p_srcset -%}
+      {%- for w in site.imagemagick.widths -%}
+        {%- if p_dims == nil or w <= p_dims[0] or forloop.first -%}
+          {{ p_dir | append: p_base | append: "-" | append: w | append: ".webp" | relative_url | uri_escape }} {{ w }}w,
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endcapture -%}
+    <source type="image/webp" sizes="{{ include.sizes | default: '100vw' }}" srcset="{{ p_srcset | strip | remove_last: ',' }}">
+  {%- endif -%}
+  <img
+    src="{{ p_url | uri_escape }}"
+    alt="{{ include.alt | escape }}"
+    {% if p_dims %}width="{{ p_dims[0] }}" height="{{ p_dims[1] }}"{% endif %}
+    loading="{% if include.eager %}eager{% else %}lazy{% endif %}"
+    decoding="async"
+    {% if include.class %}class="{{ include.class }}"{% endif %}
+  >
+</picture>

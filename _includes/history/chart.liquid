@@ -1,0 +1,39 @@
+{%- comment -%}
+  A chart frame for Part 06: history.js draws the chart into .history-chart from #history-data;
+  the summary and the table below are written at build time, so the numbers read without
+  JavaScript too. Lab-level aggregates only.
+{%- endcomment -%}
+{%- capture c_label -%}
+  {%- case include.id -%}
+    {%- when "software" -%}
+      Package downloads of the lab's open-source software per year, from the Impact page.
+  {%- endcase -%}
+{%- endcapture -%}
+<figure class="history-chart-figure">
+  <div class="history-chart" data-chart="{{ include.id }}" role="img" aria-label="{{ c_label | strip | escape }}"></div>
+  <details class="history-data-card">
+    <summary>Show the numbers</summary>
+    {%- case include.id -%}
+      {%- when "software" -%}
+        {%- assign c_im = site.data.impact_model -%}
+        {%- assign c_dl = nil -%}
+        {%- for c_group in c_im.groups -%}
+          {%- for c_row in c_group.rows -%}
+            {%- if c_row.id == "downloads" -%}{%- assign c_dl = c_row -%}{%- endif -%}
+          {%- endfor -%}
+        {%- endfor -%}
+        {%- if c_dl -%}
+          <table>
+            <thead><tr><th scope="col">Year</th><th scope="col">Package downloads</th></tr></thead>
+            <tbody>
+              {%- for y in c_im.years -%}
+                <tr><th scope="row">{{ y.label }}{% if y.current %} (so far){% endif %}</th><td>{{ c_dl.text[forloop.index0] }}</td></tr>
+              {%- endfor -%}
+            </tbody>
+          </table>
+        {%- else -%}
+          <p>The download figures could not be counted for this version of the site.</p>
+        {%- endif -%}
+    {%- endcase -%}
+  </details>
+</figure>

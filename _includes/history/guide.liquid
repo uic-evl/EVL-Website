@@ -1,0 +1,73 @@
+{%- comment -%}
+  The sticky timeline guide. history.js draws the lanes (by area or by domain), a cluster of
+  dots per decade and the playhead from #history-marks; selecting a decade jumps to its first
+  step. Without JavaScript the guide is a row of decade links.
+{%- endcomment -%}
+{%- assign hg = site.data.history -%}
+<nav class="history-guide" id="history-guide" aria-label="Timeline, 1973 to {{ history_year }}">
+  <div class="history-guide-inner">
+    <div class="history-guide-bar">
+      <p class="history-guide-now" aria-live="off">
+        <span class="history-guide-era"></span>
+        <span class="history-guide-step"></span>
+      </p>
+      <div class="history-guide-controls">
+        <div class="history-guide-toggle" role="radiogroup" aria-label="Group the timeline by">
+          <button type="button" role="radio" aria-checked="true" data-group="domain">Domain</button>
+          <button type="button" role="radio" aria-checked="false" data-group="area">Area</button>
+        </div>
+        <button type="button" class="history-guide-collapse" aria-expanded="true" aria-controls="history-guide-plot">
+          <span class="history-guide-collapse-label">Hide timeline</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="history-guide-plot" id="history-guide-plot"></div>
+
+    <ol class="history-guide-fallback">
+      {%- for d in (1970..history_year) -%}
+        {%- assign d_rem = d | modulo: 10 -%}
+        {%- if d_rem != 0 -%}{%- continue -%}{%- endif -%}
+        {%- assign d_end = d | plus: 9 -%}
+        {%- assign d_target = "" -%}
+        {%- for ch in hg.chapters -%}
+          {%- for st in ch.steps -%}
+            {%- if d_target == "" and st.year and st.timeline != false and st.year >= d and st.year <= d_end -%}
+              {%- assign d_target = st.id -%}
+            {%- endif -%}
+          {%- endfor -%}
+        {%- endfor -%}
+        {%- if d_target != "" -%}
+          <li><a href="#{{ d_target }}">{{ d }}s</a></li>
+        {%- endif -%}
+      {%- endfor -%}
+    </ol>
+  </div>
+
+  <script type="application/json" id="history-marks">
+    {
+      "from": 1970,
+      "to": {{ history_year }},
+      "eras": [
+        {%- for ch in hg.chapters -%}
+          {"id": {{ ch.id | jsonify }}, "part": {{ ch.part | jsonify }}, "title": {{ ch.title | jsonify }}, "years": {{ ch.years | jsonify }}, "start": {{ ch.start | default: nil | jsonify }}, "end": {{ ch.end | default: nil | jsonify }}}{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
+      ],
+      "marks": [
+        {%- assign g_first = true -%}
+        {%- for ch in hg.chapters -%}
+          {%- for st in ch.steps -%}
+            {%- if st.year and st.timeline != false -%}
+              {%- unless g_first -%},{%- endunless -%}{%- assign g_first = false -%}
+              {"id": {{ st.id | jsonify }}, "year": {{ st.year }}, "label": {{ st.label | default: st.year | jsonify }}, "title": {{ st.mark_title | default: st.title | jsonify }}, "area": {{ st.area | jsonify }}, "domain": {{ st.domain | jsonify }}, "primary": true}
+            {%- endif -%}
+            {%- for mk in st.marks -%}
+              {%- unless g_first -%},{%- endunless -%}{%- assign g_first = false -%}
+              {"id": {{ st.id | jsonify }}, "year": {{ mk.year }}, "label": {{ mk.year | jsonify }}, "title": {{ mk.title | jsonify }}, "area": {{ mk.area | default: st.area | jsonify }}, "domain": {{ mk.domain | default: st.domain | jsonify }}, "primary": false}
+            {%- endfor -%}
+          {%- endfor -%}
+        {%- endfor -%}
+      ]
+    }
+  </script>
+</nav>

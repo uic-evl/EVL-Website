@@ -1,0 +1,23 @@
+{%- assign ep = site.data.history.epilogue -%}
+<section class="history-epilogue" id="epilogue" aria-labelledby="epilogue-title">
+  <div class="history-bookend">
+    <div class="history-bookend-media">
+      {%- include history/picture.liquid src=ep.bookend.src alt=ep.bookend.alt sizes="(min-width: 992px) 55vw, 100vw" -%}
+      <p class="history-media-credit">{{ ep.bookend.credit }}</p>
+    </div>
+    <div class="history-bookend-text">
+      <h2 class="history-bookend-title" id="epilogue-title">{{ ep.bookend.title }}</h2>
+      <p>{{ ep.bookend.text }}</p>
+    </div>
+  </div>
+
+  <div class="history-epilogue-inner">
+    <p class="history-visit">{{ ep.visit }}</p>
+    <p class="history-epilogue-links">
+      {%- for l in ep.links -%}
+        <a href="{{ l.url | relative_url }}">{{ l.text }}</a>
+      {%- endfor -%}
+      <a href="#top">Back to the top</a>
+    </p>
+  </div>
+</section>

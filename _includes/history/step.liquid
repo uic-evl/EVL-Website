@@ -1,0 +1,57 @@
+{%- assign st = include.step -%}
+{%- assign st_chapter = include.chapter -%}
+{%- assign st_visual = false -%}
+{%- if st.media or st.diagram or st.chart or st.people -%}
+  {%- assign st_visual = true -%}
+{%- endif -%}
+<article
+  class="history-step{% if st_chapter.cards %} history-step--card{% endif %}{% unless st_visual %} history-step--text{% endunless %}"
+  id="{{ st.id }}"
+  data-step="{{ st.id }}"
+  {% if st.year %}data-year="{{ st.year }}"{% endif %}
+  aria-labelledby="{{ st.id }}-title"
+>
+  <div class="history-step-card">
+    {%- if st.label or st.year -%}
+      <p class="history-step-year">{{ st.label | default: st.year }}</p>
+    {%- endif -%}
+    <h3 class="history-step-title" id="{{ st.id }}-title">{{ st.title }}</h3>
+    <div class="history-step-body">{{ st.body | markdownify }}</div>
+
+    {%- if st.specs -%}
+      <dl class="history-specs">
+        {%- for s in st.specs -%}
+          <div class="history-spec">
+            <dt>{{ s.label }}</dt>
+            <dd>{{ s.value }}</dd>
+          </div>
+        {%- endfor -%}
+      </dl>
+    {%- endif -%}
+
+    {%- if st.stats -%}
+      {%- include history/stats.liquid stats=st.stats note=st.stats_note -%}
+    {%- endif -%}
+
+    {%- if st.citation -%}
+      <p class="history-citation">{{ st.citation }}</p>
+    {%- endif -%}
+
+    {%- if st.links or st.post -%}
+      <p class="history-step-links">
+        {%- for l in st.links -%}
+          <a href="{% if l.url contains '://' %}{{ l.url }}{% else %}{{ l.url | relative_url }}{% endif %}">{{ l.text }}</a>
+        {%- endfor -%}
+        {%- if st.post -%}
+          <a class="history-step-archive" href="{{ st.post | relative_url }}">From the archive</a>
+        {%- endif -%}
+      </p>
+    {%- endif -%}
+  </div>
+
+  {%- if st_visual -%}
+    <div class="history-step-visual">
+      {%- include history/visual.liquid step=st -%}
+    </div>
+  {%- endif -%}
+</article>
