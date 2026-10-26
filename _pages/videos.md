@@ -4,7 +4,7 @@ title: Videos
 permalink: /videos/
 description: Videos from EVL's YouTube channel, evltube.
 nav: true
-nav_order: 8
+nav_order: 7
 _styles: >
   .yt-stats { display: flex; flex-wrap: wrap; gap: 2.5rem; margin: .5rem 0 2.5rem; }
   .yt-stats div { display: flex; flex-direction: column; }
