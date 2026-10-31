@@ -1,0 +1,13 @@
+{% comment %} Email, website, LinkedIn, Scholar and GitHub icons for one person.
+   Alumni are reached at their personal address once school email lapses; everyone else shows the CSV
+   "email" field and personalEmail stays private. Usage: include people/links.liquid profile=p {% endcomment %}
+{% assign p = include.profile %}
+<div class="social-icons" style="margin-left: 1px !important;">
+  {% assign contact_email = p.email %}
+  {% if p.status == "alumni" and p.personalEmail %}{% assign contact_email = p.personalEmail %}{% endif %}
+  {% if contact_email %}<a href="mailto:{{ contact_email }}" class="mx-0" title="Email"><i class="fa fa-envelope mr-1"></i></a>{% endif %}
+  {% if p.url %}<a href="{{ p.url }}" class="mx-0" title="Website"><i class="fa fa-globe mr-1"></i></a>{% endif %}
+  {% if p.linkedin %}<a href="{{ p.linkedin }}" class="mx-0" title="LinkedIn"><i class="fa-brands fa-linkedin mr-1"></i></a>{% endif %}
+  {% if p.scholar %}<a href="{{ p.scholar }}" class="mx-0" title="Google Scholar"><i class="ai ai-google-scholar mr-1"></i></a>{% endif %}
+  {% if p.github %}<a href="{{ p.github }}" class="mx-0" title="GitHub"><i class="fa-brands fa-github mr-1"></i></a>{% endif %}
+</div>

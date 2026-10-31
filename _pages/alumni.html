@@ -1,0 +1,72 @@
+---
+layout: page
+permalink: /people/alumni/
+title: Alumni
+description: Graduates and former members of EVL, by year and by name.
+nav: false
+---
+
+{% comment %} Timeline (drawn by assets/js/alumni.js from the data attributes below) above a directory that works as a
+   plain list without JavaScript; the script adds search and filters. Degrees and years come from the CSV "alumni"
+   column ("MS 03, PhD 07") {% endcomment %}
+{% comment %} Everyone with an EVL degree in the CSV "alumni" column, whatever their status now (faculty, emeritus,
+   students working on a further degree), plus status "alumni" rows with no degree recorded {% endcomment %}
+{% assign with_degree = site.data.people | where_exp: "p", "p.alumni != nil and p.alumni != ''" %}
+{% assign alumni_no_degree = site.data.people | where: "status", "alumni" | where_exp: "p", "p.alumni == nil or p.alumni == ''" %}
+{% comment %} A few people have both a current row and an older "alumni" row; list them once, from the current row {% endcomment %}
+{% assign current_names = with_degree | where_exp: "p", "p.status != 'alumni'" | map: "name" %}
+{% assign alumni = "" | split: "" %}
+{% for p in with_degree %}{% unless p.status == "alumni" and current_names contains p.name %}{% assign alumni = alumni | push: p %}{% endunless %}{% endfor %}
+{% assign alumni = alumni | concat: alumni_no_degree | sort: "dirLastName" %}
+{% assign now_labels = "faculty:Now EVL faculty,emeritus:Now EVL emeritus,staff:Now EVL staff,affiliate:Now an EVL affiliate,student:Now a student at EVL,visiting:Now visiting EVL,friend:Friend of EVL" | split: "," %}
+
+<div class="alumni-page">
+
+<p><a href="{{ '/people/' | relative_url }}">&larr; People now</a></p>
+
+<figure class="alumni-timeline" aria-labelledby="alumni-timeline-caption">
+  <div class="alumni-timeline-scroll"><svg id="alumni-timeline" role="img" aria-label="EVL graduates by year and degree"></svg></div>
+  <div class="alumni-legend">
+    <span><i class="alumni-dot alumni-deg-phd"></i>PhD</span>
+    <span><i class="alumni-dot alumni-deg-ms"></i>MS / MA</span>
+    <span><i class="alumni-dot alumni-deg-mfa"></i>MFA / BFA</span>
+    <span><i class="alumni-dot alumni-deg-bs"></i>BS</span>
+  </div>
+  <figcaption id="alumni-timeline-caption">Each dot is one graduate in the year of their latest EVL degree. Click a year to list its graduates below.</figcaption>
+</figure>
+
+<div class="alumni-controls" id="alumni-controls" hidden>
+  <label class="sr-only" for="alumni-search">Search alumni by name</label>
+  <input id="alumni-search" type="search" placeholder="Search by name" autocomplete="off">
+  <div class="alumni-chips" data-filter="degree" aria-label="Degree">
+    <button type="button" data-value="" aria-pressed="true">Any degree</button>
+    <button type="button" data-value="PhD" aria-pressed="false">PhD</button>
+    <button type="button" data-value="MS" aria-pressed="false">MS</button>
+    <button type="button" data-value="MFA" aria-pressed="false">MFA</button>
+    <button type="button" data-value="BS" aria-pressed="false">BS</button>
+  </div>
+  <div class="alumni-chips" data-filter="decade" aria-label="Decade">
+    <button type="button" data-value="" aria-pressed="true">Any year</button>
+    <button type="button" data-value="1980" aria-pressed="false">1980s</button>
+    <button type="button" data-value="1990" aria-pressed="false">1990s</button>
+    <button type="button" data-value="2000" aria-pressed="false">2000s</button>
+    <button type="button" data-value="2010" aria-pressed="false">2010s</button>
+    <button type="button" data-value="2020" aria-pressed="false">2020s</button>
+    <button type="button" data-value="none" aria-pressed="false">No year</button>
+  </div>
+  <p class="alumni-count" id="alumni-count" aria-live="polite"></p>
+</div>
+
+<ul class="alumni-list" id="alumni-list">
+{%- for p in alumni %}
+  <li data-name="{{ p.name | downcase | escape }}" data-alumni="{{ p.alumni | escape }}">
+    <strong>{{ p.name }}</strong>
+    <span class="alumni-degrees">{{ p.alumni }}</span>
+    {%- if p.status != "alumni" %}{% for l in now_labels %}{% assign kv = l | split: ":" %}{% if kv[0] == p.status %}<span class="alumni-now">{{ kv[1] }}</span>{% endif %}{% endfor %}{% endif %}
+    {%- if p.department %}<span class="alumni-dept">{{ p.department | replace: "<br>", ", " }}</span>{% endif %}
+    {% include people/links.liquid profile=p %}
+  </li>
+{%- endfor %}
+</ul>
+
+</div>

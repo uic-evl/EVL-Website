@@ -228,8 +228,8 @@ module EvlImpact
       end
       @rows["phd-graduates"] = row(
         "phd-graduates", LABELS["phd-graduates"], @years.map { |y| by_year[y].size },
-        rule: "People on the <a href=\"/people/\">Members</a> page whose degrees include a PhD in that year.",
-        sources: [{ "label" => "Members", "url" => "/people/" }],
+        rule: "People on the <a href=\"/people/alumni/\">Alumni</a> page whose degrees include a PhD in that year.",
+        sources: [{ "label" => "Alumni", "url" => "/people/alumni/" }],
         items: items,
       )
     end
