@@ -110,8 +110,12 @@ layout: page
                         {% if profile.department %}{{ profile.department }}<br>{% endif %}
                         <div class="social-icons" style="margin-left: 1px !important;">
                         
-                          {% if profile.email %}
-                            <a href="mailto:{{ profile.email }}" class="mx-0" title="Email"><i class="fa fa-envelope mr-1"></i></a>
+                          {% comment %} Alumni are reached at their personal address once school email lapses;
+                             everyone else shows the CSV "email" field and personalEmail stays private {% endcomment %}
+                          {% assign contact_email = profile.email %}
+                          {% if status == "alumni" and profile.personalEmail %}{% assign contact_email = profile.personalEmail %}{% endif %}
+                          {% if contact_email %}
+                            <a href="mailto:{{ contact_email }}" class="mx-0" title="Email"><i class="fa fa-envelope mr-1"></i></a>
                           {% endif %}
                           {% if profile.url %}
                             <a href="{{ profile.url }}" class="mx-0" title="Website"><i class="fa fa-globe  mr-1"></i></a>

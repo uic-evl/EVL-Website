@@ -48,7 +48,7 @@ Keeping the kitchen clean keeps critters out of the lab, and keeps it a decent p
 ## Being a good lab citizen
 
 - **Come to Tech Meetings.** It is how the lab keeps up with what everyone is doing.
-- **Credit the lab in your work.** Use the lab's acknowledgment text on papers and talks, and check with your advisor about funding acknowledgments.
+- **Credit the lab in your work.** In the acknowledgments of your papers and posters, note your use of EVL resources and acknowledge the funding that supported the work; your advisor has the grant names and numbers. Put the EVL logo on your slides and posters; the [logo files](https://uofi.box.com/s/19lwnsgbnkoldgfg0fegbrzr2v9vy2g8) are on Box.
 - **Headphones for audio**, and take long calls to a conference room or the hallway.
 - **Last one out**, check the doors and turn off the equipment you turned on.
 - **If you are unsure about anything**, ask. Nobody expects a new person to know how the space works.

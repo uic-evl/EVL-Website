@@ -55,6 +55,11 @@ module EvlImpact
     "$#{number(value)}"
   end
 
+  # Fixed width for the table, so every funding cell lines up: 2797868 -> "$2.798M"
+  def self.millions(value)
+    format("$%.3fM", value.to_f / 1_000_000)
+  end
+
   def self.long_date(date)
     date.strftime("%B %-d, %Y")
   end
@@ -107,7 +112,7 @@ module EvlImpact
     }.freeze
 
     def row(id, label, values, money: false, rule: nil, sources: [], items: [])
-      text = values.map { |v| v.nil? ? "Not available" : money ? EvlImpact.dollars(v) : EvlImpact.number(v) }
+      text = values.map { |v| v.nil? ? "Not available" : money ? EvlImpact.millions(v) : EvlImpact.number(v) }
       { "id" => id, "label" => label, "values" => values, "text" => text, "rule" => rule, "sources" => sources, "items" => items }
     end
 

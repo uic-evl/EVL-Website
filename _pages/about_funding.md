@@ -19,7 +19,8 @@ EVL remains committed to its mission of advancing scientific discovery through t
 {% for funder in funders %}
 <p><strong>{{ funder }}</strong></p>
 <ul>
-  {% assign byFunder = grants | where: "Funder", funder %}
+  {% comment %} Latest end date first; EndDate is YYYY-MM-DD, so it sorts as text {% endcomment %}
+  {% assign byFunder = grants | where: "Funder", funder | sort: "EndDate" | reverse %}
   {% for g in byFunder %}
     <li>
       {% comment %} Choose display title: prefer ShortTitle, else LongTitle {% endcomment %}
