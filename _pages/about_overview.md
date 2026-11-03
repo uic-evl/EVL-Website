@@ -26,4 +26,4 @@ Leadership over the decades has been provided by:
 - [Andrew Johnson](https://www.evl.uic.edu/aej/), Interim Director (2020–2024)
 - [Michael E. Papka](https://en.wikipedia.org/wiki/Michael_E._Papka), Director (2024–present)
 
-## See also: [Funding](/about/funding/) and [Impact](/impact/)
+### See also: [Funding](/about/funding/) and [Impact](/impact/)
