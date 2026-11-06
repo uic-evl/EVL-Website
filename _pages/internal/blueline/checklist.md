@@ -1,6 +1,6 @@
 ---
 layout: page
-permalink: /internal/blueline/REMAINING-QUESTIONS/
+permalink: /internal/blueline/checklist/
 title: "Internal Verification Checklist"
 description: "Internal validation checklist for Blueline documentation"
 nav: false
