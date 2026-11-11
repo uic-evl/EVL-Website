@@ -1,0 +1,3 @@
+# Old core.php URLs (with query strings) and where they now live.
+# The 404 page looks up path + query here and redirects; nginx already serves 404.html for /core.php.
+"/core.php?mod=4&type=3&indi=348": /news/1987/1987-11-01-1501/
