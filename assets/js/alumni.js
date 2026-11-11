@@ -1,5 +1,5 @@
 // Alumni page (/people/alumni/): draws the graduates timeline and adds search and filters to the directory.
-// Each list item carries its CSV "alumni" value ("MS 03, PhD 07"); the latest degree year places it on the timeline.
+// Each list item carries its CSV "alumni" value ("MS 2003, PhD 2007"); the latest degree year places it on the timeline.
 (function () {
   const list = document.getElementById("alumni-list");
   const svg = document.getElementById("alumni-timeline");
@@ -7,14 +7,13 @@
 
   const DEG_CLASS = { PhD: "phd", MS: "ms", MA: "ms", MFA: "mfa", BFA: "mfa", BS: "bs" };
   const DEG_ORDER = { phd: 0, ms: 1, mfa: 2, bs: 3 };
-  const fullYear = yy => (yy >= 60 ? 1900 : 2000) + yy;
 
   const people = Array.from(list.children).map(li => {
     const degrees = [];
     let year = null;
-    (li.dataset.alumni || "").replace(/\b(PhD|MS|MA|MFA|BFA|BS)\b(?:\s+(\d{2}))?/g, (_, deg, yy) => {
+    (li.dataset.alumni || "").replace(/\b(PhD|MS|MA|MFA|BFA|BS)\b(?:\s+(\d{4}))?/g, (_, deg, yyyy) => {
       degrees.push(deg);
-      if (yy && (year === null || fullYear(+yy) > year)) year = fullYear(+yy);
+      if (yyyy && (year === null || +yyyy > year)) year = +yyyy;
     });
     const top = degrees.includes("PhD") ? "PhD" : degrees[degrees.length - 1];
     return { li, name: li.dataset.name || "", degrees, year, cls: top ? DEG_CLASS[top] : "ms",

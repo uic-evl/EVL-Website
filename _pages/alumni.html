@@ -8,7 +8,7 @@ nav: false
 
 {% comment %} Timeline (drawn by assets/js/alumni.js from the data attributes below) above a directory that works as a
    plain list without JavaScript; the script adds search and filters. Degrees and years come from the CSV "alumni"
-   column ("MS 03, PhD 07") {% endcomment %}
+   column ("MS 2003, PhD 2007") {% endcomment %}
 {% comment %} Everyone with an EVL degree in the CSV "alumni" column, whatever their status now (faculty, emeritus,
    students working on a further degree), plus status "alumni" rows with no degree recorded {% endcomment %}
 {% assign with_degree = site.data.people | where_exp: "p", "p.alumni != nil and p.alumni != ''" %}
@@ -52,7 +52,7 @@ nav: false
     <button type="button" data-value="2000" aria-pressed="false">2000s</button>
     <button type="button" data-value="2010" aria-pressed="false">2010s</button>
     <button type="button" data-value="2020" aria-pressed="false">2020s</button>
-    <button type="button" data-value="none" aria-pressed="false">No year</button>
+    <button type="button" data-value="none" aria-pressed="false">Year not recorded</button>
   </div>
   <p class="alumni-count" id="alumni-count" aria-live="polite"></p>
 </div>
