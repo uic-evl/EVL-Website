@@ -1,4 +1,4 @@
-{% comment %} One news card. Expects include.item. Optional front matter on the post: image_position (CSS object-position, e.g. "top" or "center 30%") to control how the 3:2 thumbnail is cropped. {% endcomment %}
+{% comment %} One news card. Expects include.item. Optional front matter on the post: image_position (CSS object-position, e.g. "top" or "center 30%") to control how the 3:2 thumbnail is cropped; image_fit: contain to show the whole image (logos) on white instead of cropping. {% endcomment %}
 {% assign item = include.item %}
 {% assign item_year = item.date | date: "%Y" %}
 {% assign tag = item.tags | first %}
@@ -10,6 +10,9 @@
     {% assign img_url = "/images/" | append: item.image %}
   {% endif %}
   {% assign img_class = "news-card-img" %}
+  {% if item.image_fit == 'contain' %}
+    {% assign img_class = "news-card-img is-contain" %}
+  {% endif %}
 {% else %}
   {% assign img_url = 'assets/img/new-logo-small-480.webp' | relative_url %}
   {% assign img_class = "news-card-img is-placeholder" %}

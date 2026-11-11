@@ -319,6 +319,13 @@ h6,
       object-fit: contain;
       padding: 1.5rem;
     }
+    &.is-contain {
+      background: #fff;
+    }
+    &.is-contain img {
+      object-fit: contain;
+      padding: 1.5rem;
+    }
   }
 
   .card-body {
