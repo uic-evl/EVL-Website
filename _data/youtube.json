@@ -1,32 +1,32 @@
 {
-  "collected": "2026-11-09",
+  "collected": "2026-11-16",
   "channel": {
     "id": "UC3GTGwIcQfqqMS-Wt9uMwyQ",
     "url": "https://www.youtube.com/channel/UC3GTGwIcQfqqMS-Wt9uMwyQ"
   },
   "count": 252,
-  "views": 2924694,
+  "views": 2925062,
   "videos": [
     {
       "id": "O02Jhdhas6k",
       "title": "SAGE3 at EVL, Spring 2026",
       "published": "2026-10-26",
       "seconds": 83,
-      "views": 35
+      "views": 40
     },
     {
       "id": "TMIbwI2JgB0",
       "title": "EVL Spring 2026, Education and Research",
       "published": "2026-10-26",
       "seconds": 173,
-      "views": 50
+      "views": 55
     },
     {
       "id": "P3Hbw1Tn_dI",
       "title": "Deep Umbra",
       "published": "2025-11-10",
       "seconds": 186,
-      "views": 75
+      "views": 77
     },
     {
       "id": "s_cL0_9Gh20",
@@ -47,14 +47,14 @@
       "title": "EVL Students Demonstrate Digital Twin Research",
       "published": "2024-10-28",
       "seconds": 282,
-      "views": 223
+      "views": 226
     },
     {
       "id": "9ZJjaqVw6OE",
       "title": "UIC s First Creative Coding Community Workshop a Tremendous Success!",
       "published": "2024-08-20",
       "seconds": 181,
-      "views": 63
+      "views": 64
     },
     {
       "id": "52va107v-3s",
@@ -68,14 +68,14 @@
       "title": "ChemoGraph: Interactive Visual Exploration of the Chemical Space",
       "published": "2023-06-30",
       "seconds": 36,
-      "views": 231
+      "views": 232
     },
     {
       "id": "jxCN2aFA0zY",
       "title": "EVL CAVE2 Hybrid Reality Environment",
       "published": "2023-05-18",
       "seconds": 181,
-      "views": 430
+      "views": 432
     },
     {
       "id": "-n20NP-x4cA",
@@ -89,7 +89,7 @@
       "title": "UIC CS Doctoral Webinar Nov 2022",
       "published": "2022-11-02",
       "seconds": 5377,
-      "views": 3040
+      "views": 3045
     },
     {
       "id": "mFllS2wQW8I",
@@ -110,7 +110,7 @@
       "title": "SIGGRAPH 92 SHOWCASE",
       "published": "2022-01-11",
       "seconds": 390,
-      "views": 442
+      "views": 443
     },
     {
       "id": "mYEysIVb9Vc",
@@ -124,7 +124,7 @@
       "title": "SAGE3 Collaborative Visualization - Smart Amplified Group Environment",
       "published": "2021-09-14",
       "seconds": 1847,
-      "views": 415
+      "views": 416
     },
     {
       "id": "ePUdq04xoOY",
@@ -138,7 +138,7 @@
       "title": "TRIBUNE 052317 Blueprints for 'Star Wars' Death Star were created at UIC",
       "published": "2021-07-13",
       "seconds": 209,
-      "views": 1254
+      "views": 1256
     },
     {
       "id": "NpDZf6_9ki4",
@@ -362,14 +362,14 @@
       "title": "Explainable Spatial Clustering:Leveraging Spatial Data in Radiation Oncology, IEEEVisConference 2020",
       "published": "2020-12-01",
       "seconds": 395,
-      "views": 168
+      "views": 170
     },
     {
       "id": "X_cmEdSAIyw",
       "title": "An introduction to the Electronic Visualization Laboratory (EVL)",
       "published": "2020-07-17",
       "seconds": 431,
-      "views": 1075
+      "views": 1078
     },
     {
       "id": "WhenPwsPMfk",
@@ -404,14 +404,14 @@
       "title": "Air On The Dirac Strings",
       "published": "2019-09-04",
       "seconds": 139,
-      "views": 6008
+      "views": 6011
     },
     {
       "id": "UjAiVbfj_cE",
       "title": "Study of 4D Julia Sets: Iterations of Z = Z2 +K in the Quaternions",
       "published": "2019-09-04",
       "seconds": 211,
-      "views": 1288
+      "views": 1293
     },
     {
       "id": "FSjuhr7diTQ",
@@ -425,7 +425,7 @@
       "title": "Spiral5PTL (Perhaps the Last)",
       "published": "2019-09-04",
       "seconds": 402,
-      "views": 325
+      "views": 326
     },
     {
       "id": "NDDjM_KApm4",
@@ -467,7 +467,7 @@
       "title": "Supporting Exploration of Viscous Fingers in Large-Scale Ensemble Simulations",
       "published": "2018-08-03",
       "seconds": 145,
-      "views": 252
+      "views": 253
     },
     {
       "id": "ft11wOcUjvA",
@@ -481,28 +481,28 @@
       "title": "SageRDI: SAGE River Disaster Information (LAVA@UH)",
       "published": "2017-11-20",
       "seconds": 231,
-      "views": 278
+      "views": 279
     },
     {
       "id": "uU5HZtmvS10",
       "title": "SAGE2 image Geolocation",
       "published": "2017-11-15",
       "seconds": 57,
-      "views": 276
+      "views": 277
     },
     {
       "id": "9atA_h_t5pM",
       "title": "SAGE2 Speech Commands",
       "published": "2017-11-13",
       "seconds": 51,
-      "views": 231
+      "views": 232
     },
     {
       "id": "6E7pdyuhwhA",
       "title": "SAGE2 Remote Pointers",
       "published": "2017-11-13",
       "seconds": 30,
-      "views": 204
+      "views": 205
     },
     {
       "id": "q6AdaeoFDm8",
@@ -530,7 +530,7 @@
       "title": "Music Instruction in a Virtual/Augmented Environment",
       "published": "2016-08-10",
       "seconds": 106,
-      "views": 3468
+      "views": 3471
     },
     {
       "id": "zqSPomn7OWU",
@@ -551,7 +551,7 @@
       "title": "Introducing SAGE 2 Scalable Amplified Group Environment",
       "published": "2015-06-05",
       "seconds": 2741,
-      "views": 1516
+      "views": 1519
     },
     {
       "id": "DCpO0z4Qbzk",
@@ -565,7 +565,7 @@
       "title": "Introduction to SAGE2 (Scalable Amplified Group Environment)",
       "published": "2015-06-04",
       "seconds": 153,
-      "views": 2769
+      "views": 2770
     },
     {
       "id": "ZHm6wdPP1RY",
@@ -614,7 +614,7 @@
       "title": "NSF Science Nation: CAVE2 immerses scientists and engineers in their research - literally!",
       "published": "2013-08-20",
       "seconds": 165,
-      "views": 1777
+      "views": 1780
     },
     {
       "id": "8TGOo_EvvNU",
@@ -635,14 +635,14 @@
       "title": "Dan Sandin | Spiral5PTL | Processing Chicago 02/04/13",
       "published": "2013-02-09",
       "seconds": 2212,
-      "views": 578
+      "views": 579
     },
     {
       "id": "OQzaMbq71pM",
       "title": "The Interactive Image",
       "published": "2013-01-30",
       "seconds": 918,
-      "views": 613
+      "views": 614
     },
     {
       "id": "Jt1E5hykHdc",
@@ -656,7 +656,7 @@
       "title": "CAVE2™ Hybrid Reality Environment Documentary",
       "published": "2012-12-05",
       "seconds": 181,
-      "views": 24004
+      "views": 24007
     },
     {
       "id": "vK74PP4kHHM",
@@ -670,14 +670,14 @@
       "title": "CAVE2 (TM) Hybrid Reality Environment - Trailer 1",
       "published": "2012-08-04",
       "seconds": 71,
-      "views": 62403
+      "views": 62406
     },
     {
       "id": "2X8pCA1xl_Y",
       "title": "MEGA TENORI-ON by JD Pirtle",
       "published": "2012-07-27",
       "seconds": 55,
-      "views": 924
+      "views": 925
     },
     {
       "id": "g9EpcM5M6OA",
@@ -705,21 +705,21 @@
       "title": "Dan Sandin: Artists and The Scientific Research Environment (Part 1)",
       "published": "2012-07-12",
       "seconds": 951,
-      "views": 207
+      "views": 208
     },
     {
       "id": "6V0o3TjB2Tw",
       "title": "Fleet Commander",
       "published": "2011-07-11",
       "seconds": 56,
-      "views": 794659
+      "views": 794661
     },
     {
       "id": "4VdBnH9_47E",
       "title": "Introduction to the Electronic Visualization Laboratory @ UIC",
       "published": "2011-05-25",
       "seconds": 276,
-      "views": 36742
+      "views": 36743
     },
     {
       "id": "oFQeszkCaPU",
@@ -831,7 +831,7 @@
       "title": "Direct Wall Interaction in SAGE",
       "published": "2009-12-17",
       "seconds": 192,
-      "views": 3504
+      "views": 3506
     },
     {
       "id": "aQGxZy5w5WU",
@@ -859,14 +859,14 @@
       "title": "The LambdaTable",
       "published": "2008-12-17",
       "seconds": 118,
-      "views": 105543
+      "views": 105544
     },
     {
       "id": "qnnrmzWa0bA",
       "title": "LambdaVision using SAGE",
       "published": "2008-12-05",
       "seconds": 133,
-      "views": 9601
+      "views": 9603
     },
     {
       "id": "ge_KQW0-vKo",
@@ -915,42 +915,42 @@
       "title": "SIGGRAPH Showcase 1992 and CAVE® Documentation - Part 2",
       "published": "2008-01-08",
       "seconds": 523,
-      "views": 5743
+      "views": 5744
     },
     {
       "id": "NI6DsamNsLM",
       "title": "SIGGRAPH Showcase 1992 and CAVE® Documentation - Part 1",
       "published": "2008-01-08",
       "seconds": 473,
-      "views": 2393
+      "views": 2394
     },
     {
       "id": "EQdyb17TIuA",
       "title": "Rave Culture - Part 2",
       "published": "2008-01-08",
       "seconds": 289,
-      "views": 31637
+      "views": 31640
     },
     {
       "id": "fS1TeQ64fsA",
       "title": "Rave Culture - Part 1",
       "published": "2008-01-08",
       "seconds": 395,
-      "views": 89586
+      "views": 89590
     },
     {
       "id": "5XRuTmRstIg",
       "title": "Virtual Reality (demo) - Part 2",
       "published": "2008-01-08",
       "seconds": 396,
-      "views": 15833
+      "views": 15834
     },
     {
       "id": "GAZwBM1kUqQ",
       "title": "Virtual Reality (demo) - Part 1",
       "published": "2008-01-08",
       "seconds": 344,
-      "views": 21106
+      "views": 21108
     },
     {
       "id": "eTaV5PKgzw0",
@@ -978,7 +978,7 @@
       "title": "Wandawega Waters",
       "published": "2007-12-29",
       "seconds": 65,
-      "views": 5816
+      "views": 5823
     },
     {
       "id": "xiPPVvtX91o",
@@ -1006,7 +1006,7 @@
       "title": "Warpitout",
       "published": "2007-12-28",
       "seconds": 59,
-      "views": 5540
+      "views": 5541
     },
     {
       "id": "Pcrk-Toem9Q",
@@ -1027,14 +1027,14 @@
       "title": "unNatural Phenomena",
       "published": "2007-12-28",
       "seconds": 107,
-      "views": 24959
+      "views": 24986
     },
     {
       "id": "QYjiEUk2WAw",
       "title": "To Tie The Knot",
       "published": "2007-12-28",
       "seconds": 259,
-      "views": 8599
+      "views": 8601
     },
     {
       "id": "YAneQGhILBg",
@@ -1062,14 +1062,14 @@
       "title": "The Papilloma Virus",
       "published": "2007-12-28",
       "seconds": 162,
-      "views": 15839
+      "views": 15840
     },
     {
       "id": "cdMLLmlS4Dc",
       "title": "The Optiverse",
       "published": "2007-12-28",
       "seconds": 524,
-      "views": 27009
+      "views": 27014
     },
     {
       "id": "x8QQGfwh8DA",
@@ -1097,7 +1097,7 @@
       "title": "The CAVE® Simulator: Software Simulation for VR Development",
       "published": "2007-12-27",
       "seconds": 157,
-      "views": 7798
+      "views": 7799
     },
     {
       "id": "WQa7elavE-o",
@@ -1195,7 +1195,7 @@
       "title": "Purkinje Cell Model",
       "published": "2007-12-25",
       "seconds": 631,
-      "views": 14343
+      "views": 14353
     },
     {
       "id": "n6jRx-sCUwQ",
@@ -1209,7 +1209,7 @@
       "title": "PerioSim: Haptics-Based Periodontal Simulator",
       "published": "2007-12-25",
       "seconds": 135,
-      "views": 15114
+      "views": 15124
     },
     {
       "id": "WlvADQNFaQQ",
@@ -1279,7 +1279,7 @@
       "title": "Limbo Land",
       "published": "2007-12-19",
       "seconds": 69,
-      "views": 4445
+      "views": 4447
     },
     {
       "id": "J_ji9eoDNNY",
@@ -1300,7 +1300,7 @@
       "title": "Interactive Visualization of Quaternion Julia Sets",
       "published": "2007-12-19",
       "seconds": 461,
-      "views": 19085
+      "views": 19086
     },
     {
       "id": "0eHlpKo5BCs",
@@ -1314,7 +1314,7 @@
       "title": "ImmersiveTouch™",
       "published": "2007-12-19",
       "seconds": 193,
-      "views": 4559
+      "views": 4560
     },
     {
       "id": "H6eOF2qdJZo",
@@ -1398,14 +1398,14 @@
       "title": "Evolution of the Mandelbrot Set",
       "published": "2007-12-19",
       "seconds": 26,
-      "views": 4932
+      "views": 4933
     },
     {
       "id": "Mq8uo1I6FDc",
       "title": "Electronic Masks",
       "published": "2007-12-18",
       "seconds": 60,
-      "views": 8210
+      "views": 8214
     },
     {
       "id": "pZJe1adHY5o",
@@ -1419,14 +1419,14 @@
       "title": "ECHO",
       "published": "2007-12-18",
       "seconds": 79,
-      "views": 2755
+      "views": 2756
     },
     {
       "id": "lwB7KzG9awk",
       "title": "Dynamics in the Quaternions",
       "published": "2007-12-18",
       "seconds": 257,
-      "views": 72292
+      "views": 72299
     },
     {
       "id": "Vw2ebTkROBs",
@@ -1489,7 +1489,7 @@
       "title": "Chicago Messenger",
       "published": "2007-12-18",
       "seconds": 175,
-      "views": 12430
+      "views": 12432
     },
     {
       "id": "CaTfV5E8bFw",
@@ -1510,14 +1510,14 @@
       "title": "CAVE® - A Virtual Reality Theater - 1993",
       "published": "2007-12-18",
       "seconds": 258,
-      "views": 52186
+      "views": 52202
     },
     {
       "id": "aKL0urEdtPU",
       "title": "CAVE® - A Virtual Reality Theater - 1992",
       "published": "2007-12-18",
       "seconds": 465,
-      "views": 12641
+      "views": 12650
     },
     {
       "id": "xo7i9Isd_Qk",
@@ -1538,7 +1538,7 @@
       "title": "Colorful Colorado",
       "published": "2007-12-17",
       "seconds": 60,
-      "views": 58515
+      "views": 58549
     },
     {
       "id": "fhpIi9JMhnw",
@@ -1559,14 +1559,14 @@
       "title": "Calculated Movements",
       "published": "2007-12-17",
       "seconds": 71,
-      "views": 61846
+      "views": 61870
     },
     {
       "id": "MxrUd4N5F0w",
       "title": "Bringing the VR to VRML",
       "published": "2007-12-17",
       "seconds": 219,
-      "views": 549
+      "views": 550
     },
     {
       "id": "fqHuirPrRQo",
@@ -1587,7 +1587,7 @@
       "title": "Air on the Dirac Strings",
       "published": "2007-12-13",
       "seconds": 141,
-      "views": 60311
+      "views": 60334
     },
     {
       "id": "9hY7QbSOYVA",
@@ -1622,28 +1622,28 @@
       "title": "A Fractal Model of Human Bronchi",
       "published": "2007-12-13",
       "seconds": 140,
-      "views": 9802
+      "views": 9807
     },
     {
       "id": "8qh6jRzjmcY",
       "title": "5 Minute Romp thru the IP",
       "published": "2007-12-13",
       "seconds": 233,
-      "views": 31275
+      "views": 31289
     },
     {
       "id": "azfKAZf-f6E",
       "title": "30 Seconds of A Foam Cow",
       "published": "2007-12-13",
       "seconds": 34,
-      "views": 985
+      "views": 986
     },
     {
       "id": "KJnSt3pWP7M",
       "title": "Visualcasting of 4K content",
       "published": "2007-12-03",
       "seconds": 198,
-      "views": 2276
+      "views": 2277
     },
     {
       "id": "ey61u9J5Bgs",
@@ -1657,7 +1657,7 @@
       "title": "The N.I.C.E. Project",
       "published": "2007-11-20",
       "seconds": 324,
-      "views": 2059
+      "views": 2061
     },
     {
       "id": "ZxpK_F2-LF0",
@@ -1678,7 +1678,7 @@
       "title": "Making of the Computer Graphics for Star Wars (Episode IV)",
       "published": "2007-11-20",
       "seconds": 618,
-      "views": 542203
+      "views": 542271
     },
     {
       "id": "viA1EOGLrN0",
