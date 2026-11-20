@@ -255,3 +255,16 @@ layout: default
     {% endif %}
   </article>
 </div>
+
+<!-- Reload the home page when the site is redeployed: every 30 min, compare /version.txt with this page's build time -->
+<script>
+  (function () {
+    var built = "{{ site.time | date: '%s' }}";
+    setInterval(function () {
+      fetch("{{ '/version.txt' | relative_url }}", { cache: "no-store" })
+        .then(function (r) { return r.ok ? r.text() : built; })
+        .then(function (v) { if (v.trim() !== built) location.reload(); })
+        .catch(function () {});
+    }, 30 * 60 * 1000);
+  })();
+</script>
